@@ -1,0 +1,14 @@
+extends Button
+
+func _pressed() -> void:
+    if Globals.theme == Globals.ColorTheme.LIGHT:
+        Globals.theme = Globals.ColorTheme.DARK
+        # set image to moon icon
+        self.set_button_icon(load("res://images/theme/moon.svg"))
+    else:
+        Globals.theme = Globals.ColorTheme.LIGHT
+        # set image to sun icon
+        self.set_button_icon(load("res://images/theme/sun.svg"))
+
+    # log the current theme
+    print("Theme switched to: ", Globals.theme)

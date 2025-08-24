@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://jdbb2vhovioi"]
+
+[ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://background.gd" id="1_glv2v"]
+[ext_resource type="Texture2D" uid="uid://u88k76fgwxta" path="res://images/theme/sun.svg" id="2_cm0pq"]
+[ext_resource type="Script" uid="uid://cqy5j4gj2kgxc" path="res://themeSwitcher.gd" id="4_3dxm6"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_glv2v")
+saturation = 0.15
+
+[node name="Theme" type="Button" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 21.0
+offset_right = 107.0
+offset_bottom = 101.0
+icon = ExtResource("2_cm0pq")
+expand_icon = true
+script = ExtResource("4_3dxm6")
