@@ -867,18 +867,6 @@ cache/0/16/0/glyphs/134217808/size = Vector2(16, 11)
 cache/0/16/0/glyphs/134217808/uv_rect = Rect2(1, 133, 16, 11)
 cache/0/16/0/glyphs/134217808/texture_idx = 0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwgqj"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfxho"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -912,35 +900,11 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4c3m"]
-content_margin_left = 12.0
-content_margin_top = 12.0
-content_margin_right = 12.0
-content_margin_bottom = 12.0
-bg_color = Color(1, 1, 1, 0.6)
-border_width_left = 7
-border_width_top = 7
-border_width_right = 7
-border_width_bottom = 7
-border_color = Color(0.5, 0.5, 0.5, 1)
-corner_radius_top_left = 500
-corner_radius_top_right = 500
-corner_radius_bottom_right = 500
-corner_radius_bottom_left = 500
-corner_detail = 5
-shadow_color = Color(0.277528, 0.277528, 0.277528, 0.6)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwgqj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7puu"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7hgt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k172"]
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -962,8 +926,8 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = SubResource("FontFile_nr3lm")
-Button/styles/disabled = SubResource("StyleBoxFlat_vwgqj")
 Button/styles/focus = SubResource("StyleBoxFlat_xfxho")
 Button/styles/hover = SubResource("StyleBoxFlat_w7hgt")
-Button/styles/normal = SubResource("StyleBoxFlat_l4c3m")
-Button/styles/pressed = SubResource("StyleBoxFlat_i7puu")
+Button/styles/normal = SubResource("StyleBoxEmpty_vwgqj")
+Button/styles/pressed = SubResource("StyleBoxEmpty_w7hgt")
+Panel/styles/panel = SubResource("StyleBoxEmpty_4k172")

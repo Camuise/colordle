@@ -1,5 +1,7 @@
 extends Button
 
+signal on_theme_changed(new_theme)
+
 func _pressed() -> void:
     if Globals.theme == Globals.ColorTheme.LIGHT:
         Globals.theme = Globals.ColorTheme.DARK
@@ -12,3 +14,4 @@ func _pressed() -> void:
 
     # log the current theme
     print("Theme switched to: ", Globals.theme)
+    emit_signal("on_theme_changed", Globals.theme)

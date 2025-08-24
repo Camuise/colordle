@@ -19,8 +19,10 @@ func _ready() -> void:
 # Helper to update value based on theme
 func _update_value_from_theme(theme_name: Globals.ColorTheme) -> void:
     if theme_name == Globals.ColorTheme.DARK:
+        saturation = 0.8
         value = 0.2
     else:
+        saturation = 0.5
         value = 1.0
 
 # Called when theme changes
