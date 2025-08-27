@@ -13,12 +13,12 @@ func _get_date_string() -> String:
     # format as DayOfWeek, Month Day+Suffix
     var now = Time.get_datetime_dict_from_system()
     var possible_days: Array[String] = [
-        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+        "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
     ]
     var day_of_week = possible_days[now.weekday]
     var possible_months: Array[String] = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ]
     var month = possible_months[now.month - 1]
     var day = str(now.day).pad_zeros(2)
