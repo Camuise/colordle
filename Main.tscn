@@ -44,5 +44,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_fos0i")
 
+[node name="ItemList" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1104.0
+offset_top = 35.0
+offset_right = 1245.0
+offset_bottom = 113.0
+selected = 0
+item_count = 4
+popup/item_0/text = "RGB"
+popup/item_0/id = 0
+popup/item_1/text = "Hex"
+popup/item_1/id = 1
+popup/item_2/text = "HSL"
+popup/item_2/id = 2
+popup/item_3/text = "HSV"
+popup/item_3/id = 3
+
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_changed"]
