@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://jdbb2vhovioi"]
+[gd_scene load_steps=7 format=3 uid="uid://jdbb2vhovioi"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://light.tres" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://background.gd" id="1_glv2v"]
 [ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://images/theme/sun.png" id="3_fos0i"]
 [ext_resource type="Script" uid="uid://cqy5j4gj2kgxc" path="res://themeSwitcher.gd" id="4_3dxm6"]
 [ext_resource type="Script" uid="uid://d0kd2gj605ly8" path="res://label.gd" id="5_fos0i"]
+[ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://color_square.gd" id="6_3dxm6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -35,10 +36,11 @@ script = ExtResource("4_3dxm6")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 542.0
-offset_top = 50.0
-offset_right = 786.0
-offset_bottom = 108.0
+offset_left = 552.0
+offset_top = 40.0
+offset_right = 714.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 28
 text = "Aug 24 2025"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -46,10 +48,10 @@ script = ExtResource("5_fos0i")
 
 [node name="ItemList" type="OptionButton" parent="."]
 layout_mode = 0
-offset_left = 1104.0
-offset_top = 35.0
-offset_right = 1245.0
-offset_bottom = 113.0
+offset_left = 1089.0
+offset_top = 34.0
+offset_right = 1244.0
+offset_bottom = 112.0
 selected = 0
 item_count = 4
 popup/item_0/text = "RGB"
@@ -60,6 +62,22 @@ popup/item_2/text = "HSL"
 popup/item_2/id = 2
 popup/item_3/text = "HSV"
 popup/item_3/id = 3
+
+[node name="Border" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 592.0
+offset_top = 95.0
+offset_right = 688.0
+offset_bottom = 191.0
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Border"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 88.0
+script = ExtResource("6_3dxm6")
 
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_changed"]
