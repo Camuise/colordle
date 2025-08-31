@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://jdbb2vhovioi"]
+[gd_scene load_steps=11 format=3 uid="uid://jdbb2vhovioi"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://light.tres" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://background.gd" id="1_glv2v"]
@@ -7,6 +7,14 @@
 [ext_resource type="Script" uid="uid://d0kd2gj605ly8" path="res://label.gd" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://color_square.gd" id="6_3dxm6"]
 [ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://format_select.gd" id="6_lgr22"]
+[ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://images/return.png" id="8_trn2v"]
+
+[sub_resource type="Gradient" id="Gradient_trn2v"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_03owx"]
+gradient = SubResource("Gradient_trn2v")
+width = 315
+height = 30
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -84,6 +92,164 @@ offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 88.0
 script = ExtResource("6_3dxm6")
+
+[node name="YourAnswers" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -470.0
+offset_top = 155.0
+offset_right = -276.0
+offset_bottom = 194.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+text = "Your Answers:"
+vertical_alignment = 1
+
+[node name="Answers" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 170.0
+offset_top = -515.0
+offset_right = 596.0
+offset_bottom = -475.0
+grow_vertical = 0
+scale = Vector2(1, 12)
+
+[node name="Input" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 745.5
+offset_top = 197.0
+offset_right = 1171.5
+offset_bottom = 322.0
+theme_override_constants/separation = 32
+
+[node name="SliderContainer" type="GridContainer" parent="Input"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 32
+columns = 2
+
+[node name="ALabel" type="Label" parent="Input/SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SliderA"
+vertical_alignment = 1
+
+[node name="ASlider" type="Control" parent="Input/SliderContainer"]
+custom_minimum_size = Vector2(322, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Border" type="ColorRect" parent="Input/SliderContainer/ASlider"]
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 322.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/ASlider/Border"]
+position = Vector2(6, 6)
+texture = SubResource("GradientTexture2D_03owx")
+centered = false
+
+[node name="Slider" type="HSlider" parent="Input/SliderContainer/ASlider"]
+layout_mode = 2
+offset_right = 315.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BLabel" type="Label" parent="Input/SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SliderB"
+vertical_alignment = 1
+
+[node name="BSlider" type="Control" parent="Input/SliderContainer"]
+custom_minimum_size = Vector2(322, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Border" type="ColorRect" parent="Input/SliderContainer/BSlider"]
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 322.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/BSlider/Border"]
+position = Vector2(6, 6)
+texture = SubResource("GradientTexture2D_03owx")
+centered = false
+
+[node name="Slider" type="HSlider" parent="Input/SliderContainer/BSlider"]
+layout_mode = 2
+offset_right = 315.0
+offset_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CLabel" type="Label" parent="Input/SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SliderC"
+vertical_alignment = 1
+
+[node name="CSlider" type="Control" parent="Input/SliderContainer"]
+custom_minimum_size = Vector2(322, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Border" type="ColorRect" parent="Input/SliderContainer/CSlider"]
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 322.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/CSlider/Border"]
+position = Vector2(6, 6)
+texture = SubResource("GradientTexture2D_03owx")
+centered = false
+
+[node name="Slider" type="HSlider" parent="Input/SliderContainer/CSlider"]
+layout_mode = 2
+offset_right = 315.0
+offset_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DisplayContainer" type="HBoxContainer" parent="Input"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Border" type="ColorRect" parent="Input/DisplayContainer"]
+custom_minimum_size = Vector2(340, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Input/DisplayContainer/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 374.0
+offset_bottom = 44.0
+
+[node name="EnterButton" type="Button" parent="Input/DisplayContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("8_trn2v")
+expand_icon = true
 
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_changed"]
