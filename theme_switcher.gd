@@ -13,5 +13,5 @@ func _pressed() -> void:
         self.set_button_icon(load("res://images/theme/sun.png"))
 
     # log the current theme
-    print("Theme switched to: ", Globals.theme)
+    print_debug("Theme switched to: %s" % Globals.theme)
     emit_signal("on_theme_changed", Globals.theme)
