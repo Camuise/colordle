@@ -15,7 +15,7 @@
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_03owx"]
 gradient = SubResource("Gradient_trn2v")
 width = 315
-height = 30
+height = 28
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -126,7 +126,8 @@ offset_left = 745.5
 offset_top = 197.0
 offset_right = 1171.5
 offset_bottom = 322.0
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
+script = ExtResource("8_wkp8b")
 
 [node name="SliderContainer" type="GridContainer" parent="Input"]
 layout_mode = 2
@@ -134,96 +135,99 @@ theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 32
 columns = 2
 
-[node name="ALabel" type="Label" parent="Input/SliderContainer"]
+[node name="Label0" type="Label" parent="Input/SliderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "SliderA"
+text = "Slider0"
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ASlider" type="Control" parent="Input/SliderContainer"]
+[node name="Slider0" type="Control" parent="Input/SliderContainer"]
 custom_minimum_size = Vector2(322, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="ColorRect" parent="Input/SliderContainer/ASlider"]
+[node name="Border" type="ColorRect" parent="Input/SliderContainer/Slider0"]
+layout_mode = 0
 offset_left = -6.0
-offset_top = -2.0
 offset_right = 322.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/ASlider/Border"]
+[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/Slider0/Border"]
 position = Vector2(6, 6)
 texture = SubResource("GradientTexture2D_03owx")
 centered = false
 
-[node name="Slider" type="HSlider" parent="Input/SliderContainer/ASlider"]
+[node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider0"]
 layout_mode = 2
 offset_right = 315.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BLabel" type="Label" parent="Input/SliderContainer"]
+[node name="Label1" type="Label" parent="Input/SliderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "SliderB"
+text = "Slider1"
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="BSlider" type="Control" parent="Input/SliderContainer"]
+[node name="Slider1" type="Control" parent="Input/SliderContainer"]
 custom_minimum_size = Vector2(322, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="ColorRect" parent="Input/SliderContainer/BSlider"]
+[node name="Border" type="ColorRect" parent="Input/SliderContainer/Slider1"]
+layout_mode = 0
 offset_left = -6.0
-offset_top = -2.0
 offset_right = 322.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/BSlider/Border"]
+[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/Slider1/Border"]
 position = Vector2(6, 6)
 texture = SubResource("GradientTexture2D_03owx")
 centered = false
 
-[node name="Slider" type="HSlider" parent="Input/SliderContainer/BSlider"]
+[node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider1"]
 layout_mode = 2
 offset_right = 315.0
-offset_bottom = 39.0
+offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CLabel" type="Label" parent="Input/SliderContainer"]
+[node name="Label2" type="Label" parent="Input/SliderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "SliderC"
+text = "Slider2"
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CSlider" type="Control" parent="Input/SliderContainer"]
+[node name="Slider2" type="Control" parent="Input/SliderContainer"]
 custom_minimum_size = Vector2(322, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="ColorRect" parent="Input/SliderContainer/CSlider"]
+[node name="Border" type="ColorRect" parent="Input/SliderContainer/Slider2"]
+layout_mode = 0
 offset_left = -6.0
-offset_top = -2.0
 offset_right = 322.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/CSlider/Border"]
+[node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/Slider2/Border"]
 position = Vector2(6, 6)
 texture = SubResource("GradientTexture2D_03owx")
 centered = false
 
-[node name="Slider" type="HSlider" parent="Input/SliderContainer/CSlider"]
+[node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider2"]
 layout_mode = 2
 offset_right = 315.0
-offset_bottom = 39.0
+offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -233,18 +237,19 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="Border" type="ColorRect" parent="Input/DisplayContainer"]
-custom_minimum_size = Vector2(340, 50)
+custom_minimum_size = Vector2(340, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Input/DisplayContainer/Border"]
+[node name="InputResultColor" type="ColorRect" parent="Input/DisplayContainer/Border"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 374.0
-offset_bottom = 44.0
+offset_right = 371.0
+offset_bottom = 34.0
 
 [node name="EnterButton" type="Button" parent="Input/DisplayContainer"]
 custom_minimum_size = Vector2(60, 60)
@@ -252,5 +257,5 @@ layout_mode = 2
 icon = ExtResource("8_trn2v")
 expand_icon = true
 
-[connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_changed"]
+[connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
