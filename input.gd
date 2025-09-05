@@ -86,8 +86,10 @@ func _update_result_color() -> void:
 func _ready() -> void:
     _get_nodes()
     _update_sliders()
+    _update_result_color()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    pass
+func _process(_delta: float) -> void:
+    _update_sliders()
+    _update_result_color()
