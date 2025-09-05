@@ -71,10 +71,16 @@ func _update_sliders() -> void:
 
 
 func _update_result_color() -> void:
-    Globals.FormatToConstructor[Globals.colordle_format].call(sliders[0].value, sliders[1].value, sliders[2].value)
+    var color: Color = Color(0, 0, 0)
+    match Globals.colordle_format:
+        Globals.ColorFormat.RGB:
+            color = Color(sliders[0].value, sliders[1].value, sliders[2].value)
+        Globals.ColorFormat.HSV:
+            color = Color.from_hsv(sliders[0].value, sliders[1].value, sliders[2].value)
 
-func _update_sliders() -> void:
-    pass
+    # Update the result color display
+    result_color.color = color
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
