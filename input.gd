@@ -27,16 +27,19 @@ func _update_sliders() -> void:
             Globals.ColorFormat.RGB:
                 gradient.offsets = [0.0, 1.0]
                 if i == 0:
+                    labels[i].text = "Red"
                     gradient.colors = PackedColorArray([
                         Color(0.0, sliders[1].value, sliders[2].value),
                         Color(1.0, sliders[1].value, sliders[2].value)
                     ])
                 elif i == 1:
+                    labels[i].text = "Green"
                     gradient.colors = PackedColorArray([
                         Color(sliders[0].value, 0.0, sliders[2].value),
                         Color(sliders[0].value, 1.0, sliders[2].value)
                     ])
                 elif i == 2:
+                    labels[i].text = "Blue"
                     gradient.colors = PackedColorArray([
                         Color(sliders[0].value, sliders[1].value, 0.0),
                         Color(sliders[0].value, sliders[1].value, 1.0)
@@ -44,6 +47,7 @@ func _update_sliders() -> void:
             Globals.ColorFormat.HSV:
                 gradient.offsets = [0.0, 1.0]
                 if i == 0:
+                    labels[i].text = "Hue"
                     var rainbow: Array[Color] = []
                     var offsets: Array[float] = []
                     var steps = 6
@@ -54,11 +58,13 @@ func _update_sliders() -> void:
                     gradient.colors = PackedColorArray(rainbow)
                     gradient.offsets = offsets
                 elif i == 1:
+                    labels[i].text = "Sat."
                     gradient.colors = PackedColorArray([
                         Color.from_hsv(sliders[0].value, 0.0, sliders[2].value),
                         Color.from_hsv(sliders[0].value, 1.0, sliders[2].value)
                     ])
                 elif i == 2:
+                    labels[i].text = "Value"
                     gradient.colors = PackedColorArray([
                         Color.from_hsv(sliders[0].value, sliders[1].value, 0.0),
                         Color.from_hsv(sliders[0].value, sliders[1].value, 1.0)
