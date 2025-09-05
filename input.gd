@@ -27,11 +27,20 @@ func _update_sliders() -> void:
             Globals.ColorFormat.RGB:
                 gradient.offsets = [0.0, 1.0]
                 if i == 0:
-                    gradient.colors = PackedColorArray([Color(0.0, 0.0, 0.0), Color(1.0, 0.0, 0.0)])
+                    gradient.colors = PackedColorArray([
+                        Color(0.0, sliders[1].value, sliders[2].value),
+                        Color(1.0, sliders[1].value, sliders[2].value)
+                    ])
                 elif i == 1:
-                    gradient.colors = PackedColorArray([Color(0.0, 0.0, 0.0), Color(0.0, 1.0, 0.0)])
+                    gradient.colors = PackedColorArray([
+                        Color(sliders[0].value, 0.0, sliders[2].value),
+                        Color(sliders[0].value, 1.0, sliders[2].value)
+                    ])
                 elif i == 2:
-                    gradient.colors = PackedColorArray([Color(0.0, 0.0, 0.0), Color(0.0, 0.0, 1.0)])
+                    gradient.colors = PackedColorArray([
+                        Color(sliders[0].value, sliders[1].value, 0.0),
+                        Color(sliders[0].value, sliders[1].value, 1.0)
+                    ])
             Globals.ColorFormat.HSV:
                 gradient.offsets = [0.0, 1.0]
                 if i == 0:
@@ -45,9 +54,15 @@ func _update_sliders() -> void:
                     gradient.colors = PackedColorArray(rainbow)
                     gradient.offsets = offsets
                 elif i == 1:
-                    gradient.colors = PackedColorArray([Color.from_hsv(sliders[0].value, 0.0, 1.0), Color.from_hsv(sliders[0].value, 1.0, 1.0)])
+                    gradient.colors = PackedColorArray([
+                        Color.from_hsv(sliders[0].value, 0.0, sliders[2].value),
+                        Color.from_hsv(sliders[0].value, 1.0, sliders[2].value)
+                    ])
                 elif i == 2:
-                    gradient.colors = PackedColorArray([Color.from_hsv(sliders[0].value, 1.0, 0.0), Color.from_hsv(sliders[0].value, 1.0, 1.0)])
+                    gradient.colors = PackedColorArray([
+                        Color.from_hsv(sliders[0].value, sliders[1].value, 0.0),
+                        Color.from_hsv(sliders[0].value, sliders[1].value, 1.0)
+                    ])
         var texture = GradientTexture2D.new()
         texture.gradient = gradient
         texture.width = 315
