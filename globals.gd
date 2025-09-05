@@ -7,7 +7,6 @@ enum ColorTheme {
 @export var theme: ColorTheme = ColorTheme.LIGHT
 enum ColorFormat {
     RGB,
-    HEX,
     HSV
 }
 @export var colordle_format: ColorFormat = ColorFormat.RGB
