@@ -6,16 +6,19 @@ extends VBoxContainer
 @onready var backgrounds: Array[Sprite2D] = []
 @onready var result_color: ColorRect = %InputResultColor
 
+
 func _get_nodes():
-    for child in get_children():
-        if child is Slider:
-            sliders.append(child)
+    var base_path: GridContainer = $SliderContainer
+    for i in range(3):
+        sliders.append(base_path.get_node("Slider%d/Slider" % i))
+        backgrounds.append(base_path.get_node("Slider%d/Border/Sprite2D" % i))
+        labels.append(base_path.get_node("Label%d" % i))
 
-        elif child is Label:
-            labels.append(child)
+    # print out all new nodes
+    print_debug("Sliders: %s" % str(sliders))
+    print_debug("Labels: %s" % str(labels))
+    print_debug("Backgrounds: %s" % str(backgrounds))
 
-        elif child is Sprite2D:
-            backgrounds.append(child)
 
 func _update_result_color() -> void:
     Globals.FormatToConstructor[Globals.colordle_format].call(sliders[0].value, sliders[1].value, sliders[2].value)
