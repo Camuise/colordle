@@ -20,6 +20,41 @@ func _get_nodes():
     print_debug("Backgrounds: %s" % str(backgrounds))
 
 
+func _update_sliders() -> void:
+    for i in range(sliders.size()):
+        var gradient = Gradient.new()
+        match Globals.colordle_format:
+            Globals.ColorFormat.RGB:
+                gradient.offsets = [0.0, 1.0]
+                if i == 0:
+                    gradient.colors = PackedColorArray([Color(0.0, 0.0, 0.0), Color(1.0, 0.0, 0.0)])
+                elif i == 1:
+                    gradient.colors = PackedColorArray([Color(0.0, 0.0, 0.0), Color(0.0, 1.0, 0.0)])
+                elif i == 2:
+                    gradient.colors = PackedColorArray([Color(0.0, 0.0, 0.0), Color(0.0, 0.0, 1.0)])
+            Globals.ColorFormat.HSV:
+                gradient.offsets = [0.0, 1.0]
+                if i == 0:
+                    var rainbow: Array[Color] = []
+                    var offsets: Array[float] = []
+                    var steps = 6
+                    for j in range(steps + 1):
+                        var h = float(j) / steps
+                        rainbow.append(Color.from_hsv(h, 1.0, 1.0))
+                        offsets.append(h)
+                    gradient.colors = PackedColorArray(rainbow)
+                    gradient.offsets = offsets
+                elif i == 1:
+                    gradient.colors = PackedColorArray([Color.from_hsv(sliders[0].value, 0.0, 1.0), Color.from_hsv(sliders[0].value, 1.0, 1.0)])
+                elif i == 2:
+                    gradient.colors = PackedColorArray([Color.from_hsv(sliders[0].value, 1.0, 0.0), Color.from_hsv(sliders[0].value, 1.0, 1.0)])
+        var texture = GradientTexture2D.new()
+        texture.gradient = gradient
+        texture.width = 315
+        texture.height = 28
+        backgrounds[i].texture = texture
+
+
 func _update_result_color() -> void:
     Globals.FormatToConstructor[Globals.colordle_format].call(sliders[0].value, sliders[1].value, sliders[2].value)
 
@@ -29,6 +64,7 @@ func _update_sliders() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     _get_nodes()
+    _update_sliders()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
