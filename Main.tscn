@@ -183,6 +183,8 @@ offset_right = 315.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
 
 [node name="Label1" type="Label" parent="Input/SliderContainer"]
 layout_mode = 2
@@ -215,6 +217,8 @@ offset_right = 315.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
 
 [node name="Label2" type="Label" parent="Input/SliderContainer"]
 layout_mode = 2
@@ -247,6 +251,8 @@ offset_right = 315.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
 
 [node name="DisplayContainer" type="HBoxContainer" parent="Input"]
 custom_minimum_size = Vector2(0, 40)
