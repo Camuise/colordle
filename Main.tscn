@@ -276,3 +276,4 @@ expand_icon = true
 
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_changed"]
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
+[connection signal="item_selected" from="FormatSelect" to="FormatSelect" method="_on_item_selected"]
