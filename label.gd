@@ -21,7 +21,7 @@ func _get_date_string() -> String:
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ]
     var month = possible_months[now.month - 1]
-    var day = str(now.day).pad_zeros(2)
+    var day = str(now.day)
     var suffix = ""
     var last_digit = day[day.length() - 1]
     match last_digit:
