@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jdbb2vhovioi"]
+[gd_scene load_steps=16 format=3 uid="uid://jdbb2vhovioi"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://light.tres" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://background.gd" id="1_glv2v"]
@@ -10,10 +10,27 @@
 [ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://images/return.png" id="8_trn2v"]
 [ext_resource type="Script" uid="uid://cqlypqc42j550" path="res://input.gd" id="8_wkp8b"]
 
-[sub_resource type="Gradient" id="Gradient_trn2v"]
+[sub_resource type="Gradient" id="Gradient_03owx"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_03owx"]
-gradient = SubResource("Gradient_trn2v")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wkp8b"]
+gradient = SubResource("Gradient_03owx")
+width = 315
+height = 28
+
+[sub_resource type="Gradient" id="Gradient_20pc6"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5vvyt"]
+gradient = SubResource("Gradient_20pc6")
+width = 315
+height = 28
+
+[sub_resource type="Gradient" id="Gradient_c6i3y"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c2ibq"]
+gradient = SubResource("Gradient_c6i3y")
 width = 315
 height = 28
 
@@ -157,7 +174,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/Slider0/Border"]
 position = Vector2(6, 6)
-texture = SubResource("GradientTexture2D_03owx")
+texture = SubResource("GradientTexture2D_wkp8b")
 centered = false
 
 [node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider0"]
@@ -189,7 +206,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/Slider1/Border"]
 position = Vector2(6, 6)
-texture = SubResource("GradientTexture2D_03owx")
+texture = SubResource("GradientTexture2D_5vvyt")
 centered = false
 
 [node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider1"]
@@ -221,7 +238,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Input/SliderContainer/Slider2/Border"]
 position = Vector2(6, 6)
-texture = SubResource("GradientTexture2D_03owx")
+texture = SubResource("GradientTexture2D_c2ibq")
 centered = false
 
 [node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider2"]
