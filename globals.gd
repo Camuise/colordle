@@ -5,31 +5,34 @@ enum ColorTheme {
     DARK
 }
 @export var theme: ColorTheme = ColorTheme.LIGHT
-enum ColordleFormat {
+enum ColorFormat {
     RGB,
     HEX,
-    HSL,
     HSV
 }
-@export var colordle_format: ColordleFormat = ColordleFormat.HEX
+@export var colordle_format: ColorFormat = ColorFormat.RGB
 @export var todays_color: Color = _get_todays_color()
 
 signal theme_changed(new_theme: ColorTheme)
-signal color_format_changed(new_format: ColordleFormat)
+signal color_format_changed(new_format: ColorFormat)
+
 
 func _ready() -> void:
     # Initialize the theme
     set_theme(theme)
+
 
 func set_theme(new_theme: ColorTheme) -> void:
     if theme != new_theme:
         theme = new_theme
         emit_signal("theme_changed", theme)
 
-func set_color_format(new_format: ColordleFormat) -> void:
+
+func set_color_format(new_format: ColorFormat) -> void:
     if colordle_format != new_format:
         colordle_format = new_format
         emit_signal("color_format_changed", colordle_format)
+
 
 func _get_todays_color() -> Color:
     # step 1: get today's date (excluding time) in UNIX
