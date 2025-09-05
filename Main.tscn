@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://jdbb2vhovioi"]
+[gd_scene load_steps=17 format=3 uid="uid://jdbb2vhovioi"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://light.tres" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://background.gd" id="1_glv2v"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://format_select.gd" id="6_lgr22"]
 [ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://images/return.png" id="8_trn2v"]
 [ext_resource type="Script" uid="uid://cqlypqc42j550" path="res://input.gd" id="8_wkp8b"]
+[ext_resource type="Script" uid="uid://da6imuxrbrb6b" path="res://input_result_color.gd" id="9_wkp8b"]
 
 [sub_resource type="Gradient" id="Gradient_03owx"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
@@ -268,11 +269,13 @@ color = Color(0, 0, 0, 1)
 
 [node name="InputResultColor" type="ColorRect" parent="Input/DisplayContainer/Border"]
 unique_name_in_owner = true
+clip_contents = true
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 371.0
 offset_bottom = 34.0
+script = ExtResource("9_wkp8b")
 
 [node name="EnterButton" type="Button" parent="Input/DisplayContainer"]
 custom_minimum_size = Vector2(60, 60)
