@@ -1,0 +1,105 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://7bdtpoekv6hy"]
+
+[ext_resource type="Texture2D" uid="uid://gn1pf1go7lbt" path="res://images/chevron-down.png" id="1_nr3lm"]
+[ext_resource type="FontFile" uid="uid://gkm2ebn5v6nh" path="res://fonts/Lexend/static/Lexend-Regular.ttf" id="1_vwgqj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nr3lm"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7hgt"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.23, 0.23, 0.23, 0.431373)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 999999
+corner_radius_top_right = 999999
+corner_radius_bottom_right = 999999
+corner_radius_bottom_left = 999999
+corner_detail = 5
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwgqj"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7hgt"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr3lm"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.23, 0.23, 0.23, 0.431373)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 999999
+corner_radius_top_right = 999999
+corner_radius_bottom_right = 999999
+corner_radius_bottom_left = 999999
+corner_detail = 5
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfxho"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k172"]
+
+[resource]
+default_font_size = 42
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/fonts/font = ExtResource("1_vwgqj")
+Button/styles/focus = SubResource("StyleBoxEmpty_nr3lm")
+Button/styles/hover = SubResource("StyleBoxFlat_w7hgt")
+Button/styles/normal = SubResource("StyleBoxEmpty_vwgqj")
+Button/styles/pressed = SubResource("StyleBoxEmpty_w7hgt")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.705882)
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 15
+Label/fonts/font = ExtResource("1_vwgqj")
+OptionButton/constants/outline_size = 15
+OptionButton/icons/arrow = ExtResource("1_nr3lm")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_nr3lm")
+OptionButton/styles/normal = SubResource("StyleBoxEmpty_xfxho")
+Panel/styles/panel = SubResource("StyleBoxEmpty_4k172")

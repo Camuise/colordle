@@ -6,7 +6,6 @@ var date_string: String
 func _ready() -> void:
     date_string = _get_date_string()
     self.text = date_string
-    recenter_label()
 
 
 func _get_date_string() -> String:
@@ -47,4 +46,3 @@ func _process(_delta: float) -> void:
     if now != date_string:
         date_string = now
         self.text = date_string
-        recenter_label()

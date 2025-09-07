@@ -1,15 +1,30 @@
-[gd_scene load_steps=17 format=3 uid="uid://jdbb2vhovioi"]
+[gd_scene load_steps=19 format=3 uid="uid://jdbb2vhovioi"]
 
-[ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://light.tres" id="1_cm0pq"]
+[ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://themes/default.tres" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://background.gd" id="1_glv2v"]
 [ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://images/theme/sun.png" id="3_fos0i"]
 [ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://theme_switcher.gd" id="4_03owx"]
 [ext_resource type="Script" uid="uid://d0kd2gj605ly8" path="res://label.gd" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://color_square.gd" id="6_3dxm6"]
 [ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://format_select.gd" id="6_lgr22"]
+[ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://themes/monospace.tres" id="7_20pc6"]
 [ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://images/return.png" id="8_trn2v"]
 [ext_resource type="Script" uid="uid://cqlypqc42j550" path="res://input.gd" id="8_wkp8b"]
 [ext_resource type="Script" uid="uid://da6imuxrbrb6b" path="res://input_result_color.gd" id="9_wkp8b"]
+
+[sub_resource type="GDScript" id="GDScript_wkp8b"]
+script/source = "extends VBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+    pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+    pass
+"
 
 [sub_resource type="Gradient" id="Gradient_03owx"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
@@ -64,93 +79,772 @@ script = ExtResource("4_03owx")
 
 [node name="Date" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -81.0
-offset_top = 40.0
-offset_right = 81.0
-offset_bottom = 79.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 28
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -399.0
+offset_top = 55.0
+offset_right = -155.0
+offset_bottom = 113.0
+grow_horizontal = 0
 text = "Aug 24 2025"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("5_fos0i")
 
-[node name="FormatSelect" type="OptionButton" parent="."]
-layout_mode = 0
-offset_left = 1089.0
-offset_top = 34.0
-offset_right = 1244.0
-offset_bottom = 112.0
-selected = 0
-item_count = 4
-popup/item_0/text = "RGB"
-popup/item_0/id = 0
-popup/item_1/text = "Hex"
-popup/item_1/id = 1
-popup/item_2/text = "HSL"
-popup/item_2/id = 2
-popup/item_3/text = "HSV"
-popup/item_3/id = 3
-script = ExtResource("6_lgr22")
-
 [node name="Border" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 592.0
-offset_top = 95.0
-offset_right = 688.0
-offset_bottom = 191.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 120.0
+grow_horizontal = 0
 color = Color(0, 0, 0, 1)
 
 [node name="Color" type="ColorRect" parent="Border"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 88.0
-offset_bottom = 88.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 64.0
+offset_bottom = 64.0
 script = ExtResource("6_3dxm6")
-
-[node name="YourAnswers" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -470.0
-offset_top = 155.0
-offset_right = -276.0
-offset_bottom = 194.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 28
-text = "Your Answers:"
-vertical_alignment = 1
 
 [node name="Answers" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 170.0
-offset_top = -515.0
-offset_right = 596.0
-offset_bottom = -475.0
-grow_vertical = 0
-scale = Vector2(1, 12)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -188.5
+offset_right = 615.0
+offset_bottom = 188.5
+grow_vertical = 2
+theme_override_constants/separation = 20
+script = SubResource("GDScript_wkp8b")
+
+[node name="HeaderLabel" type="Label" parent="Answers"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Your Answers"
+vertical_alignment = 1
+
+[node name="Answers" type="VBoxContainer" parent="Answers"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Answer0" type="HBoxContainer" parent="Answers/Answers"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer0/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer0/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer0/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer0/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer0/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer0/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer0/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer0/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer0/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer0/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer0/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Answers/Answers/Answer0/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "="
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer0/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer0/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer0/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Answer1" type="HBoxContainer" parent="Answers/Answers"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer1/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer1/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer1/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer1/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer1/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer1/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer1/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer1/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer1/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer1/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer1/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Answers/Answers/Answer1/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "="
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer1/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer1/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer1/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Answer2" type="HBoxContainer" parent="Answers/Answers"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer2/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer2/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer2/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer2/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer2/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer2/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer2/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer2/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer2/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer2/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer2/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Answers/Answers/Answer2/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "="
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer2/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer2/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer2/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Answer3" type="HBoxContainer" parent="Answers/Answers"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer3/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer3/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer3/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer3/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer3/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer3/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer3/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer3/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer3/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer3/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer3/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Answers/Answers/Answer3/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "="
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer3/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer3/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer3/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Answer4" type="HBoxContainer" parent="Answers/Answers"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer4"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer4/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer4/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer4/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer4/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer4"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer4/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer4/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer4/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer4/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer4"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer4/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer4/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer4/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Answers/Answers/Answer4/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "="
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer4"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer4/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer4/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer4/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Answer5" type="HBoxContainer" parent="Answers/Answers"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer5"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer5/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer5/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer5/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer5/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer5"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer5/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer5/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer5/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Plus" type="Label" parent="Answers/Answers/Answer5/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "+"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer5"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer5/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer5/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer5/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Answers/Answers/Answer5/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "="
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer5"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Answers/Answers/Answer5/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Answers/Answers/Answer5/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Answers/Answers/Answer5/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ".2%"
+vertical_alignment = 1
 
 [node name="Input" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 745.5
-offset_top = 197.0
-offset_right = 1245.5
-offset_bottom = 467.0
-theme_override_constants/separation = 20
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -177.0
+offset_right = -60.0
+offset_bottom = 177.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 6
 script = ExtResource("8_wkp8b")
+
+[node name="HeaderContainer" type="HBoxContainer" parent="Input"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Input/HeaderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Input"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Input/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FormatSelect" type="OptionButton" parent="Input/HeaderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+selected = 0
+item_count = 2
+popup/item_0/text = "RGB"
+popup/item_0/id = 0
+popup/item_1/text = "HSV"
+popup/item_1/id = 3
+script = ExtResource("6_lgr22")
 
 [node name="SliderContainer" type="GridContainer" parent="Input"]
 layout_mode = 2
 theme_override_constants/h_separation = 24
-theme_override_constants/v_separation = 32
+theme_override_constants/v_separation = 36
 columns = 2
 
 [node name="Label0" type="Label" parent="Input/SliderContainer"]
@@ -174,7 +868,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -6.0
 offset_top = -21.0
-offset_right = 7.0
+offset_right = 1.0
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -187,6 +881,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -15.0
+offset_right = -6.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -197,6 +892,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -225,7 +921,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -6.0
 offset_top = -21.0
-offset_right = 7.0
+offset_right = 1.0
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -238,6 +934,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -15.0
+offset_right = -6.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -248,6 +945,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -276,7 +974,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -6.0
 offset_top = -21.0
-offset_right = 7.0
+offset_right = 1.0
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -289,6 +987,7 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_top = -15.0
+offset_right = -6.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -299,12 +998,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 1.0
 step = 0.001
+
+[node name="Spacer" type="Control" parent="Input"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
 
 [node name="DisplayContainer" type="HBoxContainer" parent="Input"]
 custom_minimum_size = Vector2(0, 40)
@@ -342,4 +1046,4 @@ expand_icon = true
 
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_changed"]
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
-[connection signal="item_selected" from="FormatSelect" to="FormatSelect" method="_on_item_selected"]
+[connection signal="item_selected" from="Input/HeaderContainer/FormatSelect" to="Input/HeaderContainer/FormatSelect" method="_on_item_selected"]
