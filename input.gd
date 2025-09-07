@@ -19,57 +19,69 @@ func _get_nodes():
     print_debug("Labels: %s" % str(labels))
     print_debug("Backgrounds: %s" % str(backgrounds))
 
+func _get_rgb_gradient(slider_idx: int) -> Gradient:
+    var gradient := Gradient.new()
+    gradient.offsets = [0.0, 1.0]
+    match slider_idx:
+        0:
+            labels[0].text = "Red"
+            gradient.colors = PackedColorArray([
+                Color(0.0, sliders[1].value, sliders[2].value),
+                Color(1.0, sliders[1].value, sliders[2].value)
+            ])
+        1:
+            labels[1].text = "Green"
+            gradient.colors = PackedColorArray([
+                Color(sliders[0].value, 0.0, sliders[2].value),
+                Color(sliders[0].value, 1.0, sliders[2].value)
+            ])
+        2:
+            labels[2].text = "Blue"
+            gradient.colors = PackedColorArray([
+                Color(sliders[0].value, sliders[1].value, 0.0),
+                Color(sliders[0].value, sliders[1].value, 1.0)
+            ])
+    return gradient
+
+func _get_hsv_gradient(slider_idx: int) -> Gradient:
+    var gradient := Gradient.new()
+    match slider_idx:
+        0:
+            labels[0].text = "Hue"
+            var rainbow := []
+            var offsets := []
+            var hueSteps := 6
+            for step in range(hueSteps + 1):
+                var t := float(step) / hueSteps
+                rainbow.append(Color.from_hsv(t, 1.0, 1.0))
+                offsets.append(t)
+            gradient.colors = PackedColorArray(rainbow)
+            gradient.offsets = offsets
+        1:
+            labels[1].text = "Sat."
+            gradient.offsets = [0.0, 1.0]
+            gradient.colors = PackedColorArray([
+                Color.from_hsv(sliders[0].value, 0.0, sliders[2].value),
+                Color.from_hsv(sliders[0].value, 1.0, sliders[2].value)
+            ])
+        2:
+            labels[2].text = "Value"
+            gradient.offsets = [0.0, 1.0]
+            gradient.colors = PackedColorArray([
+                Color.from_hsv(sliders[0].value, sliders[1].value, 0.0),
+                Color.from_hsv(sliders[0].value, sliders[1].value, 1.0)
+            ])
+    return gradient
 
 func _update_sliders() -> void:
-    for i in range(sliders.size()):
-        var gradient = Gradient.new()
+    for i in sliders.size():
+        var gradient: Gradient
         match Globals.colordle_format:
             Globals.ColorFormat.RGB:
-                gradient.offsets = [0.0, 1.0]
-                if i == 0:
-                    labels[i].text = "Red"
-                    gradient.colors = PackedColorArray([
-                        Color(0.0, sliders[1].value, sliders[2].value),
-                        Color(1.0, sliders[1].value, sliders[2].value)
-                    ])
-                elif i == 1:
-                    labels[i].text = "Green"
-                    gradient.colors = PackedColorArray([
-                        Color(sliders[0].value, 0.0, sliders[2].value),
-                        Color(sliders[0].value, 1.0, sliders[2].value)
-                    ])
-                elif i == 2:
-                    labels[i].text = "Blue"
-                    gradient.colors = PackedColorArray([
-                        Color(sliders[0].value, sliders[1].value, 0.0),
-                        Color(sliders[0].value, sliders[1].value, 1.0)
-                    ])
+                gradient = _get_rgb_gradient(i)
             Globals.ColorFormat.HSV:
-                gradient.offsets = [0.0, 1.0]
-                if i == 0:
-                    labels[i].text = "Hue"
-                    var rainbow: Array[Color] = []
-                    var offsets: Array[float] = []
-                    var steps = 6
-                    for j in range(steps + 1):
-                        var h = float(j) / steps
-                        rainbow.append(Color.from_hsv(h, 1.0, 1.0))
-                        offsets.append(h)
-                    gradient.colors = PackedColorArray(rainbow)
-                    gradient.offsets = offsets
-                elif i == 1:
-                    labels[i].text = "Sat."
-                    gradient.colors = PackedColorArray([
-                        Color.from_hsv(sliders[0].value, 0.0, sliders[2].value),
-                        Color.from_hsv(sliders[0].value, 1.0, sliders[2].value)
-                    ])
-                elif i == 2:
-                    labels[i].text = "Value"
-                    gradient.colors = PackedColorArray([
-                        Color.from_hsv(sliders[0].value, sliders[1].value, 0.0),
-                        Color.from_hsv(sliders[0].value, sliders[1].value, 1.0)
-                    ])
-        var texture = GradientTexture2D.new()
+                gradient = _get_hsv_gradient(i)
+        var texture := GradientTexture2D.new()
         texture.gradient = gradient
         texture.width = 315
         texture.height = 28
