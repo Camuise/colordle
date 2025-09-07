@@ -19,6 +19,7 @@ func _get_nodes():
     print_debug("Labels: %s" % str(labels))
     print_debug("Backgrounds: %s" % str(backgrounds))
 
+
 func _get_rgb_gradient(slider_idx: int) -> Gradient:
     var gradient := Gradient.new()
     gradient.offsets = [0.0, 1.0]
@@ -42,6 +43,7 @@ func _get_rgb_gradient(slider_idx: int) -> Gradient:
                 Color(sliders[0].value, sliders[1].value, 1.0)
             ])
     return gradient
+
 
 func _get_hsv_gradient(slider_idx: int) -> Gradient:
     var gradient := Gradient.new()
@@ -72,6 +74,7 @@ func _get_hsv_gradient(slider_idx: int) -> Gradient:
                 Color.from_hsv(sliders[0].value, sliders[1].value, 1.0)
             ])
     return gradient
+
 
 func _update_sliders() -> void:
     for i in sliders.size():
