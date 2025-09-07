@@ -3,7 +3,7 @@ extends VBoxContainer
 # select all the sliders
 @onready var sliders: Array[Slider] = []
 @onready var labels: Array[Label] = []
-@onready var backgrounds: Array[Sprite2D] = []
+@onready var backgrounds: Array[TextureRect] = []
 @onready var result_color: ColorRect = %InputResultColor
 
 
@@ -11,7 +11,7 @@ func _get_nodes():
     var base_path: GridContainer = $SliderContainer
     for i in range(3):
         sliders.append(base_path.get_node("Slider%d/Slider" % i))
-        backgrounds.append(base_path.get_node("Slider%d/Border/Sprite2D" % i))
+        backgrounds.append(base_path.get_node("Slider%d/SliderBG" % i))
         labels.append(base_path.get_node("Label%d" % i))
 
     # print out all new nodes
@@ -83,8 +83,10 @@ func _update_sliders() -> void:
                 gradient = _get_hsv_gradient(i)
         var texture := GradientTexture2D.new()
         texture.gradient = gradient
+        # honestly, setting the size here doesn't really do anything
+        # since the TextureRect will just stretch the gradient to fit
         texture.width = 315
-        texture.height = 28
+        texture.height = 30
         backgrounds[i].texture = texture
 
 
