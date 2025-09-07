@@ -13,7 +13,7 @@ config_version=5
 config/name="Colordle"
 run/main_scene="uid://jdbb2vhovioi"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://bc1bks7ag3jys"
 
 [autoload]
 
