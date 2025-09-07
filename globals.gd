@@ -5,15 +5,26 @@ enum ColorTheme {
     DARK
 }
 @export var theme: ColorTheme = ColorTheme.LIGHT
+signal theme_changed(new_theme: ColorTheme)
+
 enum ColorFormat {
     RGB,
     HSV
 }
 @export var colordle_format: ColorFormat = ColorFormat.RGB
+signal color_format_changed(new_format: ColorFormat)
+
 @export var todays_color: Color = _get_todays_color()
 
-signal theme_changed(new_theme: ColorTheme)
-signal color_format_changed(new_format: ColorFormat)
+@export var answers: Array[Color] = [
+    Color(1, 0, 0),
+    Color(0, 1, 0),
+    Color(0, 0, 1),
+    Color(1, 1, 0),
+    Color(1, 0, 1),
+    Color(0, 1, 1),
+]
+signal answers_changed(new_answers: Array[Color])
 
 
 func _ready() -> void:
@@ -52,3 +63,11 @@ func _get_todays_color() -> Color:
     var generated_color = Color.from_hsv(rng.randf(), rng.randf(), rng.randf())
     print_debug("Generated HSV color: %s" % generated_color)
     return generated_color
+
+
+func set_answer(index: int, new_color: Color) -> void:
+    if index < 0 or index >= answers.size():
+        push_error("Index out of bounds in set_answer: %d" % index)
+        return
+    answers[index] = new_color
+    emit_signal("answers_changed", answers)
