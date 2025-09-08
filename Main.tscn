@@ -74,10 +74,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -399.0
-offset_top = 55.0
-offset_right = -155.0
-offset_bottom = 113.0
+offset_left = -387.0
+offset_top = 53.0
+offset_right = -139.0
+offset_bottom = 111.0
 grow_horizontal = 0
 text = "Aug 24 2025"
 horizontal_alignment = 2
@@ -90,8 +90,8 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -120.0
-offset_top = 50.0
-offset_right = -50.0
+offset_top = 40.0
+offset_right = -40.0
 offset_bottom = 120.0
 grow_horizontal = 0
 color = Color(0, 0, 0, 1)
@@ -100,730 +100,653 @@ color = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 64.0
-offset_bottom = 64.0
+offset_right = 74.0
+offset_bottom = 74.0
 script = ExtResource("6_3dxm6")
 
-[node name="AnswerDisplay" type="VBoxContainer" parent="."]
+[node name="Gameplay" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 14
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 60.0
-offset_top = -188.5
-offset_right = 615.0
-offset_bottom = 188.5
+offset_left = 40.0
+offset_top = -207.0
+offset_right = -40.0
+offset_bottom = 208.0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="AnswerDisplay" type="VBoxContainer" parent="Gameplay"]
+layout_mode = 2
 theme_override_constants/separation = 20
 script = ExtResource("7_5vvyt")
 
-[node name="HeaderLabel" type="Label" parent="AnswerDisplay"]
+[node name="HeaderLabel" type="Label" parent="Gameplay/AnswerDisplay"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Your Answers"
 vertical_alignment = 1
 
-[node name="AnswerContainer" type="VBoxContainer" parent="AnswerDisplay"]
+[node name="AnswerContainer" type="VBoxContainer" parent="Gameplay/AnswerDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Answer0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
+[node name="Answer0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer0"]
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel0"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel0"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer0"]
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel1"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel1"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer0"]
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel2"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel2"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel2"]
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "="
+text = "→"
 vertical_alignment = 1
 
-[node name="Channel3" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer0"]
+[node name="Channel3" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel3"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel3"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel3/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel3/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel3"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
+[node name="Answer1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer1"]
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel0"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel0"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer1"]
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel1"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel1"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer1"]
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel2"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel2"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel2"]
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "="
+text = "→"
 vertical_alignment = 1
 
-[node name="Channel3" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer1"]
+[node name="Channel3" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel3"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel3"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel3/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel3/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel3"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
+[node name="Answer2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer2"]
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel0"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel0"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer2"]
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel1"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel1"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer2"]
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel2"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel2"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel2"]
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "="
+text = "→"
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer2"]
+[node name="Combined" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Combined"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Combined"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Combined/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Combined/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Combined"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer3" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
+[node name="Answer3" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer3"]
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel0"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel0"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer3"]
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel1"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel1"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer3"]
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel2"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel2"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel2"]
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "="
+text = "→"
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer3"]
+[node name="Combined" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Combined"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Combined"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Combined/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Combined/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Combined"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer4" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
+[node name="Answer4" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer4"]
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel0"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel0"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer4"]
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel1"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel1"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer4"]
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel2"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel2"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel2"]
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "="
+text = "→"
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer4"]
+[node name="Combined" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Combined"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Combined"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Combined/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Combined/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Combined"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer5" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
+[node name="Answer5" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer5"]
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel0"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel0"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel0"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer5"]
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel1"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel1"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel1"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "+"
-vertical_alignment = 1
-
-[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer5"]
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel2"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel2"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel2"]
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "="
+text = "→"
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer5"]
+[node name="Combined" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Combined"]
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Combined"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Combined/Border"]
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Combined/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Combined"]
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
-[node name="Input" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -560.0
-offset_top = -177.0
-offset_right = -60.0
-offset_bottom = 177.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="Input" type="VBoxContainer" parent="Gameplay"]
+layout_mode = 2
 theme_override_constants/separation = 6
 script = ExtResource("8_wkp8b")
 
-[node name="HeaderContainer" type="HBoxContainer" parent="Input"]
+[node name="HeaderContainer" type="HBoxContainer" parent="Gameplay/Input"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Input/HeaderContainer"]
+[node name="Label" type="Label" parent="Gameplay/Input/HeaderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Input"
 vertical_alignment = 1
 
-[node name="Spacer" type="Control" parent="Input/HeaderContainer"]
+[node name="Spacer" type="Control" parent="Gameplay/Input/HeaderContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FormatSelect" type="OptionButton" parent="Input/HeaderContainer"]
+[node name="FormatSelect" type="OptionButton" parent="Gameplay/Input/HeaderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 selected = 0
@@ -834,26 +757,26 @@ popup/item_1/text = "HSV"
 popup/item_1/id = 3
 script = ExtResource("6_lgr22")
 
-[node name="SliderContainer" type="GridContainer" parent="Input"]
+[node name="SliderContainer" type="GridContainer" parent="Gameplay/Input"]
 layout_mode = 2
 theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 36
 columns = 2
 
-[node name="Label0" type="Label" parent="Input/SliderContainer"]
+[node name="Label0" type="Label" parent="Gameplay/Input/SliderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Slider0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Slider0" type="Control" parent="Input/SliderContainer"]
+[node name="Slider0" type="Control" parent="Gameplay/Input/SliderContainer"]
 custom_minimum_size = Vector2(322, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="ColorRect" parent="Input/SliderContainer/Slider0"]
+[node name="Border" type="ColorRect" parent="Gameplay/Input/SliderContainer/Slider0"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -867,7 +790,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SliderBG" type="TextureRect" parent="Input/SliderContainer/Slider0"]
+[node name="SliderBG" type="TextureRect" parent="Gameplay/Input/SliderContainer/Slider0"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -880,7 +803,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_wkp8b")
 
-[node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider0"]
+[node name="Slider" type="HSlider" parent="Gameplay/Input/SliderContainer/Slider0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -893,20 +816,20 @@ size_flags_vertical = 3
 max_value = 1.0
 step = 0.001
 
-[node name="Label1" type="Label" parent="Input/SliderContainer"]
+[node name="Label1" type="Label" parent="Gameplay/Input/SliderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Slider1"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Slider1" type="Control" parent="Input/SliderContainer"]
+[node name="Slider1" type="Control" parent="Gameplay/Input/SliderContainer"]
 custom_minimum_size = Vector2(322, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="ColorRect" parent="Input/SliderContainer/Slider1"]
+[node name="Border" type="ColorRect" parent="Gameplay/Input/SliderContainer/Slider1"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -920,7 +843,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SliderBG" type="TextureRect" parent="Input/SliderContainer/Slider1"]
+[node name="SliderBG" type="TextureRect" parent="Gameplay/Input/SliderContainer/Slider1"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -933,7 +856,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_5vvyt")
 
-[node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider1"]
+[node name="Slider" type="HSlider" parent="Gameplay/Input/SliderContainer/Slider1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -946,20 +869,20 @@ size_flags_vertical = 3
 max_value = 1.0
 step = 0.001
 
-[node name="Label2" type="Label" parent="Input/SliderContainer"]
+[node name="Label2" type="Label" parent="Gameplay/Input/SliderContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Slider2"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Slider2" type="Control" parent="Input/SliderContainer"]
+[node name="Slider2" type="Control" parent="Gameplay/Input/SliderContainer"]
 custom_minimum_size = Vector2(322, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Border" type="ColorRect" parent="Input/SliderContainer/Slider2"]
+[node name="Border" type="ColorRect" parent="Gameplay/Input/SliderContainer/Slider2"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -973,7 +896,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SliderBG" type="TextureRect" parent="Input/SliderContainer/Slider2"]
+[node name="SliderBG" type="TextureRect" parent="Gameplay/Input/SliderContainer/Slider2"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -986,7 +909,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_c2ibq")
 
-[node name="Slider" type="HSlider" parent="Input/SliderContainer/Slider2"]
+[node name="Slider" type="HSlider" parent="Gameplay/Input/SliderContainer/Slider2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -999,23 +922,23 @@ size_flags_vertical = 3
 max_value = 1.0
 step = 0.001
 
-[node name="Spacer" type="Control" parent="Input"]
+[node name="Spacer" type="Control" parent="Gameplay/Input"]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="DisplayContainer" type="HBoxContainer" parent="Input"]
+[node name="DisplayContainer" type="HBoxContainer" parent="Gameplay/Input"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Border" type="ColorRect" parent="Input/DisplayContainer"]
+[node name="Border" type="ColorRect" parent="Gameplay/Input/DisplayContainer"]
 custom_minimum_size = Vector2(340, 42)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 color = Color(0, 0, 0, 1)
 
-[node name="InputResultColor" type="ColorRect" parent="Input/DisplayContainer/Border"]
+[node name="InputResultColor" type="ColorRect" parent="Gameplay/Input/DisplayContainer/Border"]
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 1
@@ -1031,7 +954,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_wkp8b")
 
-[node name="EnterButton" type="Button" parent="Input/DisplayContainer"]
+[node name="EnterButton" type="Button" parent="Gameplay/Input/DisplayContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 icon = ExtResource("8_trn2v")
@@ -1039,6 +962,6 @@ expand_icon = true
 
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_changed"]
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
-[connection signal="answer_entered" from="Input" to="AnswerDisplay" method="_on_input_answer_entered"]
-[connection signal="item_selected" from="Input/HeaderContainer/FormatSelect" to="Input/HeaderContainer/FormatSelect" method="_on_item_selected"]
-[connection signal="pressed" from="Input/DisplayContainer/EnterButton" to="Input" method="_on_enter_button_pressed"]
+[connection signal="answer_entered" from="Gameplay/Input" to="Gameplay/AnswerDisplay" method="_on_input_answer_entered"]
+[connection signal="item_selected" from="Gameplay/Input/HeaderContainer/FormatSelect" to="Gameplay/Input/HeaderContainer/FormatSelect" method="_on_item_selected"]
+[connection signal="pressed" from="Gameplay/Input/DisplayContainer/EnterButton" to="Gameplay/Input" method="_on_enter_button_pressed"]
