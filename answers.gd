@@ -31,7 +31,7 @@ func calc_color_diff(color1: Color, color2: Color) -> float:
 
 func round4(value: float) -> String:
     # rounds a float to be only 4 characters long.
-    var rounded = str(100 - (round(value * 100) / 100))
+    var rounded = str(abs(100 - (round(value * 100) / 100)))
     print(rounded)
     # if 3 non-zero chars before dot, drop all decimals
     if rounded.find(".") == 3:
