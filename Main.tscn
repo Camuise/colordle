@@ -7,24 +7,11 @@
 [ext_resource type="Script" uid="uid://d0kd2gj605ly8" path="res://label.gd" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://color_square.gd" id="6_3dxm6"]
 [ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://format_select.gd" id="6_lgr22"]
+[ext_resource type="Script" uid="uid://3fs027t8nppe" path="res://answers.gd" id="7_5vvyt"]
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://themes/monospace.tres" id="7_20pc6"]
 [ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://images/return.png" id="8_trn2v"]
 [ext_resource type="Script" uid="uid://cqlypqc42j550" path="res://input.gd" id="8_wkp8b"]
 [ext_resource type="Script" uid="uid://da6imuxrbrb6b" path="res://input_result_color.gd" id="9_wkp8b"]
-
-[sub_resource type="GDScript" id="GDScript_wkp8b"]
-script/source = "extends VBoxContainer
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-    pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    pass
-"
 
 [sub_resource type="Gradient" id="Gradient_03owx"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
@@ -57,12 +44,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("1_cm0pq")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.34, 0, 0, 1)
 script = ExtResource("1_glv2v")
 saturation = 0.15
@@ -112,7 +104,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("6_3dxm6")
 
-[node name="Answers" type="VBoxContainer" parent="."]
+[node name="AnswerDisplay" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -123,682 +115,683 @@ offset_right = 615.0
 offset_bottom = 188.5
 grow_vertical = 2
 theme_override_constants/separation = 20
-script = SubResource("GDScript_wkp8b")
+script = ExtResource("7_5vvyt")
 
-[node name="HeaderLabel" type="Label" parent="Answers"]
+[node name="HeaderLabel" type="Label" parent="AnswerDisplay"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Your Answers"
 vertical_alignment = 1
 
-[node name="Answers" type="VBoxContainer" parent="Answers"]
+[node name="AnswerContainer" type="VBoxContainer" parent="AnswerDisplay"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Answer0" type="HBoxContainer" parent="Answers/Answers"]
+[node name="Answer0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer0"]
+[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer0"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer0/Channel0"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer0/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer0/Channel0"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer0/Channel0"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer0"]
+[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer0"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer0/Channel1"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer0/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer0/Channel1"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer0/Channel1"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer0"]
+[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer0"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer0/Channel2"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer0/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer0/Channel2"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="Answers/Answers/Answer0/Channel2"]
+[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "="
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer0"]
+[node name="Channel3" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer0"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer0/Combined"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel3"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer0/Combined/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer0/Channel3/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer0/Combined"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer0/Channel3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer1" type="HBoxContainer" parent="Answers/Answers"]
+[node name="Answer1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer1"]
+[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer1/Channel0"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer1/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer1/Channel0"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer1/Channel0"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer1"]
+[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer1/Channel1"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer1/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer1/Channel1"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer1/Channel1"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer1"]
+[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer1/Channel2"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer1/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer1/Channel2"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="Answers/Answers/Answer1/Channel2"]
+[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "="
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer1"]
+[node name="Channel3" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer1"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer1/Combined"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel3"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer1/Combined/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer1/Channel3/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer1/Combined"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer1/Channel3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer2" type="HBoxContainer" parent="Answers/Answers"]
+[node name="Answer2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer2"]
+[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer2/Channel0"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer2/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer2/Channel0"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer2/Channel0"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer2"]
+[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer2/Channel1"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer2/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer2/Channel1"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer2/Channel1"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer2"]
+[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer2/Channel2"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer2/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer2/Channel2"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="Answers/Answers/Answer2/Channel2"]
+[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "="
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer2"]
+[node name="Combined" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer2"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer2/Combined"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Combined"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer2/Combined/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer2/Combined/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer2/Combined"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer2/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer3" type="HBoxContainer" parent="Answers/Answers"]
+[node name="Answer3" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer3"]
+[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer3"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer3/Channel0"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer3/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer3/Channel0"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer3/Channel0"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer3"]
+[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer3"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer3/Channel1"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer3/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer3/Channel1"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer3/Channel1"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer3"]
+[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer3"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer3/Channel2"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer3/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer3/Channel2"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="Answers/Answers/Answer3/Channel2"]
+[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "="
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer3"]
+[node name="Combined" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer3"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer3/Combined"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Combined"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer3/Combined/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer3/Combined/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer3/Combined"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer3/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer4" type="HBoxContainer" parent="Answers/Answers"]
+[node name="Answer4" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer4"]
+[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer4"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer4/Channel0"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer4/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer4/Channel0"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer4/Channel0"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer4"]
+[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer4"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer4/Channel1"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer4/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer4/Channel1"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer4/Channel1"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer4"]
+[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer4"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer4/Channel2"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer4/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer4/Channel2"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="Answers/Answers/Answer4/Channel2"]
+[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "="
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer4"]
+[node name="Combined" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer4"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer4/Combined"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Combined"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer4/Combined/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer4/Combined/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer4/Combined"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer4/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Answer5" type="HBoxContainer" parent="Answers/Answers"]
+[node name="Answer5" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer"]
 layout_mode = 2
 theme = ExtResource("7_20pc6")
 theme_override_constants/separation = 12
 
-[node name="Channel0" type="HBoxContainer" parent="Answers/Answers/Answer5"]
+[node name="Channel0" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer5"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer5/Channel0"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel0"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer5/Channel0/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel0/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer5/Channel0"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer5/Channel0"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel1" type="HBoxContainer" parent="Answers/Answers/Answer5"]
+[node name="Channel1" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer5"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer5/Channel1"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer5/Channel1/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel1/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer5/Channel1"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="Answers/Answers/Answer5/Channel1"]
+[node name="Plus" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "+"
 vertical_alignment = 1
 
-[node name="Channel2" type="HBoxContainer" parent="Answers/Answers/Answer5"]
+[node name="Channel2" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer5"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer5/Channel2"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer5/Channel2/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Channel2/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer5/Channel2"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
-[node name="Equal" type="Label" parent="Answers/Answers/Answer5/Channel2"]
+[node name="Equal" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "="
 vertical_alignment = 1
 
-[node name="Combined" type="HBoxContainer" parent="Answers/Answers/Answer5"]
+[node name="Combined" type="HBoxContainer" parent="AnswerDisplay/AnswerContainer/Answer5"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Border" type="ColorRect" parent="Answers/Answers/Answer5/Combined"]
+[node name="Border" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Combined"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Answers/Answers/Answer5/Combined/Border"]
+[node name="Color" type="ColorRect" parent="AnswerDisplay/AnswerContainer/Answer5/Combined/Border"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 44.0
 
-[node name="Percentage" type="Label" parent="Answers/Answers/Answer5/Combined"]
+[node name="Percentage" type="Label" parent="AnswerDisplay/AnswerContainer/Answer5/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = ".2%"
+text = "00.2%"
 vertical_alignment = 1
 
 [node name="Input" type="VBoxContainer" parent="."]
@@ -1046,4 +1039,6 @@ expand_icon = true
 
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_changed"]
 [connection signal="on_theme_changed" from="Theme" to="Background" method="_on_theme_on_theme_changed"]
+[connection signal="answer_entered" from="Input" to="AnswerDisplay" method="_on_input_answer_entered"]
 [connection signal="item_selected" from="Input/HeaderContainer/FormatSelect" to="Input/HeaderContainer/FormatSelect" method="_on_item_selected"]
+[connection signal="pressed" from="Input/DisplayContainer/EnterButton" to="Input" method="_on_enter_button_pressed"]

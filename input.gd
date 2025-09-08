@@ -5,6 +5,7 @@ extends VBoxContainer
 @onready var labels: Array[Label] = []
 @onready var backgrounds: Array[TextureRect] = []
 @onready var result_color: ColorRect = %InputResultColor
+signal answer_entered(new_answer: Color)
 
 
 func _get_nodes():
@@ -105,14 +106,17 @@ func _update_result_color() -> void:
     result_color.color = color
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     _get_nodes()
     _update_sliders()
     _update_result_color()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
     _update_sliders()
     _update_result_color()
+
+
+func _on_enter_button_pressed() -> void:
+    var new_answer = Color(sliders[0].value, sliders[1].value, sliders[2].value)
+    emit_signal("answer_entered", new_answer)
