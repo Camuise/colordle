@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://background.gd" id="1_glv2v"]
 [ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://images/theme/sun.png" id="3_fos0i"]
 [ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://theme_switcher.gd" id="4_03owx"]
-[ext_resource type="Script" uid="uid://d0kd2gj605ly8" path="res://label.gd" id="5_fos0i"]
+[ext_resource type="Script" uid="uid://cps3fotr6dc7i" path="res://date.gd" id="5_5vvyt"]
 [ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://color_square.gd" id="6_3dxm6"]
 [ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://format_select.gd" id="6_lgr22"]
 [ext_resource type="Script" uid="uid://3fs027t8nppe" path="res://answers.gd" id="7_5vvyt"]
@@ -91,15 +91,15 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -360.0
+offset_left = -371.0
 offset_top = 13.0
-offset_right = -112.0
+offset_right = -123.0
 offset_bottom = 71.0
 grow_horizontal = 0
 text = "Aug 24 2025"
 horizontal_alignment = 2
 vertical_alignment = 1
-script = ExtResource("5_fos0i")
+script = ExtResource("5_5vvyt")
 
 [node name="Border" type="ColorRect" parent="Header/TodaysColor"]
 layout_mode = 1
