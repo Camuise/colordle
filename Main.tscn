@@ -179,7 +179,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
@@ -201,7 +201,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
@@ -223,7 +223,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2"]
@@ -251,7 +251,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Answer1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
@@ -278,7 +278,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
@@ -300,7 +300,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
@@ -322,7 +322,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2"]
@@ -350,7 +350,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Answer2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
@@ -377,7 +377,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
@@ -399,7 +399,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
@@ -421,7 +421,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2"]
@@ -449,7 +449,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Answer3" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
@@ -476,7 +476,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
@@ -498,7 +498,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
@@ -520,7 +520,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2"]
@@ -548,7 +548,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Answer4" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
@@ -575,7 +575,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
@@ -597,7 +597,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
@@ -619,7 +619,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2"]
@@ -647,7 +647,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Answer5" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
@@ -674,7 +674,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
@@ -696,7 +696,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
@@ -718,7 +718,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2"]
@@ -746,7 +746,7 @@ offset_bottom = 44.0
 [node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Combined"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "00.2%"
+text = "    %"
 vertical_alignment = 1
 
 [node name="NoAnswerContainer" type="CenterContainer" parent="Gameplay/AnswerDisplay"]
