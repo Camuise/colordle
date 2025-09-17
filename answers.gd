@@ -12,14 +12,14 @@ var current_row: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    pass # Replace with function body.
+    Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
 
 func _on_input_answer_entered(new_answer:Color) -> void:
     add_answer(new_answer)
 
 func add_answer(new_color: Color) -> void:
     answers[current_row] = new_color
-    _update_display(current_row, new_color)
+    _update_row(current_row, new_color)
     current_row += 1
 
 func calc_color_diff(color1: Color, color2: Color) -> float:
@@ -29,10 +29,9 @@ func calc_color_diff(color1: Color, color2: Color) -> float:
     # convert to percentage
     return delta_e
 
+# rounds a float to be only 4 characters long.
 func round4(value: float) -> String:
-    # rounds a float to be only 4 characters long.
     var rounded = str(abs(100 - (round(value * 100) / 100)))
-    print(rounded)
     # if 3 non-zero chars before dot, drop all decimals
     if rounded.find(".") == 3:
         return rounded.split(".")[0] + "."
@@ -42,32 +41,60 @@ func round4(value: float) -> String:
     # only 1 non-zero digit before the decimal, drop padding to left
     return rounded.pad_decimals(2)
 
-func _update_display(row: int, new_color: Color) -> void:
-    var node = %AnswerContainer.get_child(row)
-    for child in node.get_child_count():
-        var channel = node.get_child(child)
-        var color_display = channel.get_node("Border/Color")
-        var percentage = channel.get_node("Percentage")
-        match child:
-            0:
-                color_display.color = Color(new_color.r, 0, 0)
-                var answer_r = Color(new_color.r, 0, 0)
-                var correct_r = Color(Globals.todays_color.r, 0, 0)
-                var diff_to_answer = calc_color_diff(answer_r, correct_r)
-                percentage.text = round4(diff_to_answer) + "%"
-            1:
-                color_display.color = Color(0, new_color.g, 0)
-                var answer_g = Color(0, new_color.g, 0)
-                var correct_g = Color(0, Globals.todays_color.g, 0)
-                var diff_to_answer = calc_color_diff(answer_g, correct_g)
-                percentage.text = round4(diff_to_answer) + "%"
-            2:
-                color_display.color = Color(0, 0, new_color.b)
-                var answer_b = Color(0, 0, new_color.b)
-                var correct_b = Color(0, 0, Globals.todays_color.b)
-                var diff_to_answer = calc_color_diff(answer_b, correct_b)
-                percentage.text = round4(diff_to_answer) + "%"
-            3:
-                color_display.color = new_color
-                var diff_to_answer = calc_color_diff(new_color, Globals.todays_color)
-                percentage.text = round4(diff_to_answer) + "%"
+const channel_color_map := {
+    Globals.ColorFormat.RGB: [
+        [{"cha": 0}, {"val": 0}, {"val": 0}],
+        [{"cha": 0}, {"val": 1}, {"val": 0}],
+        [{"val": 0}, {"val": 0}, {"cha": 0}]
+    ],
+    Globals.ColorFormat.HSV: [
+        [{"cha": 0}, {"val": 1}, {"val": 1}],
+        [{"cha": 0}, {"val": 2}, {"val": 1}],
+        [{"val": 0}, {"val": 0}, {"cha": 2}]
+    ]
+}
+# Helper function to get channel colors
+func get_channel_colors(channel: int, new_color: Color, correct_color: Color) -> Array:
+    if channel == 3:
+        return [new_color, correct_color]
+    match Globals.colordle_format:
+        Globals.ColorFormat.RGB:
+            match channel:
+                0:
+                    return [Color(new_color.r, 0, 0), Color(correct_color.r, 0, 0)]
+                1:
+                    return [Color(0, new_color.g, 0), Color(0, correct_color.g, 0)]
+                2:
+                    return [Color(0, 0, new_color.b), Color(0, 0, correct_color.b)]
+        Globals.ColorFormat.HSV:
+            match channel:
+                0:
+                    return [Color.from_hsv(new_color.h, 1, 1), Color.from_hsv(correct_color.h, 1, 1)]
+                1:
+                    return [Color.from_hsv(new_color.h, new_color.s, 1), Color.from_hsv(correct_color.h, correct_color.s, 1)]
+                2:
+                    return [Color.from_hsv(0, 0, new_color.v), Color.from_hsv(0, 0, correct_color.v)]
+    return [Color(), Color()]
+
+func _update_row(row: int, new_color: Color) -> void:
+    var answer_row = %AnswerContainer.get_child(row)
+    for channel_index in range(answer_row.get_child_count()):
+        var channel_container = answer_row.get_child(channel_index)
+        var color_display = channel_container.get_node("Border/Color")
+        var percentage_label = channel_container.get_node("Percentage")
+
+        # Get display colors for this channel
+        var channel_colors = get_channel_colors(channel_index, new_color, Globals.todays_color)
+        color_display.color = channel_colors[0]
+
+        # Calculate difference and update label
+        var diff_to_answer = calc_color_diff(channel_colors[0], channel_colors[1])
+        percentage_label.text = round4(diff_to_answer) + "%"
+
+func _rerender_display() -> void:
+    for row_index in range(answers.size()):
+        _update_row(row_index, answers[row_index])
+
+func _on_color_format_changed() -> void:
+    print_debug("Rerendering display for color format change")
+    _rerender_display()
