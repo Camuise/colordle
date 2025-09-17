@@ -118,5 +118,10 @@ func _process(_delta: float) -> void:
 
 
 func _on_enter_button_pressed() -> void:
-    var new_answer = Color(sliders[0].value, sliders[1].value, sliders[2].value)
+    var new_answer: Color
+    match Globals.colordle_format:
+        Globals.ColorFormat.RGB:
+            new_answer = Color(sliders[0].value, sliders[1].value, sliders[2].value)
+        Globals.ColorFormat.HSV:
+            new_answer = Color.from_hsv(sliders[0].value, sliders[1].value, sliders[2].value)
     emit_signal("answer_entered", new_answer)
