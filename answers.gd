@@ -100,6 +100,6 @@ func _rerender_display() -> void:
     for row_index in range(answers.size()):
         _update_row(row_index, answers[row_index])
 
-func _on_color_format_changed() -> void:
+func _on_color_format_changed(_new_format: Globals.ColorFormat) -> void:
     print_debug("Rerendering display for color format change")
     _rerender_display()
