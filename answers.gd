@@ -1,18 +1,19 @@
 extends VBoxContainer
 
 var answers: Array[Color] = [
-    Color(1, 0, 0),
-    Color(0, 1, 0),
-    Color(0, 0, 1),
-    Color(1, 1, 0),
-    Color(1, 0, 1),
-    Color(0, 1, 1),
+    Color(0, 0, 0),
+    Color(0, 0, 0),
+    Color(0, 0, 0),
+    Color(0, 0, 0),
+    Color(0, 0, 0),
+    Color(0, 0, 0),
 ]
 var current_row: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
+    _rerender_display()
 
 func _on_input_answer_entered(new_answer:Color) -> void:
     add_answer(new_answer)
@@ -41,18 +42,6 @@ func round4(value: float) -> String:
     # only 1 non-zero digit before the decimal, drop padding to left
     return rounded.pad_decimals(2)
 
-const channel_color_map := {
-    Globals.ColorFormat.RGB: [
-        [{"cha": 0}, {"val": 0}, {"val": 0}],
-        [{"cha": 0}, {"val": 1}, {"val": 0}],
-        [{"val": 0}, {"val": 0}, {"cha": 0}]
-    ],
-    Globals.ColorFormat.HSV: [
-        [{"cha": 0}, {"val": 1}, {"val": 1}],
-        [{"cha": 0}, {"val": 2}, {"val": 1}],
-        [{"val": 0}, {"val": 0}, {"cha": 2}]
-    ]
-}
 # Helper function to get channel colors
 func get_channel_colors(channel: int, new_color: Color, correct_color: Color) -> Array:
     if channel == 3:
