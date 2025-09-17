@@ -11,7 +11,7 @@ enum ColorFormat {
     RGB,
     HSV
 }
-@export var colordle_format: ColorFormat = ColorFormat.RGB
+@export var colordle_format: ColorFormat = ColorFormat.HSV
 signal color_format_changed(new_format: ColorFormat)
 
 @export var todays_color: Color = _get_todays_color()

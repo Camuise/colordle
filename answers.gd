@@ -1,12 +1,12 @@
 extends VBoxContainer
 
-var answers: Array[Color] = [
-    Color(0, 0, 0),
-    Color(0, 0, 0),
-    Color(0, 0, 0),
-    Color(0, 0, 0),
-    Color(0, 0, 0),
-    Color(0, 0, 0),
+var answers: Array = [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
 ]
 var current_row: int = 0
 
@@ -16,12 +16,14 @@ func _ready() -> void:
     _rerender_display()
 
 func _on_input_answer_entered(new_answer:Color) -> void:
+    print("New answer entered: %s" % new_answer)
     add_answer(new_answer)
 
 func add_answer(new_color: Color) -> void:
     answers[current_row] = new_color
     _update_row(current_row, new_color)
     current_row += 1
+    _rerender_display()
 
 func calc_color_diff(color1: Color, color2: Color) -> float:
     var color1_lab = ColorUtils.xyz_to_lab(ColorUtils.rgb_to_xyz(color1))
@@ -65,12 +67,20 @@ func get_channel_colors(channel: int, new_color: Color, correct_color: Color) ->
                     return [Color.from_hsv(0, 0, new_color.v), Color.from_hsv(0, 0, correct_color.v)]
     return [Color(), Color()]
 
-func _update_row(row: int, new_color: Color) -> void:
+func _update_row(row: int, new_color) -> void:
     var answer_row = %AnswerContainer.get_child(row)
+    var is_null = new_color == null
     for channel_index in range(answer_row.get_child_count()):
         var channel_container = answer_row.get_child(channel_index)
         var color_display = channel_container.get_node("Border/Color")
         var percentage_label = channel_container.get_node("Percentage")
+
+        # Set opacity to 0% if answer is null, otherwise 100%
+        if is_null:
+            channel_container.modulate = Color(1, 1, 1, 0)
+            continue
+        else:
+            channel_container.modulate = Color(1, 1, 1, 1)
 
         # Get display colors for this channel
         var channel_colors = get_channel_colors(channel_index, new_color, Globals.todays_color)
@@ -81,6 +91,12 @@ func _update_row(row: int, new_color: Color) -> void:
         percentage_label.text = round4(diff_to_answer) + "%"
 
 func _rerender_display() -> void:
+    # if all answers are null, hide the AnswerContainer and show the NoAnswerContainer
+    var is_answers_null: bool = answers.all(func(a): return a == null)
+    print("Rerendering display, answers null: %s" % is_answers_null)
+    %AnswerContainer.visible = not is_answers_null
+    %NoAnswerContainer.visible = is_answers_null
+
     for row_index in range(answers.size()):
         _update_row(row_index, answers[row_index])
 

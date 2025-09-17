@@ -749,6 +749,19 @@ theme_override_font_sizes/font_size = 30
 text = "00.2%"
 vertical_alignment = 1
 
+[node name="NoAnswerContainer" type="CenterContainer" parent="Gameplay/AnswerDisplay"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(672, 360)
+layout_mode = 2
+
+[node name="EnterAGuess" type="Label" parent="Gameplay/AnswerDisplay/NoAnswerContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Enter a guess for
+today's colordle!"
+horizontal_alignment = 1
+
 [node name="SpacerMiddle" type="Control" parent="Gameplay"]
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
