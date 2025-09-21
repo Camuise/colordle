@@ -10,10 +10,10 @@ content_margin_right = 10.0
 content_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7hgt"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 bg_color = Color(0.23, 0.23, 0.23, 0.431373)
 border_width_left = 5
 border_width_top = 5
@@ -36,10 +36,10 @@ content_margin_right = 10.0
 content_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7hgt"]
-content_margin_left = 12.0
-content_margin_top = 12.0
-content_margin_right = 12.0
-content_margin_bottom = 12.0
+content_margin_left = 10.0
+content_margin_top = 14.0
+content_margin_right = 10.0
+content_margin_bottom = 14.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr3lm"]
 content_margin_left = 16.0
@@ -71,12 +71,12 @@ content_margin_bottom = 8.0
 
 [resource]
 default_font_size = 42
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 0.705882)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
 Button/colors/icon_focus_color = Color(1, 1, 1, 1)
@@ -87,7 +87,7 @@ Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
-Button/constants/outline_size = 0
+Button/constants/outline_size = 12
 Button/fonts/font = ExtResource("1_vwgqj")
 Button/styles/focus = SubResource("StyleBoxEmpty_nr3lm")
 Button/styles/hover = SubResource("StyleBoxFlat_w7hgt")

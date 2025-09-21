@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddib5ilnqxn7m"]
+[gd_scene load_steps=4 format=3 uid="uid://ddib5ilnqxn7m"]
 
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://scripts/background.gd" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://jdbb2vhovioi" path="res://daily.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://c8s6c4v3bsl1d" path="res://title.tscn" id="3_r0du0"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -26,3 +27,9 @@ saturation = 0.15
 layout_mode = 1
 offset_left = 1280.0
 offset_right = 1280.0
+
+[node name="Title" parent="." instance=ExtResource("3_r0du0")]
+layout_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(640, 360)
