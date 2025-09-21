@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://blrmy62gijyx0"]
+
+[ext_resource type="FontFile" uid="uid://db4u7v6k7mvdb" path="res://assets/fonts/SpaceMono/SpaceMono-Bold.ttf" id="1_1ynq4"]
+
+[resource]
+default_font = ExtResource("1_1ynq4")
+default_font_size = 40
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.705882)
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 15

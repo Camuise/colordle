@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3va7d3jp4gj3"
+path="res://.godot/imported/Yoga (Wii Fit).mp3-4ba928bb2782cf038a53bfa27893bb4a.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Yoga (Wii Fit).mp3"
+dest_files=["res://.godot/imported/Yoga (Wii Fit).mp3-4ba928bb2782cf038a53bfa27893bb4a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=5.0
+bpm=0.0
+beat_count=0
+bar_beats=4
