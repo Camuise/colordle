@@ -55,9 +55,9 @@ vertical_alignment = 2
 
 [node name="MenuContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 766.0
+offset_left = 765.0
 offset_top = 315.0
-offset_right = 1208.0
+offset_right = 1211.0
 offset_bottom = 653.0
 
 [node name="DailyButton" type="Button" parent="MenuContainer"]
@@ -69,11 +69,11 @@ icon = ExtResource("3_kpexm")
 alignment = 2
 icon_alignment = 2
 
-[node name="FreePlayButton" type="Button" parent="MenuContainer"]
+[node name="MarathonButton" type="Button" parent="MenuContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_font_sizes/font_size = 72
-text = "Free Play"
+text = "Marathon"
 icon = ExtResource("4_mom7w")
 alignment = 2
 icon_alignment = 2
@@ -102,5 +102,5 @@ text = "© Matcha Software, 2025
 Made for Hack Club Shiba, with <3"
 
 [connection signal="pressed" from="MenuContainer/DailyButton" to="." method="_on_daily_button_pressed"]
-[connection signal="pressed" from="MenuContainer/FreePlayButton" to="." method="_on_free_play_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MarathonButton" to="." method="_on_free_play_button_pressed"]
 [connection signal="pressed" from="MenuContainer/OptionsButton" to="." method="_on_options_button_pressed"]
