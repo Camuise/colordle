@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dg42sn8ujru3q"]
+[gd_scene load_steps=2 format=3 uid="uid://dg42sn8ujru3q"]
+
+[ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_amp1b"]
 
 [node name="Results" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_amp1b")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
