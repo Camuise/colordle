@@ -15,6 +15,12 @@ enum ColorFormat {
 signal color_format_changed(new_format: ColorFormat)
 
 @export var todays_color: Color = _get_todays_color()
+enum ColordleResult {
+    NONE,
+    NOT_GUESSED,
+    CORRECT
+}
+@export var colordle_result: ColordleResult = ColordleResult.NONE
 
 var music_player: AudioStreamPlayer
 @export var background_music: AudioStreamPlayer: get = get_background_music

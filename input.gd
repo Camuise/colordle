@@ -113,6 +113,8 @@ func _process(_delta: float) -> void:
 
 
 func _on_enter_button_pressed() -> void:
+    if Globals.colordle_result != Globals.ColordleResult.NONE:
+        return # game over, do nothing
     var new_answer: Color
     match Globals.colordle_format:
         Globals.ColorFormat.RGB:

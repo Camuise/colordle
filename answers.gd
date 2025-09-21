@@ -53,6 +53,9 @@ func _on_input_answer_entered(new_answer: Color) -> void:
 
 
 func add_answer(new_color: Color) -> void:
+    if current_row >= answers.size():
+        print("All rows filled, cannot add more answers.")
+        return
     answers[current_row] = new_color
     _update_row(current_row, new_color)
     current_row += 1
