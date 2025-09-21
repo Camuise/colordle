@@ -17,8 +17,8 @@ func _ready() -> void:
     self.color = Color.from_hsv(0.0, saturation, value, alpha)
 
     # play background music
-    if Globals.background_music and not Globals.background_music.playing:
-        Globals.background_music.play()
+    if Globals.music_player and not Globals.music_player.playing:
+        Globals.music_player.play()
 
 # Helper to update value based on theme
 func _update_value_from_theme(theme_name: Globals.ColorTheme) -> void:

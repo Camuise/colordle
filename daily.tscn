@@ -1,0 +1,996 @@
+[gd_scene load_steps=18 format=3 uid="uid://jdbb2vhovioi"]
+
+[ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://assets/images/theme/sun.png" id="3_fos0i"]
+[ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://scripts/theme_switcher.gd" id="4_03owx"]
+[ext_resource type="Script" uid="uid://cps3fotr6dc7i" path="res://scripts/date.gd" id="5_5vvyt"]
+[ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://scripts/color_square.gd" id="6_3dxm6"]
+[ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://scripts/format_select.gd" id="6_lgr22"]
+[ext_resource type="Script" uid="uid://3fs027t8nppe" path="res://scripts/answers.gd" id="7_5vvyt"]
+[ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="7_20pc6"]
+[ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://assets/images/return.png" id="8_trn2v"]
+[ext_resource type="Script" uid="uid://cqlypqc42j550" path="res://scripts/input.gd" id="8_wkp8b"]
+[ext_resource type="Script" uid="uid://da6imuxrbrb6b" path="res://scripts/input_result_color.gd" id="9_wkp8b"]
+
+[sub_resource type="Gradient" id="Gradient_03owx"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wkp8b"]
+gradient = SubResource("Gradient_03owx")
+width = 315
+height = 28
+
+[sub_resource type="Gradient" id="Gradient_20pc6"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5vvyt"]
+gradient = SubResource("Gradient_20pc6")
+width = 315
+height = 28
+
+[sub_resource type="Gradient" id="Gradient_c6i3y"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c2ibq"]
+gradient = SubResource("Gradient_c6i3y")
+width = 315
+height = 28
+
+[node name="Daily" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_cm0pq")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 40.0
+offset_right = 600.0
+offset_bottom = 140.0
+grow_horizontal = 2
+
+[node name="ThemeButton" type="Button" parent="Header"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("3_fos0i")
+expand_icon = true
+script = ExtResource("4_03owx")
+
+[node name="SpacerMiddle" type="Control" parent="Header"]
+custom_minimum_size = Vector2(742, 0)
+layout_mode = 2
+
+[node name="TodaysColor" type="Control" parent="Header"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Date" type="Label" parent="Header/TodaysColor"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -371.0
+offset_top = 13.0
+offset_right = -123.0
+offset_bottom = 71.0
+grow_horizontal = 0
+text = "Aug 24 2025"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("5_5vvyt")
+
+[node name="Border" type="ColorRect" parent="Header/TodaysColor"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -93.0
+offset_right = -13.0
+offset_bottom = 80.0
+grow_horizontal = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Header/TodaysColor/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 74.0
+offset_bottom = 74.0
+script = ExtResource("6_3dxm6")
+
+[node name="Gameplay" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -172.0
+offset_right = 2.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="SpacerBefore" type="Control" parent="Gameplay"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnswerDisplay" type="VBoxContainer" parent="Gameplay"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("7_5vvyt")
+
+[node name="HeaderLabel" type="Label" parent="Gameplay/AnswerDisplay"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Your Answers"
+vertical_alignment = 1
+
+[node name="AnswerContainer" type="VBoxContainer" parent="Gameplay/AnswerDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Answer0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "→"
+vertical_alignment = 1
+
+[node name="Channel3" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel3/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer0/Channel3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Answer1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "→"
+vertical_alignment = 1
+
+[node name="Channel3" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel3/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer1/Channel3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Answer2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "→"
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer2/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Answer3" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "→"
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer3/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Answer4" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "→"
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer4/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Answer5" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer"]
+layout_mode = 2
+theme = ExtResource("7_20pc6")
+theme_override_constants/separation = 12
+
+[node name="Channel0" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel0/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel1" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel1/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Channel2" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="Equal" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Channel2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "→"
+vertical_alignment = 1
+
+[node name="Combined" type="HBoxContainer" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Border" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Combined"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Color" type="ColorRect" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Combined/Border"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 44.0
+
+[node name="Percentage" type="Label" parent="Gameplay/AnswerDisplay/AnswerContainer/Answer5/Combined"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "    %"
+vertical_alignment = 1
+
+[node name="NoAnswerContainer" type="CenterContainer" parent="Gameplay/AnswerDisplay"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(672, 360)
+layout_mode = 2
+
+[node name="EnterAGuess" type="Label" parent="Gameplay/AnswerDisplay/NoAnswerContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Enter a guess for
+today's colordle!"
+horizontal_alignment = 1
+
+[node name="SpacerMiddle" type="Control" parent="Gameplay"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+
+[node name="Input" type="VBoxContainer" parent="Gameplay"]
+layout_mode = 2
+theme_override_constants/separation = 6
+script = ExtResource("8_wkp8b")
+
+[node name="HeaderContainer" type="HBoxContainer" parent="Gameplay/Input"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Gameplay/Input/HeaderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Input"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Gameplay/Input/HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FormatSelect" type="OptionButton" parent="Gameplay/Input/HeaderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+selected = 0
+item_count = 2
+popup/item_0/text = "RGB"
+popup/item_0/id = 0
+popup/item_1/text = "HSV"
+popup/item_1/id = 3
+script = ExtResource("6_lgr22")
+
+[node name="SliderContainer" type="GridContainer" parent="Gameplay/Input"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 36
+columns = 2
+
+[node name="Label0" type="Label" parent="Gameplay/Input/SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Slider0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Slider0" type="Control" parent="Gameplay/Input/SliderContainer"]
+custom_minimum_size = Vector2(322, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Border" type="ColorRect" parent="Gameplay/Input/SliderContainer/Slider0"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -21.0
+offset_right = 1.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SliderBG" type="TextureRect" parent="Gameplay/Input/SliderContainer/Slider0"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = -6.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_wkp8b")
+
+[node name="Slider" type="HSlider" parent="Gameplay/Input/SliderContainer/Slider0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+
+[node name="Label1" type="Label" parent="Gameplay/Input/SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Slider1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Slider1" type="Control" parent="Gameplay/Input/SliderContainer"]
+custom_minimum_size = Vector2(322, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Border" type="ColorRect" parent="Gameplay/Input/SliderContainer/Slider1"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -21.0
+offset_right = 1.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SliderBG" type="TextureRect" parent="Gameplay/Input/SliderContainer/Slider1"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = -6.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5vvyt")
+
+[node name="Slider" type="HSlider" parent="Gameplay/Input/SliderContainer/Slider1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+
+[node name="Label2" type="Label" parent="Gameplay/Input/SliderContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Slider2"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Slider2" type="Control" parent="Gameplay/Input/SliderContainer"]
+custom_minimum_size = Vector2(322, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Border" type="ColorRect" parent="Gameplay/Input/SliderContainer/Slider2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -21.0
+offset_right = 1.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SliderBG" type="TextureRect" parent="Gameplay/Input/SliderContainer/Slider2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = -6.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_c2ibq")
+
+[node name="Slider" type="HSlider" parent="Gameplay/Input/SliderContainer/Slider2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+
+[node name="Spacer" type="Control" parent="Gameplay/Input"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="DisplayContainer" type="HBoxContainer" parent="Gameplay/Input"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Border" type="ColorRect" parent="Gameplay/Input/DisplayContainer"]
+custom_minimum_size = Vector2(340, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="InputResultColor" type="ColorRect" parent="Gameplay/Input/DisplayContainer/Border"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -15.0
+offset_right = -6.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_wkp8b")
+
+[node name="EnterButton" type="Button" parent="Gameplay/Input/DisplayContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+icon = ExtResource("8_trn2v")
+expand_icon = true
+
+[node name="SpacerEnd" type="Control" parent="Gameplay"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="answer_entered" from="Gameplay/Input" to="Gameplay/AnswerDisplay" method="_on_input_answer_entered"]
+[connection signal="item_selected" from="Gameplay/Input/HeaderContainer/FormatSelect" to="Gameplay/Input/HeaderContainer/FormatSelect" method="_on_item_selected"]
+[connection signal="pressed" from="Gameplay/Input/DisplayContainer/EnterButton" to="Gameplay/Input" method="_on_enter_button_pressed"]

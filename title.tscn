@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8s6c4v3bsl1d"]
+
+[ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_oyqm6"]
+[ext_resource type="Texture2D" uid="uid://dg1ueitccufef" path="res://assets/images/wheely.png" id="2_kpexm"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oyqm6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 58.0
+offset_right = 203.0
+offset_bottom = 197.0
+texture = ExtResource("2_kpexm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Welcome" type="Label" parent="."]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 48.0
+offset_right = 475.0
+offset_bottom = 101.0
+text = "Welcome to"
+
+[node name="Colordle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 78.0
+offset_right = 677.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 112
+text = "Colordle"
+vertical_alignment = 2

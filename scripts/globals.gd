@@ -23,11 +23,6 @@ enum ColordleResult {
 @export var colordle_result: ColordleResult = ColordleResult.NONE
 
 var music_player: AudioStreamPlayer
-@export var background_music: AudioStreamPlayer: get = get_background_music
-
-
-func get_background_music() -> AudioStreamPlayer:
-    return music_player
 
 
 func _ready() -> void:
