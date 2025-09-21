@@ -55,11 +55,16 @@ func _on_input_answer_entered(new_answer: Color) -> void:
 func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
         print("All rows filled, cannot add more answers.")
+        Globals.set_game_state(Globals.GameState.RESULTS)
         return
     answers[current_row] = new_color
     _update_row(current_row, new_color)
     current_row += 1
     _rerender_display()
+    if current_row >= answers.size():
+        print("All rows filled, moving to results.")
+        await get_tree().create_timer(0.5).timeout
+        Globals.set_game_state(Globals.GameState.RESULTS)
 
 
 func calc_color_diff(color1: Color, color2: Color) -> float:

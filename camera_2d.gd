@@ -19,9 +19,9 @@ func _on_game_state_changed(old_state: Globals.GameState, new_state: Globals.Gam
     const camera_positions := {
         Globals.GameState.MAIN_MENU: Vector2(0, 0),
         Globals.GameState.DAILY: Vector2(2560, 0), # to the right
-        Globals.GameState.FREEPLAY: Vector2(2560, 720), # to bottom right
-        Globals.GameState.RESULTS: Vector2(2560, -720), # to top right
-        Globals.GameState.OPTIONS: Vector2(0, 720)  # directly below
+        Globals.GameState.FREEPLAY: Vector2(2560, 1440), # to bottom right
+        Globals.GameState.RESULTS: Vector2(2560, 720), # to top right
+        Globals.GameState.OPTIONS: Vector2(0, 1440)  # directly below
     }
 
     # Animate camera to new position and rotate a bit away while leaving starting pos
