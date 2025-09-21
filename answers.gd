@@ -10,14 +10,45 @@ var answers: Array = [
 ]
 var current_row: int = 0
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
     _rerender_display()
 
-func _on_input_answer_entered(new_answer:Color) -> void:
+
+enum Result {
+    CORRECT,
+    FAR,
+    CLOSE,
+}
+func _play_sound(sound: Result) -> void:
+    var sound_path = ""
+    match sound:
+        Result.CORRECT:
+            sound_path = "res://sounds/correct.wav"
+        Result.FAR:
+            sound_path = "res://sounds/far.wav"
+        Result.CLOSE:
+            sound_path = "res://sounds/close.wav"
+
+    var sound_stream = load(sound_path) as AudioStream
+    if sound_stream:
+        var player = AudioStreamPlayer.new()
+        add_child(player)
+        player.stream = sound_stream
+        player.volume_db = -5  # Adjust volume as needed
+        player.play()
+        # Queue free after sound finishes
+        player.connect("finished", Callable(player, "queue_free"))
+    else:
+        push_error("Failed to load sound stream.")
+
+
+func _on_input_answer_entered(new_answer: Color) -> void:
     print("New answer entered: %s" % new_answer)
     add_answer(new_answer)
+
 
 func add_answer(new_color: Color) -> void:
     answers[current_row] = new_color
@@ -25,12 +56,14 @@ func add_answer(new_color: Color) -> void:
     current_row += 1
     _rerender_display()
 
+
 func calc_color_diff(color1: Color, color2: Color) -> float:
     var color1_lab = ColorUtils.xyz_to_lab(ColorUtils.rgb_to_xyz(color1))
     var color2_lab = ColorUtils.xyz_to_lab(ColorUtils.rgb_to_xyz(color2))
     var delta_e = ColorUtils.calculate_delta_e_76(color1_lab, color2_lab)
     # convert to percentage
     return delta_e
+
 
 # rounds a float to be only 4 characters long.
 func round4(value: float) -> String:
@@ -43,6 +76,7 @@ func round4(value: float) -> String:
         return rounded.substr(0, 4)
     # only 1 non-zero digit before the decimal, drop padding to left
     return rounded.pad_decimals(2)
+
 
 # Helper function to get channel colors
 func get_channel_colors(channel: int, new_color: Color, correct_color: Color) -> Array:
@@ -67,11 +101,13 @@ func get_channel_colors(channel: int, new_color: Color, correct_color: Color) ->
                     return [Color.from_hsv(0, 0, new_color.v), Color.from_hsv(0, 0, correct_color.v)]
     return [Color(), Color()]
 
+
 func _update_row(row: int, new_color) -> void:
     var answer_row = %AnswerContainer.get_child(row)
     var is_null = new_color == null
     for channel_index in range(answer_row.get_child_count()):
         var channel_container = answer_row.get_child(channel_index)
+        var color_border = channel_container.get_node("Border")
         var color_display = channel_container.get_node("Border/Color")
         var percentage_label = channel_container.get_node("Percentage")
 
@@ -89,6 +125,27 @@ func _update_row(row: int, new_color) -> void:
         # Calculate difference and update label
         var diff_to_answer = calc_color_diff(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
+        # Map difference to border color
+        # diff > 50% gray, diff < 50% orange, diff < 5% green,
+        if diff_to_answer > 50:
+            color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
+        elif diff_to_answer < 5:
+            color_border.color = Color(0, 1, 0)  # Green
+        else:
+            color_border.color = Color(1, 0.5, 0)  # Orange
+    # Play sound based on overall accuracy (using average of all channels)
+    if not is_null:
+        var total_diff = 0.0
+        for i in range(3):
+            var channel_colors = get_channel_colors(i, new_color, Globals.todays_color)
+            total_diff += calc_color_diff(channel_colors[0], channel_colors[1])
+        var avg_diff = total_diff / 3.0
+        if avg_diff < 5:
+            _play_sound(Result.CORRECT)
+        elif avg_diff < 20:
+            _play_sound(Result.CLOSE)
+        else:
+            _play_sound(Result.FAR)
 
 func _rerender_display() -> void:
     # if all answers are null, hide the AnswerContainer and show the NoAnswerContainer
@@ -99,6 +156,7 @@ func _rerender_display() -> void:
 
     for row_index in range(answers.size()):
         _update_row(row_index, answers[row_index])
+
 
 func _on_color_format_changed(_new_format: Globals.ColorFormat) -> void:
     print_debug("Rerendering display for color format change")
