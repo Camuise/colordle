@@ -133,19 +133,19 @@ func _update_row(row: int, new_color) -> void:
             color_border.color = Color(0, 1, 0)  # Green
         else:
             color_border.color = Color(1, 0.5, 0)  # Orange
-    # Play sound based on overall accuracy (using average of all channels)
-    if not is_null:
-        var total_diff = 0.0
-        for i in range(3):
-            var channel_colors = get_channel_colors(i, new_color, Globals.todays_color)
-            total_diff += calc_color_diff(channel_colors[0], channel_colors[1])
-        var avg_diff = total_diff / 3.0
-        if avg_diff < 5:
-            _play_sound(Result.CORRECT)
-        elif avg_diff < 20:
-            _play_sound(Result.CLOSE)
-        else:
-            _play_sound(Result.FAR)
+        # Play sound based on overall accuracy (using average of all channels)
+        if not is_null and channel_index == 3:
+            var total_diff = 0.0
+            for i in range(3):
+                var loop_channel_colors = get_channel_colors(i, new_color, Globals.todays_color)
+                total_diff += calc_color_diff(loop_channel_colors[0], loop_channel_colors[1])
+            var avg_diff = total_diff / 3.0
+            if avg_diff < 5:
+                _play_sound(Result.CORRECT)
+            elif avg_diff < 20:
+                _play_sound(Result.CLOSE)
+            else:
+                _play_sound(Result.FAR)
 
 func _rerender_display() -> void:
     # if all answers are null, hide the AnswerContainer and show the NoAnswerContainer
