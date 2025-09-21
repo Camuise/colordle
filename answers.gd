@@ -22,7 +22,14 @@ enum Result {
     FAR,
     CLOSE,
 }
+
+var sound_player: AudioStreamPlayer = null
+
 func _play_sound(sound: Result) -> void:
+    if not sound_player:
+        sound_player = AudioStreamPlayer.new()
+        add_child(sound_player)
+        sound_player.volume_db = -5  # Adjust volume as needed
     var sound_path = ""
     match sound:
         Result.CORRECT:
@@ -34,13 +41,8 @@ func _play_sound(sound: Result) -> void:
 
     var sound_stream = load(sound_path) as AudioStream
     if sound_stream:
-        var player = AudioStreamPlayer.new()
-        add_child(player)
-        player.stream = sound_stream
-        player.volume_db = -5  # Adjust volume as needed
-        player.play()
-        # Queue free after sound finishes
-        player.connect("finished", Callable(player, "queue_free"))
+        sound_player.stream = sound_stream
+        sound_player.play()
     else:
         push_error("Failed to load sound stream.")
 
