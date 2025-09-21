@@ -118,5 +118,12 @@ func _on_enter_button_pressed() -> void:
         Globals.ColorFormat.RGB:
             new_answer = Color(sliders[0].value, sliders[1].value, sliders[2].value)
         Globals.ColorFormat.HSV:
-            new_answer = Color.from_hsv(sliders[0].value, sliders[1].value, sliders[2].value)
+            var sat = sliders[1].value
+            var val = sliders[2].value
+            if sat == 0.0 or val == 0.0:
+                # if saturation or value is 0, Godot will set hue to 0 regardless of slider,
+                # so we set them to 0.1 to preserve hue. It's close enough to 0.
+                new_answer = Color.from_hsv(sliders[0].value, max(sat, 0.1), max(val, 0.1))
+            else:
+                new_answer = Color.from_hsv(sliders[0].value, sat, val)
     emit_signal("answer_entered", new_answer)
