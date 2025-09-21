@@ -22,6 +22,16 @@ enum ColordleResult {
 }
 @export var colordle_result: ColordleResult = ColordleResult.NONE
 
+enum GameState {
+    MAIN_MENU,
+    DAILY,
+    FREEPLAY,
+    RESULTS,
+    OPTIONS
+}
+@export var game_state: GameState = GameState.MAIN_MENU
+signal game_state_changed(new_state: GameState)
+
 var music_player: AudioStreamPlayer
 
 
@@ -75,3 +85,11 @@ func _get_todays_color() -> Color:
     var generated_color = Color.from_hsv(rng.randf(), rng.randf(), rng.randf())
     print_debug("Generated HSV color: %s" % generated_color)
     return generated_color
+
+func set_game_state(new_state: GameState) -> void:
+    if game_state == new_state:
+        return
+
+    var old_state = game_state
+    game_state = new_state
+    emit_signal("game_state_changed", old_state, game_state)

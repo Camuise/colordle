@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddib5ilnqxn7m"]
+[gd_scene load_steps=5 format=3 uid="uid://ddib5ilnqxn7m"]
 
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://scripts/background.gd" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://jdbb2vhovioi" path="res://daily.tscn" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://c8s6c4v3bsl1d" path="res://title.tscn" id="3_r0du0"]
+[ext_resource type="Script" uid="uid://dbsr5vqs2b06q" path="res://camera_2d.gd" id="4_cm0pq"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -17,6 +18,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 3840.0
+offset_bottom = 2160.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.34, 0, 0, 1)
@@ -25,11 +28,12 @@ saturation = 0.15
 
 [node name="Daily" parent="." instance=ExtResource("2_uu6xs")]
 layout_mode = 1
-offset_left = 1280.0
-offset_right = 1280.0
+offset_left = 2560.0
+offset_right = 2560.0
 
 [node name="Title" parent="." instance=ExtResource("3_r0du0")]
 layout_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(640, 360)
+script = ExtResource("4_cm0pq")

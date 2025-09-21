@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8s6c4v3bsl1d"]
+[gd_scene load_steps=7 format=3 uid="uid://c8s6c4v3bsl1d"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_oyqm6"]
+[ext_resource type="Script" uid="uid://b7fc6my8ula4f" path="res://title.gd" id="2_7lgly"]
 [ext_resource type="Texture2D" uid="uid://dg1ueitccufef" path="res://assets/images/wheely.png" id="2_kpexm"]
 [ext_resource type="Texture2D" uid="uid://dwoetr5e87jbr" path="res://assets/images/arrow-right.png" id="3_kpexm"]
 [ext_resource type="Texture2D" uid="uid://cs4knaekkd4ae" path="res://assets/images/arrow-down-right.png" id="4_mom7w"]
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_oyqm6")
+script = ExtResource("2_7lgly")
 
 [node name="Title" type="Control" parent="."]
 layout_mode = 1
@@ -98,3 +100,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 22
 text = "© Matcha Software, 2025
 Made for Hack Club Shiba, with <3"
+
+[connection signal="pressed" from="MenuContainer/DailyButton" to="." method="_on_daily_button_pressed"]
+[connection signal="pressed" from="MenuContainer/FreePlayButton" to="." method="_on_free_play_button_pressed"]
+[connection signal="pressed" from="MenuContainer/OptionsButton" to="." method="_on_options_button_pressed"]
