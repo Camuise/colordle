@@ -16,10 +16,31 @@ signal color_format_changed(new_format: ColorFormat)
 
 @export var todays_color: Color = _get_todays_color()
 
+var music_player: AudioStreamPlayer
+@export var background_music: AudioStreamPlayer: get = get_background_music
+
+
+func get_background_music() -> AudioStreamPlayer:
+    return music_player
+
 
 func _ready() -> void:
     # Initialize the theme
     set_theme(theme)
+
+    # Create and configure music player
+    music_player = AudioStreamPlayer.new()
+    music_player.name = "BackgroundMusic"
+    add_child(music_player)
+
+    var music_stream = load("res://sounds/Yoga (Wii Fit).mp3") as AudioStream
+    if music_stream:
+        music_player.stream = music_stream
+        music_player.volume_db = -10  # Adjust volume as needed
+        music_player.autoplay = false
+        print("Background music loaded successfully")
+    else:
+        push_error("Failed to load background music stream.")
 
 
 func set_theme(new_theme: ColorTheme) -> void:

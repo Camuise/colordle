@@ -16,6 +16,10 @@ func _ready() -> void:
     # Set the background color to a semi-transparent black
     self.color = Color.from_hsv(0.0, saturation, value, alpha)
 
+    # play background music
+    if Globals.background_music and not Globals.background_music.playing:
+        Globals.background_music.play()
+
 # Helper to update value based on theme
 func _update_value_from_theme(theme_name: Globals.ColorTheme) -> void:
     match theme_name:
