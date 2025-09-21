@@ -15,11 +15,6 @@ func _get_nodes():
         backgrounds.append(base_path.get_node("Slider%d/SliderBG" % i))
         labels.append(base_path.get_node("Label%d" % i))
 
-    # print out all new nodes
-    print_debug("Sliders: %s" % str(sliders))
-    print_debug("Labels: %s" % str(labels))
-    print_debug("Backgrounds: %s" % str(backgrounds))
-
 
 func _get_rgb_gradient(slider_idx: int) -> Gradient:
     var gradient := Gradient.new()
