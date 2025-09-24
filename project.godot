@@ -14,8 +14,8 @@ config/name="Colordle"
 config/version="0.0.7-dev"
 run/main_scene="uid://ddib5ilnqxn7m"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-boot_splash/bg_color=Color(0.4509804, 0.39607844, 0.3647059, 1)
-boot_splash/image="uid://bhrhdb0ovx11q"
+boot_splash/bg_color=Color(0.8509804, 0.60784316, 0.46666667, 1)
+boot_splash/image="uid://cq8qlrmd2cbe5"
 config/icon="uid://bc1bks7ag3jys"
 
 [autoload]
