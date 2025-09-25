@@ -10,11 +10,11 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
     pass
 
 
-func _on_game_state_changed(old_state: Globals.GameState, new_state: Globals.GameState) -> void:
+func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
     # Define camera positions for each game state
     const camera_positions := {
         Globals.GameState.MAIN_MENU: Vector2(0, 0),

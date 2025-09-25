@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bwrdulnjcr84y"]
+[gd_scene load_steps=19 format=3 uid="uid://bwrdulnjcr84y"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_q6ciw"]
 [ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://assets/images/theme/sun.png" id="2_8rgm7"]
+[ext_resource type="Texture2D" uid="uid://c7l68rbxx11ad" path="res://assets/images/chevron-left.png" id="2_x8q48"]
 [ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://scripts/theme_switcher.gd" id="3_k6q3y"]
 [ext_resource type="Script" uid="uid://br0xf55gnfsg" path="res://date_marathon.gd" id="4_53iya"]
 [ext_resource type="Script" uid="uid://cmnjipjlikvly" path="res://color_marathon.gd" id="5_53iya"]
@@ -58,6 +59,10 @@ offset_right = 600.0
 offset_bottom = 140.0
 grow_horizontal = 2
 
+[node name="TextureButton" type="Button" parent="Header"]
+layout_mode = 2
+icon = ExtResource("2_x8q48")
+
 [node name="ThemeButton" type="Button" parent="Header"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -66,7 +71,7 @@ expand_icon = true
 script = ExtResource("3_k6q3y")
 
 [node name="SpacerMiddle" type="Control" parent="Header"]
-custom_minimum_size = Vector2(742, 0)
+custom_minimum_size = Vector2(640, 0)
 layout_mode = 2
 
 [node name="TodaysColor" type="Control" parent="Header"]
