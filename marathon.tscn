@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwrdulnjcr84y"]
+[gd_scene load_steps=20 format=3 uid="uid://bwrdulnjcr84y"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_q6ciw"]
 [ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://assets/images/theme/sun.png" id="2_8rgm7"]
@@ -60,7 +60,12 @@ offset_right = 600.0
 offset_bottom = 140.0
 grow_horizontal = 2
 
-[node name="TextureButton" type="Button" parent="Header"]
+[node name="Left" type="HBoxContainer" parent="Header"]
+layout_mode = 0
+offset_right = 196.0
+offset_bottom = 100.0
+
+[node name="BackButton" type="Button" parent="Header/Left"]
 layout_mode = 2
 icon = ExtResource("2_x8q48")
 
