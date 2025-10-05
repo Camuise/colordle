@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddib5ilnqxn7m"]
+[gd_scene load_steps=8 format=3 uid="uid://ddib5ilnqxn7m"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://scripts/background.gd" id="1_glv2v"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8s6c4v3bsl1d" path="res://title.tscn" id="3_r0du0"]
 [ext_resource type="Script" uid="uid://dbsr5vqs2b06q" path="res://scripts/camera_2d.gd" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dg42sn8ujru3q" path="res://results.tscn" id="5_fos0i"]
+[ext_resource type="PackedScene" uid="uid://bwrdulnjcr84y" path="res://marathon.tscn" id="7_lgr22"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -54,7 +55,7 @@ grow_vertical = 0
 theme = ExtResource("1_cm0pq")
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 24
-text = "You're running Colordle v0.0.7-dev, a development build!
+text = "You're running Colordle v0.0.8-dev, a development build!
 You may see some bugs and missing features."
 
 [node name="Results" parent="." instance=ExtResource("5_fos0i")]
@@ -63,19 +64,6 @@ offset_left = 2560.0
 offset_top = 720.0
 offset_right = 2560.0
 offset_bottom = 720.0
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 2654.0
-offset_top = 1695.0
-offset_right = 3692.0
-offset_bottom = 1916.0
-text = "restart the game
-marathon doesn't exist yet :<
-i swear i will add this
-pls give 5 stars thanks :D
-dm @issac on slack and yell at me to add this
-bc i might have forgotten"
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
@@ -89,3 +77,10 @@ i swear i will add this
 pls give 5 stars thanks :D
 dm @issac on slack and yell at me to add this
 bc i might have forgotten"
+
+[node name="Marathon" parent="." instance=ExtResource("7_lgr22")]
+layout_mode = 1
+offset_left = 2558.0
+offset_top = 1440.0
+offset_right = 2558.0
+offset_bottom = 1440.0
