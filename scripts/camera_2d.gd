@@ -28,4 +28,4 @@ func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.Ga
     if self and new_state in camera_positions:
         var target_position = camera_positions[new_state]
         var tween = create_tween()
-        tween.tween_property(self, "position", target_position, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+        tween.tween_property(self, "position", target_position, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
