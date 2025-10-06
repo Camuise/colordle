@@ -135,6 +135,9 @@ func _update_row(row: int, new_color) -> void:
         # Set opacity to 0% if answer is null, otherwise 100%
         if is_null:
             channel_container.modulate = Color(1, 1, 1, 0.5)
+            color_display.color = Color(1, 1, 1)
+            color_border.color = Color(0, 0, 0)
+            percentage_label.text = "    %"
             continue
         else:
             channel_container.modulate = Color(1, 1, 1, 1)
