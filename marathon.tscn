@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwrdulnjcr84y"]
+[gd_scene load_steps=21 format=3 uid="uid://bwrdulnjcr84y"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_q6ciw"]
 [ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://assets/images/theme/sun.png" id="2_8rgm7"]
+[ext_resource type="Script" uid="uid://sgjux5t2vx0p" path="res://scripts/marathon_manager.gd" id="2_x6giw"]
 [ext_resource type="Texture2D" uid="uid://c7l68rbxx11ad" path="res://assets/images/chevron-left.png" id="2_x8q48"]
 [ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="3_aljmc"]
 [ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://scripts/theme_switcher.gd" id="3_k6q3y"]
 [ext_resource type="Script" uid="uid://br0xf55gnfsg" path="res://scripts/date_marathon.gd" id="4_53iya"]
-[ext_resource type="Script" uid="uid://3fs027t8nppe" path="res://scripts/answers.gd" id="6_wcouk"]
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="7_1fcjr"]
 [ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://scripts/color_square.gd" id="7_xpyc5"]
 [ext_resource type="Script" uid="uid://cqlypqc42j550" path="res://scripts/input.gd" id="8_cprag"]
+[ext_resource type="Script" uid="uid://b5sny0j5o4u77" path="res://scripts/answer_display_marathon.gd" id="9_dfp8l"]
 [ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://scripts/format_select.gd" id="9_qp7qp"]
 [ext_resource type="Script" uid="uid://da6imuxrbrb6b" path="res://scripts/input_result_color.gd" id="10_vwaw6"]
 [ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://assets/images/return.png" id="11_86q41"]
@@ -48,6 +49,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_q6ciw")
+script = ExtResource("2_x6giw")
 
 [node name="Header" type="Control" parent="."]
 layout_mode = 1
@@ -151,7 +153,7 @@ size_flags_horizontal = 3
 [node name="AnswerDisplay" type="VBoxContainer" parent="Gameplay"]
 layout_mode = 2
 theme_override_constants/separation = 20
-script = ExtResource("6_wcouk")
+script = ExtResource("9_dfp8l")
 
 [node name="HeaderLabel" type="Label" parent="Gameplay/AnswerDisplay"]
 layout_mode = 2
