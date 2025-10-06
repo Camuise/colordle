@@ -8,12 +8,23 @@ var answers: Array = [
     null,
     null
 ]
+
+enum AnswerGrade {
+    NONE,
+    FAR,
+    CLOSE,
+    CORRECT,
+}
+
+var answer_correctness: Array = []
 var current_row: int = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
+    answer_correctness.resize(6)
+    answer_correctness.fill([0.0,0.0,0.0,0.0])
     _rerender_display()
 
 
@@ -135,14 +146,25 @@ func _update_row(row: int, new_color) -> void:
         # Calculate difference and update label
         var diff_to_answer = calc_color_diff(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
+
         # Map difference to border color
-        # diff > 50% gray, diff < 50% orange, diff < 5% green,
-        if diff_to_answer > 50:
-            color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
+        # diff > 50% gray
+        # diff < 50% orange
+        # diff < 5% green
+        # diff < 1% purple
+        if diff_to_answer < 1:
+            color_border.color = Color(0.643, 0.369, 0.914)  # Purple
+            answer_correctness[row][channel_index] = AnswerGrade.CORRECT
         elif diff_to_answer < 5:
             color_border.color = Color(0, 1, 0)  # Green
+            answer_correctness[row][channel_index] = AnswerGrade.CLOSE
+        elif diff_to_answer > 50:
+            color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
+            answer_correctness[row][channel_index] = AnswerGrade.FAR
         else:
             color_border.color = Color(1, 0.5, 0)  # Orange
+            answer_correctness[row][channel_index] = AnswerGrade.CLOSE
+
         # Play sound based on overall accuracy (using average of all channels)
         if not is_null and channel_index == 3:
             var total_diff = 0.0
