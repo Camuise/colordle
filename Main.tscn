@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddib5ilnqxn7m"]
+[gd_scene load_steps=9 format=3 uid="uid://ddib5ilnqxn7m"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://scripts/background.gd" id="1_glv2v"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8s6c4v3bsl1d" path="res://title.tscn" id="3_r0du0"]
 [ext_resource type="Script" uid="uid://dbsr5vqs2b06q" path="res://scripts/camera_2d.gd" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dg42sn8ujru3q" path="res://results.tscn" id="5_fos0i"]
+[ext_resource type="Script" uid="uid://sctkl3k41jkg" path="res://versionwarning.gd" id="6_trn2v"]
 [ext_resource type="PackedScene" uid="uid://bwrdulnjcr84y" path="res://marathon.tscn" id="7_lgr22"]
 
 [node name="Main" type="Control"]
@@ -42,7 +43,7 @@ layout_mode = 1
 offset = Vector2(640, 360)
 script = ExtResource("4_cm0pq")
 
-[node name="DevBuildWarning" type="Label" parent="Camera2D"]
+[node name="VersionWarn" type="Label" parent="Camera2D"]
 modulate = Color(1, 1, 1, 0.588235)
 anchors_preset = 2
 anchor_top = 1.0
@@ -57,6 +58,7 @@ theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 24
 text = "You're running Colordle v0.0.8-dev, a development build!
 You may see some bugs and missing features."
+script = ExtResource("6_trn2v")
 
 [node name="Results" parent="." instance=ExtResource("5_fos0i")]
 layout_mode = 1
