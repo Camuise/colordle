@@ -9,22 +9,22 @@ var answers: Array = [
     null
 ]
 
-enum AnswerGrade {
+enum Grade {
     NONE,
     FAR,
     CLOSE,
     CORRECT,
 }
 
-var answer_correctness: Array = []
+var answer_grades: Array = []
 var current_row: int = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
-    answer_correctness.resize(6)
-    answer_correctness.fill([0.0,0.0,0.0,0.0])
+    answer_grades.resize(6)
+    answer_grades.fill([Grade.NONE, Grade.NONE, Grade.NONE, Grade.NONE])
     _rerender_display()
 
 
@@ -154,16 +154,16 @@ func _update_row(row: int, new_color) -> void:
         # diff < 1% purple
         if diff_to_answer < 1:
             color_border.color = Color(0.643, 0.369, 0.914)  # Purple
-            answer_correctness[row][channel_index] = AnswerGrade.CORRECT
+            answer_grades[row][channel_index] = Grade.CORRECT
         elif diff_to_answer < 5:
             color_border.color = Color(0, 1, 0)  # Green
-            answer_correctness[row][channel_index] = AnswerGrade.CLOSE
+            answer_grades[row][channel_index] = Grade.CLOSE
         elif diff_to_answer > 50:
             color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
-            answer_correctness[row][channel_index] = AnswerGrade.FAR
+            answer_grades[row][channel_index] = Grade.FAR
         else:
             color_border.color = Color(1, 0.5, 0)  # Orange
-            answer_correctness[row][channel_index] = AnswerGrade.CLOSE
+            answer_grades[row][channel_index] = Grade.CLOSE
 
         # Play sound based on overall accuracy (using average of all channels)
         if not is_null and channel_index == 3:
