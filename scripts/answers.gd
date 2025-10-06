@@ -12,8 +12,8 @@ var answers: Array = [
 enum Grade {
     NONE,
     FAR,
-    CLOSE,
     CORRECT,
+    SAME,
 }
 
 var answer_grades: Array = []
@@ -154,16 +154,16 @@ func _update_row(row: int, new_color) -> void:
         # diff < 1% purple
         if diff_to_answer < 1:
             color_border.color = Color(0.643, 0.369, 0.914)  # Purple
-            answer_grades[row][channel_index] = Grade.CORRECT
+            answer_grades[row][channel_index] = Grade.SAME
         elif diff_to_answer < 5:
             color_border.color = Color(0, 1, 0)  # Green
-            answer_grades[row][channel_index] = Grade.CLOSE
+            answer_grades[row][channel_index] = Grade.CORRECT
         elif diff_to_answer > 50:
             color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
-            answer_grades[row][channel_index] = Grade.FAR
+            answer_grades[row][channel_index] = Grade.NONE
         else:
             color_border.color = Color(1, 0.5, 0)  # Orange
-            answer_grades[row][channel_index] = Grade.CLOSE
+            answer_grades[row][channel_index] = Grade.FAR
 
         # Play sound based on overall accuracy (using average of all channels)
         if not is_null and channel_index == 3:
