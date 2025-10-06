@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://br0xf55gnfsg" path="res://scripts/date_marathon.gd" id="4_53iya"]
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="7_1fcjr"]
 [ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://scripts/color_square.gd" id="7_xpyc5"]
+[ext_resource type="Script" uid="uid://b5sny0j5o4u77" path="res://scripts/answers_marathon.gd" id="8_aljmc"]
 [ext_resource type="Script" uid="uid://cqlypqc42j550" path="res://scripts/input.gd" id="8_cprag"]
-[ext_resource type="Script" uid="uid://b5sny0j5o4u77" path="res://scripts/answers_marathon.gd" id="9_dfp8l"]
 [ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://scripts/format_select.gd" id="9_qp7qp"]
 [ext_resource type="Script" uid="uid://da6imuxrbrb6b" path="res://scripts/input_result_color.gd" id="10_vwaw6"]
 [ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://assets/images/return.png" id="11_86q41"]
@@ -151,7 +151,7 @@ size_flags_horizontal = 3
 [node name="AnswerDisplay" type="VBoxContainer" parent="Gameplay"]
 layout_mode = 2
 theme_override_constants/separation = 20
-script = ExtResource("9_dfp8l")
+script = ExtResource("8_aljmc")
 
 [node name="HeaderLabel" type="Label" parent="Gameplay/AnswerDisplay"]
 layout_mode = 2
@@ -1013,6 +1013,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="pressed" from="Header/Left/BackButton" to="Header/Left/BackButton" method="_on_pressed"]
+[connection signal="new_color_initiated" from="Gameplay/AnswerDisplay" to="Header/Right/ColordleColor/Border/Color" method="_on_new_color_initiated"]
 [connection signal="answer_entered" from="Gameplay/Input" to="Gameplay/AnswerDisplay" method="_on_input_answer_entered"]
 [connection signal="item_selected" from="Gameplay/Input/HeaderContainer/FormatSelect" to="Gameplay/Input/HeaderContainer/FormatSelect" method="_on_item_selected"]
 [connection signal="pressed" from="Gameplay/Input/DisplayContainer/EnterButton" to="Gameplay/Input" method="_on_enter_button_pressed"]
