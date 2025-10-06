@@ -768,7 +768,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Enter a guess for
-today's colordle!"
+this colordle!"
 horizontal_alignment = 1
 
 [node name="SpacerMiddle" type="Control" parent="Gameplay"]
