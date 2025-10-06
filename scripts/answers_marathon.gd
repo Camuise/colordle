@@ -1,15 +1,6 @@
 extends "res://scripts/answers.gd"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-    pass  # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-    pass
-
+signal new_color_initiated()
 
 func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
@@ -23,15 +14,12 @@ func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
         print("All rows filled, moving on to next color.")
         await get_tree().create_timer(0.5).timeout
-        answers = Array()
-        answers.resize(6)
-        answers.fill(null)
-        current_row = 0
+        _initiate_new_color()
 
-func initiate_new_color() -> void:
+func _initiate_new_color() -> void:
     answers = Array()
     answers.resize(6)
     answers.fill(null)
     current_row = 0
     _rerender_display()
-    
+    emit_signal("new_color_initiated")
