@@ -66,13 +66,15 @@ func set_color_format(new_format: ColorFormat) -> void:
         emit_signal("color_format_changed", colordle_format)
 
 
-func _get_todays_color() -> Color:
+func _get_todays_color(time: bool = false) -> Color:
     # step 1: get today's date (excluding time) in UNIX
     var _today: Dictionary = Time.get_datetime_dict_from_system()
-    # step 2: strip hour, min, and sec
-    _today.erase("hour")
-    _today.erase("minute")
-    _today.erase("second")
+
+    if !time:
+        # step 2: strip hour, min, and sec
+        _today.erase("hour")
+        _today.erase("minute")
+        _today.erase("second")
 
     # step 3: convert back to unix time
     var _today_unix = Time.get_unix_time_from_datetime_dict(_today)
