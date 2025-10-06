@@ -4,8 +4,9 @@ signal new_color_initiated()
 
 func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
-        print("All rows filled, cannot add more answers.")
-        Globals.set_game_state(Globals.GameState.RESULTS)
+        print("All rows filled, cannot add more answers. Moving on to next color.")
+        await get_tree().create_timer(0.5).timeout
+        _initiate_new_color()
         return
     answers[current_row] = new_color
     _update_row(current_row, new_color)
