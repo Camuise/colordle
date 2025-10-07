@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_q6ciw"]
 [ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://assets/images/theme/sun.png" id="2_8rgm7"]
-[ext_resource type="Texture2D" uid="uid://c7l68rbxx11ad" path="res://assets/images/chevron-left.png" id="2_x8q48"]
+[ext_resource type="Texture2D" uid="uid://hag45jupbmwk" path="res://assets/images/arrow-left.png" id="2_aljmc"]
 [ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="3_aljmc"]
 [ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://scripts/theme_switcher.gd" id="3_k6q3y"]
 [ext_resource type="Script" uid="uid://br0xf55gnfsg" path="res://scripts/date_marathon.gd" id="4_53iya"]
@@ -67,7 +67,7 @@ offset_bottom = 100.0
 
 [node name="BackButton" type="Button" parent="Header/Left"]
 layout_mode = 2
-icon = ExtResource("2_x8q48")
+icon = ExtResource("2_aljmc")
 script = ExtResource("3_aljmc")
 
 [node name="ThemeButton" type="Button" parent="Header/Left"]
@@ -109,6 +109,7 @@ script = ExtResource("4_53iya")
 custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 4
+metadata/_edit_lock_ = true
 
 [node name="Border" type="ColorRect" parent="Header/Right/ColordleColor"]
 layout_mode = 1
