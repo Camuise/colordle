@@ -19,6 +19,8 @@ enum Grade {
 var answer_grades: Array = []
 var current_row: int = 0
 
+var start_time: float = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +28,7 @@ func _ready() -> void:
     answer_grades.resize(6)
     answer_grades.fill([Grade.NONE, Grade.NONE, Grade.NONE, Grade.NONE])
     _rerender_display()
+    start_time = Time.get_unix_time_from_system()
 
 
 enum Result {
@@ -66,7 +69,7 @@ func _on_input_answer_entered(new_answer: Color) -> void:
 func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
         print("All rows filled, cannot add more answers.")
-        Globals.set_game_state(Globals.GameState.RESULTS)
+        Globals.show_game_results(answer_grades, start_time)
         return
     answers[current_row] = new_color
     _update_row(current_row, new_color)
@@ -75,7 +78,7 @@ func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
         print("All rows filled, moving to results.")
         await get_tree().create_timer(0.5).timeout
-        Globals.set_game_state(Globals.GameState.RESULTS)
+        Globals.show_game_results(answer_grades, start_time)
 
 
 func calc_color_diff(color1: Color, color2: Color) -> float:

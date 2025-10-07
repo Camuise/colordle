@@ -31,6 +31,7 @@ enum GameState {
 }
 @export var game_state: GameState = GameState.MAIN_MENU
 signal game_state_changed(new_state: GameState)
+signal show_results(results: Array, time_taken: float)
 
 var music_player: AudioStreamPlayer
 
@@ -95,3 +96,9 @@ func set_game_state(new_state: GameState) -> void:
     var old_state = game_state
     game_state = new_state
     emit_signal("game_state_changed", old_state, game_state)
+
+func show_game_results(results: Array, start_time: float) -> void:
+    set_game_state(GameState.RESULTS)
+    var end_time = Time.get_unix_time_from_system()
+    var time_taken = end_time - start_time
+    emit_signal("show_results", results, time_taken)
