@@ -16,7 +16,42 @@ enum Grade {
     SAME,
 }
 
-var answer_grades: Array = []
+class ChannelGrade:
+    var grade: Grade
+    var difference : float
+
+    func _init(_grade: Grade = Grade.NONE, _difference: float = 0.0) -> void:
+        grade = _grade
+        difference = _difference
+    
+    func _to_string() -> String:
+        var grade_str = ""
+        match grade:
+            Grade.NONE:
+                grade_str = "NONE"
+            Grade.FAR:
+                grade_str = "FAR"
+            Grade.CORRECT:
+                grade_str = "CORRECT"
+            Grade.SAME:
+                grade_str = "SAME"
+        return "(grade=%s, difference=%.2f)" % [grade_str, difference]
+
+class AnswerGrade:
+    var channel_grades: Array[ChannelGrade] = []
+    func _init():
+        for i in range(4):
+            channel_grades.append(ChannelGrade.new())
+    
+    func _to_string() -> String:
+        var channels_str = ""
+        for i in range(channel_grades.size()):
+            channels_str += "\n    " + str(channel_grades[i])
+            if i < channel_grades.size() - 1:
+                channels_str += ","
+        return "AnswerGrade([%s\n])" % channels_str
+
+var answer_grades: Array[AnswerGrade] = []
 var current_row: int = 0
 
 var start_time: float = 0
@@ -26,7 +61,8 @@ var start_time: float = 0
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
     answer_grades.resize(6)
-    answer_grades.fill([Grade.NONE, Grade.NONE, Grade.NONE, Grade.NONE])
+    for i in range(6):
+        answer_grades[i] = AnswerGrade.new()
     _rerender_display()
     start_time = Time.get_unix_time_from_system()
 
@@ -152,24 +188,25 @@ func _update_row(row: int, new_color) -> void:
         # Calculate difference and update label
         var diff_to_answer = calc_color_diff(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
+        print("Row %d, Channel %d: diff = %.2f" % [row, channel_index, diff_to_answer])
+        answer_grades[row].channel_grades[channel_index].difference = diff_to_answer
 
         # Map difference to border color
         # diff > 50% gray
         # diff < 50% orange
         # diff < 5% green
-        # diff < 1% purple
         if diff_to_answer < 1:
             color_border.color = Color(0.643, 0.369, 0.914)  # Purple
-            answer_grades[row][channel_index] = Grade.SAME
+            answer_grades[row].channel_grades[channel_index].grade = Grade.SAME
         elif diff_to_answer < 5:
             color_border.color = Color(0, 1, 0)  # Green
-            answer_grades[row][channel_index] = Grade.CORRECT
+            answer_grades[row].channel_grades[channel_index].grade = Grade.CORRECT
         elif diff_to_answer > 50:
             color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
-            answer_grades[row][channel_index] = Grade.NONE
+            answer_grades[row].channel_grades[channel_index].grade = Grade.NONE
         else:
             color_border.color = Color(1, 0.5, 0)  # Orange
-            answer_grades[row][channel_index] = Grade.FAR
+            answer_grades[row].channel_grades[channel_index].grade = Grade.FAR
 
         # Play sound based on overall accuracy (using average of all channels)
         if not is_null and channel_index == 3:
@@ -184,6 +221,9 @@ func _update_row(row: int, new_color) -> void:
                 _play_sound(Result.CLOSE)
             else:
                 _play_sound(Result.FAR)
+    
+        print("Answer array now: %s" % str(answer_grades))
+
 
 func _rerender_display() -> void:
     # if all answers are null, hide the AnswerContainer and show the NoAnswerContainer
