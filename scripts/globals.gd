@@ -1,5 +1,8 @@
 extends Node
 
+# ============================================================================
+# THEME SYSTEM
+# ============================================================================
 enum ColorTheme {
     LIGHT,
     DARK
@@ -7,20 +10,59 @@ enum ColorTheme {
 @export var theme: ColorTheme = ColorTheme.LIGHT
 signal theme_changed(new_theme: ColorTheme)
 
+# ============================================================================
+# GAME STATE MANAGEMENT
+# ============================================================================
+enum GameState {
+    MAIN_MENU,
+    DAILY,
+    MARATHON,
+    RESULTS,
+    OPTIONS
+}
+@export var game_state: GameState = GameState.MAIN_MENU
+signal game_state_changed(new_state: GameState)
+signal show_results(puzzle_info: Dictionary, game_mode: GameState, time_taken: float)
 
+# ============================================================================
+# COLOR FORMAT & GAME MECHANICS
+# ============================================================================
+enum ColorFormat {
+    RGB,
+    HSV
+}
+@export var colordle_format: ColorFormat = ColorFormat.HSV
+signal color_format_changed(new_format: ColorFormat)
+
+@export var todays_color: Color = _get_todays_color()
+
+enum ColordleResult {
+    NONE,
+    NOT_GUESSED,
+    CORRECT
+}
+@export var colordle_result: ColordleResult = ColordleResult.NONE
+
+# ============================================================================
+# GRADING SYSTEM
+# ============================================================================
 enum Grade {
     NONE,
     FAR,
     CORRECT,
     SAME,
 }
+
+
 class ChannelGrade:
     var grade: Grade
     var difference: float
 
+
     func _init(_grade: Grade = Grade.NONE, _difference: float = 0.0) -> void:
         grade = _grade
         difference = _difference
+
 
     func _to_string() -> String:
         var grade_str = ""
@@ -34,11 +76,15 @@ class ChannelGrade:
             Grade.SAME:
                 grade_str = "SAME"
         return "(grade=%s, difference=%.2f)" % [grade_str, difference]
+
+
+
 class AnswerGrade:
     var channel_grades: Array[ChannelGrade] = []
     func _init():
         for i in range(4):
             channel_grades.append(ChannelGrade.new())
+
 
     func _to_string() -> String:
         var channels_str = ""
@@ -47,6 +93,9 @@ class AnswerGrade:
             if i < channel_grades.size() - 1:
                 channels_str += ","
         return "AnswerGrade([%s\n])" % channels_str
+
+
+
 class PuzzleInfo:
     var time_started: float = 0.0
     var time_ended: float = 0.0
@@ -57,35 +106,14 @@ class PuzzleInfo:
         for i in range(6):
             answers.append(AnswerGrade.new())
 
-enum ColorFormat {
-    RGB,
-    HSV
-}
-@export var colordle_format: ColorFormat = ColorFormat.HSV
-signal color_format_changed(new_format: ColorFormat)
-
-@export var todays_color: Color = _get_todays_color()
-enum ColordleResult {
-    NONE,
-    NOT_GUESSED,
-    CORRECT
-}
-@export var colordle_result: ColordleResult = ColordleResult.NONE
-
-enum GameState {
-    MAIN_MENU,
-    DAILY,
-    MARATHON,
-    RESULTS,
-    OPTIONS
-}
-@export var game_state: GameState = GameState.MAIN_MENU
-signal game_state_changed(new_state: GameState)
-signal show_results(puzzle_info: Dictionary, game_mode: GameState, time_taken: float)
-
+# ============================================================================
+# AUDIO
+# ============================================================================
 var music_player: AudioStreamPlayer
 
-
+# ============================================================================
+# INITIALIZATION
+# ============================================================================
 func _ready() -> void:
     # Initialize the theme
     set_theme(theme)
@@ -105,12 +133,37 @@ func _ready() -> void:
         push_error("Failed to load background music stream.")
 
 
+# ============================================================================
+# THEME FUNCTIONS
+# ============================================================================
 func set_theme(new_theme: ColorTheme) -> void:
     if theme != new_theme:
         theme = new_theme
         emit_signal("theme_changed", theme)
 
 
+# ============================================================================
+# GAME STATE FUNCTIONS
+# ============================================================================
+func set_game_state(new_state: GameState) -> void:
+    if game_state == new_state:
+        return
+
+    var old_state = game_state
+    game_state = new_state
+    emit_signal("game_state_changed", old_state, game_state)
+
+
+func show_game_results(puzzle_info: Dictionary, game_mode: GameState) -> void:
+    assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
+    set_game_state(GameState.RESULTS)
+    var time_taken = puzzle_info.time_ended - puzzle_info.time_started
+    emit_signal("show_results", puzzle_info, game_mode, time_taken)
+
+
+# ============================================================================
+# COLOR FORMAT FUNCTIONS
+# ============================================================================
 func set_color_format(new_format: ColorFormat) -> void:
     if colordle_format != new_format:
         colordle_format = new_format
@@ -138,19 +191,3 @@ func _get_todays_color(time: bool = false) -> Color:
     var generated_color = Color.from_hsv(rng.randf(), rng.randf(), rng.randf())
     print_debug("Generated HSV color: %s" % generated_color)
     return generated_color
-
-
-func set_game_state(new_state: GameState) -> void:
-    if game_state == new_state:
-        return
-
-    var old_state = game_state
-    game_state = new_state
-    emit_signal("game_state_changed", old_state, game_state)
-
-
-func show_game_results(puzzle_info: Dictionary, game_mode: GameState) -> void:
-    assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
-    set_game_state(GameState.RESULTS)
-    var time_taken = puzzle_info.time_ended - puzzle_info.time_started
-    emit_signal("show_results", puzzle_info, game_mode, time_taken)
