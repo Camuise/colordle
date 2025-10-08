@@ -16,17 +16,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_amp1b")
 
-[node name="Reaction" type="Label" parent="."]
+[node name="Daily" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Reaction" type="Label" parent="Daily"]
 layout_mode = 1
 offset_left = 73.0
 offset_top = 57.0
 offset_right = 469.0
-offset_bottom = 132.0
+offset_bottom = 150.0
 theme_override_font_sizes/font_size = 74
 text = "Good Job!"
 vertical_alignment = 1
 
-[node name="DetailedReaction" type="Label" parent="."]
+[node name="DetailedReaction" type="Label" parent="Daily"]
 layout_mode = 0
 offset_left = 73.0
 offset_top = 150.0
@@ -38,14 +43,14 @@ text = "You just went straight for the answer, didn't ya?
 (Placeholder screen, but you get the idea, hopefully.)"
 autowrap_mode = 3
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="Daily"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 51.0
+offset_left = 50.0
 offset_top = -146.0
-offset_right = 371.0
+offset_right = 370.0
 offset_bottom = -54.0
 grow_vertical = 0
 text = "Main Menu"
@@ -53,15 +58,15 @@ icon = ExtResource("2_ph8o5")
 alignment = 0
 script = ExtResource("3_7jyyn")
 
-[node name="Share" type="Button" parent="."]
+[node name="Share" type="Button" parent="Daily"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 557.0
-offset_top = -150.0
-offset_right = 776.43
-offset_bottom = -54.0
+offset_left = 573.0
+offset_top = -146.0
+offset_right = 792.42993
+offset_bottom = -50.0
 grow_vertical = 0
 text = "Share"
 icon = ExtResource("4_pxnt6")
@@ -69,40 +74,40 @@ alignment = 2
 icon_alignment = 2
 script = ExtResource("5_7jyyn")
 
-[node name="Control" type="VBoxContainer" parent="."]
+[node name="Control" type="VBoxContainer" parent="Daily"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -477.0
+offset_left = -469.0
 offset_top = -303.0
-offset_right = -75.0
+offset_right = -67.0
 offset_bottom = 304.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Reaction" type="Label" parent="Control"]
+[node name="Reaction" type="Label" parent="Daily/Control"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "Colordle 1023, 10/6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Answer0" type="HBoxContainer" parent="Control"]
+[node name="Answer0" type="HBoxContainer" parent="Daily/Control"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme = ExtResource("2_mabgl")
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Channel0" type="Control" parent="Control/Answer0"]
+[node name="Channel0" type="Control" parent="Daily/Control/Answer0"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer0/Channel0"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer0/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -117,14 +122,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer0/Channel0/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer0/Channel0/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer0/Channel0"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer0/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,12 +147,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel1" type="Control" parent="Control/Answer0"]
+[node name="Channel1" type="Control" parent="Daily/Control/Answer0"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer0/Channel1"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer0/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -162,14 +167,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer0/Channel1/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer0/Channel1/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer0/Channel1"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer0/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -187,12 +192,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel2" type="Control" parent="Control/Answer0"]
+[node name="Channel2" type="Control" parent="Daily/Control/Answer0"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer0/Channel2"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer0/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -207,14 +212,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer0/Channel2/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer0/Channel2/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer0/Channel2"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer0/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -232,12 +237,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel3" type="Control" parent="Control/Answer0"]
+[node name="Channel3" type="Control" parent="Daily/Control/Answer0"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer0/Channel3"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer0/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -252,14 +257,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer0/Channel3/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer0/Channel3/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer0/Channel3"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer0/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -277,19 +282,19 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Answer1" type="HBoxContainer" parent="Control"]
+[node name="Answer1" type="HBoxContainer" parent="Daily/Control"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme = ExtResource("2_mabgl")
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Channel0" type="Control" parent="Control/Answer1"]
+[node name="Channel0" type="Control" parent="Daily/Control/Answer1"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer1/Channel0"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer1/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -304,14 +309,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer1/Channel0/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer1/Channel0/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer1/Channel0"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer1/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -329,12 +334,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel1" type="Control" parent="Control/Answer1"]
+[node name="Channel1" type="Control" parent="Daily/Control/Answer1"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer1/Channel1"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer1/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -349,14 +354,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer1/Channel1/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer1/Channel1/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer1/Channel1"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer1/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -374,12 +379,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel2" type="Control" parent="Control/Answer1"]
+[node name="Channel2" type="Control" parent="Daily/Control/Answer1"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer1/Channel2"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer1/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -394,14 +399,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer1/Channel2/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer1/Channel2/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer1/Channel2"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer1/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -419,12 +424,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel3" type="Control" parent="Control/Answer1"]
+[node name="Channel3" type="Control" parent="Daily/Control/Answer1"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer1/Channel3"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer1/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -439,14 +444,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer1/Channel3/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer1/Channel3/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer1/Channel3"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer1/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -464,19 +469,19 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Answer2" type="HBoxContainer" parent="Control"]
+[node name="Answer2" type="HBoxContainer" parent="Daily/Control"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme = ExtResource("2_mabgl")
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Channel0" type="Control" parent="Control/Answer2"]
+[node name="Channel0" type="Control" parent="Daily/Control/Answer2"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer2/Channel0"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer2/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -491,14 +496,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer2/Channel0/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer2/Channel0/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer2/Channel0"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer2/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -516,12 +521,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel1" type="Control" parent="Control/Answer2"]
+[node name="Channel1" type="Control" parent="Daily/Control/Answer2"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer2/Channel1"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer2/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -536,14 +541,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer2/Channel1/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer2/Channel1/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer2/Channel1"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer2/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -561,12 +566,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel2" type="Control" parent="Control/Answer2"]
+[node name="Channel2" type="Control" parent="Daily/Control/Answer2"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer2/Channel2"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer2/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -581,14 +586,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer2/Channel2/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer2/Channel2/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer2/Channel2"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer2/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -606,12 +611,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel3" type="Control" parent="Control/Answer2"]
+[node name="Channel3" type="Control" parent="Daily/Control/Answer2"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer2/Channel3"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer2/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -626,14 +631,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer2/Channel3/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer2/Channel3/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer2/Channel3"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer2/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -651,19 +656,19 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Answer3" type="HBoxContainer" parent="Control"]
+[node name="Answer3" type="HBoxContainer" parent="Daily/Control"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme = ExtResource("2_mabgl")
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Channel0" type="Control" parent="Control/Answer3"]
+[node name="Channel0" type="Control" parent="Daily/Control/Answer3"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer3/Channel0"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer3/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -678,14 +683,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer3/Channel0/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer3/Channel0/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer3/Channel0"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer3/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -703,12 +708,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel1" type="Control" parent="Control/Answer3"]
+[node name="Channel1" type="Control" parent="Daily/Control/Answer3"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer3/Channel1"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer3/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -723,14 +728,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer3/Channel1/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer3/Channel1/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer3/Channel1"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer3/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -748,12 +753,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel2" type="Control" parent="Control/Answer3"]
+[node name="Channel2" type="Control" parent="Daily/Control/Answer3"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer3/Channel2"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer3/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -768,14 +773,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer3/Channel2/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer3/Channel2/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer3/Channel2"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer3/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -793,12 +798,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel3" type="Control" parent="Control/Answer3"]
+[node name="Channel3" type="Control" parent="Daily/Control/Answer3"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer3/Channel3"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer3/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -813,14 +818,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer3/Channel3/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer3/Channel3/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer3/Channel3"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer3/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -838,19 +843,19 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Answer4" type="HBoxContainer" parent="Control"]
+[node name="Answer4" type="HBoxContainer" parent="Daily/Control"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme = ExtResource("2_mabgl")
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Channel0" type="Control" parent="Control/Answer4"]
+[node name="Channel0" type="Control" parent="Daily/Control/Answer4"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer4/Channel0"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer4/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -865,14 +870,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer4/Channel0/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer4/Channel0/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer4/Channel0"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer4/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -890,12 +895,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel1" type="Control" parent="Control/Answer4"]
+[node name="Channel1" type="Control" parent="Daily/Control/Answer4"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer4/Channel1"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer4/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -910,14 +915,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer4/Channel1/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer4/Channel1/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer4/Channel1"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer4/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -935,12 +940,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel2" type="Control" parent="Control/Answer4"]
+[node name="Channel2" type="Control" parent="Daily/Control/Answer4"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer4/Channel2"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer4/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -955,14 +960,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer4/Channel2/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer4/Channel2/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer4/Channel2"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer4/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -980,12 +985,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel3" type="Control" parent="Control/Answer4"]
+[node name="Channel3" type="Control" parent="Daily/Control/Answer4"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer4/Channel3"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer4/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1000,14 +1005,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer4/Channel3/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer4/Channel3/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer4/Channel3"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer4/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1025,19 +1030,19 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Answer5" type="HBoxContainer" parent="Control"]
+[node name="Answer5" type="HBoxContainer" parent="Daily/Control"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme = ExtResource("2_mabgl")
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Channel0" type="Control" parent="Control/Answer5"]
+[node name="Channel0" type="Control" parent="Daily/Control/Answer5"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer5/Channel0"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer5/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1052,14 +1057,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer5/Channel0/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer5/Channel0/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer5/Channel0"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer5/Channel0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1077,12 +1082,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel1" type="Control" parent="Control/Answer5"]
+[node name="Channel1" type="Control" parent="Daily/Control/Answer5"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer5/Channel1"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer5/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1097,14 +1102,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer5/Channel1/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer5/Channel1/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer5/Channel1"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer5/Channel1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1122,12 +1127,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel2" type="Control" parent="Control/Answer5"]
+[node name="Channel2" type="Control" parent="Daily/Control/Answer5"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer5/Channel2"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer5/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1142,14 +1147,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer5/Channel2/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer5/Channel2/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer5/Channel2"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer5/Channel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1167,12 +1172,12 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Channel3" type="Control" parent="Control/Answer5"]
+[node name="Channel3" type="Control" parent="Daily/Control/Answer5"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Grade" type="ColorRect" parent="Control/Answer5/Channel3"]
+[node name="Grade" type="ColorRect" parent="Daily/Control/Answer5/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1187,14 +1192,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Color" type="ColorRect" parent="Control/Answer5/Channel3/Grade"]
+[node name="Color" type="ColorRect" parent="Daily/Control/Answer5/Channel3/Grade"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 75.0
 offset_bottom = 75.0
 
-[node name="Closeness" type="Label" parent="Control/Answer5/Channel3"]
+[node name="Closeness" type="Label" parent="Daily/Control/Answer5/Channel3"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1212,5 +1217,5 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
-[connection signal="pressed" from="Share" to="Share" method="_on_pressed"]
+[connection signal="pressed" from="Daily/BackButton" to="Daily/BackButton" method="_on_pressed"]
+[connection signal="pressed" from="Daily/Share" to="Daily/Share" method="_on_pressed"]
