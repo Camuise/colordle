@@ -51,6 +51,10 @@ func _play_sound(sound: Globals.Grade) -> void:
             sound_path = "res://assets/sounds/close.wav"
         Globals.Grade.FAR:
             sound_path = "res://assets/sounds/far.wav"
+        Globals.Grade.NONE:
+            sound_path = "res://assets/sounds/far.wav"
+        _:
+            push_error("Unknown sound grade: %s" % str(sound))
 
     var sound_stream = load(sound_path) as AudioStream
     if sound_stream:
@@ -71,19 +75,22 @@ func _on_input_answer_entered(new_answer: Color) -> void:
 
 
 func add_answer(new_color: Color) -> void:
-    if current_row >= answers.size():
-        print("All rows filled, moving to results.")
-        await get_tree().create_timer(0.5).timeout
-        Globals.show_game_results({
-            "time_started": puzzle_info.time_started,
-            "time_ended": puzzle_info.time_ended,
-            "answers": puzzle_info.answers
-        }, Globals.GameState.DAILY)
-        return
     answers[current_row] = new_color
     _update_row(current_row, new_color)
     current_row += 1
     _rerender_display()
+    if current_row >= answers.size():
+        # runs
+        puzzle_completed()
+
+func puzzle_completed() -> void:
+    print("All rows filled, moving to results.")
+    await get_tree().create_timer(0.5).timeout
+    Globals.show_game_results({
+        "time_started": puzzle_info.time_started,
+        "time_ended": puzzle_info.time_ended,
+        "answers": puzzle_info.answers
+    }, Globals.GameState.DAILY)
 # endregion
 
 
