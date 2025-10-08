@@ -7,6 +7,56 @@ enum ColorTheme {
 @export var theme: ColorTheme = ColorTheme.LIGHT
 signal theme_changed(new_theme: ColorTheme)
 
+
+enum Grade {
+    NONE,
+    FAR,
+    CORRECT,
+    SAME,
+}
+class ChannelGrade:
+    var grade: Grade
+    var difference: float
+
+    func _init(_grade: Grade = Grade.NONE, _difference: float = 0.0) -> void:
+        grade = _grade
+        difference = _difference
+
+    func _to_string() -> String:
+        var grade_str = ""
+        match grade:
+            Grade.NONE:
+                grade_str = "NONE"
+            Grade.FAR:
+                grade_str = "FAR"
+            Grade.CORRECT:
+                grade_str = "CORRECT"
+            Grade.SAME:
+                grade_str = "SAME"
+        return "(grade=%s, difference=%.2f)" % [grade_str, difference]
+class AnswerGrade:
+    var channel_grades: Array[ChannelGrade] = []
+    func _init():
+        for i in range(4):
+            channel_grades.append(ChannelGrade.new())
+
+    func _to_string() -> String:
+        var channels_str = ""
+        for i in range(channel_grades.size()):
+            channels_str += "\n    " + str(channel_grades[i])
+            if i < channel_grades.size() - 1:
+                channels_str += ","
+        return "AnswerGrade([%s\n])" % channels_str
+class PuzzleInfo:
+    var time_started: float = 0.0
+    var time_ended: float = 0.0
+    var answers: Array[AnswerGrade] = []
+    func _init():
+        time_started = 0
+        time_ended = 0
+        for i in range(6):
+            answers.append(AnswerGrade.new())
+
 enum ColorFormat {
     RGB,
     HSV
@@ -31,7 +81,7 @@ enum GameState {
 }
 @export var game_state: GameState = GameState.MAIN_MENU
 signal game_state_changed(new_state: GameState)
-signal show_results(results: Array, time_taken: float)
+signal show_results(puzzle_info: Dictionary, game_mode: GameState, time_taken: float)
 
 var music_player: AudioStreamPlayer
 
@@ -99,9 +149,8 @@ func set_game_state(new_state: GameState) -> void:
     emit_signal("game_state_changed", old_state, game_state)
 
 
-func show_game_results(results: Array, start_time: float, game_mode: GameState) -> void:
+func show_game_results(puzzle_info: Dictionary, game_mode: GameState) -> void:
     assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
     set_game_state(GameState.RESULTS)
-    var end_time = Time.get_unix_time_from_system()
-    var time_taken = end_time - start_time
-    emit_signal("show_results", results, time_taken, game_mode)
+    var time_taken = puzzle_info.time_ended - puzzle_info.time_started
+    emit_signal("show_results", puzzle_info, game_mode, time_taken)

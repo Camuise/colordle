@@ -17,58 +17,8 @@ enum Grade {
 }
 
 
-class ChannelGrade:
-    var grade: Grade
-    var difference: float
 
-
-    func _init(_grade: Grade = Grade.NONE, _difference: float = 0.0) -> void:
-        grade = _grade
-        difference = _difference
-
-
-    func _to_string() -> String:
-        var grade_str = ""
-        match grade:
-            Grade.NONE:
-                grade_str = "NONE"
-            Grade.FAR:
-                grade_str = "FAR"
-            Grade.CORRECT:
-                grade_str = "CORRECT"
-            Grade.SAME:
-                grade_str = "SAME"
-        return "(grade=%s, difference=%.2f)" % [grade_str, difference]
-
-
-
-class AnswerGrade:
-    var channel_grades: Array[ChannelGrade] = []
-    func _init():
-        for i in range(4):
-            channel_grades.append(ChannelGrade.new())
-
-
-    func _to_string() -> String:
-        var channels_str = ""
-        for i in range(channel_grades.size()):
-            channels_str += "\n    " + str(channel_grades[i])
-            if i < channel_grades.size() - 1:
-                channels_str += ","
-        return "AnswerGrade([%s\n])" % channels_str
-
-
-class PuzzleInfo:
-    var time_started: float = 0.0
-    var time_ended: float = 0.0
-    var answers: Array[AnswerGrade] = []
-    func _init():
-        time_started = 0
-        time_ended = 0
-        for i in range(6):
-            answers.append(AnswerGrade.new())
-
-var puzzle_info: PuzzleInfo = PuzzleInfo.new()
+var puzzle_info: Globals.PuzzleInfo = Globals.PuzzleInfo.new()
 
 var current_row: int = 0
 
@@ -118,7 +68,11 @@ func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
         print("All rows filled, moving to results.")
         await get_tree().create_timer(0.5).timeout
-        Globals.show_game_results(puzzle_info, start_time, Globals.GameState.DAILY)
+        Globals.show_game_results({
+            "time_started": puzzle_info.time_started,
+            "time_ended": puzzle_info.time_ended,
+            "answers": puzzle_info.answers
+        }, Globals.GameState.DAILY)
         return
     answers[current_row] = new_color
     _update_row(current_row, new_color)
@@ -197,25 +151,28 @@ func _update_row(row: int, new_color) -> void:
         # Calculate difference and update label
         var diff_to_answer = calc_color_diff(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
+
         print("Row %d, Channel %d: diff = %.2f" % [row, channel_index, diff_to_answer])
-        puzzle_info[row].channel_grades[channel_index].difference = diff_to_answer
+        puzzle_info.answers[row].channel_grades[channel_index].difference = diff_to_answer
 
         # Map difference to border color
         # diff > 50% gray
         # diff < 50% orange
         # diff < 5% green
+
         if diff_to_answer < 1:
             color_border.color = Color(0.643, 0.369, 0.914)  # Purple
-            puzzle_info[row].channel_grades[channel_index].grade = Grade.SAME
+            puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.SAME
         elif diff_to_answer < 5:
             color_border.color = Color(0, 1, 0)  # Green
-            puzzle_info[row].channel_grades[channel_index].grade = Grade.CORRECT
+            puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.CORRECT
         elif diff_to_answer > 50:
             color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
-            puzzle_info[row].channel_grades[channel_index].grade = Grade.NONE
+            puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.NONE
         else:
             color_border.color = Color(1, 0.5, 0)  # Orange
-            puzzle_info[row].channel_grades[channel_index].grade = Grade.FAR
+            puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.FAR
+
 
         # Play sound based on overall accuracy (using average of all channels)
         if not is_null and channel_index == 3:
