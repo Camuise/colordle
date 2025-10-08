@@ -1,5 +1,10 @@
 extends VBoxContainer
 
+# region Variables
+# =====================================
+# STATE VARIABLES
+# =====================================
+
 var answers: Array = [
     null,
     null,
@@ -13,15 +18,26 @@ var puzzle_info: Globals.PuzzleInfo = Globals.PuzzleInfo.new()
 
 var current_row: int = 0
 
-# Called when the node enters the scene tree for the first time.
+var sound_player: AudioStreamPlayer = null
+
+# endregion
+
+
+# region Lifecycle
+# =====================================
+# LIFECYCLE METHODS
+# =====================================
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
     _rerender_display()
     puzzle_info.time_started = Time.get_unix_time_from_system()
+# endregion
 
-var sound_player: AudioStreamPlayer = null
 
-
+# region Audio
+# =====================================
+# AUDIO SYSTEM
+# =====================================
 func _play_sound(sound: Globals.Grade) -> void:
     if not sound_player:
         sound_player = AudioStreamPlayer.new()
@@ -42,8 +58,13 @@ func _play_sound(sound: Globals.Grade) -> void:
         sound_player.play()
     else:
         push_error("Failed to load sound stream.")
+# endregion
 
 
+# region Answer Management
+# =====================================
+# ANSWER MANAGEMENT
+# =====================================
 func _on_input_answer_entered(new_answer: Color) -> void:
     print("New answer entered: %s" % new_answer)
     add_answer(new_answer)
@@ -63,8 +84,13 @@ func add_answer(new_color: Color) -> void:
     _update_row(current_row, new_color)
     current_row += 1
     _rerender_display()
+# endregion
 
 
+# region Color Utils
+# =====================================
+# COLOR CALCULATIONS & UTILITIES
+# =====================================
 func calc_color_diff(color1: Color, color2: Color) -> float:
     var color1_lab = ColorUtils.xyz_to_lab(ColorUtils.rgb_to_xyz(color1))
     var color2_lab = ColorUtils.xyz_to_lab(ColorUtils.rgb_to_xyz(color2))
@@ -108,8 +134,13 @@ func get_channel_colors(channel: int, new_color: Color, correct_color: Color) ->
                 2:
                     return [Color.from_hsv(0, 0, new_color.v), Color.from_hsv(0, 0, correct_color.v)]
     return [Color(), Color()]
+# endregion
 
 
+# region Display Updates
+# =====================================
+# DISPLAY & UI UPDATES
+# =====================================
 func _update_row(row: int, new_color) -> void:
     var answer_row = %AnswerContainer.get_child(row)
     var is_null = new_color == null
@@ -182,8 +213,14 @@ func _rerender_display() -> void:
 
     for row_index in range(answers.size()):
         _update_row(row_index, answers[row_index])
+# endregion
 
 
+# region Event Handlers
+# =====================================
+# EVENT HANDLERS & SIGNALS
+# =====================================
 func _on_color_format_changed(_new_format: Globals.ColorFormat) -> void:
     print_debug("Rerendering display for color format change")
     _rerender_display()
+# endregion
