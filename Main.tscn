@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8s6c4v3bsl1d" path="res://title.tscn" id="3_r0du0"]
 [ext_resource type="Script" uid="uid://dbsr5vqs2b06q" path="res://scripts/camera_2d.gd" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dg42sn8ujru3q" path="res://results.tscn" id="5_fos0i"]
-[ext_resource type="Script" uid="uid://sctkl3k41jkg" path="res://versionwarning.gd" id="6_trn2v"]
+[ext_resource type="Script" uid="uid://bhnmnw7vsnivx" path="res://scripts/version_warn.gd" id="6_trn2v"]
 [ext_resource type="PackedScene" uid="uid://bwrdulnjcr84y" path="res://marathon.tscn" id="7_lgr22"]
 
 [node name="Main" type="Control"]
