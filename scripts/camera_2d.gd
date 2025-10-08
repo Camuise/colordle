@@ -6,7 +6,7 @@ func _ready() -> void:
     #connect to game state changes
     if Globals.has_signal("game_state_changed"):
         Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
-    pass # Replace with function body.
+    pass  # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,9 +18,9 @@ func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.Ga
     # Define camera positions for each game state
     const camera_positions := {
         Globals.GameState.MAIN_MENU: Vector2(0, 0),
-        Globals.GameState.DAILY: Vector2(2560, 0), # to the right
-        Globals.GameState.FREEPLAY: Vector2(2560, 1440), # to bottom right
-        Globals.GameState.RESULTS: Vector2(2560, 720), # to top right
+        Globals.GameState.DAILY: Vector2(2560, 0),  # to the right
+        Globals.GameState.MARATHON: Vector2(2560, 1440),  # to bottom right
+        Globals.GameState.RESULTS: Vector2(2560, 720),  # to top right
         Globals.GameState.OPTIONS: Vector2(0, 1440)  # directly below
     }
 

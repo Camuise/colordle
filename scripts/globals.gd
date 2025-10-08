@@ -25,7 +25,7 @@ enum ColordleResult {
 enum GameState {
     MAIN_MENU,
     DAILY,
-    FREEPLAY,
+    MARATHON,
     RESULTS,
     OPTIONS
 }
