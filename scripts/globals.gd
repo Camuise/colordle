@@ -10,6 +10,12 @@ enum ColorTheme {
 @export var theme: ColorTheme = ColorTheme.LIGHT
 signal theme_changed(new_theme: ColorTheme)
 
+
+func set_theme(new_theme: ColorTheme) -> void:
+    if theme != new_theme:
+        theme = new_theme
+        emit_signal("theme_changed", theme)
+
 # ============================================================================
 # GAME STATE MANAGEMENT
 # ============================================================================
@@ -24,8 +30,24 @@ enum GameState {
 signal game_state_changed(new_state: GameState)
 signal show_results(puzzle_info: Dictionary, game_mode: GameState, time_taken: float)
 
+
+func set_game_state(new_state: GameState) -> void:
+    if game_state == new_state:
+        return
+
+    var old_state = game_state
+    game_state = new_state
+    emit_signal("game_state_changed", old_state, game_state)
+
+
+func show_game_results(puzzle_info: Dictionary, game_mode: GameState) -> void:
+    assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
+    set_game_state(GameState.RESULTS)
+    var time_taken = puzzle_info.time_ended - puzzle_info.time_started
+    emit_signal("show_results", puzzle_info, game_mode, time_taken)
+
 # ============================================================================
-# COLOR FORMAT & GAME MECHANICS
+# COLORDLE PUZZLE FORMAT + TODAY'S COLOR
 # ============================================================================
 enum ColorFormat {
     RGB,
@@ -42,6 +64,35 @@ enum ColordleResult {
     CORRECT
 }
 @export var colordle_result: ColordleResult = ColordleResult.NONE
+
+
+func set_color_format(new_format: ColorFormat) -> void:
+    if colordle_format != new_format:
+        colordle_format = new_format
+        emit_signal("color_format_changed", colordle_format)
+
+
+func _get_todays_color(time: bool = false) -> Color:
+    # step 1: get today's date (excluding time) in UNIX
+    var _today: Dictionary = Time.get_datetime_dict_from_system()
+
+    if !time:
+        # step 2: strip hour, min, and sec
+        _today.erase("hour")
+        _today.erase("minute")
+        _today.erase("second")
+
+    # step 3: convert back to unix time
+    var _today_unix = Time.get_unix_time_from_datetime_dict(_today)
+
+    # step 4: use that to seed a random number generator
+    var rng = RandomNumberGenerator.new()
+    rng.seed = _today_unix
+
+    # step 5: generate a random color
+    var generated_color = Color.from_hsv(rng.randf(), rng.randf(), rng.randf())
+    print_debug("Generated HSV color: %s" % generated_color)
+    return generated_color
 
 # ============================================================================
 # GRADING SYSTEM
@@ -111,13 +162,8 @@ class PuzzleInfo:
 # ============================================================================
 var music_player: AudioStreamPlayer
 
-# ============================================================================
-# INITIALIZATION
-# ============================================================================
-func _ready() -> void:
-    # Initialize the theme
-    set_theme(theme)
 
+func _init_background_music() -> void:
     # Create and configure music player
     music_player = AudioStreamPlayer.new()
     music_player.name = "BackgroundMusic"
@@ -134,60 +180,8 @@ func _ready() -> void:
 
 
 # ============================================================================
-# THEME FUNCTIONS
+# INITIALIZATION
 # ============================================================================
-func set_theme(new_theme: ColorTheme) -> void:
-    if theme != new_theme:
-        theme = new_theme
-        emit_signal("theme_changed", theme)
-
-
-# ============================================================================
-# GAME STATE FUNCTIONS
-# ============================================================================
-func set_game_state(new_state: GameState) -> void:
-    if game_state == new_state:
-        return
-
-    var old_state = game_state
-    game_state = new_state
-    emit_signal("game_state_changed", old_state, game_state)
-
-
-func show_game_results(puzzle_info: Dictionary, game_mode: GameState) -> void:
-    assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
-    set_game_state(GameState.RESULTS)
-    var time_taken = puzzle_info.time_ended - puzzle_info.time_started
-    emit_signal("show_results", puzzle_info, game_mode, time_taken)
-
-
-# ============================================================================
-# COLOR FORMAT FUNCTIONS
-# ============================================================================
-func set_color_format(new_format: ColorFormat) -> void:
-    if colordle_format != new_format:
-        colordle_format = new_format
-        emit_signal("color_format_changed", colordle_format)
-
-
-func _get_todays_color(time: bool = false) -> Color:
-    # step 1: get today's date (excluding time) in UNIX
-    var _today: Dictionary = Time.get_datetime_dict_from_system()
-
-    if !time:
-        # step 2: strip hour, min, and sec
-        _today.erase("hour")
-        _today.erase("minute")
-        _today.erase("second")
-
-    # step 3: convert back to unix time
-    var _today_unix = Time.get_unix_time_from_datetime_dict(_today)
-
-    # step 4: use that to seed a random number generator
-    var rng = RandomNumberGenerator.new()
-    rng.seed = _today_unix
-
-    # step 5: generate a random color
-    var generated_color = Color.from_hsv(rng.randf(), rng.randf(), rng.randf())
-    print_debug("Generated HSV color: %s" % generated_color)
-    return generated_color
+func _ready() -> void:
+    set_theme(theme)
+    _init_background_music()
