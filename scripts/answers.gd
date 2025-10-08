@@ -13,35 +13,28 @@ var puzzle_info: Globals.PuzzleInfo = Globals.PuzzleInfo.new()
 
 var current_row: int = 0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
     _rerender_display()
     puzzle_info.time_started = Time.get_unix_time_from_system()
 
-enum Result {
-    CORRECT,
-    FAR,
-    CLOSE,
-}
-
 var sound_player: AudioStreamPlayer = null
 
 
-func _play_sound(sound: Result) -> void:
+func _play_sound(sound: Globals.Grade) -> void:
     if not sound_player:
         sound_player = AudioStreamPlayer.new()
         add_child(sound_player)
         sound_player.volume_db = -5  # Adjust volume as needed
     var sound_path = ""
     match sound:
-        Result.CORRECT:
+        Globals.Grade.SAME:
             sound_path = "res://assets/sounds/correct.wav"
-        Result.FAR:
-            sound_path = "res://assets/sounds/far.wav"
-        Result.CLOSE:
+        Globals.Grade.CORRECT:
             sound_path = "res://assets/sounds/close.wav"
+        Globals.Grade.FAR:
+            sound_path = "res://assets/sounds/far.wav"
 
     var sound_stream = load(sound_path) as AudioStream
     if sound_stream:
@@ -148,17 +141,13 @@ func _update_row(row: int, new_color) -> void:
         puzzle_info.answers[row].channel_grades[channel_index].difference = diff_to_answer
 
         # Map difference to border color
-        # diff > 50% gray
-        # diff < 50% orange
-        # diff < 5% green
-
-        if diff_to_answer < 1:
+        if diff_to_answer < Globals.grade_diff_threshold[Globals.Grade.SAME]:
             color_border.color = Color(0.643, 0.369, 0.914)  # Purple
             puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.SAME
-        elif diff_to_answer < 5:
+        elif diff_to_answer < Globals.grade_diff_threshold[Globals.Grade.CORRECT]:
             color_border.color = Color(0, 1, 0)  # Green
             puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.CORRECT
-        elif diff_to_answer > 50:
+        elif diff_to_answer > Globals.grade_diff_threshold[Globals.Grade.NONE]:
             color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
             puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.NONE
         else:
@@ -172,12 +161,14 @@ func _update_row(row: int, new_color) -> void:
                 var loop_channel_colors = get_channel_colors(i, new_color, Globals.todays_color)
                 total_diff += calc_color_diff(loop_channel_colors[0], loop_channel_colors[1])
             var avg_diff = total_diff / 3.0
-            if avg_diff < 5:
-                _play_sound(Result.CORRECT)
-            elif avg_diff < 20:
-                _play_sound(Result.CLOSE)
+            if avg_diff < Globals.grade_diff_threshold[Globals.Grade.SAME]:
+                _play_sound(Globals.Grade.SAME)
+            elif avg_diff < Globals.grade_diff_threshold[Globals.Grade.CORRECT]:
+                _play_sound(Globals.Grade.CORRECT)
+            elif avg_diff < Globals.grade_diff_threshold[Globals.Grade.FAR]:
+                _play_sound(Globals.Grade.FAR)
             else:
-                _play_sound(Result.FAR)
+                _play_sound(Globals.Grade.NONE)
 
         print("Answer array now: %s" % str(puzzle_info))
 

@@ -111,6 +111,12 @@ enum Grade {
     SAME,
 }
 
+var grade_diff_threshold = {
+    Grade.NONE: 100.0,
+    Grade.FAR: 50.0,
+    Grade.CORRECT: 5.0,
+    Grade.SAME: 1.0,
+}
 
 class ChannelGrade:
     var grade: Grade
