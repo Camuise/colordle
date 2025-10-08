@@ -25,7 +25,7 @@ class ChannelGrade:
     func _init(_grade: Grade = Grade.NONE, _difference: float = 0.0) -> void:
         grade = _grade
         difference = _difference
-    
+
 
     func _to_string() -> String:
         var grade_str = ""
@@ -47,7 +47,7 @@ class AnswerGrade:
     func _init():
         for i in range(4):
             channel_grades.append(ChannelGrade.new())
-    
+
 
     func _to_string() -> String:
         var channels_str = ""
@@ -110,8 +110,9 @@ func _on_input_answer_entered(new_answer: Color) -> void:
 
 func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
-        print("All rows filled, cannot add more answers.")
-        Globals.show_game_results(answer_grades, start_time)
+        print("All rows filled, moving to results.")
+        await get_tree().create_timer(0.5).timeout
+        Globals.show_game_results(answer_grades, start_time, Globals.GameState.DAILY)
         return
     answers[current_row] = new_color
     _update_row(current_row, new_color)
@@ -223,7 +224,7 @@ func _update_row(row: int, new_color) -> void:
                 _play_sound(Result.CLOSE)
             else:
                 _play_sound(Result.FAR)
-    
+
         print("Answer array now: %s" % str(answer_grades))
 
 
