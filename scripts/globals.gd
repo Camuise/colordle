@@ -1,5 +1,6 @@
 extends Node
 
+# region Theme System
 # ============================================================================
 # THEME SYSTEM
 # ============================================================================
@@ -15,7 +16,9 @@ func set_theme(new_theme: ColorTheme) -> void:
     if theme != new_theme:
         theme = new_theme
         emit_signal("theme_changed", theme)
+# endregion
 
+# region Game State
 # ============================================================================
 # GAME STATE MANAGEMENT
 # ============================================================================
@@ -45,7 +48,9 @@ func show_game_results(puzzle_info: Dictionary, game_mode: GameState) -> void:
     set_game_state(GameState.RESULTS)
     var time_taken = puzzle_info.time_ended - puzzle_info.time_started
     emit_signal("show_results", puzzle_info, game_mode, time_taken)
+# endregion
 
+# region Format & Puzzle
 # ============================================================================
 # COLORDLE PUZZLE FORMAT + TODAY'S COLOR
 # ============================================================================
@@ -93,7 +98,9 @@ func _get_todays_color(time: bool = false) -> Color:
     var generated_color = Color.from_hsv(rng.randf(), rng.randf(), rng.randf())
     print_debug("Generated HSV color: %s" % generated_color)
     return generated_color
+# endregion
 
+# region Grading
 # ============================================================================
 # GRADING SYSTEM
 # ============================================================================
@@ -156,9 +163,11 @@ class PuzzleInfo:
         time_ended = 0
         for i in range(6):
             answers.append(AnswerGrade.new())
+# endregion
 
+# region BG Music
 # ============================================================================
-# AUDIO
+# BACKGROUND MUSIC
 # ============================================================================
 var music_player: AudioStreamPlayer
 
@@ -177,11 +186,14 @@ func _init_background_music() -> void:
         print("Background music loaded successfully")
     else:
         push_error("Failed to load background music stream.")
+# endregion
 
 
+# region Init
 # ============================================================================
 # INITIALIZATION
 # ============================================================================
 func _ready() -> void:
     set_theme(theme)
     _init_background_music()
+# endregion
