@@ -9,18 +9,10 @@ var answers: Array = [
     null
 ]
 
-enum Grade {
-    NONE,
-    FAR,
-    CORRECT,
-    SAME,
-}
-
-
-
 var puzzle_info: Globals.PuzzleInfo = Globals.PuzzleInfo.new()
 
 var current_row: int = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -172,7 +164,6 @@ func _update_row(row: int, new_color) -> void:
         else:
             color_border.color = Color(1, 0.5, 0)  # Orange
             puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.FAR
-
 
         # Play sound based on overall accuracy (using average of all channels)
         if not is_null and channel_index == 3:
