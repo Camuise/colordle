@@ -89,6 +89,7 @@ func _get_todays_color(time: bool = false) -> Color:
     print_debug("Generated HSV color: %s" % generated_color)
     return generated_color
 
+
 func set_game_state(new_state: GameState) -> void:
     if game_state == new_state:
         return
@@ -97,8 +98,10 @@ func set_game_state(new_state: GameState) -> void:
     game_state = new_state
     emit_signal("game_state_changed", old_state, game_state)
 
-func show_game_results(results: Array, start_time: float) -> void:
+
+func show_game_results(results: Array, start_time: float, game_mode: GameState) -> void:
+    assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
     set_game_state(GameState.RESULTS)
     var end_time = Time.get_unix_time_from_system()
     var time_taken = end_time - start_time
-    emit_signal("show_results", results, time_taken)
+    emit_signal("show_results", results, time_taken, game_mode)
