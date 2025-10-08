@@ -92,3 +92,9 @@ static func calculate_delta_e_76(lab1: Vector3, lab2: Vector3) -> float:
     var delta_a = lab1.y - lab2.y
     var delta_b = lab1.z - lab2.z
     return sqrt(delta_L * delta_L + delta_a * delta_a + delta_b * delta_b)
+
+# Calculates the perceptual color difference between two colors using Delta E 76 in LAB color space
+static func color_diff(color1: Color, color2: Color) -> float:
+    var color1_lab = xyz_to_lab(rgb_to_xyz(color1))
+    var color2_lab = xyz_to_lab(rgb_to_xyz(color2))
+    return calculate_delta_e_76(color1_lab, color2_lab)

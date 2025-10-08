@@ -87,18 +87,10 @@ func add_answer(new_color: Color) -> void:
 # endregion
 
 
-# region Color Utils
+# region Utils
 # =====================================
-# COLOR CALCULATIONS & UTILITIES
+# UTILITY METHODS
 # =====================================
-func calc_color_diff(color1: Color, color2: Color) -> float:
-    var color1_lab = ColorUtils.xyz_to_lab(ColorUtils.rgb_to_xyz(color1))
-    var color2_lab = ColorUtils.xyz_to_lab(ColorUtils.rgb_to_xyz(color2))
-    var delta_e = ColorUtils.calculate_delta_e_76(color1_lab, color2_lab)
-    # convert to percentage
-    return delta_e
-
-
 # rounds a float to be only 4 characters long.
 func round4(value: float) -> String:
     var rounded = str(abs(100 - (round(value * 100) / 100)))
@@ -165,7 +157,7 @@ func _update_row(row: int, new_color) -> void:
         color_display.color = channel_colors[0]
 
         # Calculate difference and update label
-        var diff_to_answer = calc_color_diff(channel_colors[0], channel_colors[1])
+        var diff_to_answer = ColorUtils.color_diff(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
 
         print("Row %d, Channel %d: diff = %.2f" % [row, channel_index, diff_to_answer])
@@ -190,7 +182,7 @@ func _update_row(row: int, new_color) -> void:
             var total_diff = 0.0
             for i in range(3):
                 var loop_channel_colors = get_channel_colors(i, new_color, Globals.todays_color)
-                total_diff += calc_color_diff(loop_channel_colors[0], loop_channel_colors[1])
+                total_diff += ColorUtils.color_diff(loop_channel_colors[0], loop_channel_colors[1])
             var avg_diff = total_diff / 3.0
             if avg_diff < Globals.grade_diff_threshold[Globals.Grade.SAME]:
                 _play_sound(Globals.Grade.SAME)
