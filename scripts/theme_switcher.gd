@@ -2,6 +2,7 @@ extends Button
 
 signal on_theme_changed(new_theme)
 
+
 func _pressed() -> void:
     if Globals.theme == Globals.ColorTheme.LIGHT:
         Globals.set_theme(Globals.ColorTheme.DARK)

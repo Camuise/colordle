@@ -6,6 +6,7 @@ extends ColorRect
 @export_range(0.0, 1.0, 0.01) var value: float = 1.0
 @export_range(0.0, 1.0, 0.01) var alpha: float = 1.0
 
+
 func _ready() -> void:
     # Get the global singleton
     # Set initial value based on theme
@@ -20,6 +21,7 @@ func _ready() -> void:
     if Globals.music_player and not Globals.music_player.playing:
         Globals.music_player.play()
 
+
 # Helper to update value based on theme
 func _update_value_from_theme(theme_name: Globals.ColorTheme) -> void:
     match theme_name:
@@ -30,13 +32,15 @@ func _update_value_from_theme(theme_name: Globals.ColorTheme) -> void:
             saturation = 0.5
             value = 1.0
 
+
 # Called when theme changes
 func _on_theme_changed(new_theme: Globals.ColorTheme) -> void:
     _update_value_from_theme(new_theme)
 
+
 # Animate background color through ROYGBIV (rainbow) colors
 func _process(_delta: float) -> void:
     var time = Time.get_ticks_msec() / 1000.0
-    var hue = fmod(time * 0.02, 1.0) # Slow cycle through hues
+    var hue = fmod(time * 0.02, 1.0)  # Slow cycle through hues
     var rainbow_color = Color.from_hsv(hue, saturation, value, alpha)
     self.color = rainbow_color

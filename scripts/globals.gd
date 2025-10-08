@@ -118,6 +118,7 @@ var grade_diff_threshold = {
     Grade.SAME: 1.0,
 }
 
+
 class ChannelGrade:
     var grade: Grade
     var difference: float

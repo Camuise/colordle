@@ -29,6 +29,7 @@ func _get_date_string() -> String:
     var minute = str(now.minute).pad_zeros(2)
     return "%s, %s %s%s %s:%s" % [day_of_week, month, day, suffix, hour, minute]
 
+
 func _get_todays_color() -> Color:
     # step 1: get today's date in UNIX
     var _today: Dictionary = Time.get_datetime_dict_from_system()
@@ -44,9 +45,11 @@ func _get_todays_color() -> Color:
     print_debug("Generated HSV color: %s" % generated_color)
     return generated_color
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
     pass
+
 
 func _new_colordle_day() -> void:
     date_string = _get_date_string()
