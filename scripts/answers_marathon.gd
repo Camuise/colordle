@@ -12,10 +12,6 @@ func add_answer(new_color: Color) -> void:
     _update_row(current_row, new_color)
     current_row += 1
     _rerender_display()
-    if current_row >= answers.size():
-        print("All rows filled, moving on to next color.")
-        await get_tree().create_timer(0.5).timeout
-        _initiate_new_color()
 
 func _initiate_new_color() -> void:
     answers = Array()

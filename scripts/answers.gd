@@ -16,14 +16,17 @@ enum Grade {
     SAME,
 }
 
+
 class ChannelGrade:
     var grade: Grade
-    var difference : float
+    var difference: float
+
 
     func _init(_grade: Grade = Grade.NONE, _difference: float = 0.0) -> void:
         grade = _grade
         difference = _difference
     
+
     func _to_string() -> String:
         var grade_str = ""
         match grade:
@@ -37,12 +40,15 @@ class ChannelGrade:
                 grade_str = "SAME"
         return "(grade=%s, difference=%.2f)" % [grade_str, difference]
 
+
+
 class AnswerGrade:
     var channel_grades: Array[ChannelGrade] = []
     func _init():
         for i in range(4):
             channel_grades.append(ChannelGrade.new())
     
+
     func _to_string() -> String:
         var channels_str = ""
         for i in range(channel_grades.size()):
@@ -66,7 +72,6 @@ func _ready() -> void:
     _rerender_display()
     start_time = Time.get_unix_time_from_system()
 
-
 enum Result {
     CORRECT,
     FAR,
@@ -74,6 +79,7 @@ enum Result {
 }
 
 var sound_player: AudioStreamPlayer = null
+
 
 func _play_sound(sound: Result) -> void:
     if not sound_player:
@@ -111,10 +117,6 @@ func add_answer(new_color: Color) -> void:
     _update_row(current_row, new_color)
     current_row += 1
     _rerender_display()
-    if current_row >= answers.size():
-        print("All rows filled, moving to results.")
-        await get_tree().create_timer(0.5).timeout
-        Globals.show_game_results(answer_grades, start_time)
 
 
 func calc_color_diff(color1: Color, color2: Color) -> float:
