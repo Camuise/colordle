@@ -4,7 +4,6 @@ extends VBoxContainer
 # =====================================
 # STATE VARIABLES
 # =====================================
-
 var answers: Array = [
     null,
     null,
@@ -13,13 +12,9 @@ var answers: Array = [
     null,
     null
 ]
-
 var puzzle_info: Globals.PuzzleInfo = Globals.PuzzleInfo.new()
-
 var current_row: int = 0
-
 var sound_player: AudioStreamPlayer = null
-
 # endregion
 
 
@@ -82,6 +77,7 @@ func add_answer(new_color: Color) -> void:
     if current_row >= answers.size():
         # runs
         puzzle_completed()
+
 
 func puzzle_completed() -> void:
     print("All rows filled, moving to results.")
