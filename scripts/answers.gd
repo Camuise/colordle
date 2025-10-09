@@ -156,7 +156,7 @@ func _update_row(row: int, new_color) -> void:
         color_display.color = channel_colors[0]
 
         # Calculate difference and update label
-        var diff_to_answer = ColorUtils.color_diff(channel_colors[0], channel_colors[1])
+        var diff_to_answer = ColorUtils.color_similarity_percentage(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
 
         print("Row %d, Channel %d: diff = %.2f" % [row, channel_index, diff_to_answer])
@@ -181,7 +181,7 @@ func _update_row(row: int, new_color) -> void:
             var total_diff = 0.0
             for i in range(3):
                 var loop_channel_colors = get_channel_colors(i, new_color, Globals.todays_color)
-                total_diff += ColorUtils.color_diff(loop_channel_colors[0], loop_channel_colors[1])
+                total_diff += ColorUtils.color_similarity_percentage(loop_channel_colors[0], loop_channel_colors[1])
             var avg_diff = total_diff / 3.0
             if avg_diff < Globals.grade_diff_threshold[Globals.Grade.SAME]:
                 _play_sound(Globals.Grade.SAME)
