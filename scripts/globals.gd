@@ -31,7 +31,7 @@ enum GameState {
 }
 @export var game_state: GameState = GameState.MAIN_MENU
 signal game_state_changed(new_state: GameState)
-signal show_results(puzzle_info: Dictionary, game_mode: GameState, time_taken: float)
+signal show_results(puzzle_info: PuzzleInfo, game_mode: GameState, time_taken: float)
 
 
 func set_game_state(new_state: GameState) -> void:
@@ -43,7 +43,7 @@ func set_game_state(new_state: GameState) -> void:
     emit_signal("game_state_changed", old_state, game_state)
 
 
-func show_game_results(puzzle_info: Dictionary, game_mode: GameState) -> void:
+func show_game_results(puzzle_info: PuzzleInfo, game_mode: GameState) -> void:
     assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
     set_game_state(GameState.RESULTS)
     var time_taken = puzzle_info.time_ended - puzzle_info.time_started

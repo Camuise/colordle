@@ -82,11 +82,7 @@ func add_answer(new_color: Color) -> void:
 func puzzle_completed() -> void:
     print("All rows filled, moving to results.")
     await get_tree().create_timer(0.5).timeout
-    Globals.show_game_results({
-        "time_started": puzzle_info.time_started,
-        "time_ended": puzzle_info.time_ended,
-        "answers": puzzle_info.answers
-    }, Globals.GameState.DAILY)
+    Globals.show_game_results(puzzle_info, Globals.GameState.DAILY)
 # endregion
 
 
