@@ -192,8 +192,6 @@ func _update_row(row: int, new_color) -> void:
             else:
                 _play_sound(Globals.Grade.NONE)
 
-        print("Answer array now: %s" % str(puzzle_info))
-
 
 func _rerender_display() -> void:
     # if all answers are null, hide the AnswerContainer and show the NoAnswerContainer
