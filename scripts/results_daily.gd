@@ -37,15 +37,7 @@ class ResultsDisplay:
             var channel_display = display_row[channel]
             var channel_grade = attempt.channel_grades[channel]
             # Update border color based on grade
-            match channel_grade.grade:
-                Globals.Grade.NONE:
-                    channel_display.border.color = Color(0.5, 0.5, 0.5) # Gray
-                Globals.Grade.FAR:
-                    channel_display.border.color = Color(1, 0, 0) # Red
-                Globals.Grade.SAME:
-                    channel_display.border.color = Color(1, 1, 0) # Yellow
-                Globals.Grade.CORRECT:
-                    channel_display.border.color = Color(0, 1, 0) # Green
+            channel_display.border.color = Globals.grade_colors[channel_grade.grade]
             # Update color display (for simplicity, using grayscale based on value)
             var gray_value = clamp(channel_grade.value / 100.0, 0.0, 1.0)
             channel_display.color_display.color = Color(gray_value, gray_value, gray_value)
