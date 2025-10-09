@@ -98,6 +98,38 @@ func _get_todays_color(time: bool = false) -> Color:
     var generated_color = Color.from_hsv(rng.randf(), rng.randf(), rng.randf())
     print_debug("Generated HSV color: %s" % generated_color)
     return generated_color
+
+
+func _get_puzzle_number() -> int:
+    # Define the start date (January 1, 2023)
+    var start_date = Time.get_unix_time_from_datetime_dict({
+        "year": 2025,
+        "month": 8,
+        "day": 18,
+        "hour": 0,
+        "minute": 0,
+        "second": 0
+    })
+
+    # Get today's date at midnight
+    var today = Time.get_datetime_dict_from_system()
+    var today_unix = Time.get_unix_time_from_datetime_dict({
+        "year": today.year,
+        "month": today.month,
+        "day": today.day,
+        "hour": 0,
+        "minute": 0,
+        "second": 0
+    })
+
+    # Calculate days difference
+    var days_diff = int((today_unix - start_date) / 86400.0)  # 86400 seconds in a day
+    return days_diff + 1  # +1 to make it 1-indexed
+
+
+func _get_todays_date() -> String:
+    var today = Time.get_datetime_dict_from_system()
+    return "%02d/%02d" % [today.month, today.day]
 # endregion
 
 # region Grading
