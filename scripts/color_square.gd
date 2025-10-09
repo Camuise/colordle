@@ -3,6 +3,7 @@ extends ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    Globals.todays_color = Globals._get_todays_color()
     self.color = Globals.todays_color
 
 
