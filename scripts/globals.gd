@@ -156,11 +156,13 @@ var grade_diff_threshold = {
 
 class ChannelGrade:
     var grade: Grade
+    var value: float
     var difference: float
 
 
-    func _init(_grade: Grade = Grade.NONE, _difference: float = 0.0) -> void:
+    func _init(_grade: Grade = Grade.NONE, _value: float = 0.0, _difference: float = 0.0) -> void:
         grade = _grade
+        value = _value
         difference = _difference
 
 
@@ -175,7 +177,7 @@ class ChannelGrade:
                 grade_str = "CORRECT"
             Grade.SAME:
                 grade_str = "SAME"
-        return "(grade=%s, difference=%.2f)" % [grade_str, difference]
+        return "(grade=%s, value=%.2f, difference=%.2f)" % [grade_str, value, difference]
 
 
 
