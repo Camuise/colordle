@@ -179,7 +179,7 @@ class ChannelGrade:
 
 
 
-class AnswerGrade:
+class AnswerAttempt:
     var channel_grades: Array[ChannelGrade] = []
     func _init():
         for i in range(4):
@@ -192,19 +192,19 @@ class AnswerGrade:
             channels_str += "\n    " + str(channel_grades[i])
             if i < channel_grades.size() - 1:
                 channels_str += ","
-        return "AnswerGrade([%s\n])" % channels_str
+        return "AnswerAttempt([%s\n])" % channels_str
 
 
 
 class PuzzleInfo:
     var time_started: float = 0.0
     var time_ended: float = 0.0
-    var answers: Array[AnswerGrade] = []
+    var answers: Array[AnswerAttempt] = []
     func _init():
         time_started = 0
         time_ended = 0
         for i in range(6):
-            answers.append(AnswerGrade.new())
+            answers.append(AnswerAttempt.new())
 # endregion
 
 # region BG Music
