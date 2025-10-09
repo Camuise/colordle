@@ -153,6 +153,13 @@ var grade_diff_threshold = {
     Grade.SAME: 1.0,
 }
 
+var grade_colors = {
+    Grade.NONE: Color(0.2, 0.2, 0.2),  # Gray
+    Grade.FAR: Color(1, 0.5, 0),  # Orange
+    Grade.CORRECT: Color(0, 1, 0),  # Green
+    Grade.SAME: Color(0.643, 0.369, 0.914),  # Purple
+}
+
 
 class ChannelGrade:
     var grade: Grade
