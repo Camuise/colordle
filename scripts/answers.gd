@@ -102,29 +102,6 @@ func round4(value: float) -> String:
     # only 1 non-zero digit before the decimal, drop padding to left
     return rounded.pad_decimals(2)
 
-
-# Helper function to get channel colors
-func get_channel_colors(channel: int, new_color: Color, correct_color: Color) -> Array:
-    if channel == 3:
-        return [new_color, correct_color]
-    match Globals.colordle_format:
-        Globals.ColorFormat.RGB:
-            match channel:
-                0:
-                    return [Color(new_color.r, 0, 0), Color(correct_color.r, 0, 0)]
-                1:
-                    return [Color(0, new_color.g, 0), Color(0, correct_color.g, 0)]
-                2:
-                    return [Color(0, 0, new_color.b), Color(0, 0, correct_color.b)]
-        Globals.ColorFormat.HSV:
-            match channel:
-                0:
-                    return [Color.from_hsv(new_color.h, 1, 1), Color.from_hsv(correct_color.h, 1, 1)]
-                1:
-                    return [Color.from_hsv(new_color.h, new_color.s, 1), Color.from_hsv(correct_color.h, correct_color.s, 1)]
-                2:
-                    return [Color.from_hsv(0, 0, new_color.v), Color.from_hsv(0, 0, correct_color.v)]
-    return [Color(), Color()]
 # endregion
 
 
@@ -152,25 +129,11 @@ func _update_row(row: int, new_color) -> void:
             channel_container.modulate = Color(1, 1, 1, 1)
 
         # Get display colors for this channel
-        var channel_colors = get_channel_colors(channel_index, new_color, Globals.todays_color)
+        var channel_colors = Globals.get_channel_colors(channel_index, new_color, Globals.todays_color)
         color_display.color = channel_colors[0]
 
         # Store the actual channel value for results display
-        if channel_index < 3:  # Only for RGB/HSV channels, not the full color channel
-            match Globals.colordle_format:
-                Globals.ColorFormat.RGB:
-                    match channel_index:
-                        0: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.r
-                        1: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.g
-                        2: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.b
-                Globals.ColorFormat.HSV:
-                    match channel_index:
-                        0: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.h
-                        1: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.s
-                        2: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.v
-        else:
-            # For the full color channel (index 3), we could store a composite value or just use 1.0
-            puzzle_info.answers[row].channel_grades[channel_index].value = 1.0
+        puzzle_info.answers[row].channel_grades[channel_index].value = Globals.get_channel_value(new_color, channel_index)
 
         # Calculate difference and update label
         var diff_to_answer = ColorUtils.color_similarity_percentage(channel_colors[0], channel_colors[1])
@@ -197,7 +160,7 @@ func _update_row(row: int, new_color) -> void:
         if not is_null and channel_index == 3:
             var total_diff = 0.0
             for i in range(3):
-                var loop_channel_colors = get_channel_colors(i, new_color, Globals.todays_color)
+                var loop_channel_colors = Globals.get_channel_colors(i, new_color, Globals.todays_color)
                 total_diff += ColorUtils.color_similarity_percentage(loop_channel_colors[0], loop_channel_colors[1])
             var avg_diff = total_diff / 3.0
             if avg_diff < Globals.grade_diff_threshold[Globals.Grade.SAME]:

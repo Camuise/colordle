@@ -216,6 +216,86 @@ class PuzzleInfo:
             answers.append(AnswerAttempt.new())
 # endregion
 
+
+# region Color Utilities
+# ============================================================================
+# COLOR CHANNEL UTILITIES
+# ============================================================================
+# Helper function to get channel colors for gameplay (returns array with answer and correct colors)
+func get_channel_colors(channel: int, new_color: Color, correct_color: Color) -> Array:
+    if channel == 3:
+        return [new_color, correct_color]
+    match colordle_format:
+        ColorFormat.RGB:
+            match channel:
+                0:
+                    return [Color(new_color.r, 0, 0), Color(correct_color.r, 0, 0)]
+                1:
+                    return [Color(0, new_color.g, 0), Color(0, correct_color.g, 0)]
+                2:
+                    return [Color(0, 0, new_color.b), Color(0, 0, correct_color.b)]
+        ColorFormat.HSV:
+            match channel:
+                0:
+                    return [Color.from_hsv(new_color.h, 1, 1), Color.from_hsv(correct_color.h, 1, 1)]
+                1:
+                    return [Color.from_hsv(new_color.h, new_color.s, 1), Color.from_hsv(correct_color.h, correct_color.s, 1)]
+                2:
+                    return [Color.from_hsv(0, 0, new_color.v), Color.from_hsv(0, 0, correct_color.v)]
+    return [Color(), Color()]
+
+
+# Helper function to get channel color for display (returns single color based on stored values)
+func get_channel_color_for_display(channel: int, channel_values: Array) -> Color:
+    # channel_values should contain [r, g, b] or [h, s, v] depending on current format
+    if channel == 3:
+        # For the full color channel, reconstruct the full color
+        match colordle_format:
+            ColorFormat.RGB:
+                return Color(channel_values[0], channel_values[1], channel_values[2])
+            ColorFormat.HSV:
+                return Color.from_hsv(channel_values[0], channel_values[1], channel_values[2])
+
+    # For individual channels, show the channel-specific color
+    match colordle_format:
+        ColorFormat.RGB:
+            match channel:
+                0:
+                    return Color(channel_values[0], 0, 0)
+                1:
+                    return Color(0, channel_values[1], 0)
+                2:
+                    return Color(0, 0, channel_values[2])
+        ColorFormat.HSV:
+            match channel:
+                0:
+                    return Color.from_hsv(channel_values[0], 1, 1)
+                1:
+                    return Color.from_hsv(channel_values[0], channel_values[1], 1)
+                2:
+                    return Color.from_hsv(0, 0, channel_values[2])
+
+    return Color(0.5, 0.5, 0.5)  # Default gray fallback
+
+
+# Helper function to extract channel value from a color based on current format and channel index
+func get_channel_value(color: Color, channel_index: int) -> float:
+    match colordle_format:
+        ColorFormat.RGB:
+            match channel_index:
+                0: return color.r
+                1: return color.g
+                2: return color.b
+                _: return 1.0  # For channel 3 (full color), return default
+        ColorFormat.HSV:
+            match channel_index:
+                0: return color.h
+                1: return color.s
+                2: return color.v
+                _: return 1.0  # For channel 3 (full color), return default
+    return 1.0  # Default fallback
+# endregion
+
 # region BG Music
 # ============================================================================
 # BACKGROUND MUSIC
