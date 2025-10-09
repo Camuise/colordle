@@ -78,7 +78,7 @@ func set_color_format(new_format: ColorFormat) -> void:
 
 
 func _get_todays_color(time: bool = false) -> Color:
-    # step 1: get today's date (excluding time) in UNIX
+    # step 1: get today's date in UNIX
     var _today: Dictionary = Time.get_datetime_dict_from_system()
 
     if !time:
@@ -92,10 +92,13 @@ func _get_todays_color(time: bool = false) -> Color:
 
     # step 4: use that to seed a random number generator
     var rng = RandomNumberGenerator.new()
-    rng.seed = _today_unix
+    rng.seed = hash(_today_unix)  # Hash the seed for better distribution
 
-    # step 5: generate a random color
-    var generated_color = Color.from_hsv(rng.randf(), rng.randf(), rng.randf())
+    # step 5: generate a random color with more varied hue and saturation
+    var hue = rng.randf()
+    var saturation = rng.randf_range(0.5, 1.0)  # Avoid dull colors
+    var value = rng.randf_range(0.5, 1.0)  # Avoid too dark colors
+    var generated_color = Color.from_hsv(hue, saturation, value)
     print_debug("Generated HSV color: %s" % generated_color)
     return generated_color
 
