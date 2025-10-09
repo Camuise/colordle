@@ -155,6 +155,23 @@ func _update_row(row: int, new_color) -> void:
         var channel_colors = get_channel_colors(channel_index, new_color, Globals.todays_color)
         color_display.color = channel_colors[0]
 
+        # Store the actual channel value for results display
+        if channel_index < 3:  # Only for RGB/HSV channels, not the full color channel
+            match Globals.colordle_format:
+                Globals.ColorFormat.RGB:
+                    match channel_index:
+                        0: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.r
+                        1: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.g
+                        2: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.b
+                Globals.ColorFormat.HSV:
+                    match channel_index:
+                        0: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.h
+                        1: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.s
+                        2: puzzle_info.answers[row].channel_grades[channel_index].value = new_color.v
+        else:
+            # For the full color channel (index 3), we could store a composite value or just use 1.0
+            puzzle_info.answers[row].channel_grades[channel_index].value = 1.0
+
         # Calculate difference and update label
         var diff_to_answer = ColorUtils.color_similarity_percentage(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
