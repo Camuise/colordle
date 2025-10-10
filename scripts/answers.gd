@@ -175,7 +175,6 @@ func _update_row(row: int, new_color) -> void:
 func _rerender_display() -> void:
     # if all answers are null, hide the AnswerContainer and show the NoAnswerContainer
     var is_answers_null: bool = answers.all(func(a): return a == null)
-    print("Rerendering display, answers null: %s" % is_answers_null)
     %AnswerContainer.visible = not is_answers_null
     %NoAnswerContainer.visible = is_answers_null
 
