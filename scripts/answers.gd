@@ -70,12 +70,13 @@ func _on_input_answer_entered(new_answer: Color) -> void:
 
 
 func add_answer(new_color: Color) -> void:
+    if current_row >= answers.size():
+        return  # All rows filled, do nothing
     answers[current_row] = new_color
     _update_row(current_row, new_color)
     current_row += 1
     _rerender_display()
     if current_row >= answers.size():
-        # runs
         puzzle_completed()
 
 
