@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Colordle"
-config/version="0.0.8-dev"
+config/version="0.0.9-dev"
 run/main_scene="uid://ddib5ilnqxn7m"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0.9490196, 0.87058824, 0.8156863, 1)
