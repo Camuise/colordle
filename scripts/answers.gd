@@ -139,7 +139,6 @@ func _update_row(row: int, new_color) -> void:
         var diff_to_answer = ColorUtils.color_similarity_percentage(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
 
-        print("Row %d, Channel %d: diff = %.2f" % [row, channel_index, diff_to_answer])
         puzzle_info.answers[row].channel_grades[channel_index].difference = diff_to_answer
 
         # Map difference to border color
