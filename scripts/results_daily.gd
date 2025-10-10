@@ -80,3 +80,29 @@ func _on_show_results(puzzle_info: Globals.PuzzleInfo, _game_mode: int, _time_ta
     results_display.set_title("Colordle #%s - %s" % [Globals._get_puzzle_number(), Globals._get_todays_date()])
     for i in range(puzzle_info.answers.size()):
         results_display.update_answer_attempt(i, puzzle_info.answers[i])
+
+
+func _on_share_requested() -> void:
+    # 1. Add title + date
+    var share_text: String = "Colordle #%s - %s\n\n" % [Globals._get_puzzle_number(), Globals._get_todays_date()]
+
+    # 2. Add grades (emojis)
+    for answer in results_display.answers:
+        if answer == null:
+            share_text += "⬛⬛⬛⬛\n"  # Empty attempt
+            continue
+        for channel_grade in answer.channel_grades:
+            match channel_grade.grade:
+                Globals.Grade.SAME:
+                    share_text += "🟪"  # Purple square
+                Globals.Grade.CORRECT:
+                    share_text += "🟩"  # Green square
+                Globals.Grade.FAR:
+                    share_text += "🟧"  # Orange square
+                Globals.Grade.NONE:
+                    share_text += "⬛"  # Black square
+            if channel_grade == answer.channel_grades[-1]:
+                share_text += "\n"
+
+    # 3. Copy to clipboard
+    DisplayServer.clipboard_set(share_text)

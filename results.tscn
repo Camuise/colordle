@@ -1222,3 +1222,4 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="Daily/BackButton" to="Daily/BackButton" method="_on_pressed"]
 [connection signal="pressed" from="Daily/ShareButton" to="Daily/ShareButton" method="_on_pressed"]
+[connection signal="share_requested" from="Daily/ShareButton" to="Daily" method="_on_share_requested"]
