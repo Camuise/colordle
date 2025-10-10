@@ -1,10 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwrdulnjcr84y"]
+[gd_scene load_steps=18 format=3 uid="uid://bwrdulnjcr84y"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_q6ciw"]
-[ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://assets/images/theme/sun.png" id="2_8rgm7"]
 [ext_resource type="Texture2D" uid="uid://hag45jupbmwk" path="res://assets/images/arrow-left.png" id="2_aljmc"]
 [ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="3_aljmc"]
-[ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://scripts/theme_switcher.gd" id="3_k6q3y"]
 [ext_resource type="Script" uid="uid://br0xf55gnfsg" path="res://scripts/date_marathon.gd" id="4_53iya"]
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="7_1fcjr"]
 [ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://scripts/color_square.gd" id="7_xpyc5"]
@@ -64,21 +62,14 @@ grow_horizontal = 2
 layout_mode = 0
 offset_right = 196.0
 offset_bottom = 100.0
+theme_override_constants/separation = 20
 
 [node name="BackButton" type="Button" parent="Header/Left"]
 layout_mode = 2
 icon = ExtResource("2_aljmc")
 script = ExtResource("3_aljmc")
 
-[node name="ThemeButton" type="Button" parent="Header/Left"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-icon = ExtResource("2_8rgm7")
-expand_icon = true
-script = ExtResource("3_k6q3y")
-
 [node name="Infinidle" type="Label" parent="Header/Left"]
-custom_minimum_size = Vector2(201, 0)
 layout_mode = 2
 text = "Infinidle	"
 horizontal_alignment = 2

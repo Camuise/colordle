@@ -1,10 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://jdbb2vhovioi"]
+[gd_scene load_steps=18 format=3 uid="uid://jdbb2vhovioi"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://hag45jupbmwk" path="res://assets/images/arrow-left.png" id="2_vf2lc"]
-[ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://assets/images/theme/sun.png" id="3_fos0i"]
 [ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="3_oixts"]
-[ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://scripts/theme_switcher.gd" id="4_03owx"]
 [ext_resource type="Script" uid="uid://cps3fotr6dc7i" path="res://scripts/date.gd" id="5_5vvyt"]
 [ext_resource type="Script" uid="uid://di2vud6wluuur" path="res://scripts/color_square.gd" id="6_3dxm6"]
 [ext_resource type="Script" uid="uid://eoa08hh0vlu8" path="res://scripts/format_select.gd" id="6_lgr22"]
@@ -64,18 +62,12 @@ grow_horizontal = 2
 layout_mode = 0
 offset_right = 196.0
 offset_bottom = 100.0
+theme_override_constants/separation = 20
 
 [node name="BackButton" type="Button" parent="Header/Left"]
 layout_mode = 2
 icon = ExtResource("2_vf2lc")
 script = ExtResource("3_oixts")
-
-[node name="ThemeButton" type="Button" parent="Header/Left"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-icon = ExtResource("3_fos0i")
-expand_icon = true
-script = ExtResource("4_03owx")
 
 [node name="Right" type="HBoxContainer" parent="Header"]
 layout_mode = 1
