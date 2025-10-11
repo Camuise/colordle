@@ -189,6 +189,7 @@ class ChannelGrade:
 
 
 class AnswerAttempt:
+    var color: Color = Color(0, 0, 0, 0)  # null color (transparent black)
     var channel_grades: Array[ChannelGrade] = []
     func _init():
         for i in range(4):
@@ -201,7 +202,7 @@ class AnswerAttempt:
             channels_str += "\n    " + str(channel_grades[i])
             if i < channel_grades.size() - 1:
                 channels_str += ","
-        return "AnswerAttempt([%s\n])" % channels_str
+        return "AnswerAttempt(color=%s, [%s\n])" % [color, channels_str]
 
 
 

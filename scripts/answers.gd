@@ -4,14 +4,6 @@ extends VBoxContainer
 # =====================================
 # STATE VARIABLES
 # =====================================
-var answers: Array = [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
-]
 var puzzle_info: Globals.PuzzleInfo = Globals.PuzzleInfo.new()
 var current_row: int = 0
 var sound_player: AudioStreamPlayer = null
@@ -70,13 +62,19 @@ func _on_input_answer_entered(new_answer: Color) -> void:
 
 
 func add_answer(new_color: Color) -> void:
-    if current_row >= answers.size():
+    if current_row >= puzzle_info.answers.size():
         return  # All rows filled, do nothing
-    answers[current_row] = new_color
+    puzzle_info.answers[current_row].color = new_color
     _update_row(current_row, new_color)
     current_row += 1
     _rerender_display()
-    if current_row >= answers.size():
+    
+    # Check if the color matches exactly
+    if ColorUtils.color_similarity_percentage(new_color, Globals.todays_color) > 95.0:
+        for i in range(current_row, puzzle_info.answers.size()):
+            _update_row(i, null)
+        puzzle_completed()
+    elif current_row >= puzzle_info.answers.size():
         puzzle_completed()
 
 
@@ -137,7 +135,7 @@ func _update_row(row: int, new_color) -> void:
         puzzle_info.answers[row].channel_grades[channel_index].value = Globals.get_channel_value(new_color, channel_index)
 
         # Calculate difference and update label
-        var diff_to_answer = ColorUtils.color_similarity_percentage(channel_colors[0], channel_colors[1])
+        var diff_to_answer = ColorUtils.color_diff_percentage(channel_colors[0], channel_colors[1])
         percentage_label.text = round4(diff_to_answer) + "%"
 
         puzzle_info.answers[row].channel_grades[channel_index].difference = diff_to_answer
@@ -161,7 +159,7 @@ func _update_row(row: int, new_color) -> void:
             var total_diff = 0.0
             for i in range(3):
                 var loop_channel_colors = Globals.get_channel_colors(i, new_color, Globals.todays_color)
-                total_diff += ColorUtils.color_similarity_percentage(loop_channel_colors[0], loop_channel_colors[1])
+                total_diff += ColorUtils.color_diff_percentage(loop_channel_colors[0], loop_channel_colors[1])
             var avg_diff = total_diff / 3.0
             if avg_diff < Globals.grade_diff_threshold[Globals.Grade.SAME]:
                 _play_sound(Globals.Grade.SAME)
@@ -174,13 +172,18 @@ func _update_row(row: int, new_color) -> void:
 
 
 func _rerender_display() -> void:
-    # if all answers are null, hide the AnswerContainer and show the NoAnswerContainer
-    var is_answers_null: bool = answers.all(func(a): return a == null)
+    # if all answers are null (transparent), hide the AnswerContainer and show the NoAnswerContainer
+    var is_answers_null: bool = puzzle_info.answers.all(func(a): return a.color.a == 0)
     %AnswerContainer.visible = not is_answers_null
     %NoAnswerContainer.visible = is_answers_null
 
-    for row_index in range(answers.size()):
-        _update_row(row_index, answers[row_index])
+    for row_index in range(puzzle_info.answers.size()):
+        var answer_attempt = puzzle_info.answers[row_index]
+        # Pass null if color is transparent (not set), otherwise pass the color
+        if answer_attempt.color.a > 0:
+            _update_row(row_index, answer_attempt.color)
+        else:
+            _update_row(row_index, null)
 # endregion
 
 
