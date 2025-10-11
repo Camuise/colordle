@@ -42,10 +42,25 @@ class ResultsDisplay:
         var channel_values: Array = []
         for i in range(3):  # Only first 3 channels have actual values (RGB or HSV)
             channel_values.append(attempt.channel_grades[i].value)
+            print(attempt.channel_grades[i])
 
+        print("Updating display for attempt %d with colors %s" % [attempt_index, channel_values])
         for channel in range(display_row.size()):
             var channel_display = display_row[channel]
             var channel_grade = attempt.channel_grades[channel]
+            
+            # if is 0, then we know its null so set to 20% opacity
+            if attempt.color.a == 0:
+                channel_display.grade_color.modulate.a = 0.5
+                channel_display.channel_color.color = Color(1, 1, 1, 0.5)
+                channel_display.percentage_label.visible = false
+                continue
+            
+            # Make sure elements are visible for valid attempts
+            channel_display.grade_color.modulate.a = 1.0
+            channel_display.channel_color.modulate.a = 1.0
+            channel_display.percentage_label.visible = true
+            
             # Update border color based on grade
             channel_display.grade_color.color = Globals.grade_colors[channel_grade.grade]
 
@@ -88,8 +103,8 @@ func _on_share_requested() -> void:
 
     # 2. Add grades (emojis)
     for answer in results_display.answers:
-        if answer == null:
-            share_text += "⬛⬛⬛⬛\n"  # Empty attempt
+        if answer == Color(0, 0, 0, 0):
+            share_text += ""  # Empty attempt
             continue
         for channel_grade in answer.channel_grades:
             match channel_grade.grade:
