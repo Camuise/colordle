@@ -10,9 +10,10 @@ func puzzle_completed() -> void:
 
 
 func _initiate_new_color() -> void:
-    answers = Array()
-    answers.resize(6)
-    answers.fill(null)
+    # Reset puzzle info with fresh AnswerAttempt objects
+    puzzle_info.answers.clear()
+    for i in range(6):
+        puzzle_info.answers.append(Globals.AnswerAttempt.new())
     current_row = 0
     _rerender_display()
     emit_signal("new_color_initiated")

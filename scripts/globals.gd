@@ -217,6 +217,30 @@ class PuzzleInfo:
             answers.append(AnswerAttempt.new())
 # endregion
 
+# region Infinidle Mode
+# ============================================================================
+# INFINIDLE-SPECIFIC THINGS
+# ============================================================================
+var infinidle_counter: int = 0
+
+var infinidle_win_rows: Dictionary = {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+}
+
+func reset_infinidle_stats() -> void:
+    infinidle_counter = 0
+    for key in infinidle_win_rows.keys():
+        infinidle_win_rows[key] = 0
+
+func record_infinidle_win(row: int) -> void:
+    if infinidle_win_rows.has(row):
+        infinidle_win_rows[row] += 1
+# endregion
 
 # region Color Utilities
 # ============================================================================
