@@ -210,6 +210,7 @@ class PuzzleInfo:
     var time_started: float = 0.0
     var time_ended: float = 0.0
     var answers: Array[AnswerAttempt] = []
+    var successful: bool = false
 
 
     func _init():

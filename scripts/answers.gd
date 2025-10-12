@@ -16,8 +16,7 @@ var sound_player: AudioStreamPlayer = null
 # =====================================
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
-    _rerender_display()
-    puzzle_info.time_started = Time.get_unix_time_from_system()
+    Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
 # endregion
 
 
@@ -68,20 +67,22 @@ func add_answer(new_color: Color) -> void:
     _update_row(current_row, new_color)
     current_row += 1
     _rerender_display()
-    
+
     # Check if the color matches exactly
     if ColorUtils.color_similarity_percentage(new_color, Globals.todays_color) > 95.0:
-        for i in range(current_row, puzzle_info.answers.size()):
-            _update_row(i, null)
-        puzzle_completed()
+        puzzle_completed(true)
     elif current_row >= puzzle_info.answers.size():
-        puzzle_completed()
+        puzzle_completed(false)
 
 
-func puzzle_completed() -> void:
+func puzzle_completed(successful: bool) -> void:
+    var status = "completed" if successful else "failed"
     print("All rows filled, moving to results.")
     await get_tree().create_timer(0.5).timeout
     Globals.show_game_results(puzzle_info, Globals.GameState.DAILY)
+    puzzle_info.time_ended = Time.get_unix_time_from_system()
+    puzzle_info.successful = successful
+    print("Puzzle %s. Time taken: %f seconds. Successful: %s" % [status, puzzle_info.time_ended - puzzle_info.time_started, str(puzzle_info.successful)])
 # endregion
 
 
@@ -194,4 +195,10 @@ func _rerender_display() -> void:
 func _on_color_format_changed(_new_format: Globals.ColorFormat) -> void:
     print_debug("Rerendering display for color format change")
     _rerender_display()
+
+
+func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
+    if new_state == Globals.GameState.DAILY:
+        _rerender_display()
+        puzzle_info.time_started = Time.get_unix_time_from_system()
 # endregion
