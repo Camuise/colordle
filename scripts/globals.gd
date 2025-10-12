@@ -187,10 +187,11 @@ class ChannelGrade:
         return "(grade=%s, value=%.2f, difference=%.2f)" % [grade_str, value, difference]
 
 
-
 class AnswerAttempt:
     var color: Color = Color(0, 0, 0, 0)  # null color (transparent black)
     var channel_grades: Array[ChannelGrade] = []
+
+
     func _init():
         for i in range(4):
             channel_grades.append(ChannelGrade.new())
@@ -205,11 +206,12 @@ class AnswerAttempt:
         return "AnswerAttempt(color=%s, [%s\n])" % [color, channels_str]
 
 
-
 class PuzzleInfo:
     var time_started: float = 0.0
     var time_ended: float = 0.0
     var answers: Array[AnswerAttempt] = []
+
+
     func _init():
         time_started = 0
         time_ended = 0
