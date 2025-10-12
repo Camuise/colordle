@@ -7,6 +7,10 @@ extends VBoxContainer
 var puzzle_info: Globals.PuzzleInfo = Globals.PuzzleInfo.new()
 var current_row: int = 0
 var sound_player: AudioStreamPlayer = null
+
+# Debug state
+var debug_mode_active: bool = false
+var debug_action: String = ""  # "fail", "pass", or "perfect"
 # endregion
 
 
@@ -17,6 +21,52 @@ var sound_player: AudioStreamPlayer = null
 func _ready() -> void:
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
     Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
+
+
+func _input(event: InputEvent) -> void:
+    # Only allow debug shortcuts in debug builds
+    if not OS.is_debug_build():
+        return
+
+    # Handle debug shortcuts
+    if event is InputEventKey and event.pressed and not event.echo:
+        # Check if any debug action is pressed
+        if Input.is_action_just_pressed("debug_puzzle_fail"):
+            debug_mode_active = true
+            debug_action = "fail"
+            print_debug("Debug mode: Press a number key (1-6) to fail at that row")
+            return
+        elif Input.is_action_just_pressed("debug_puzzle_pass"):
+            debug_mode_active = true
+            debug_action = "pass"
+            print_debug("Debug mode: Press a number key (1-6) to pass at that row")
+            return
+        elif Input.is_action_just_pressed("debug_puzzle_perfect"):
+            debug_mode_active = true
+            debug_action = "perfect"
+            print_debug("Debug mode: Press a number key (1-6) to get perfect at that row")
+            return
+
+        # If in debug mode, wait for number key
+        if debug_mode_active:
+            var row_number = -1
+            match event.keycode:
+                KEY_1: row_number = 1
+                KEY_2: row_number = 2
+                KEY_3: row_number = 3
+                KEY_4: row_number = 4
+                KEY_5: row_number = 5
+                KEY_6: row_number = 6
+
+            if row_number >= 1 and row_number <= 6:
+                _trigger_debug_completion(debug_action, row_number)
+                debug_mode_active = false
+                debug_action = ""
+            else:
+                # Cancel debug mode if a non-number key is pressed
+                print_debug("Debug mode cancelled")
+                debug_mode_active = false
+                debug_action = ""
 # endregion
 
 
@@ -55,6 +105,77 @@ func _play_sound(sound: Globals.Grade) -> void:
 # =====================================
 # ANSWER MANAGEMENT
 # =====================================
+func _trigger_debug_completion(action: String, target_row: int) -> void:
+    print_debug("Triggering debug completion: %s at row %d" % [action, target_row])
+
+    # Fill rows up to target_row with appropriate colors
+    for row in range(target_row):
+        var debug_color: Color
+
+        match action:
+            "perfect":
+                # Perfect match - use exact color
+                debug_color = Globals.todays_color
+            "pass":
+                # Close but not perfect - slightly off from correct color
+                var h_offset = randf_range(-0.05, 0.05)
+                var s_offset = randf_range(-0.05, 0.05)
+                var v_offset = randf_range(-0.05, 0.05)
+                debug_color = Color.from_hsv(
+                    clamp(Globals.todays_color.h + h_offset, 0.0, 1.0),
+                    clamp(Globals.todays_color.s + s_offset, 0.0, 1.0),
+                    clamp(Globals.todays_color.v + v_offset, 0.0, 1.0)
+                )
+            "fail":
+                # Random color that's far from correct
+                debug_color = Color.from_hsv(randf(), randf(), randf())
+
+        # On the last row for "perfect" and "pass", use the exact color
+        if row == target_row - 1 and (action == "perfect" or action == "pass"):
+            if action == "perfect":
+                debug_color = Globals.todays_color
+            else:
+                # For "pass", make it close enough to trigger completion
+                var similarity_threshold = 96.0  # Just above 95% threshold
+                debug_color = _generate_close_color(Globals.todays_color, similarity_threshold)
+
+        puzzle_info.answers[row].color = debug_color
+        _update_row(row, debug_color)
+
+    # Update current_row and rerender
+    current_row = target_row
+    _rerender_display()
+
+    # Trigger completion
+    if action == "perfect" or action == "pass":
+        puzzle_completed(true)
+    else:
+        # For fail, need to fill remaining rows with random colors
+        for row in range(target_row, puzzle_info.answers.size()):
+            var fail_color = Color.from_hsv(randf(), randf(), randf())
+            puzzle_info.answers[row].color = fail_color
+            _update_row(row, fail_color)
+        current_row = puzzle_info.answers.size()
+        _rerender_display()
+        puzzle_completed(false)
+
+
+func _generate_close_color(target: Color, similarity: float) -> Color:
+    # Generate a color that has the specified similarity percentage to target
+    # Higher similarity = closer to target
+    var diff_allowed = (100.0 - similarity) / 100.0
+
+    var h_offset = randf_range(-diff_allowed * 0.1, diff_allowed * 0.1)
+    var s_offset = randf_range(-diff_allowed * 0.2, diff_allowed * 0.2)
+    var v_offset = randf_range(-diff_allowed * 0.2, diff_allowed * 0.2)
+
+    return Color.from_hsv(
+        clamp(target.h + h_offset, 0.0, 1.0),
+        clamp(target.s + s_offset, 0.0, 1.0),
+        clamp(target.v + v_offset, 0.0, 1.0)
+    )
+
+
 func _on_input_answer_entered(new_answer: Color) -> void:
     print("New answer entered: %s" % new_answer)
     add_answer(new_answer)
