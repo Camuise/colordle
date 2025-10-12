@@ -103,7 +103,7 @@ func _on_share_requested() -> void:
 
     # 2. Add grades (emojis)
     for answer in results_display.answers:
-        if answer == Color(0, 0, 0, 0):
+        if answer.color.a == 0:
             share_text += ""  # Empty attempt
             continue
         for channel_grade in answer.channel_grades:
