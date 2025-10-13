@@ -108,72 +108,166 @@ func _play_sound(sound: Globals.Grade) -> void:
 func _trigger_debug_completion(action: String, target_row: int) -> void:
     print_debug("Triggering debug completion: %s at row %d" % [action, target_row])
 
-    # Fill rows up to target_row with appropriate colors
-    for row in range(target_row):
-        var debug_color: Color
+    match action:
+        "fail":
+            # For fail, always fill all 6 rows with random garbage colors
+            # that are guaranteed to be far from the correct answer
+            for row in range(puzzle_info.answers.size()):
+                var fail_color = _generate_far_color(Globals.todays_color)
+                puzzle_info.answers[row].color = fail_color
+                _update_row(row, fail_color)
+            current_row = puzzle_info.answers.size()
+            _rerender_display()
+            _debug_complete_puzzle(false)
 
-        match action:
-            "perfect":
-                # Perfect match - use exact color
-                debug_color = Globals.todays_color
-            "pass":
-                # Close but not perfect - slightly off from correct color
-                var h_offset = randf_range(-0.05, 0.05)
-                var s_offset = randf_range(-0.05, 0.05)
-                var v_offset = randf_range(-0.05, 0.05)
-                debug_color = Color.from_hsv(
-                    clamp(Globals.todays_color.h + h_offset, 0.0, 1.0),
-                    clamp(Globals.todays_color.s + s_offset, 0.0, 1.0),
-                    clamp(Globals.todays_color.v + v_offset, 0.0, 1.0)
-                )
-            "fail":
-                # Random color that's far from correct
-                debug_color = Color.from_hsv(randf(), randf(), randf())
+        "pass", "perfect":
+            # Fill rows up to target_row with appropriate colors
+            for row in range(target_row):
+                var debug_color: Color
 
-        # On the last row for "perfect" and "pass", use the exact color
-        if row == target_row - 1 and (action == "perfect" or action == "pass"):
-            if action == "perfect":
-                debug_color = Globals.todays_color
-            else:
-                # For "pass", make it close enough to trigger completion
-                var similarity_threshold = 96.0  # Just above 95% threshold
-                debug_color = _generate_close_color(Globals.todays_color, similarity_threshold)
+                # On the last row, determine if this should be the winning color
+                if row == target_row - 1:
+                    if action == "perfect":
+                        # Perfect match - use exact color (100% similarity)
+                        debug_color = Globals.todays_color
+                    else:  # pass
+                        # For "pass", make it close enough to trigger completion but NOT perfect
+                        # Target: between 95.5% and 98% similarity (above 95% threshold but not 100%)
+                        debug_color = _generate_pass_color(Globals.todays_color)
+                else:
+                    # For intermediate rows, use progressively better but not winning colors
+                    if action == "perfect":
+                        # For perfect mode, intermediate rows are also perfect
+                        debug_color = Globals.todays_color
+                    else:  # pass
+                        # For pass mode, intermediate rows should be "okay" guesses
+                        # but not good enough to win (similarity around 70-90%)
+                        debug_color = _generate_intermediate_color(Globals.todays_color)
 
-        puzzle_info.answers[row].color = debug_color
-        _update_row(row, debug_color)
+                puzzle_info.answers[row].color = debug_color
+                _update_row(row, debug_color)
 
-    # Update current_row and rerender
-    current_row = target_row
-    _rerender_display()
-
-    # Trigger completion
-    if action == "perfect" or action == "pass":
-        puzzle_completed(true)
-    else:
-        # For fail, need to fill remaining rows with random colors
-        for row in range(target_row, puzzle_info.answers.size()):
-            var fail_color = Color.from_hsv(randf(), randf(), randf())
-            puzzle_info.answers[row].color = fail_color
-            _update_row(row, fail_color)
-        current_row = puzzle_info.answers.size()
-        _rerender_display()
-        puzzle_completed(false)
+            # Update current_row and rerender
+            current_row = target_row
+            _rerender_display()
+            _debug_complete_puzzle(true)
 
 
-func _generate_close_color(target: Color, similarity: float) -> Color:
-    # Generate a color that has the specified similarity percentage to target
-    # Higher similarity = closer to target
-    var diff_allowed = (100.0 - similarity) / 100.0
+func _generate_pass_color(target: Color) -> Color:
+    # Generate a color that is close enough to pass (>95% similarity) but NOT perfect
+    # We want similarity between 95.5% and 98% to ensure it's a clear pass, not perfect
+    var attempts = 0
+    var max_attempts = 20
 
-    var h_offset = randf_range(-diff_allowed * 0.1, diff_allowed * 0.1)
-    var s_offset = randf_range(-diff_allowed * 0.2, diff_allowed * 0.2)
-    var v_offset = randf_range(-diff_allowed * 0.2, diff_allowed * 0.2)
+    while attempts < max_attempts:
+        # Small random offsets to create a near-match
+        var h_offset = randf_range(-0.02, 0.02)
+        var s_offset = randf_range(-0.03, 0.03)
+        var v_offset = randf_range(-0.03, 0.03)
 
-    return Color.from_hsv(
-        clamp(target.h + h_offset, 0.0, 1.0),
-        clamp(target.s + s_offset, 0.0, 1.0),
-        clamp(target.v + v_offset, 0.0, 1.0)
-    )
+        var test_color = Color.from_hsv(
+            clamp(target.h + h_offset, 0.0, 1.0),
+            clamp(target.s + s_offset, 0.0, 1.0),
+            clamp(target.v + v_offset, 0.0, 1.0)
+        )
+
+        var similarity = ColorUtils.color_similarity_percentage(test_color, target)
+
+        # We want >95% but <99.5% to avoid accidental perfects
+        if similarity > 95.5 and similarity < 99.5:
+            return test_color
+
+        attempts += 1
+
+    # Fallback: create a color with very small but guaranteed differences
+    var fallback_h = clamp(target.h + 0.01, 0.0, 1.0)
+    var fallback_s = clamp(target.s + 0.02, 0.0, 1.0)
+    var fallback_v = clamp(target.v + 0.02, 0.0, 1.0)
+    return Color.from_hsv(fallback_h, fallback_s, fallback_v)
+
+
+func _generate_intermediate_color(target: Color) -> Color:
+    # Generate a color that's a decent guess but not good enough to win
+    # Target similarity: 70-90% (below the 95% threshold)
+    var attempts = 0
+    var max_attempts = 15
+
+    while attempts < max_attempts:
+        # Medium-sized offsets for intermediate guesses
+        var h_offset = randf_range(-0.1, 0.1)
+        var s_offset = randf_range(-0.15, 0.15)
+        var v_offset = randf_range(-0.15, 0.15)
+
+        var test_color = Color.from_hsv(
+            clamp(target.h + h_offset, 0.0, 1.0),
+            clamp(target.s + s_offset, 0.0, 1.0),
+            clamp(target.v + v_offset, 0.0, 1.0)
+        )
+
+        var similarity = ColorUtils.color_similarity_percentage(test_color, target)
+
+        # We want 70-90% similarity (not good enough to win)
+        if similarity >= 70.0 and similarity <= 90.0:
+            return test_color
+
+        attempts += 1
+
+    # Fallback: create a moderately different color
+    var fallback_h = clamp(target.h + 0.08, 0.0, 1.0)
+    var fallback_s = clamp(target.s + 0.12, 0.0, 1.0)
+    var fallback_v = clamp(target.v - 0.12, 0.0, 1.0)
+    return Color.from_hsv(fallback_h, fallback_s, fallback_v)
+
+
+func _generate_far_color(target: Color) -> Color:
+    # Generate a color that is guaranteed to be far from the target
+    # We need the similarity to be less than 95% (to not trigger success)
+    # and ideally much worse than the CORRECT threshold (5%)
+    # This generates completely random colors that should be far off
+    var attempts = 0
+    var max_attempts = 10
+
+    while attempts < max_attempts:
+        var random_color = Color.from_hsv(randf(), randf(), randf())
+        var similarity = ColorUtils.color_similarity_percentage(random_color, target)
+
+        # We want colors that are definitely NOT close (similarity < 90%)
+        if similarity < 90.0:
+            return random_color
+
+        attempts += 1
+
+    # Fallback: generate a color with maximally different HSV values
+    # Use complementary hue (opposite side of color wheel)
+    var opposite_h = fmod(target.h + 0.5, 1.0)
+    var opposite_s = 1.0 - target.s
+    var opposite_v = 1.0 - target.v
+
+    return Color.from_hsv(opposite_h, opposite_s, opposite_v)
+
+
+func _debug_complete_puzzle(successful: bool) -> void:
+    # Special completion handler for debug shortcuts
+    # In marathon mode, we want to show results instead of continuing
+    # In daily mode, behaves the same as puzzle_completed()
+
+    # Update puzzle_info status
+    puzzle_info.time_ended = Time.get_unix_time_from_system()
+    puzzle_info.successful = successful
+
+    # Wait a moment for visual feedback before transitioning
+    await get_tree().create_timer(0.5).timeout
+
+    # Determine the correct game mode based on the script type
+    # If this is the marathon variant, use MARATHON, otherwise use DAILY
+    var game_mode = Globals.GameState.MARATHON if get_script().resource_path.ends_with("answers_marathon.gd") else Globals.GameState.DAILY
+
+    # Always show results screen when using debug shortcuts
+    # This overrides marathon mode's normal behavior of continuing to next puzzle
+    Globals.show_game_results(puzzle_info, game_mode)
+
+    print_debug("Debug completion: %s. Time taken: %f seconds." %
+        ["success" if successful else "fail", puzzle_info.time_ended - puzzle_info.time_started])
 
 
 func _on_input_answer_entered(new_answer: Color) -> void:
