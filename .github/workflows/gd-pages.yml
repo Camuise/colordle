@@ -31,7 +31,7 @@ jobs:
         run: mkdir -v -p build/web
 
       - name: 🏗️ Build
-        run: godot -v --export-release --headless "Web" ../build/web/index.html project/project.godot
+        run: godot -v --export-release --headless "Web" build/web/index.html project.godot
 
       - name: 🛡️ Add coi-service-worker
         run: |
