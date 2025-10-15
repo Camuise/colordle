@@ -40,8 +40,27 @@ func set_game_state(new_state: GameState) -> void:
 
     var old_state = game_state
     game_state = new_state
+
+    add_game_mode_scene(game_state)
+    get_tree().root.get_node("Main").print_tree_pretty()
+
     emit_signal("game_state_changed", old_state, game_state)
 
+func add_game_mode_scene(mode: GameState) -> void:
+    var main_node = get_tree().root.get_node("Main")
+    match mode:
+        GameState.DAILY:
+            var daily_node = preload("res://daily.tscn").instantiate()
+            main_node.add_child(daily_node)
+            daily_node.owner = main_node
+            daily_node.position = Vector2(2560, 0)
+        GameState.MARATHON:
+            var marathon_node = preload("res://marathon.tscn").instantiate()
+            main_node.add_child(marathon_node)
+            marathon_node.owner = main_node
+            marathon_node.position = Vector2(2558, 1440)
+        _:
+            get_tree().create_timer(1.5).timeout.connect(delete_both_game_nodes)
 
 func show_game_results(puzzle_info: PuzzleInfo, game_mode: GameState) -> void:
     assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
@@ -378,4 +397,14 @@ func _init_background_music() -> void:
 func _ready() -> void:
     set_theme(theme)
     _init_background_music()
+    delete_both_game_nodes()
+
+func delete_both_game_nodes() -> void:
+    var main_node = get_tree().root.get_node("Main")
+    var daily_node = main_node.get_node_or_null("Daily")
+    if daily_node:
+        daily_node.queue_free()
+    var marathon_node = main_node.get_node_or_null("Marathon")
+    if marathon_node:
+        marathon_node.queue_free()
 # endregion

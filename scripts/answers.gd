@@ -86,6 +86,7 @@ func puzzle_completed(successful: bool) -> void:
     puzzle_info.time_ended = Time.get_unix_time_from_system()
     puzzle_info.successful = successful
     print("Puzzle %s. Time taken: %f seconds. Successful: %s" % [status, puzzle_info.time_ended - puzzle_info.time_started, str(puzzle_info.successful)])
+    print("parent name: %s" % get_parent().get_parent().name)
 # endregion
 
 
@@ -201,7 +202,7 @@ func _on_color_format_changed(_new_format: Globals.ColorFormat) -> void:
 
 
 func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
-    if new_state == Globals.GameState.DAILY:
+    if new_state == Globals.GameState.DAILY or new_state == Globals.GameState.MARATHON:
         _rerender_display()
         puzzle_info.time_started = Time.get_unix_time_from_system()
 # endregion
@@ -266,6 +267,7 @@ func _debug_handle_input(event: InputEvent) -> void:
 
 func _trigger_debug_completion(action: String, target_row: int) -> void:
     print_debug("Triggering debug completion: %s at row %d" % [action, target_row])
+    print("parent name: %s" % get_parent().get_parent().name)
 
     match action:
         "fail":
