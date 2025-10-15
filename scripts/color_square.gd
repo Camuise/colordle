@@ -10,4 +10,3 @@ func _ready() -> void:
 func _on_new_color_initiated() -> void:
     Globals.todays_color = Globals._get_todays_color(true)
     self.color = Globals.todays_color
-    print("New color initiated: ", Globals.todays_color)

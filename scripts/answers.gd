@@ -59,7 +59,6 @@ func _play_sound(sound: Globals.Grade) -> void:
 # ANSWER MANAGEMENT
 # =====================================
 func _on_input_answer_entered(new_answer: Color) -> void:
-    print("New answer entered: %s" % new_answer)
     add_answer(new_answer)
 
 
@@ -80,13 +79,11 @@ func add_answer(new_color: Color) -> void:
 
 func puzzle_completed(successful: bool) -> void:
     var status = "completed" if successful else "failed"
-    print("All rows filled, moving to results.")
     await get_tree().create_timer(0.5).timeout
     Globals.show_game_results(puzzle_info, Globals.GameState.DAILY)
     puzzle_info.time_ended = Time.get_unix_time_from_system()
     puzzle_info.successful = successful
     print("Puzzle %s. Time taken: %f seconds. Successful: %s" % [status, puzzle_info.time_ended - puzzle_info.time_started, str(puzzle_info.successful)])
-    print("parent name: %s" % get_parent().get_parent().name)
 # endregion
 
 
@@ -238,7 +235,7 @@ func _debug_handle_input(event: InputEvent) -> void:
         # If in debug mode, wait for number key
         if debug_mode_active:
             if debug_action != "fail":
-                print("Press a number key (1-6) to select the row for debug action '%s'" % debug_action)
+                print("[DEBUG] Press row number (1-6) for debug action '%s'" % debug_action)
                 var row_number = -1
                 match event.keycode:
                     KEY_1: row_number = 1
@@ -255,7 +252,7 @@ func _debug_handle_input(event: InputEvent) -> void:
                     debug_action = ""
                 else:
                     # Cancel debug mode if a non-number key is pressed
-                    print("Debug mode cancelled")
+                    print("[DEBUG] Debug mode cancelled.")
                     debug_mode_active = false
                     debug_action = ""
                     return
@@ -266,8 +263,7 @@ func _debug_handle_input(event: InputEvent) -> void:
 
 
 func _trigger_debug_completion(action: String, target_row: int) -> void:
-    print_debug("Triggering debug completion: %s at row %d" % [action, target_row])
-    print("parent name: %s" % get_parent().get_parent().name)
+    print_debug("[DEBUG] Triggering debug completion: %s at row %d" % [action, target_row])
 
     match action:
         "fail":
