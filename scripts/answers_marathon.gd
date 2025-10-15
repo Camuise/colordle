@@ -16,6 +16,7 @@ func puzzle_completed(successful: bool) -> void:
         _add_infinidle_win(current_row)  # current_row is 0-indexed, but win_rows uses 1-6
         # print("Infinidle stats after win: %s" % str(infinidle_info))
         _initiate_new_color()
+        return
     else:
         Globals.show_game_results(puzzle_info, Globals.GameState.MARATHON)
 

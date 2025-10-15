@@ -113,7 +113,7 @@ func round4(value: float) -> String:
 # DISPLAY & UI UPDATES
 # =====================================
 func _update_row(row: int, new_color) -> void:
-    var answer_row = %AnswerContainer.get_child(row)
+    var answer_row = $AnswerContainer.get_child(row)
     var is_null = new_color == null
     for channel_index in range(answer_row.get_child_count()):
         var channel_container = answer_row.get_child(channel_index)
@@ -178,8 +178,8 @@ func _update_row(row: int, new_color) -> void:
 func _rerender_display() -> void:
     # if all answers are null (transparent), hide the AnswerContainer and show the NoAnswerContainer
     var is_answers_null: bool = puzzle_info.answers.all(func(a): return a.color.a == 0)
-    %AnswerContainer.visible = not is_answers_null
-    %NoAnswerContainer.visible = is_answers_null
+    $AnswerContainer.visible = not is_answers_null
+    $NoAnswerContainer.visible = is_answers_null
 
     for row_index in range(puzzle_info.answers.size()):
         var answer_attempt = puzzle_info.answers[row_index]
@@ -270,7 +270,13 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
     match action:
         "fail":
             for i in range(6):
-                add_answer(_generate_color(Globals.todays_color, 0.0, Globals.grade_diff_threshold[Globals.Grade.FAR]))
+                var debug_color = Color.from_hsv(
+                    Globals.todays_color.h + Globals.grade_diff_threshold[Globals.Grade.NONE],  # Far off in hue
+                    Globals.todays_color.s,
+                    Globals.todays_color.v
+                )
+                add_answer(debug_color)
+            puzzle_completed(false)
 
         "pass", "perfect":
             # Fill rows up to target_row with appropriate colors
@@ -281,16 +287,18 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
                     if action == "perfect":
                         debug_color = Globals.todays_color
                     else:
+                        # Offset hue by SAME threshold, wrapping around if needed
+                        var offset = Globals.grade_diff_threshold[Globals.Grade.SAME] / 2.0
                         debug_color = Color.from_hsv(
-                            Globals.todays_color.h - Globals.grade_diff_threshold[Globals.Grade.SAME],  # Slightly off in hue
-                            Globals.todays_color.s,
-                            Globals.todays_color.v
+                            fposmod(Globals.todays_color.h + offset, 1.0),
+                            fposmod(Globals.todays_color.s + offset, 1.0),
+                            fposmod(Globals.todays_color.v + offset, 1.0)
                         )
                 else:
-                    debug_color = _generate_color(
-                        Globals.todays_color,
-                        Globals.grade_diff_threshold[Globals.Grade.CORRECT],
-                        Globals.grade_diff_threshold[Globals.Grade.FAR]
+                    debug_color = Color.from_hsv(
+                        Globals.todays_color.h - Globals.grade_diff_threshold[Globals.Grade.CORRECT],  # Slightly off in hue
+                        Globals.todays_color.s,
+                        Globals.todays_color.v
                     )
 
                 puzzle_info.answers[row].color = debug_color
@@ -300,20 +308,3 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
             current_row = target_row
             _rerender_display()
             puzzle_completed(true)
-
-func _generate_color(target: Color, similarity_min: float, similarity_max: float) -> Color:
-    # 1. calculate the two ranges (left, right) for each channel
-    var h_range = [Vector2(target.h - similarity_max + 0.01, target.h - similarity_min + 0.01), Vector2(target.h + similarity_min - 0.01, target.h + similarity_max - 0.01)]
-    var s_range = [Vector2(target.s - similarity_max + 0.01, target.s - similarity_min + 0.01), Vector2(target.s + similarity_min - 0.01, target.s + similarity_max - 0.01)]
-    var v_range = [Vector2(target.v - similarity_max + 0.01, target.v - similarity_min + 0.01), Vector2(target.v + similarity_min - 0.01, target.v + similarity_max - 0.01)]
-
-    # 2. pick a random range
-    var selected = Vector3i(randi() % 2, randi() % 2, randi() % 2)
-    var selected_ranges = [h_range[selected.x], s_range[selected.y], v_range[selected.z]]
-
-    # 3. generate a random float
-    return Color.from_hsv(
-        randf_range(selected_ranges[0].x, selected_ranges[0].y),
-        randf_range(selected_ranges[1].x, selected_ranges[1].y),
-        randf_range(selected_ranges[2].x, selected_ranges[2].y)
-    )
