@@ -147,10 +147,17 @@ enum Grade {
 }
 
 var grade_diff_threshold = {
-    Grade.NONE: 100.0,
-    Grade.FAR: 50.0,
-    Grade.CORRECT: 5.0,
-    Grade.SAME: 1.0,
+    Grade.NONE: 1.00,
+    Grade.FAR: 0.50,
+    Grade.CORRECT: 0.05,
+    Grade.SAME: 0.01,
+}
+
+var grade_sim_threshold = {
+    Grade.NONE: 1 - grade_diff_threshold[Grade.NONE],
+    Grade.FAR: 1 - grade_diff_threshold[Grade.FAR],
+    Grade.CORRECT: 1 - grade_diff_threshold[Grade.CORRECT],
+    Grade.SAME: 1 - grade_diff_threshold[Grade.SAME],
 }
 
 var grade_colors = {

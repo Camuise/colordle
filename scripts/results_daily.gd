@@ -42,9 +42,7 @@ class ResultsDisplay:
         var channel_values: Array = []
         for i in range(3):  # Only first 3 channels have actual values (RGB or HSV)
             channel_values.append(attempt.channel_grades[i].value)
-            print(attempt.channel_grades[i])
 
-        print("Updating display for attempt %d with colors %s" % [attempt_index, channel_values])
         for channel in range(display_row.size()):
             var channel_display = display_row[channel]
             var channel_grade = attempt.channel_grades[channel]

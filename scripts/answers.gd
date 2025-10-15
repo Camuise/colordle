@@ -222,40 +222,44 @@ func _debug_handle_input(event: InputEvent) -> void:
     # Handle debug shortcuts
     if event is InputEventKey and event.pressed and not event.echo:
         # Check if any debug action is pressed
-        if Input.is_action_just_pressed("debug_puzzle_fail"):
-            debug_mode_active = true
-            debug_action = "fail"
-            print_debug("Debug mode: Press a number key (1-6) to fail at that row")
-            return
-        elif Input.is_action_just_pressed("debug_puzzle_pass"):
-            debug_mode_active = true
-            debug_action = "pass"
-            print_debug("Debug mode: Press a number key (1-6) to pass at that row")
-            return
-        elif Input.is_action_just_pressed("debug_puzzle_perfect"):
-            debug_mode_active = true
-            debug_action = "perfect"
-            print_debug("Debug mode: Press a number key (1-6) to get perfect at that row")
-            return
+        if not debug_mode_active:
+            var debug_actions = {
+                "debug_puzzle_fail": "fail",
+                "debug_puzzle_pass": "pass",
+                "debug_puzzle_perfect": "perfect"
+            }
+            for action_name in debug_actions.keys():
+                if Input.is_action_just_pressed(action_name):
+                    debug_action = debug_actions[action_name]
+                    debug_mode_active = true
+                    return
 
         # If in debug mode, wait for number key
         if debug_mode_active:
-            var row_number = -1
-            match event.keycode:
-                KEY_1: row_number = 1
-                KEY_2: row_number = 2
-                KEY_3: row_number = 3
-                KEY_4: row_number = 4
-                KEY_5: row_number = 5
-                KEY_6: row_number = 6
+            if debug_action != "fail":
+                print("Press a number key (1-6) to select the row for debug action '%s'" % debug_action)
+                var row_number = -1
+                match event.keycode:
+                    KEY_1: row_number = 1
+                    KEY_2: row_number = 2
+                    KEY_3: row_number = 3
+                    KEY_4: row_number = 4
+                    KEY_5: row_number = 5
+                    KEY_6: row_number = 6
+                    _: row_number = -1  # Not valid number
 
-            if row_number >= 1 and row_number <= 6:
-                _trigger_debug_completion(debug_action, row_number)
-                debug_mode_active = false
-                debug_action = ""
+                if row_number != -1:
+                    _trigger_debug_completion(debug_action, row_number)
+                    debug_mode_active = false
+                    debug_action = ""
+                else:
+                    # Cancel debug mode if a non-number key is pressed
+                    print("Debug mode cancelled")
+                    debug_mode_active = false
+                    debug_action = ""
+                    return
             else:
-                # Cancel debug mode if a non-number key is pressed
-                print_debug("Debug mode cancelled")
+                _trigger_debug_completion(debug_action, 6)
                 debug_mode_active = false
                 debug_action = ""
 
@@ -265,39 +269,29 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
 
     match action:
         "fail":
-            # For fail, always fill all 6 rows with random garbage colors
-            # that are guaranteed to be far from the correct answer
-            for row in range(puzzle_info.answers.size()):
-                var fail_color = _generate_far_color(Globals.todays_color)
-                puzzle_info.answers[row].color = fail_color
-                _update_row(row, fail_color)
-            current_row = puzzle_info.answers.size()
-            _rerender_display()
-            _debug_complete_puzzle(false)
+            for i in range(6):
+                add_answer(_generate_color(Globals.todays_color, 0.0, Globals.grade_diff_threshold[Globals.Grade.FAR]))
 
         "pass", "perfect":
             # Fill rows up to target_row with appropriate colors
             for row in range(target_row):
                 var debug_color: Color
-
-                # On the last row, determine if this should be the winning color
+                # use correct color on last row.
                 if row == target_row - 1:
                     if action == "perfect":
-                        # Perfect match - use exact color (100% similarity)
                         debug_color = Globals.todays_color
-                    else:  # pass
-                        # For "pass", make it close enough to trigger completion but NOT perfect
-                        # Target: between 95.5% and 98% similarity (above 95% threshold but not 100%)
-                        debug_color = _generate_pass_color(Globals.todays_color)
+                    else:
+                        debug_color = Color.from_hsv(
+                            Globals.todays_color.h - Globals.grade_diff_threshold[Globals.Grade.SAME],  # Slightly off in hue
+                            Globals.todays_color.s,
+                            Globals.todays_color.v
+                        )
                 else:
-                    # For intermediate rows, use progressively better but not winning colors
-                    if action == "perfect":
-                        # For perfect mode, intermediate rows are also perfect
-                        debug_color = Globals.todays_color
-                    else:  # pass
-                        # For pass mode, intermediate rows should be "okay" guesses
-                        # but not good enough to win (similarity around 70-90%)
-                        debug_color = _generate_intermediate_color(Globals.todays_color)
+                    debug_color = _generate_color(
+                        Globals.todays_color,
+                        Globals.grade_diff_threshold[Globals.Grade.CORRECT],
+                        Globals.grade_diff_threshold[Globals.Grade.FAR]
+                    )
 
                 puzzle_info.answers[row].color = debug_color
                 _update_row(row, debug_color)
@@ -305,123 +299,21 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
             # Update current_row and rerender
             current_row = target_row
             _rerender_display()
-            _debug_complete_puzzle(true)
+            puzzle_completed(true)
 
+func _generate_color(target: Color, similarity_min: float, similarity_max: float) -> Color:
+    # 1. calculate the two ranges (left, right) for each channel
+    var h_range = [Vector2(target.h - similarity_max + 0.01, target.h - similarity_min + 0.01), Vector2(target.h + similarity_min - 0.01, target.h + similarity_max - 0.01)]
+    var s_range = [Vector2(target.s - similarity_max + 0.01, target.s - similarity_min + 0.01), Vector2(target.s + similarity_min - 0.01, target.s + similarity_max - 0.01)]
+    var v_range = [Vector2(target.v - similarity_max + 0.01, target.v - similarity_min + 0.01), Vector2(target.v + similarity_min - 0.01, target.v + similarity_max - 0.01)]
 
-func _generate_pass_color(target: Color) -> Color:
-    # Generate a color that is close enough to pass (>95% similarity) but NOT perfect
-    # We want similarity between 95.5% and 98% to ensure it's a clear pass, not perfect
-    var attempts = 0
-    var max_attempts = 20
+    # 2. pick a random range
+    var selected = Vector3i(randi() % 2, randi() % 2, randi() % 2)
+    var selected_ranges = [h_range[selected.x], s_range[selected.y], v_range[selected.z]]
 
-    while attempts < max_attempts:
-        # Small random offsets to create a near-match
-        var h_offset = randf_range(-0.02, 0.02)
-        var s_offset = randf_range(-0.03, 0.03)
-        var v_offset = randf_range(-0.03, 0.03)
-
-        var test_color = Color.from_hsv(
-            clamp(target.h + h_offset, 0.0, 1.0),
-            clamp(target.s + s_offset, 0.0, 1.0),
-            clamp(target.v + v_offset, 0.0, 1.0)
-        )
-
-        var similarity = ColorUtils.color_similarity_percentage(test_color, target)
-
-        # We want >95% but <99.5% to avoid accidental perfects
-        if similarity > 95.5 and similarity < 99.5:
-            return test_color
-
-        attempts += 1
-
-    # Fallback: create a color with very small but guaranteed differences
-    var fallback_h = clamp(target.h + 0.01, 0.0, 1.0)
-    var fallback_s = clamp(target.s + 0.02, 0.0, 1.0)
-    var fallback_v = clamp(target.v + 0.02, 0.0, 1.0)
-    return Color.from_hsv(fallback_h, fallback_s, fallback_v)
-
-
-func _generate_intermediate_color(target: Color) -> Color:
-    # Generate a color that's a decent guess but not good enough to win
-    # Target similarity: 70-90% (below the 95% threshold)
-    var attempts = 0
-    var max_attempts = 15
-
-    while attempts < max_attempts:
-        # Medium-sized offsets for intermediate guesses
-        var h_offset = randf_range(-0.1, 0.1)
-        var s_offset = randf_range(-0.15, 0.15)
-        var v_offset = randf_range(-0.15, 0.15)
-
-        var test_color = Color.from_hsv(
-            clamp(target.h + h_offset, 0.0, 1.0),
-            clamp(target.s + s_offset, 0.0, 1.0),
-            clamp(target.v + v_offset, 0.0, 1.0)
-        )
-
-        var similarity = ColorUtils.color_similarity_percentage(test_color, target)
-
-        # We want 70-90% similarity (not good enough to win)
-        if similarity >= 70.0 and similarity <= 90.0:
-            return test_color
-
-        attempts += 1
-
-    # Fallback: create a moderately different color
-    var fallback_h = clamp(target.h + 0.08, 0.0, 1.0)
-    var fallback_s = clamp(target.s + 0.12, 0.0, 1.0)
-    var fallback_v = clamp(target.v - 0.12, 0.0, 1.0)
-    return Color.from_hsv(fallback_h, fallback_s, fallback_v)
-
-
-func _generate_far_color(target: Color) -> Color:
-    # Generate a color that is guaranteed to be far from the target
-    # We need the similarity to be less than 95% (to not trigger success)
-    # and ideally much worse than the CORRECT threshold (5%)
-    # This generates completely random colors that should be far off
-    var attempts = 0
-    var max_attempts = 10
-
-    while attempts < max_attempts:
-        var random_color = Color.from_hsv(randf(), randf(), randf())
-        var similarity = ColorUtils.color_similarity_percentage(random_color, target)
-
-        # We want colors that are definitely NOT close (similarity < 90%)
-        if similarity < 90.0:
-            return random_color
-
-        attempts += 1
-
-    # Fallback: generate a color with maximally different HSV values
-    # Use complementary hue (opposite side of color wheel)
-    var opposite_h = fmod(target.h + 0.5, 1.0)
-    var opposite_s = 1.0 - target.s
-    var opposite_v = 1.0 - target.v
-
-    return Color.from_hsv(opposite_h, opposite_s, opposite_v)
-
-
-func _debug_complete_puzzle(successful: bool) -> void:
-    # Special completion handler for debug shortcuts
-    # In marathon mode, we want to show results instead of continuing
-    # In daily mode, behaves the same as puzzle_completed()
-
-    # Update puzzle_info status
-    puzzle_info.time_ended = Time.get_unix_time_from_system()
-    puzzle_info.successful = successful
-
-    # Wait a moment for visual feedback before transitioning
-    await get_tree().create_timer(0.5).timeout
-
-    # Determine the correct game mode based on the script type
-    # If this is the marathon variant, use MARATHON, otherwise use DAILY
-    var game_mode = Globals.GameState.MARATHON if get_script().resource_path.ends_with("answers_marathon.gd") else Globals.GameState.DAILY
-
-    # Always show results screen when using debug shortcuts
-    # This overrides marathon mode's normal behavior of continuing to next puzzle
-    Globals.show_game_results(puzzle_info, game_mode)
-
-    print_debug("Debug completion: %s. Time taken: %f seconds." %
-        ["success" if successful else "fail", puzzle_info.time_ended - puzzle_info.time_started])
-
-# endregion
+    # 3. generate a random float
+    return Color.from_hsv(
+        randf_range(selected_ranges[0].x, selected_ranges[0].y),
+        randf_range(selected_ranges[1].x, selected_ranges[1].y),
+        randf_range(selected_ranges[2].x, selected_ranges[2].y)
+    )
