@@ -72,8 +72,9 @@ func add_answer(new_color: Color) -> void:
     _rerender_display()
 
     # Check if the color matches exactly
-    if ColorUtils.color_similarity_percentage(new_color, Globals.todays_color) > 95.0:
-        puzzle_completed(true)
+    if (ColorUtils.color_diff_percentage(new_color, Globals.todays_color)
+        < Globals.grade_diff_threshold[Globals.Grade.SAME]):
+            puzzle_completed(true)
     elif current_row >= puzzle_info.answers.size():
         puzzle_completed(false)
 
@@ -84,7 +85,11 @@ func puzzle_completed(successful: bool) -> void:
     Globals.show_game_results(puzzle_info, Globals.GameState.DAILY)
     puzzle_info.time_ended = Time.get_unix_time_from_system()
     puzzle_info.successful = successful
-    print("Puzzle %s. Time taken: %f seconds. Successful: %s" % [status, puzzle_info.time_ended - puzzle_info.time_started, str(puzzle_info.successful)])
+    print("Puzzle %s. Time taken: %f seconds. Successful: %s" % [
+        status,
+        puzzle_info.time_ended - puzzle_info.time_started,
+        str(puzzle_info.successful)
+    ])
 # endregion
 
 

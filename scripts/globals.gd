@@ -194,13 +194,6 @@ var grade_diff_threshold = {
     Grade.SAME: 1.0,
 }
 
-var grade_sim_threshold = {
-    Grade.NONE: 1 - grade_diff_threshold[Grade.NONE],
-    Grade.FAR: 1 - grade_diff_threshold[Grade.FAR],
-    Grade.CORRECT: 1 - grade_diff_threshold[Grade.CORRECT],
-    Grade.SAME: 1 - grade_diff_threshold[Grade.SAME],
-}
-
 var grade_colors = {
     Grade.NONE: Color(0.2, 0.2, 0.2),  # Gray
     Grade.FAR: Color(1, 0.5, 0),  # Orange

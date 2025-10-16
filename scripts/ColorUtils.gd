@@ -105,10 +105,3 @@ static func color_diff_percentage(color1: Color, color2: Color) -> float:
     # Normalize Delta E to 0-100% range
     # Delta E of 100 represents maximum perceptual difference (100%)
     return min(delta_e, 100.0)
-
-# Calculates color similarity as a percentage (100% = identical, 0% = completely different)
-static func color_similarity_percentage(color1: Color, color2: Color) -> float:
-    var delta_e = color_diff(color1, color2)
-    # Convert to similarity: higher Delta E = lower similarity
-    var max_delta_e = 100.0  # Adjust this based on your needs
-    return max(0.0, (max_delta_e - delta_e) / max_delta_e * 100.0)
