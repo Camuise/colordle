@@ -4,7 +4,7 @@ extends VBoxContainer
 # =====================================
 # STATE VARIABLES
 # =====================================
-var puzzle_info: Globals.PuzzleInfo = Globals.PuzzleInfo.new()
+var puzzle_info: Globals.PuzzleInfo
 var current_row: int = 0
 var sound_player: AudioStreamPlayer = null
 
@@ -14,6 +14,7 @@ var sound_player: AudioStreamPlayer = null
 # LIFECYCLE METHODS
 # =====================================
 func _ready() -> void:
+    puzzle_info = Globals.PuzzleInfo.new()
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
     Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
 

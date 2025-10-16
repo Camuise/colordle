@@ -2,8 +2,13 @@ extends "res://scripts/answers.gd"
 
 signal new_color_initiated()
 
-var infinidle_info: Globals.InfinidleStats = Globals.InfinidleStats.new()
+var infinidle_info: Globals.InfinidleStats
 
+func _ready() -> void:
+    puzzle_info = Globals.PuzzleInfo.new()
+    infinidle_info = Globals.InfinidleStats.new()
+    Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
+    Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
 
 func puzzle_completed(successful: bool) -> void:
     var status = "completed" if successful else "failed"
