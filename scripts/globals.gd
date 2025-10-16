@@ -30,25 +30,25 @@ enum GameState {
     OPTIONS
 }
 @export var game_state: GameState = GameState.MAIN_MENU
-signal game_state_changed(new_state: GameState)
+signal game_state_changed(old_state: GameState, new_state: GameState)
 signal show_results(puzzle_info: PuzzleInfo, game_mode: GameState, time_taken: float)
-
-var daily_scene: Node = preload("res://daily.tscn").instantiate()
-var marathon_scene: Node = preload("res://marathon.tscn").instantiate()
 
 
 func set_game_state(new_state: GameState) -> void:
     if game_state == new_state:
         return
 
+    var old_state = game_state
     game_state = new_state
 
     add_game_mode_scene(game_state)
-    get_tree().root.get_node("Main").print_tree_pretty()
 
-    emit_signal("game_state_changed", game_state)
+    emit_signal("game_state_changed", old_state, game_state)
 
 
+var daily_scene: Node = preload("res://daily.tscn").instantiate()
+var marathon_scene: Node = preload("res://marathon.tscn").instantiate()
+var results_scene: Node = preload("res://results.tscn").instantiate()
 func add_game_mode_scene(new_mode: GameState) -> void:
     var main_node = get_tree().root.get_node("Main")
     match new_mode:
@@ -56,24 +56,32 @@ func add_game_mode_scene(new_mode: GameState) -> void:
             main_node.add_child(daily_scene)
             daily_scene.owner = main_node
             daily_scene.position = Vector2(2560, 0)
+        GameState.RESULTS:
+            main_node.add_child(results_scene)
+            results_scene.owner = main_node
+            results_scene.position = Vector2(2560, 720)
         GameState.MARATHON:
             main_node.add_child(marathon_scene)
             marathon_scene.owner = main_node
-            marathon_scene.position = Vector2(2558, 1440)
+            marathon_scene.position = Vector2(2560, 1440)
         _:
-            get_tree().create_timer(1.5).timeout.connect(delete_both_game_nodes)
+            get_tree().create_timer(1.5).timeout.connect(remove_game_nodes)
 
 
-func delete_both_game_nodes() -> void:
+func remove_game_nodes() -> void:
     var main_node = get_tree().root.get_node("Main")
     var current_daily_node = main_node.get_node_or_null("Daily")
     if current_daily_node:
         daily_scene = current_daily_node
-        current_daily_node.queue_free()
+        main_node.remove_child(current_daily_node)
     var current_marathon_node = main_node.get_node_or_null("Marathon")
     if current_marathon_node:
         marathon_scene = current_marathon_node
-        current_marathon_node.queue_free()
+        main_node.remove_child(current_marathon_node)
+    var current_results_node = main_node.get_node_or_null("Results")
+    if current_results_node:
+        results_scene = current_results_node
+        main_node.remove_child(current_results_node)
 
 
 func show_game_results(puzzle_info: PuzzleInfo, game_mode: GameState) -> void:
@@ -411,5 +419,5 @@ func _init_background_music() -> void:
 func _ready() -> void:
     set_theme(theme)
     _init_background_music()
-    delete_both_game_nodes()
+    remove_game_nodes()
 # endregion
