@@ -150,12 +150,12 @@ func _update_row(row: int, new_color) -> void:
         elif diff_to_answer < Globals.grade_diff_threshold[Globals.Grade.CORRECT]:
             color_border.color = Color(0, 1, 0)  # Green
             puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.CORRECT
-        elif diff_to_answer > Globals.grade_diff_threshold[Globals.Grade.NONE]:
-            color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
-            puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.NONE
-        else:
+        elif diff_to_answer < Globals.grade_diff_threshold[Globals.Grade.FAR]:
             color_border.color = Color(1, 0.5, 0)  # Orange
             puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.FAR
+        else:
+            color_border.color = Color(0.2, 0.2, 0.2)  # Dark gray
+            puzzle_info.answers[row].channel_grades[channel_index].grade = Globals.Grade.NONE
 
         # Play sound based on overall accuracy (using average of all channels)
         if not is_null and channel_index == 3:

@@ -188,10 +188,10 @@ enum Grade {
 }
 
 var grade_diff_threshold = {
-    Grade.NONE: 1.00,
-    Grade.FAR: 0.50,
-    Grade.CORRECT: 0.05,
-    Grade.SAME: 0.01,
+    Grade.NONE: 100.0,
+    Grade.FAR: 50.0,
+    Grade.CORRECT: 5.0,
+    Grade.SAME: 1.0,
 }
 
 var grade_sim_threshold = {
