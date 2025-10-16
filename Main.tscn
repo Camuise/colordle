@@ -82,7 +82,7 @@ bc i might have forgotten"
 
 [node name="Marathon" parent="." instance=ExtResource("7_lgr22")]
 layout_mode = 1
-offset_left = 2558.0
+offset_left = 2560.0
 offset_top = 1440.0
-offset_right = 2558.0
+offset_right = 2560.0
 offset_bottom = 1440.0
