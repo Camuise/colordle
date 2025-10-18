@@ -99,9 +99,13 @@ static func color_diff(color1: Color, color2: Color) -> float:
     var color2_lab = xyz_to_lab(rgb_to_xyz(color2))
     return calculate_delta_e_76(color1_lab, color2_lab)
 
-# Calculates the perceptual color difference as a percentage (0-100%)
+# Calculates the perceptual color similarity as a percentage (0-100%)
+# 100 = identical, 0 = maximally different (clamped)
+static func color_similarity_percentage(color1: Color, color2: Color) -> float:
+    var delta_e = color_diff(color1, color2)
+    return 100.0 - clamp(delta_e, 0.0, 100.0)
+
+# Backwards-compatible alias that preserves the previous "diff percentage" behavior
 static func color_diff_percentage(color1: Color, color2: Color) -> float:
     var delta_e = color_diff(color1, color2)
-    # Normalize Delta E to 0-100% range
-    # Delta E of 100 represents maximum perceptual difference (100%)
     return min(delta_e, 100.0)
