@@ -291,13 +291,13 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
                     if action == "perfect":
                         debug_color = Globals.todays_color
                     else:
-                        # Offset hue by SAME threshold, wrapping around if needed
-                        var offset = Globals.grade_threshold[Globals.Grade.SAME] / 2.0
-                        debug_color = Color.from_hsv(
-                            fposmod(Globals.todays_color.h + offset, 1.0),
-                            fposmod(Globals.todays_color.s + offset, 1.0),
-                            fposmod(Globals.todays_color.v + offset, 1.0)
-                        )
+                        # Choose a deterministic hue offset expected to yield a "pass" (between SAME and CORRECT)
+                        var target_avg = (Globals.grade_threshold[Globals.Grade.SAME] + Globals.grade_threshold[Globals.Grade.CORRECT]) / 2.0
+                        # Map the percentage-like threshold to a hue offset with a conservative scale, then clamp
+                        var offset_scale = 0.0005
+                        var offset = clamp(target_avg * offset_scale, 0.005, 0.5)
+                        var hue = fposmod(Globals.todays_color.h + offset, 1.0)
+                        debug_color = Color.from_hsv(hue, Globals.todays_color.s, Globals.todays_color.v)
                 else:
                     debug_color = Color.from_hsv(
                         Globals.todays_color.h - Globals.grade_threshold[Globals.Grade.CORRECT],  # Slightly off in hue
