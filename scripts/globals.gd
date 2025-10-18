@@ -187,7 +187,7 @@ enum Grade {
     SAME,
 }
 
-var grade_diff_threshold = {
+var grade_threshold = {
     Grade.NONE: 100.0,
     Grade.FAR: 50.0,
     Grade.CORRECT: 5.0,

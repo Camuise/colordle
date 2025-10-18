@@ -73,7 +73,7 @@ func add_answer(new_color: Color) -> void:
 
     # Check if the color matches exactly
     if (ColorUtils.color_diff_percentage(new_color, Globals.todays_color)
-        < Globals.grade_diff_threshold[Globals.Grade.SAME]):
+        < Globals.grade_threshold[Globals.Grade.SAME]):
             puzzle_completed(true)
     elif current_row >= puzzle_info.answers.size():
         puzzle_completed(false)
@@ -169,11 +169,11 @@ func _update_row(row: int, new_color) -> void:
                 var loop_channel_colors = Globals.get_channel_colors(i, new_color, Globals.todays_color)
                 total_diff += ColorUtils.color_diff_percentage(loop_channel_colors[0], loop_channel_colors[1])
             var avg_diff = total_diff / 3.0
-            if avg_diff < Globals.grade_diff_threshold[Globals.Grade.SAME]:
+            if avg_diff < Globals.grade_threshold[Globals.Grade.SAME]:
                 _play_sound(Globals.Grade.SAME)
-            elif avg_diff < Globals.grade_diff_threshold[Globals.Grade.CORRECT]:
+            elif avg_diff < Globals.grade_threshold[Globals.Grade.CORRECT]:
                 _play_sound(Globals.Grade.CORRECT)
-            elif avg_diff < Globals.grade_diff_threshold[Globals.Grade.FAR]:
+            elif avg_diff < Globals.grade_threshold[Globals.Grade.FAR]:
                 _play_sound(Globals.Grade.FAR)
             else:
                 _play_sound(Globals.Grade.NONE)
@@ -275,7 +275,7 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
         "fail":
             for i in range(6):
                 var debug_color = Color.from_hsv(
-                    Globals.todays_color.h + Globals.grade_diff_threshold[Globals.Grade.NONE],  # Far off in hue
+                    Globals.todays_color.h + Globals.grade_threshold[Globals.Grade.NONE],  # Far off in hue
                     Globals.todays_color.s,
                     Globals.todays_color.v
                 )
@@ -292,7 +292,7 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
                         debug_color = Globals.todays_color
                     else:
                         # Offset hue by SAME threshold, wrapping around if needed
-                        var offset = Globals.grade_diff_threshold[Globals.Grade.SAME] / 2.0
+                        var offset = Globals.grade_threshold[Globals.Grade.SAME] / 2.0
                         debug_color = Color.from_hsv(
                             fposmod(Globals.todays_color.h + offset, 1.0),
                             fposmod(Globals.todays_color.s + offset, 1.0),
@@ -300,7 +300,7 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
                         )
                 else:
                     debug_color = Color.from_hsv(
-                        Globals.todays_color.h - Globals.grade_diff_threshold[Globals.Grade.CORRECT],  # Slightly off in hue
+                        Globals.todays_color.h - Globals.grade_threshold[Globals.Grade.CORRECT],  # Slightly off in hue
                         Globals.todays_color.s,
                         Globals.todays_color.v
                     )
