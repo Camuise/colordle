@@ -73,7 +73,7 @@ func add_answer(new_color: Color) -> void:
 
     # Check if the color matches exactly
     if (ColorUtils.color_diff_percentage(new_color, Globals.todays_color)
-        < Globals.grade_threshold[Globals.Grade.SAME]):
+        < Globals.grade_threshold[Globals.Grade.CORRECT]):
             puzzle_completed(true)
     elif current_row >= puzzle_info.answers.size():
         puzzle_completed(false)
