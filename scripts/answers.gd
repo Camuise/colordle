@@ -280,7 +280,6 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
                     Globals.todays_color.v
                 )
                 add_answer(debug_color)
-            puzzle_completed(false)
 
         "pass", "perfect":
             # Fill rows up to target_row with appropriate colors
@@ -304,11 +303,4 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
                         Globals.todays_color.s,
                         Globals.todays_color.v
                     )
-
-                puzzle_info.answers[row].color = debug_color
-                _update_row(row, debug_color)
-
-            # Update current_row and rerender
-            current_row = target_row
-            _rerender_display()
-            puzzle_completed(true)
+                add_answer(debug_color)
