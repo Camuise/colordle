@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg42sn8ujru3q"]
+[gd_scene load_steps=11 format=3 uid="uid://dg42sn8ujru3q"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_amp1b"]
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="2_mabgl"]
 [ext_resource type="Texture2D" uid="uid://hag45jupbmwk" path="res://assets/images/arrow-left.png" id="2_ph8o5"]
 [ext_resource type="Script" uid="uid://b6pe7usy4ugdb" path="res://scripts/results_daily.gd" id="2_pxnt6"]
+[ext_resource type="Script" uid="uid://chg6ue3p1a5" path="res://scripts/results.gd" id="2_vys4n"]
 [ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="3_7jyyn"]
 [ext_resource type="Texture2D" uid="uid://cs6c83x3d0jga" path="res://assets/images/share.png" id="4_pxnt6"]
 [ext_resource type="Script" uid="uid://dx85wfys6lc05" path="res://scripts/share_button.gd" id="5_7jyyn"]
+[ext_resource type="Script" uid="uid://bg2b1m41l37py" path="res://scripts/results_marathon.gd" id="9_n2gsa"]
+[ext_resource type="Script" uid="uid://ci7v5dfal6804" path="res://scripts/bar.gd" id="10_0gb23"]
 
 [node name="Results" type="Control"]
 layout_mode = 3
@@ -16,47 +19,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_amp1b")
+script = ExtResource("2_vys4n")
 
-[node name="Daily" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-script = ExtResource("2_pxnt6")
-
-[node name="Reaction" type="Label" parent="Daily"]
-layout_mode = 1
-offset_left = 73.0
-offset_top = 57.0
-offset_right = 469.0
-offset_bottom = 150.0
-theme_override_font_sizes/font_size = 74
-text = "Good Job!"
-vertical_alignment = 1
-
-[node name="DetailedReaction" type="Label" parent="Daily"]
-layout_mode = 0
-offset_left = 73.0
-offset_top = 150.0
-offset_right = 573.0
-offset_bottom = 352.0
-theme_override_font_sizes/font_size = 30
-text = "You just went straight for the answer, didn't ya?"
-autowrap_mode = 3
-
-[node name="BackButton" type="Button" parent="Daily"]
+[node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -146.0
-offset_right = 370.0
-offset_bottom = -54.0
+offset_left = 54.0
+offset_top = -150.0
+offset_right = 387.0
+offset_bottom = -58.0
 grow_vertical = 0
 text = "Main Menu"
 icon = ExtResource("2_ph8o5")
 alignment = 0
 script = ExtResource("3_7jyyn")
+
+[node name="Daily" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("2_pxnt6")
 
 [node name="ShareButton" type="Button" parent="Daily"]
 layout_mode = 1
@@ -64,9 +49,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 560.0
-offset_top = -146.0
+offset_top = -150.0
 offset_right = 788.0
-offset_bottom = -50.0
+offset_bottom = -54.0
 grow_vertical = 0
 text = "Share"
 icon = ExtResource("4_pxnt6")
@@ -1220,6 +1205,228 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Daily/BackButton" to="Daily/BackButton" method="_on_pressed"]
+[node name="Marathon" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_n2gsa")
+
+[node name="ResultsDisplay" type="VBoxContainer" parent="Marathon"]
+layout_mode = 0
+offset_left = 811.0
+offset_top = 57.0
+offset_right = 1213.0
+offset_bottom = 524.0
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Marathon/ResultsDisplay"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Colordle ∞, 10/6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BarGraph" type="GridContainer" parent="Marathon/ResultsDisplay"]
+layout_mode = 2
+theme = ExtResource("2_mabgl")
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bar0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("10_0gb23")
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Label1" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bar1" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("10_0gb23")
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Label2" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bar2" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("10_0gb23")
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Label3" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bar3" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("10_0gb23")
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Label4" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bar4" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("10_0gb23")
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Label5" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bar5" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("10_0gb23")
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="StreakCount" type="Label" parent="Marathon/ResultsDisplay"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Streak: 203"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShareButton" type="Button" parent="Marathon"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -469.0
+offset_top = -150.0
+offset_right = -67.0
+offset_bottom = -54.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Share"
+icon = ExtResource("4_pxnt6")
+alignment = 2
+icon_alignment = 2
+script = ExtResource("5_7jyyn")
+
+[node name="Reaction" type="Label" parent="."]
+layout_mode = 1
+offset_left = 73.0
+offset_top = 57.0
+offset_right = 469.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 74
+text = "Good Job!"
+vertical_alignment = 1
+
+[node name="DetailedReaction" type="Label" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 150.0
+offset_right = 573.0
+offset_bottom = 352.0
+theme_override_font_sizes/font_size = 30
+text = "You just went straight for the answer, didn't ya?"
+autowrap_mode = 3
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
 [connection signal="pressed" from="Daily/ShareButton" to="Daily/ShareButton" method="_on_pressed"]
 [connection signal="share_requested" from="Daily/ShareButton" to="Daily" method="_on_share_requested"]
+[connection signal="pressed" from="Marathon/ShareButton" to="Marathon/ShareButton" method="_on_pressed"]

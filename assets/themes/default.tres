@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://7bdtpoekv6hy"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://7bdtpoekv6hy"]
 
 [ext_resource type="Texture2D" uid="uid://gn1pf1go7lbt" path="res://assets/images/chevron-down.png" id="1_nr3lm"]
 [ext_resource type="FontFile" uid="uid://gkm2ebn5v6nh" path="res://assets/fonts/Lexend/static/Lexend-Regular.ttf" id="1_vwgqj"]
@@ -69,6 +69,18 @@ content_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k172"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug8sg"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [resource]
 default_font_size = 42
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -103,3 +115,5 @@ OptionButton/icons/arrow = ExtResource("1_nr3lm")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_nr3lm")
 OptionButton/styles/normal = SubResource("StyleBoxEmpty_xfxho")
 Panel/styles/panel = SubResource("StyleBoxEmpty_4k172")
+ProgressBar/colors/font_color = Color(0, 0, 0, 1)
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_ug8sg")

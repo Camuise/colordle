@@ -86,7 +86,7 @@ class ChannelDisplay:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Globals.connect("show_results", Callable(self, "_on_show_results"))
-    results_display = DailyResultsDisplay.new($ResultsDisplay)
+    results_display = DailyResultsDisplay.new($DailyResultsDisplay)
 
 
 func _on_show_results(puzzle_info: Globals.PuzzleInfo, _game_mode: int, _time_taken: float) -> void:
