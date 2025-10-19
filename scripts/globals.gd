@@ -259,6 +259,18 @@ class PuzzleInfo:
         time_ended = 0
         for i in range(6):
             answers.append(AnswerAttempt.new())
+
+
+func percent_to_grade(percent: float) -> Grade:
+    if percent >= grade_threshold[Grade.NONE]:
+        return Grade.NONE
+    elif percent >= grade_threshold[Grade.FAR]:
+        return Grade.FAR
+    elif percent >= grade_threshold[Grade.CORRECT]:
+        return Grade.CORRECT
+    elif percent >= grade_threshold[Grade.SAME]:
+        return Grade.SAME
+    return Grade.NONE
 # endregion
 
 

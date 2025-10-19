@@ -150,14 +150,7 @@ func _update_row(row: int, new_color) -> void:
 
         # Decide the grade given to the color
         var grade_given: Globals.Grade = Globals.Grade.NONE
-        if diff_to_answer <= Globals.grade_threshold[Globals.Grade.SAME]:
-            grade_given = Globals.Grade.SAME
-        elif diff_to_answer <= Globals.grade_threshold[Globals.Grade.CORRECT]:
-            grade_given = Globals.Grade.CORRECT
-        elif diff_to_answer <= Globals.grade_threshold[Globals.Grade.FAR]:
-            grade_given = Globals.Grade.FAR
-        else:
-            grade_given = Globals.Grade.NONE
+        grade_given = Globals.percent_to_grade(diff_to_answer)
 
         # Assign the grade
         color_border.color = Globals.grade_colors[grade_given]
@@ -170,14 +163,7 @@ func _update_row(row: int, new_color) -> void:
                 var loop_channel_colors = Globals.get_channel_colors(i, new_color, Globals.todays_color)
                 total_diff += ColorUtils.color_diff_percentage(loop_channel_colors[0], loop_channel_colors[1])
             var avg_diff = total_diff / 3.0
-            if avg_diff < Globals.grade_threshold[Globals.Grade.SAME]:
-                _play_sound(Globals.Grade.SAME)
-            elif avg_diff < Globals.grade_threshold[Globals.Grade.CORRECT]:
-                _play_sound(Globals.Grade.CORRECT)
-            elif avg_diff < Globals.grade_threshold[Globals.Grade.FAR]:
-                _play_sound(Globals.Grade.FAR)
-            else:
-                _play_sound(Globals.Grade.NONE)
+            _play_sound(Globals.percent_to_grade(avg_diff))
 
 
 func _rerender_display() -> void:
