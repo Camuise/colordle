@@ -102,7 +102,7 @@ enum ColorFormat {
 @export var colordle_format: ColorFormat = ColorFormat.HSV
 signal color_format_changed(new_format: ColorFormat)
 
-@export var todays_color: Color = _get_todays_color()
+@export var todays_color: Color = get_todays_color()
 
 enum ColordleResult {
     NONE,
@@ -118,7 +118,7 @@ func set_color_format(new_format: ColorFormat) -> void:
         emit_signal("color_format_changed", colordle_format)
 
 
-func _get_todays_color(time: bool = false) -> Color:
+func get_todays_color(time: bool = false) -> Color:
     # step 1: get today's date in UNIX
     var _today: Dictionary = Time.get_datetime_dict_from_system()
 
@@ -144,7 +144,7 @@ func _get_todays_color(time: bool = false) -> Color:
     return generated_color
 
 
-func _get_puzzle_number() -> int:
+func get_puzzle_number() -> int:
     # Define the start date (January 1, 2023)
     var start_date = Time.get_unix_time_from_datetime_dict({
         "year": 2025,
@@ -171,7 +171,7 @@ func _get_puzzle_number() -> int:
     return days_diff + 1  # +1 to make it 1-indexed
 
 
-func _get_todays_date() -> String:
+func get_todays_date() -> String:
     var today = Time.get_datetime_dict_from_system()
     return "%02d/%02d" % [today.month, today.day]
 # endregion
