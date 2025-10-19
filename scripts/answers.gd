@@ -109,6 +109,15 @@ func _round4(value: float) -> String:
     # only 1 non-zero digit before the decimal, drop padding to left
     return rounded.pad_decimals(2)
 
+func _percent_to_grade(value: float) -> Globals.Grade:
+    if value <= Globals.grade_threshold[Globals.Grade.SAME]:
+        return Globals.Grade.SAME
+    elif value <= Globals.grade_threshold[Globals.Grade.CORRECT]:
+        return Globals.Grade.CORRECT
+    elif value <= Globals.grade_threshold[Globals.Grade.FAR]:
+        return Globals.Grade.FAR
+    else:
+        return Globals.Grade.NONE
 # endregion
 
 
@@ -149,15 +158,7 @@ func _update_row(row: int, new_color) -> void:
         puzzle_info.answers[row].channel_grades[channel_index].difference = diff_to_answer
 
         # Decide the grade given to the color
-        var grade_given: Globals.Grade = Globals.Grade.NONE
-        if diff_to_answer <= Globals.grade_threshold[Globals.Grade.SAME]:
-            grade_given = Globals.Grade.SAME
-        elif diff_to_answer <= Globals.grade_threshold[Globals.Grade.CORRECT]:
-            grade_given = Globals.Grade.CORRECT
-        elif diff_to_answer <= Globals.grade_threshold[Globals.Grade.FAR]:
-            grade_given = Globals.Grade.FAR
-        else:
-            grade_given = Globals.Grade.NONE
+        var grade_given := _percent_to_grade(diff_to_answer)
 
         # Assign the grade
         color_border.color = Globals.grade_colors[grade_given]
@@ -170,14 +171,7 @@ func _update_row(row: int, new_color) -> void:
                 var loop_channel_colors = Globals.get_channel_colors(i, new_color, Globals.todays_color)
                 total_diff += ColorUtils.color_diff_percentage(loop_channel_colors[0], loop_channel_colors[1])
             var avg_diff = total_diff / 3.0
-            if avg_diff < Globals.grade_threshold[Globals.Grade.SAME]:
-                _play_sound(Globals.Grade.SAME)
-            elif avg_diff < Globals.grade_threshold[Globals.Grade.CORRECT]:
-                _play_sound(Globals.Grade.CORRECT)
-            elif avg_diff < Globals.grade_threshold[Globals.Grade.FAR]:
-                _play_sound(Globals.Grade.FAR)
-            else:
-                _play_sound(Globals.Grade.NONE)
+            _play_sound(_percent_to_grade(avg_diff))
 
 
 func _rerender_display() -> void:
