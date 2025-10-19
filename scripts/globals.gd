@@ -405,6 +405,21 @@ func _init_background_music() -> void:
 # endregion
 
 
+# region Utilities
+# ============================================================================
+# GENERAL UTILITIES
+# ============================================================================
+func round4(value: float) -> String:
+    var rounded = str(abs(100 - (round(value * 100) / 100)))
+    # if 3 non-zero chars before dot, drop all decimals
+    if rounded.find(".") == 3:
+        return rounded.split(".")[0] + "."
+    # if 2 non-zero digits before the decimal, drop last decimal
+    if rounded.find(".") == 2:
+        return rounded.substr(0, 4)
+    # only 1 non-zero digit before the decimal, drop padding to left
+    return rounded.pad_decimals(2)
+
 # region Init
 # ============================================================================
 # INITIALIZATION

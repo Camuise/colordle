@@ -97,18 +97,6 @@ func _puzzle_completed(successful: bool) -> void:
 # =====================================
 # UTILITY METHODS
 # =====================================
-# rounds a float to be only 4 characters long.
-func _round4(value: float) -> String:
-    var rounded = str(abs(100 - (round(value * 100) / 100)))
-    # if 3 non-zero chars before dot, drop all decimals
-    if rounded.find(".") == 3:
-        return rounded.split(".")[0] + "."
-    # if 2 non-zero digits before the decimal, drop last decimal
-    if rounded.find(".") == 2:
-        return rounded.substr(0, 4)
-    # only 1 non-zero digit before the decimal, drop padding to left
-    return rounded.pad_decimals(2)
-
 func _percent_to_grade(value: float) -> Globals.Grade:
     if value <= Globals.grade_threshold[Globals.Grade.SAME]:
         return Globals.Grade.SAME
@@ -153,7 +141,7 @@ func _update_row(row: int, new_color) -> void:
 
         # Calculate difference and update label
         var diff_to_answer = ColorUtils.color_diff_percentage(channel_colors[0], channel_colors[1])
-        percentage_label.text = _round4(diff_to_answer) + "%"
+        percentage_label.text = Globals.round4(diff_to_answer) + "%"
 
         puzzle_info.answers[row].channel_grades[channel_index].difference = diff_to_answer
 

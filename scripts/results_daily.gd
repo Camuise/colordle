@@ -67,7 +67,7 @@ class ResultsDisplay:
             channel_display.channel_color.color = channel_color
 
             # Update percentage label
-            channel_display.percentage_label.text = "%.2f%%" % channel_grade.difference
+            channel_display.percentage_label.text = Globals.round4(channel_grade.difference) + "%"
 
 
 class ChannelDisplay:
