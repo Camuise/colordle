@@ -46,19 +46,19 @@ class ResultsDisplay:
         for channel in range(display_row.size()):
             var channel_display = display_row[channel]
             var channel_grade = attempt.channel_grades[channel]
-            
+
             # if is 0, then we know its null so set to 20% opacity
             if attempt.color.a == 0:
                 channel_display.grade_color.modulate.a = 0.5
                 channel_display.channel_color.color = Color(1, 1, 1, 0.5)
                 channel_display.percentage_label.visible = false
                 continue
-            
+
             # Make sure elements are visible for valid attempts
             channel_display.grade_color.modulate.a = 1.0
             channel_display.channel_color.modulate.a = 1.0
             channel_display.percentage_label.visible = true
-            
+
             # Update border color based on grade
             channel_display.grade_color.color = Globals.grade_colors[channel_grade.grade]
 

@@ -289,14 +289,14 @@ class InfinidleStats:
         return "InfinidleStats(\n    total_wins=%d,\n    perfect_wins=%d,\n    win_rows=%s)" % [total_wins, perfect_wins, str(win_rows)]
 
 
-    func reset_infinidle_stats() -> void:
+    func _reset_infinidle_stats() -> void:
         total_wins = 0
         perfect_wins = 0
         for key in win_rows.keys():
             win_rows[key] = 0
 
 
-    func record_infinidle_win(row: int) -> void:
+    func _record_infinidle_win(row: int) -> void:
         if win_rows.has(row):
             win_rows[row] += 1
 # endregion

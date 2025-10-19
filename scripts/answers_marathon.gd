@@ -4,13 +4,15 @@ signal new_color_initiated()
 
 var infinidle_info: Globals.InfinidleStats
 
+
 func _ready() -> void:
     puzzle_info = Globals.PuzzleInfo.new()
     infinidle_info = Globals.InfinidleStats.new()
     Globals.connect("color_format_changed", Callable(self, "_on_color_format_changed"))
     Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
 
-func puzzle_completed(successful: bool) -> void:
+
+func _puzzle_completed(successful: bool) -> void:
     var status = "completed" if successful else "failed"
     await get_tree().create_timer(0.5).timeout
     puzzle_info.time_ended = Time.get_unix_time_from_system()
@@ -22,7 +24,6 @@ func puzzle_completed(successful: bool) -> void:
         return
     else:
         Globals.show_game_results(puzzle_info, Globals.GameState.MARATHON)
-
 
 
 func _initiate_new_color() -> void:

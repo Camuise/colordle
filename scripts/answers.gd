@@ -60,10 +60,10 @@ func _play_sound(sound: Globals.Grade) -> void:
 # ANSWER MANAGEMENT
 # =====================================
 func _on_input_answer_entered(new_answer: Color) -> void:
-    add_answer(new_answer)
+    _add_answer(new_answer)
 
 
-func add_answer(new_color: Color) -> void:
+func _add_answer(new_color: Color) -> void:
     if current_row >= puzzle_info.answers.size():
         return  # All rows filled, do nothing
     puzzle_info.answers[current_row].color = new_color
@@ -74,12 +74,12 @@ func add_answer(new_color: Color) -> void:
     # Check if the color matches exactly
     if (ColorUtils.color_diff_percentage(new_color, Globals.todays_color)
         < Globals.grade_threshold[Globals.Grade.CORRECT]):
-            puzzle_completed(true)
+            _puzzle_completed(true)
     elif current_row >= puzzle_info.answers.size():
-        puzzle_completed(false)
+        _puzzle_completed(false)
 
 
-func puzzle_completed(successful: bool) -> void:
+func _puzzle_completed(successful: bool) -> void:
     var status = "completed" if successful else "failed"
     await get_tree().create_timer(0.5).timeout
     Globals.show_game_results(puzzle_info, Globals.GameState.DAILY)
@@ -98,7 +98,7 @@ func puzzle_completed(successful: bool) -> void:
 # UTILITY METHODS
 # =====================================
 # rounds a float to be only 4 characters long.
-func round4(value: float) -> String:
+func _round4(value: float) -> String:
     var rounded = str(abs(100 - (round(value * 100) / 100)))
     # if 3 non-zero chars before dot, drop all decimals
     if rounded.find(".") == 3:
@@ -144,7 +144,7 @@ func _update_row(row: int, new_color) -> void:
 
         # Calculate difference and update label
         var diff_to_answer = ColorUtils.color_diff_percentage(channel_colors[0], channel_colors[1])
-        percentage_label.text = round4(diff_to_answer) + "%"
+        percentage_label.text = _round4(diff_to_answer) + "%"
 
         puzzle_info.answers[row].channel_grades[channel_index].difference = diff_to_answer
 
@@ -280,7 +280,7 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
                     Globals.todays_color.s,
                     Globals.todays_color.v
                 )
-                add_answer(debug_color)
+                _add_answer(debug_color)
 
         "pass", "perfect":
             # Fill rows up to target_row with appropriate colors
@@ -304,4 +304,4 @@ func _trigger_debug_completion(action: String, target_row: int) -> void:
                         Globals.todays_color.s,
                         Globals.todays_color.v
                     )
-                add_answer(debug_color)
+                _add_answer(debug_color)
