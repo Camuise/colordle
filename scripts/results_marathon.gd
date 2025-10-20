@@ -45,23 +45,21 @@ class MarathonResultsDisplay:
         for i in range(6):
             var bar: ProgressBar = _bar_graph[i]
             var wins = data.win_rows.get(i + 1, 0)
-            bar.value = wins
             bar.max_value = max_wins
+            bar.value = wins
 
 
 func _ready() -> void:
     Globals.connect("show_results", Callable(self, "_on_show_results"))
     Globals.connect("infinidle_complete", Callable(self, "_on_infinidle_complete"))
-    # Create the wrapper using the actual ResultsDisplay node
     results_display = MarathonResultsDisplay.new(results_display_node)
 
 
 func _on_show_results(_puzzle_info: Globals.PuzzleInfo, _game_mode: int, _time_taken: float) -> void:
-    # Marathon results display currently shows aggregate stats rather than per-answer rows.
     results_display.set_title("Colordle ∞ - %s" % Globals.get_todays_date())
-    # If you want to visualize per-answer data for marathon mode, implement a
-    # marathon-specific update method on MarathonResultsDisplay and call it here.
 
 
 func _on_infinidle_complete(infinidle_stats: Globals.InfinidleStats) -> void:
     results_display.set_streak(infinidle_stats.total_wins)
+    results_display.set_data(infinidle_stats)
+    results_display._update_bar_graph()
