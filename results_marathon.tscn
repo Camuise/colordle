@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dymq24locd6nk"]
+[gd_scene load_steps=8 format=3 uid="uid://dymq24locd6nk"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_cy1uf"]
-[ext_resource type="Script" uid="uid://chg6ue3p1a5" path="res://scripts/results.gd" id="2_377r4"]
 [ext_resource type="Texture2D" uid="uid://hag45jupbmwk" path="res://assets/images/arrow-left.png" id="3_l4k3k"]
 [ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="4_nfnua"]
 [ext_resource type="Texture2D" uid="uid://cs6c83x3d0jga" path="res://assets/images/share.png" id="6_x5hu1"]
@@ -9,7 +8,7 @@
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="8_c1tj6"]
 [ext_resource type="Script" uid="uid://bg2b1m41l37py" path="res://scripts/results_marathon.gd" id="9_cqxc6"]
 
-[node name="Results" type="Control"]
+[node name="ResultsMarathon" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,22 +16,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_cy1uf")
-script = ExtResource("2_377r4")
-
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 54.0
-offset_top = -150.0
-offset_right = 387.0
-offset_bottom = -58.0
-grow_vertical = 0
-text = "Main Menu"
-icon = ExtResource("3_l4k3k")
-alignment = 0
-script = ExtResource("4_nfnua")
 
 [node name="Marathon" type="Control" parent="."]
 layout_mode = 1
@@ -240,6 +223,21 @@ alignment = 2
 icon_alignment = 2
 script = ExtResource("7_fvsxr")
 
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = -150.0
+offset_right = 387.0
+offset_bottom = -58.0
+grow_vertical = 0
+text = "Main Menu"
+icon = ExtResource("3_l4k3k")
+alignment = 0
+script = ExtResource("4_nfnua")
+
 [node name="Reaction" type="Label" parent="."]
 layout_mode = 1
 offset_left = 73.0
@@ -260,5 +258,5 @@ theme_override_font_sizes/font_size = 30
 text = "You just went straight for the answer, didn't ya?"
 autowrap_mode = 3
 
-[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
 [connection signal="pressed" from="Marathon/ShareButton" to="Marathon/ShareButton" method="_on_pressed"]
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]

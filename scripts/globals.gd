@@ -26,7 +26,8 @@ enum GameState {
     MAIN_MENU,
     DAILY,
     MARATHON,
-    RESULTS,
+    RESULTS_DAILY,
+    RESULTS_MARATHON,
     OPTIONS
 }
 @export var game_state: GameState = GameState.MAIN_MENU
@@ -45,10 +46,12 @@ func set_game_state(new_state: GameState) -> void:
 
     emit_signal("game_state_changed", old_state, game_state)
 
-
 var daily_scene: Node = preload("res://daily.tscn").instantiate()
 var marathon_scene: Node = preload("res://marathon.tscn").instantiate()
-var results_scene: Node = preload("res://results.tscn").instantiate()
+var results_daily_scene: Node = preload("res://results_daily.tscn").instantiate()
+var results_marathon_scene: Node = preload("res://results_marathon.tscn").instantiate()
+
+
 func add_game_mode_scene(new_mode: GameState) -> void:
     var main_node = get_tree().root.get_node("Main")
     match new_mode:
@@ -56,10 +59,17 @@ func add_game_mode_scene(new_mode: GameState) -> void:
             main_node.add_child(daily_scene)
             daily_scene.owner = main_node
             daily_scene.position = Vector2(2560, 0)
-        GameState.RESULTS:
-            main_node.add_child(results_scene)
-            results_scene.owner = main_node
-            results_scene.position = Vector2(2560, 720)
+        GameState.RESULTS_DAILY:
+            # ensure instance has a unique name so we can find/remove it later
+            results_daily_scene.name = "ResultsDaily"
+            main_node.add_child(results_daily_scene)
+            results_daily_scene.owner = main_node
+            results_daily_scene.position = Vector2(2560, 720)
+        GameState.RESULTS_MARATHON:
+            results_marathon_scene.name = "ResultsMarathon"
+            main_node.add_child(results_marathon_scene)
+            results_marathon_scene.owner = main_node
+            results_marathon_scene.position = Vector2(2560, 720)
         GameState.MARATHON:
             main_node.add_child(marathon_scene)
             marathon_scene.owner = main_node
@@ -78,15 +88,33 @@ func remove_game_nodes() -> void:
     if current_marathon_node:
         marathon_scene = current_marathon_node
         main_node.remove_child(current_marathon_node)
+    # Results nodes may be named several ways depending on version. Handle them all.
+    var current_results_daily = main_node.get_node_or_null("ResultsDaily")
+    if current_results_daily:
+        results_daily_scene = current_results_daily
+        main_node.remove_child(current_results_daily)
+
+    var current_results_marathon = main_node.get_node_or_null("ResultsMarathon")
+    if current_results_marathon:
+        results_marathon_scene = current_results_marathon
+        main_node.remove_child(current_results_marathon)
+
+    # Backwards-compat: some older scenes may have root named "Results". Detect whether
+    # it's the daily or marathon variant by checking its children, then reassign.
     var current_results_node = main_node.get_node_or_null("Results")
     if current_results_node:
-        results_scene = current_results_node
+        if current_results_node.get_node_or_null("Daily"):
+            results_daily_scene = current_results_node
+        elif current_results_node.get_node_or_null("Marathon"):
+            results_marathon_scene = current_results_node
         main_node.remove_child(current_results_node)
 
 
 func show_game_results(puzzle_info: PuzzleInfo, game_mode: GameState) -> void:
     assert(game_mode in [GameState.DAILY, GameState.MARATHON], "game_mode must be DAILY or MARATHON")
-    set_game_state(GameState.RESULTS)
+    # Route to the specific results scene depending on which game mode produced the results
+    var results_state = GameState.RESULTS_DAILY if game_mode == GameState.DAILY else GameState.RESULTS_MARATHON
+    set_game_state(results_state)
     var time_taken = puzzle_info.time_ended - puzzle_info.time_started
     emit_signal("show_results", puzzle_info, game_mode, time_taken)
 # endregion

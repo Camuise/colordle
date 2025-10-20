@@ -1,8 +1,11 @@
 extends Control
 
 @onready var share_button = $ShareButton
-@onready var results_display = $ResultsDisplay
+@onready var results_display_node = $ResultsDisplay
 @onready var results_title = $ResultsDisplay/Title
+
+# Wrapper instance (DailyResultsDisplay) that'll manage the UI; separate from the raw node
+var results_display
 
 
 class DailyResultsDisplay:
@@ -86,7 +89,8 @@ class ChannelDisplay:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Globals.connect("show_results", Callable(self, "_on_show_results"))
-    results_display = DailyResultsDisplay.new($DailyResultsDisplay)
+    # Create the wrapper using the actual ResultsDisplay node
+    results_display = DailyResultsDisplay.new(results_display_node)
 
 
 func _on_show_results(puzzle_info: Globals.PuzzleInfo, _game_mode: int, _time_taken: float) -> void:

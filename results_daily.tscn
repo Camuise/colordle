@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dx85wfys6lc05" path="res://scripts/share_button.gd" id="7_3e2fy"]
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="8_and1v"]
 
-[node name="Results" type="Control"]
+[node name="ResultsDaily" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,21 +16,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_f0j8a")
-
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 54.0
-offset_top = -150.0
-offset_right = 387.0
-offset_bottom = -58.0
-grow_vertical = 0
-text = "Main Menu"
-icon = ExtResource("3_gexgp")
-alignment = 0
-script = ExtResource("4_a3gte")
 
 [node name="Daily" type="Control" parent="."]
 anchors_preset = 0
@@ -1200,6 +1185,21 @@ text = "10.0%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = -150.0
+offset_right = 387.0
+offset_bottom = -58.0
+grow_vertical = 0
+text = "Main Menu"
+icon = ExtResource("3_gexgp")
+alignment = 0
+script = ExtResource("4_a3gte")
+
 [node name="Reaction" type="Label" parent="."]
 layout_mode = 1
 offset_left = 73.0
@@ -1220,6 +1220,6 @@ theme_override_font_sizes/font_size = 30
 text = "You just went straight for the answer, didn't ya?"
 autowrap_mode = 3
 
-[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
 [connection signal="pressed" from="Daily/ShareButton" to="Daily/ShareButton" method="_on_pressed"]
 [connection signal="share_requested" from="Daily/ShareButton" to="Daily" method="_on_share_requested"]
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
