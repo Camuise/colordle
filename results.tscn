@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg42sn8ujru3q"]
+[gd_scene load_steps=10 format=3 uid="uid://dg42sn8ujru3q"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_amp1b"]
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="2_mabgl"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cs6c83x3d0jga" path="res://assets/images/share.png" id="4_pxnt6"]
 [ext_resource type="Script" uid="uid://dx85wfys6lc05" path="res://scripts/share_button.gd" id="5_7jyyn"]
 [ext_resource type="Script" uid="uid://bg2b1m41l37py" path="res://scripts/results_marathon.gd" id="9_n2gsa"]
-[ext_resource type="Script" uid="uid://ci7v5dfal6804" path="res://scripts/bar.gd" id="10_0gb23"]
 
 [node name="Results" type="Control"]
 layout_mode = 3
@@ -1216,176 +1215,181 @@ script = ExtResource("9_n2gsa")
 
 [node name="ResultsDisplay" type="VBoxContainer" parent="Marathon"]
 layout_mode = 0
-offset_left = 811.0
+offset_left = 640.0
 offset_top = 57.0
 offset_right = 1213.0
-offset_bottom = 524.0
+offset_bottom = 575.0
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="Marathon/ResultsDisplay"]
+[node name="Header" type="HBoxContainer" parent="Marathon/ResultsDisplay"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Marathon/ResultsDisplay/Header"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "Colordle ∞, 10/6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BarGraph" type="GridContainer" parent="Marathon/ResultsDisplay"]
+[node name="Spacer" type="Control" parent="Marathon/ResultsDisplay/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StreakCount" type="Label" parent="Marathon/ResultsDisplay/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Streak: 203"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BarGraph" type="VBoxContainer" parent="Marathon/ResultsDisplay"]
 layout_mode = 2
 theme = ExtResource("2_mabgl")
-theme_override_constants/h_separation = 12
-theme_override_constants/v_separation = 8
-columns = 2
+theme_override_constants/separation = 20
 
-[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+[node name="Item0" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 8
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label0"]
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item0"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item0/Label0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bar0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
-layout_mode = 2
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_bottom = 8
-script = ExtResource("10_0gb23")
-
-[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar0"]
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item0"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
 show_percentage = false
 
-[node name="Label1" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+[node name="Item1" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 8
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label1"]
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item1/Label0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bar1" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
-layout_mode = 2
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_bottom = 8
-script = ExtResource("10_0gb23")
-
-[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar1"]
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
 show_percentage = false
 
-[node name="Label2" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+[node name="Item2" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 8
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label2"]
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item2/Label0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bar2" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
-layout_mode = 2
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_bottom = 8
-script = ExtResource("10_0gb23")
-
-[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar2"]
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
 show_percentage = false
 
-[node name="Label3" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+[node name="Item3" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 8
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label3"]
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item3"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item3/Label0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bar3" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
-layout_mode = 2
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_bottom = 8
-script = ExtResource("10_0gb23")
-
-[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar3"]
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
 show_percentage = false
 
-[node name="Label4" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+[node name="Item4" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 8
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label4"]
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item4"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item4/Label0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bar4" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
-layout_mode = 2
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_bottom = 8
-script = ExtResource("10_0gb23")
-
-[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar4"]
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item4"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
 show_percentage = false
 
-[node name="Label5" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+[node name="Item5" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 8
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Label5"]
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item5"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item5/Label0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bar5" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph"]
-layout_mode = 2
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_bottom = 8
-script = ExtResource("10_0gb23")
-
-[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Bar5"]
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item5"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
 show_percentage = false
-
-[node name="StreakCount" type="Label" parent="Marathon/ResultsDisplay"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 34
-text = "Streak: 203"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ShareButton" type="Button" parent="Marathon"]
 layout_mode = 1
