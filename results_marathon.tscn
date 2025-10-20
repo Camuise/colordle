@@ -1,0 +1,264 @@
+[gd_scene load_steps=9 format=3 uid="uid://dymq24locd6nk"]
+
+[ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_cy1uf"]
+[ext_resource type="Script" uid="uid://chg6ue3p1a5" path="res://scripts/results.gd" id="2_377r4"]
+[ext_resource type="Texture2D" uid="uid://hag45jupbmwk" path="res://assets/images/arrow-left.png" id="3_l4k3k"]
+[ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="4_nfnua"]
+[ext_resource type="Texture2D" uid="uid://cs6c83x3d0jga" path="res://assets/images/share.png" id="6_x5hu1"]
+[ext_resource type="Script" uid="uid://dx85wfys6lc05" path="res://scripts/share_button.gd" id="7_fvsxr"]
+[ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="8_c1tj6"]
+[ext_resource type="Script" uid="uid://bg2b1m41l37py" path="res://scripts/results_marathon.gd" id="9_cqxc6"]
+
+[node name="Results" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cy1uf")
+script = ExtResource("2_377r4")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = -150.0
+offset_right = 387.0
+offset_bottom = -58.0
+grow_vertical = 0
+text = "Main Menu"
+icon = ExtResource("3_l4k3k")
+alignment = 0
+script = ExtResource("4_nfnua")
+
+[node name="Marathon" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_cqxc6")
+
+[node name="ResultsDisplay" type="VBoxContainer" parent="Marathon"]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 57.0
+offset_right = 1213.0
+offset_bottom = 575.0
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Marathon/ResultsDisplay"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Marathon/ResultsDisplay/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Colordle ∞, 10/6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Marathon/ResultsDisplay/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StreakCount" type="Label" parent="Marathon/ResultsDisplay/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Streak: 203"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BarGraph" type="VBoxContainer" parent="Marathon/ResultsDisplay"]
+layout_mode = 2
+theme = ExtResource("8_c1tj6")
+theme_override_constants/separation = 20
+
+[node name="Item0" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item0"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item0/Label0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Item1" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item1"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item1/Label0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Item2" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item2/Label0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Item3" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item3"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item3/Label0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Item4" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item4"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item4/Label0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="Item5" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label0" type="MarginContainer" parent="Marathon/ResultsDisplay/BarGraph/Item5"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Marathon/ResultsDisplay/BarGraph/Item5/Label0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Marathon/ResultsDisplay/BarGraph/Item5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+show_percentage = false
+
+[node name="ShareButton" type="Button" parent="Marathon"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -469.0
+offset_top = -150.0
+offset_right = -67.0
+offset_bottom = -54.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Share"
+icon = ExtResource("6_x5hu1")
+alignment = 2
+icon_alignment = 2
+script = ExtResource("7_fvsxr")
+
+[node name="Reaction" type="Label" parent="."]
+layout_mode = 1
+offset_left = 73.0
+offset_top = 57.0
+offset_right = 469.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 74
+text = "Good Job!"
+vertical_alignment = 1
+
+[node name="DetailedReaction" type="Label" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 150.0
+offset_right = 573.0
+offset_bottom = 352.0
+theme_override_font_sizes/font_size = 30
+text = "You just went straight for the answer, didn't ya?"
+autowrap_mode = 3
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
+[connection signal="pressed" from="Marathon/ShareButton" to="Marathon/ShareButton" method="_on_pressed"]
