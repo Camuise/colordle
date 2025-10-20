@@ -63,11 +63,23 @@ jobs:
           mv coi-serviceworker/coi-serviceworker.js build/web/coi-serviceworker.js
           sed -i '3 i <script src="coi-serviceworker.js"></script>' build/web/index.html
 
+      - name: 📁 Debug
+        run: |
+          echo "Contents of build/web:"
+          ls -la build/web || true
+          echo "\nFirst 120 lines of build/web/index.html (if present):"
+          if [ -f build/web/index.html ]; then
+            sed -n '1,120p' build/web/index.html || true
+          else
+            echo "index.html not found"
+          fi
+
       - name: 🚀 Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
+          publish_branch: gh-pages
           force_orphan: true
           user_name: "github-ci[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
