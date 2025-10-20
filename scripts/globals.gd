@@ -261,11 +261,13 @@ class PuzzleInfo:
             answers.append(AnswerAttempt.new())
 # endregion
 
-
 # region Infinidle Mode
 # ============================================================================
 # INFINIDLE-SPECIFIC THINGS
 # ============================================================================
+signal infinidle_complete(infinidle_stats: InfinidleStats)
+
+
 class InfinidleStats:
     var total_wins: int = 0
     var perfect_wins: int = 0
@@ -299,6 +301,10 @@ class InfinidleStats:
     func _record_infinidle_win(row: int) -> void:
         if win_rows.has(row):
             win_rows[row] += 1
+
+
+func broadcast_infinidle_complete(infinidle_stats: InfinidleStats) -> void:
+    emit_signal("infinidle_complete", infinidle_stats)
 # endregion
 
 
@@ -419,6 +425,7 @@ func round4(value: float) -> String:
         return rounded.substr(0, 4)
     # only 1 non-zero digit before the decimal, drop padding to left
     return rounded.pad_decimals(2)
+
 
 # region Init
 # ============================================================================

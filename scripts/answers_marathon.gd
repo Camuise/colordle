@@ -24,6 +24,7 @@ func _puzzle_completed(successful: bool) -> void:
         return
     else:
         Globals.show_game_results(puzzle_info, Globals.GameState.MARATHON)
+        Globals.broadcast_infinidle_complete(infinidle_info)
 
 
 func _initiate_new_color() -> void:
