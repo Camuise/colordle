@@ -22,10 +22,34 @@ jobs:
       - name: 🛎️ Checkout
         uses: actions/checkout@v5
 
-      - name: 📦 Move HTML5 templates into position
+      - name: 📦 Ensure HTML5 export templates are available
         run: |
+          set -eux
           mkdir -v -p ~/.local/share/godot/export_templates
-          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          # Try common locations used by different container images
+          if [ -d "/root/.local/share/godot/export_templates/${GODOT_VERSION}.stable" ]; then
+            mv "/root/.local/share/godot/export_templates/${GODOT_VERSION}.stable" ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          elif [ -d "/usr/share/godot/export_templates/${GODOT_VERSION}.stable" ]; then
+            mv "/usr/share/godot/export_templates/${GODOT_VERSION}.stable" ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+          else
+            echo "Export templates not found in container; downloading official export templates for Godot ${GODOT_VERSION}"
+            # Download official export templates archive and extract the html5 template directory
+            TMPZIP="godot_export_templates_${GODOT_VERSION}.stable.zip"
+            URL="https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+            # Try alternative official URL pattern if first fails
+            if ! curl -fSL -o "$TMPZIP" "$URL"; then
+              URL2="https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable-export-templates.zip"
+              curl -fSL -o "$TMPZIP" "$URL2"
+            fi
+            unzip -q "$TMPZIP" -d export_templates_tmp
+            # Move any found templates into place
+            if [ -d export_templates_tmp/templates ]; then
+              mv export_templates_tmp/templates/* ~/.local/share/godot/export_templates/ || true
+            else
+              mv export_templates_tmp/* ~/.local/share/godot/export_templates/ || true
+            fi
+            rm -rf "$TMPZIP" export_templates_tmp || true
+          fi
 
       - name: 🗂️ Create staging directory
         run: mkdir -v -p build/web
