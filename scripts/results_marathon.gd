@@ -1,10 +1,13 @@
 extends Control
 
 @onready var share_button = $ShareButton
-@onready var results_display = $ResultsDisplay
+@onready var results_display_node = $ResultsDisplay
+
+# Wrapper instance (MarathonResultsDisplay) separate from raw node
+var results_display
 
 
-class DailyResultsDisplay:
+class MarathonResultsDisplay:
     var data: Globals.InfinidleStats
     var _title: Label
     var _bar_graph: Array = []
@@ -24,7 +27,7 @@ class DailyResultsDisplay:
 
 
     func set_streak(current_streak: int) -> void:
-        var streak_display: Label = _results_display_node.get_node("Header/Streak")
+        var streak_display: Label = _results_display_node.get_node("Header/StreakCount")
         streak_display.text = "Streak: %d" % current_streak
         pass
 
@@ -49,14 +52,16 @@ class DailyResultsDisplay:
 func _ready() -> void:
     Globals.connect("show_results", Callable(self, "_on_show_results"))
     Globals.connect("infinidle_complete", Callable(self, "_on_infinidle_complete"))
-    results_display = DailyResultsDisplay.new($ResultsDisplay)
+    # Create the wrapper using the actual ResultsDisplay node
+    results_display = MarathonResultsDisplay.new(results_display_node)
 
 
-func _on_show_results(puzzle_info: Globals.PuzzleInfo, _game_mode: int, _time_taken: float) -> void:
+func _on_show_results(_puzzle_info: Globals.PuzzleInfo, _game_mode: int, _time_taken: float) -> void:
+    # Marathon results display currently shows aggregate stats rather than per-answer rows.
     results_display.set_title("Colordle ∞ - %s" % Globals.get_todays_date())
-    for i in range(puzzle_info.answers.size()):
-        results_display.update_answer_attempt(i, puzzle_info.answers[i])
+    # If you want to visualize per-answer data for marathon mode, implement a
+    # marathon-specific update method on MarathonResultsDisplay and call it here.
 
 
 func _on_infinidle_complete(infinidle_stats: Globals.InfinidleStats) -> void:
-    results_display.set_streak(infinidle_stats.current_streak)
+    results_display.set_streak(infinidle_stats.total_wins)
