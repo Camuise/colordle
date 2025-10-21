@@ -82,7 +82,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
-show_percentage = false
 
 [node name="Item1" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
@@ -106,7 +105,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
-show_percentage = false
 
 [node name="Item2" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
@@ -130,7 +128,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
-show_percentage = false
 
 [node name="Item3" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
@@ -154,7 +151,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
-show_percentage = false
 
 [node name="Item4" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
@@ -178,7 +174,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
-show_percentage = false
 
 [node name="Item5" type="HBoxContainer" parent="Marathon/ResultsDisplay/BarGraph"]
 layout_mode = 2
@@ -202,7 +197,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
-show_percentage = false
 
 [node name="ShareButton" type="Button" parent="Marathon"]
 layout_mode = 1
