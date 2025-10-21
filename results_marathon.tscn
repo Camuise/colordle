@@ -253,4 +253,5 @@ text = "You just went straight for the answer, didn't ya?"
 autowrap_mode = 3
 
 [connection signal="pressed" from="Marathon/ShareButton" to="Marathon/ShareButton" method="_on_pressed"]
+[connection signal="share_requested" from="Marathon/ShareButton" to="Marathon" method="_on_share_requested"]
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
