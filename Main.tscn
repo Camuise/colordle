@@ -42,6 +42,7 @@ layout_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(640, 360)
+ignore_rotation = false
 script = ExtResource("4_cm0pq")
 
 [node name="VersionWarn" type="Label" parent="Camera2D"]

@@ -1,5 +1,6 @@
 extends Camera2D
 
+@onready var devbuild_label: Label = self.get_node_or_null("Label")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +12,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-    pass
+    if devbuild_label:
+        devbuild_label.rotation = rotation
 
 
 func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
@@ -28,5 +30,10 @@ func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.Ga
     # Animate camera to new position and rotate a bit away while leaving starting pos
     if self and new_state in camera_positions:
         var target_position = camera_positions[new_state]
+        var rotation_direction = -1 if (new_state == Globals.GameState.MAIN_MENU) else 1
         var tween = create_tween()
         tween.tween_property(self, "position", target_position, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+        tween.parallel()
+        tween.tween_property(self, "rotation", rotation + deg_to_rad(15) * rotation_direction, 0.75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+        tween.parallel()
+        tween.tween_property(self, "rotation", rotation, 0.75).set_delay(0.75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
