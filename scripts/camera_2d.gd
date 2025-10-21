@@ -1,6 +1,5 @@
 extends Camera2D
 
-@onready var devbuild_label: Label = self.get_node_or_null("Label")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,12 +7,6 @@ func _ready() -> void:
     if Globals.has_signal("game_state_changed"):
         Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
     pass  # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-    if devbuild_label:
-        devbuild_label.rotation = rotation
 
 
 func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
