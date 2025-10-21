@@ -79,7 +79,7 @@ func add_game_mode_scene(new_mode: GameState) -> void:
 
 
 func remove_game_nodes() -> void:
-    var main_node = get_tree().root.get_node("Main/CanvasLayer")
+    var main_node = get_tree().root.get_node("Main")
     var current_daily_node = main_node.get_node_or_null("Daily")
     if current_daily_node:
         daily_scene = current_daily_node
