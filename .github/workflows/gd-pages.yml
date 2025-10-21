@@ -63,6 +63,10 @@ jobs:
           mv coi-serviceworker/coi-serviceworker.js build/web/coi-serviceworker.js
           sed -i '3 i <script src="coi-serviceworker.js"></script>' build/web/index.html
 
+      - name: 🌐 Add CNAME for custom domain
+        run: |
+          echo "colordle.matchatea.dev" > build/web/CNAME
+
       - name: 📁 Debug
         run: |
           echo "Contents of build/web:"
