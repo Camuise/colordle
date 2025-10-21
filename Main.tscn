@@ -19,33 +19,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_cm0pq")
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 3840.0
-offset_bottom = 2160.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.34, 0, 0, 1)
-script = ExtResource("1_glv2v")
-saturation = 0.15
-
-[node name="Daily" parent="." instance=ExtResource("2_uu6xs")]
-layout_mode = 1
-offset_left = 2560.0
-offset_right = 2560.0
-
-[node name="Title" parent="." instance=ExtResource("3_r0du0")]
-layout_mode = 1
-
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(640, 360)
 ignore_rotation = false
 script = ExtResource("4_cm0pq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Background" type="ColorRect" parent="Camera2D/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -637.0
+offset_top = -373.0
+offset_right = 3203.0
+offset_bottom = 1787.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.34, 0, 0, 1)
+script = ExtResource("1_glv2v")
+saturation = 0.15
 
 [node name="VersionWarn" type="Label" parent="Camera2D/CanvasLayer"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -64,15 +57,9 @@ text = "You're running Colordle v0.0.8-dev, a development build!
 You may see some bugs and missing features."
 script = ExtResource("6_trn2v")
 
-[node name="ResultsDaily" parent="." instance=ExtResource("5_fos0i")]
-layout_mode = 1
-offset_left = 2560.0
-offset_top = 720.0
-offset_right = 2560.0
-offset_bottom = 720.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
+[node name="Label2" type="Label" parent="CanvasLayer"]
 offset_left = 163.0
 offset_top = 1695.0
 offset_right = 1201.0
@@ -84,15 +71,25 @@ pls give 5 stars thanks :D
 dm @issac on slack and yell at me to add this
 bc i might have forgotten"
 
-[node name="Marathon" parent="." instance=ExtResource("7_lgr22")]
-layout_mode = 1
+[node name="Title" parent="CanvasLayer" instance=ExtResource("3_r0du0")]
+
+[node name="Daily" parent="CanvasLayer" instance=ExtResource("2_uu6xs")]
+offset_left = 2560.0
+offset_right = 2560.0
+
+[node name="ResultsDaily" parent="CanvasLayer" instance=ExtResource("5_fos0i")]
+offset_left = 2560.0
+offset_top = 720.0
+offset_right = 2560.0
+offset_bottom = 720.0
+
+[node name="Marathon" parent="CanvasLayer" instance=ExtResource("7_lgr22")]
 offset_left = 2560.0
 offset_top = 1440.0
 offset_right = 2560.0
 offset_bottom = 1440.0
 
-[node name="ResultsMarathon" parent="." instance=ExtResource("9_03owx")]
-layout_mode = 1
+[node name="ResultsMarathon" parent="CanvasLayer" instance=ExtResource("9_03owx")]
 offset_left = 2558.0
 offset_top = 719.0
 offset_right = 2558.0
