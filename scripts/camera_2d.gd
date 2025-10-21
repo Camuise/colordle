@@ -27,6 +27,6 @@ func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.Ga
         var tween = create_tween()
         tween.tween_property(self, "position", target_position, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
         tween.parallel()
-        tween.tween_property(self, "rotation", rotation + deg_to_rad(15) * rotation_direction, 0.75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+        tween.tween_property(self, "rotation", 0 + deg_to_rad(15) * rotation_direction, 0.75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
         tween.parallel()
-        tween.tween_property(self, "rotation", rotation, 0.75).set_delay(0.75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+        tween.tween_property(self, "rotation", 0, 0.75).set_delay(0.75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
