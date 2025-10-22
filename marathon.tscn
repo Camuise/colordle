@@ -67,15 +67,16 @@ layout_mode = 2
 icon = ExtResource("2_aljmc")
 script = ExtResource("3_aljmc")
 
-[node name="Infinidle" type="Label" parent="Header/Left"]
+[node name="Right" type="HBoxContainer" parent="Header"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 2
+
+[node name="Infinidle" type="Label" parent="Header/Right"]
 layout_mode = 2
 text = "Infinidle	"
 horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="Right" type="HBoxContainer" parent="Header"]
-layout_mode = 2
-alignment = 2
 
 [node name="Ratio" type="Label" parent="Header/Right"]
 layout_mode = 2
@@ -85,10 +86,9 @@ vertical_alignment = 1
 script = ExtResource("4_53iya")
 
 [node name="ColordleColor" type="Control" parent="Header/Right"]
-custom_minimum_size = Vector2(120, 80)
+custom_minimum_size = Vector2(95, 80)
 layout_mode = 2
 size_flags_vertical = 4
-metadata/_edit_lock_ = true
 
 [node name="Border" type="ColorRect" parent="Header/Right/ColordleColor"]
 layout_mode = 1
