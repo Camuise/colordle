@@ -54,26 +54,27 @@ var results_marathon_scene: Node = preload("res://results_marathon.tscn").instan
 
 func add_game_mode_scene(new_mode: GameState) -> void:
     var main_node = get_tree().root.get_node("Main")
+    var screen_size: Vector2 = get_viewport().get_visible_rect().size
     match new_mode:
         GameState.DAILY:
             main_node.add_child(daily_scene)
             daily_scene.owner = main_node
-            daily_scene.position = Vector2(2560, 0)
+            daily_scene.position = Vector2(2, 0) * screen_size
         GameState.RESULTS_DAILY:
             # ensure instance has a unique name so we can find/remove it later
             results_daily_scene.name = "ResultsDaily"
             main_node.add_child(results_daily_scene)
             results_daily_scene.owner = main_node
-            results_daily_scene.position = Vector2(2560, 720)
+            results_daily_scene.position = Vector2(2, 1) * screen_size
         GameState.RESULTS_MARATHON:
             results_marathon_scene.name = "ResultsMarathon"
             main_node.add_child(results_marathon_scene)
             results_marathon_scene.owner = main_node
-            results_marathon_scene.position = Vector2(2560, 720)
+            results_marathon_scene.position = Vector2(2, 1) * screen_size
         GameState.MARATHON:
             main_node.add_child(marathon_scene)
             marathon_scene.owner = main_node
-            marathon_scene.position = Vector2(2560, 1440)
+            marathon_scene.position = Vector2(2, 2) * screen_size
         _:
             get_tree().create_timer(1.5).timeout.connect(remove_game_nodes)
 

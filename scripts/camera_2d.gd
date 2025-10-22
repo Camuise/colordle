@@ -10,19 +10,21 @@ func _ready() -> void:
 
 
 func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
-    # Define camera positions for each game state
+    # Define camera positions for each game state. defined as screen widths/heights away from origin
     const camera_positions := {
         Globals.GameState.MAIN_MENU: Vector2(0, 0),
-        Globals.GameState.DAILY: Vector2(2560, 0),  # to the right
-        Globals.GameState.MARATHON: Vector2(2560, 1440),  # to bottom right
-        Globals.GameState.RESULTS_DAILY: Vector2(2560, 720),  # to top right (daily results)
-        Globals.GameState.RESULTS_MARATHON: Vector2(2560, 720),  # to top right (marathon results)
-        Globals.GameState.OPTIONS: Vector2(0, 1440)  # directly below
+        Globals.GameState.DAILY: Vector2(2, 0),  # to the right
+        Globals.GameState.MARATHON: Vector2(2, 2),  # to bottom right
+        Globals.GameState.RESULTS_DAILY: Vector2(2, 1),  # to top right (daily results)
+        Globals.GameState.RESULTS_MARATHON: Vector2(2, 1),  # to top right (marathon results)
+        Globals.GameState.OPTIONS: Vector2(0, 2)  # directly below
     }
+
+    var screen_size: Vector2 = get_viewport_rect().size
 
     # Animate camera to new position and rotate a bit away while leaving starting pos
     if self and new_state in camera_positions:
-        var target_position = camera_positions[new_state]
+        var target_position = camera_positions[new_state] * screen_size
         var rotation_direction = -1 if (new_state == Globals.GameState.MAIN_MENU) else 1
         var tween = create_tween()
         tween.tween_property(self, "position", target_position, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
