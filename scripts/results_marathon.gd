@@ -41,14 +41,10 @@ class MarathonResultsDisplay:
 
 
     func _update_bar_graph() -> void:
-        var max_wins = 1
-        for wins in data.win_rows.values():
-            if wins > max_wins:
-                max_wins = wins
         for i in range(6):
             var bar: ProgressBar = _bar_graph[i]
             var wins = data.win_rows.get(i + 1, 0)
-            bar.max_value = max_wins
+            bar.max_value = data.total_wins
             bar.value = wins
 
 
@@ -69,9 +65,28 @@ func _on_infinidle_complete(infinidle_stats: Globals.InfinidleStats) -> void:
 
 func _on_share_requested() -> void:
     # 1. Add title + date
-    var share_text: String = "%s, Streak of %d\n\n" % [results_data.title, results_data.get_streak()]
+    var share_text: String = "%s, Streak: %d\n\n" % [results_data.title, results_data.get_streak()]
 
-    # 2. Add grades (emojis)
+    # 2. Generate bar graph with unicode blocks
+    var max_wins = 1
+    for wins in results_data.data.win_rows.values():
+        if wins > max_wins:
+            max_wins = wins
+    for i in range(6):
+        var wins = results_data.data.win_rows.get(i + 1, 0)
+        var line: String = "%d: " % (i + 1)
+        # map 0 - 10 blocks to max_wins
+        var blocks = int(round(float(wins) / float(max_wins) * 10))
+        for j in range(10):
+            line += "█" if j < blocks else "░"
+        # add percentage
+        var percent: int = 0
+        if results_data.data.total_wins > 0:
+            percent = int(round(float(wins) / float(results_data.data.total_wins) * 100.0))
+        line += " %d%%" % percent
+        line += " (%d)" % wins
+
+        share_text += line + "\n"
 
     # 3. Copy to clipboard
     DisplayServer.clipboard_set(share_text)
