@@ -47,27 +47,31 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_q6ciw")
 
-[node name="Header" type="Control" parent="."]
+[node name="Header" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -600.0
-offset_top = 40.0
-offset_right = 600.0
-offset_bottom = 140.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+offset_bottom = 130.0
 grow_horizontal = 2
 
+[node name="SpacerBefore" type="Control" parent="Header"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
 [node name="Left" type="HBoxContainer" parent="Header"]
-layout_mode = 0
-offset_right = 196.0
-offset_bottom = 100.0
+layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="BackButton" type="Button" parent="Header/Left"]
 layout_mode = 2
 icon = ExtResource("2_aljmc")
 script = ExtResource("3_aljmc")
+
+[node name="SpacerMiddle" type="Control" parent="Header"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Right" type="HBoxContainer" parent="Header"]
 layout_mode = 2
@@ -79,20 +83,6 @@ layout_mode = 2
 text = "Infinidle	"
 horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="Right" type="HBoxContainer" parent="Header"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -428.0
-offset_top = -50.0
-offset_bottom = 50.0
-grow_horizontal = 0
-grow_vertical = 2
-alignment = 2
 
 [node name="Ratio" type="Label" parent="Header/Right"]
 layout_mode = 2
@@ -125,6 +115,10 @@ offset_right = 74.0
 offset_bottom = 74.0
 script = ExtResource("7_xpyc5")
 
+[node name="SpacerEnd" type="Control" parent="Header"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
 [node name="Gameplay" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 14
@@ -142,7 +136,6 @@ theme_override_constants/separation = 0
 [node name="SpacerBefore" type="Control" parent="Gameplay"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="AnswerDisplay" type="VBoxContainer" parent="Gameplay"]
 layout_mode = 2
@@ -770,6 +763,7 @@ horizontal_alignment = 1
 [node name="SpacerMiddle" type="Control" parent="Gameplay"]
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Input" type="VBoxContainer" parent="Gameplay"]
 layout_mode = 2
@@ -1006,7 +1000,6 @@ expand_icon = true
 [node name="SpacerEnd" type="Control" parent="Gameplay"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [connection signal="pressed" from="Header/Left/BackButton" to="Header/Left/BackButton" method="_on_pressed"]
 [connection signal="new_color_initiated" from="Gameplay/AnswerDisplay" to="Header/Right/ColordleColor/Border/Color" method="_on_new_color_initiated"]
