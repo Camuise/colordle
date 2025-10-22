@@ -20,7 +20,7 @@ grow_vertical = 2
 theme = ExtResource("1_cm0pq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(640, 360)
+anchor_mode = 0
 ignore_rotation = false
 script = ExtResource("4_cm0pq")
 
