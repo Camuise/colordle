@@ -211,6 +211,7 @@ TabBar/styles/tab_unselected = SubResource("StyleBoxEmpty_3f256")
 TabContainer/colors/font_hovered_color = Color(0.25, 0.25, 0.25, 1)
 TabContainer/colors/font_outline_color = Color(1, 1, 1, 0.7529412)
 TabContainer/colors/font_selected_color = Color(0, 0, 0, 1)
+TabContainer/colors/font_unselected_color = Color(0.25462088, 0.2546209, 0.25462088, 1)
 TabContainer/constants/outline_size = 8
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_ggasa")
 TabContainer/styles/tab_disabled = SubResource("StyleBoxEmpty_i6at2")
