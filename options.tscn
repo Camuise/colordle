@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://ropkcxeylr36"]
+
+[ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_oyqm6"]
+[ext_resource type="Texture2D" uid="uid://bxne46av5ookw" path="res://assets/images/arrow-up.png" id="2_ao2gm"]
+[ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="3_kls10"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oyqm6")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+offset_bottom = 122.0
+grow_horizontal = 2
+
+[node name="SpacerBefore" type="Control" parent="Header"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="BackButton" type="Button" parent="Header"]
+layout_mode = 2
+text = "Back"
+icon = ExtResource("2_ao2gm")
+script = ExtResource("3_kls10")
+
+[node name="SpacerMiddle" type="Control" parent="Header"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Header"]
+layout_mode = 2
+text = "Aug 24 2025"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SpacerEnd" type="Control" parent="Header"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[connection signal="pressed" from="Header/BackButton" to="Header/BackButton" method="_on_pressed"]
