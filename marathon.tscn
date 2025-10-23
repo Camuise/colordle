@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://bwrdulnjcr84y"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_q6ciw"]
-[ext_resource type="Texture2D" uid="uid://hag45jupbmwk" path="res://assets/images/arrow-left.png" id="2_aljmc"]
+[ext_resource type="Texture2D" uid="uid://bauxxyawbwcrh" path="res://assets/images/arrow-up-left.png" id="2_53iya"]
 [ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="3_aljmc"]
 [ext_resource type="Script" uid="uid://br0xf55gnfsg" path="res://scripts/date_marathon.gd" id="4_53iya"]
 [ext_resource type="Theme" uid="uid://blrmy62gijyx0" path="res://assets/themes/monospace.tres" id="7_1fcjr"]
@@ -65,7 +65,7 @@ theme_override_constants/separation = 20
 
 [node name="BackButton" type="Button" parent="Header/Left"]
 layout_mode = 2
-icon = ExtResource("2_aljmc")
+icon = ExtResource("2_53iya")
 script = ExtResource("3_aljmc")
 
 [node name="SpacerMiddle" type="Control" parent="Header"]
