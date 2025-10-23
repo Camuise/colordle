@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddib5ilnqxn7m"]
+[gd_scene load_steps=11 format=3 uid="uid://ddib5ilnqxn7m"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://b15miqqfc656u" path="res://scripts/background.gd" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://jdbb2vhovioi" path="res://daily.tscn" id="2_uu6xs"]
-[ext_resource type="PackedScene" path="res://title.tscn" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://0udc6m8neb2f" path="res://title.tscn" id="3_r0du0"]
 [ext_resource type="Script" uid="uid://dbsr5vqs2b06q" path="res://scripts/camera_2d.gd" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dg42sn8ujru3q" path="res://results_daily.tscn" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://bhnmnw7vsnivx" path="res://scripts/version_warn.gd" id="6_trn2v"]
 [ext_resource type="PackedScene" uid="uid://bwrdulnjcr84y" path="res://marathon.tscn" id="7_lgr22"]
 [ext_resource type="PackedScene" uid="uid://dymq24locd6nk" path="res://results_marathon.tscn" id="9_03owx"]
+[ext_resource type="PackedScene" uid="uid://ropkcxeylr36" path="res://options.tscn" id="10_wkp8b"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -62,19 +63,6 @@ text = "You're running Colordle v0.0.8-dev, a development build!
 You may see some bugs and missing features."
 script = ExtResource("6_trn2v")
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 163.0
-offset_top = 1695.0
-offset_right = 1201.0
-offset_bottom = 2028.0
-text = "restart the game
-options menu doesn't exist yet :<
-i swear i will add this
-pls give 5 stars thanks :D
-dm @issac on slack and yell at me to add this
-bc i might have forgotten"
-
 [node name="Title" parent="." instance=ExtResource("3_r0du0")]
 layout_mode = 1
 
@@ -103,3 +91,8 @@ offset_left = 2558.0
 offset_top = 719.0
 offset_right = 2558.0
 offset_bottom = 719.0
+
+[node name="Options" parent="." instance=ExtResource("10_wkp8b")]
+layout_mode = 1
+offset_top = 1440.0
+offset_bottom = 1440.0
