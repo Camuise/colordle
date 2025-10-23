@@ -50,6 +50,7 @@ var daily_scene: Node = preload("res://daily.tscn").instantiate()
 var marathon_scene: Node = preload("res://marathon.tscn").instantiate()
 var results_daily_scene: Node = preload("res://results_daily.tscn").instantiate()
 var results_marathon_scene: Node = preload("res://results_marathon.tscn").instantiate()
+var options_scene: Node = preload("res://options.tscn").instantiate()
 
 
 func add_game_mode_scene(new_mode: GameState) -> void:
@@ -75,6 +76,10 @@ func add_game_mode_scene(new_mode: GameState) -> void:
             main_node.add_child(marathon_scene)
             marathon_scene.owner = main_node
             marathon_scene.position = Vector2(2, 2) * screen_size
+        GameState.OPTIONS:
+            main_node.add_child(options_scene)
+            options_scene.owner = main_node
+            options_scene.position = Vector2(0, 2) * screen_size
         _:
             get_tree().create_timer(1.5).timeout.connect(remove_game_nodes)
 
@@ -99,6 +104,11 @@ func remove_game_nodes() -> void:
     if current_results_marathon:
         results_marathon_scene = current_results_marathon
         main_node.remove_child(current_results_marathon)
+    
+    var current_options_node = main_node.get_node_or_null("Options")
+    if current_options_node:
+        options_scene = current_options_node
+        main_node.remove_child(current_options_node)
 
     # Backwards-compat: some older scenes may have root named "Results". Detect whether
     # it's the daily or marathon variant by checking its children, then reassign.
