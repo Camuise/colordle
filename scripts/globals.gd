@@ -8,14 +8,26 @@ enum ColorTheme {
     LIGHT,
     DARK
 }
+enum RainbowCycle {
+    OFF,
+    CYCLE
+}
 @export var theme: ColorTheme = ColorTheme.LIGHT
+@export var rainbow_cycle: RainbowCycle = RainbowCycle.CYCLE
 signal theme_changed(new_theme: ColorTheme)
+signal rainbow_cycle_changed(new_mode: RainbowCycle)
 
 
 func set_theme(new_theme: ColorTheme) -> void:
     if theme != new_theme:
         theme = new_theme
         emit_signal("theme_changed", theme)
+
+
+func set_rainbow_cycle(new_mode: RainbowCycle) -> void:
+    if rainbow_cycle != new_mode:
+        rainbow_cycle = new_mode
+        emit_signal("rainbow_cycle_changed", rainbow_cycle)
 # endregion
 
 # region Game State
@@ -104,7 +116,7 @@ func remove_game_nodes() -> void:
     if current_results_marathon:
         results_marathon_scene = current_results_marathon
         main_node.remove_child(current_results_marathon)
-    
+
     var current_options_node = main_node.get_node_or_null("Options")
     if current_options_node:
         options_scene = current_options_node

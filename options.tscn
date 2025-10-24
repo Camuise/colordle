@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ropkcxeylr36"]
+[gd_scene load_steps=7 format=3 uid="uid://ropkcxeylr36"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_oyqm6"]
 [ext_resource type="Texture2D" uid="uid://bxne46av5ookw" path="res://assets/images/arrow-up.png" id="2_ao2gm"]
 [ext_resource type="Script" uid="uid://clhistud54or4" path="res://scripts/back_button.gd" id="3_kls10"]
 [ext_resource type="Texture2D" uid="uid://bekgvacgvthhx" path="res://assets/images/theme/sun.png" id="4_p8250"]
-[ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://scripts/theme_switcher.gd" id="5_kls10"]
+[ext_resource type="Script" uid="uid://cajfscah5ebs1" path="res://scripts/options/theme_switcher.gd" id="5_kls10"]
+[ext_resource type="Script" uid="uid://d16wyoo3lflms" path="res://scripts/options/rainbow_bg_toggle.gd" id="6_0kfld"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -105,8 +106,10 @@ alignment = 1
 layout_mode = 2
 text = "Rainbow Background"
 
-[node name="CheckButton" type="CheckButton" parent="TabContainer/Visual/VBoxContainer/BGColor"]
+[node name="RainbowButton" type="CheckButton" parent="TabContainer/Visual/VBoxContainer/BGColor"]
 layout_mode = 2
+button_pressed = true
+script = ExtResource("6_0kfld")
 
 [node name="Audio" type="Control" parent="TabContainer"]
 visible = false
