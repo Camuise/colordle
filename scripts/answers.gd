@@ -32,7 +32,7 @@ func _play_sound(sound: Globals.Grade) -> void:
     if not sound_player:
         sound_player = AudioStreamPlayer.new()
         add_child(sound_player)
-        sound_player.volume_db = linear_to_db(Globals.sfx_volume)
+    sound_player.volume_db = linear_to_db(Globals.sfx_volume)
     var sound_path = ""
     match sound:
         Globals.Grade.SAME:
