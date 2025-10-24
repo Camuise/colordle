@@ -438,11 +438,13 @@ func get_channel_value(color: Color, channel_index: int) -> float:
     return 1.0  # Default fallback
 # endregion
 
-# region BG Music
+# region Global Audio
 # ============================================================================
-# BACKGROUND MUSIC
+# BACKGROUND MUSIC AND SOUND VOLUME
 # ============================================================================
 var music_player: AudioStreamPlayer
+@export var music_volume: float = 1.0
+@export var sfx_volume: float = 1.0
 
 
 func _init_background_music() -> void:
@@ -454,11 +456,20 @@ func _init_background_music() -> void:
     var music_stream = load("res://assets/sounds/Yoga (Wii Fit).mp3") as AudioStream
     if music_stream:
         music_player.stream = music_stream
-        music_player.volume_db = -10  # Adjust volume as needed
+        music_player.volume_db = linear_to_db(music_volume)
         music_player.autoplay = false
         print("Background music loaded successfully")
     else:
         push_error("Failed to load background music stream.")
+
+
+func set_music_volume(new_volume: float) -> void:
+    music_volume = clamp(new_volume, 0.0, 1.0)
+    if music_player:
+        music_player.volume_db = linear_to_db(music_volume)
+
+func set_sfx_volume(new_volume: float) -> void:
+    sfx_volume = clamp(new_volume, 0.0, 1.0)
 # endregion
 
 
