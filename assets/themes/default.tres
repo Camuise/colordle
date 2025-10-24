@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=30 format=3 uid="uid://7bdtpoekv6hy"]
+[gd_resource type="Theme" load_steps=36 format=3 uid="uid://7bdtpoekv6hy"]
 
 [ext_resource type="Texture2D" uid="uid://gn1pf1go7lbt" path="res://assets/images/chevron-down.png" id="1_nr3lm"]
 [ext_resource type="FontFile" uid="uid://gkm2ebn5v6nh" path="res://assets/fonts/Lexend/static/Lexend-Regular.ttf" id="1_vwgqj"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://c3cmf5b8rg1x4" path="res://assets/images/checks/toggle-right-mirrored.png" id="5_n83um"]
 [ext_resource type="Texture2D" uid="uid://p7yvnu80murf" path="res://assets/images/checks/toggle-left-mirrored.png" id="6_4bmj0"]
 [ext_resource type="Texture2D" uid="uid://c7ytjvveps6b0" path="res://assets/images/checks/toggle-left.png" id="6_exttd"]
+[ext_resource type="Texture2D" uid="uid://bldnuir0n1lva" path="res://assets/images/pin.png" id="8_3pp72"]
+[ext_resource type="Texture2D" uid="uid://qdm3hyrv58i0" path="res://assets/images/pin-disabled.png" id="9_nn1i8"]
+[ext_resource type="Texture2D" uid="uid://s25vqgak5dl4" path="res://assets/images/pin-highlight.png" id="10_2xv77"]
+[ext_resource type="Texture2D" uid="uid://ddtgwak4m44a6" path="res://assets/images/tick.png" id="11_nn1i8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nr3lm"]
 content_margin_left = 10.0
@@ -46,6 +50,24 @@ content_margin_left = 10.0
 content_margin_top = 14.0
 content_margin_right = 10.0
 content_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3f256"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+expand_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vg7w"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+expand_margin_bottom = 18.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr3lm"]
 content_margin_left = 16.0
@@ -185,6 +207,14 @@ CheckButton/icons/unchecked = ExtResource("6_exttd")
 CheckButton/icons/unchecked_disabled = ExtResource("4_exttd")
 CheckButton/icons/unchecked_disabled_mirrored = ExtResource("3_4bmj0")
 CheckButton/icons/unchecked_mirrored = ExtResource("6_4bmj0")
+HSlider/constants/tick_offset = -8
+HSlider/icons/grabber = ExtResource("8_3pp72")
+HSlider/icons/grabber_disabled = ExtResource("9_nn1i8")
+HSlider/icons/grabber_highlight = ExtResource("10_2xv77")
+HSlider/icons/tick = ExtResource("11_nn1i8")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_3f256")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_3f256")
+HSlider/styles/slider = SubResource("StyleBoxFlat_1vg7w")
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
 Label/constants/shadow_offset_x = 2
 Label/constants/shadow_offset_y = 2

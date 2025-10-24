@@ -144,6 +144,7 @@ size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
 tick_count = 5
+ticks_on_borders = true
 
 [node name="SFXLabel" type="Label" parent="TabContainer/Audio/GridContainer"]
 layout_mode = 2
