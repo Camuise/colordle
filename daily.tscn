@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://jdbb2vhovioi"]
+[gd_scene load_steps=19 format=3 uid="uid://jdbb2vhovioi"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://hag45jupbmwk" path="res://assets/images/arrow-left.png" id="2_vf2lc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dwii8tx6uktej" path="res://assets/images/return.png" id="8_trn2v"]
 [ext_resource type="Script" uid="uid://cqlypqc42j550" path="res://scripts/input.gd" id="8_wkp8b"]
 [ext_resource type="Script" uid="uid://da6imuxrbrb6b" path="res://scripts/input_result_color.gd" id="9_wkp8b"]
+[ext_resource type="Theme" uid="uid://bycy5eknng81y" path="res://assets/themes/puzzle_sliders.tres" id="10_fw7vg"]
 
 [sub_resource type="Gradient" id="Gradient_03owx"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
@@ -845,6 +846,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("10_fw7vg")
 max_value = 1.0
 step = 0.001
 
@@ -898,6 +900,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("10_fw7vg")
 max_value = 1.0
 step = 0.001
 
@@ -951,6 +954,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("10_fw7vg")
 max_value = 1.0
 step = 0.001
 

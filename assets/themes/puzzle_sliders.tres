@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bycy5eknng81y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rj627"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hct1j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vucvk"]
+
+[resource]
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_rj627")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_hct1j")
+HSlider/styles/slider = SubResource("StyleBoxEmpty_vucvk")

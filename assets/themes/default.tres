@@ -207,6 +207,7 @@ CheckButton/icons/unchecked = ExtResource("6_exttd")
 CheckButton/icons/unchecked_disabled = ExtResource("4_exttd")
 CheckButton/icons/unchecked_disabled_mirrored = ExtResource("3_4bmj0")
 CheckButton/icons/unchecked_mirrored = ExtResource("6_4bmj0")
+HSlider/constants/center_grabber = -1
 HSlider/constants/tick_offset = -8
 HSlider/icons/grabber = ExtResource("8_3pp72")
 HSlider/icons/grabber_disabled = ExtResource("9_nn1i8")
