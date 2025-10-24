@@ -36,6 +36,7 @@ func set_rainbow_cycle(new_mode: RainbowCycle) -> void:
 # ============================================================================
 enum GameState {
     MAIN_MENU,
+    TUTORIAL,
     DAILY,
     MARATHON,
     RESULTS_DAILY,
@@ -63,6 +64,8 @@ var marathon_scene: Node = preload("res://marathon.tscn").instantiate()
 var results_daily_scene: Node = preload("res://results_daily.tscn").instantiate()
 var results_marathon_scene: Node = preload("res://results_marathon.tscn").instantiate()
 var options_scene: Node = preload("res://options.tscn").instantiate()
+var tutorial_scene: Node = preload("res://tutorial.tscn").instantiate()
+
 
 
 func add_game_mode_scene(new_mode: GameState) -> void:
@@ -92,6 +95,10 @@ func add_game_mode_scene(new_mode: GameState) -> void:
             main_node.add_child(options_scene)
             options_scene.owner = main_node
             options_scene.position = Vector2(0, 2) * screen_size
+        GameState.TUTORIAL:
+            main_node.add_child(tutorial_scene)
+            tutorial_scene.owner = main_node
+            tutorial_scene.position = Vector2(0, -2) * screen_size
         _:
             get_tree().create_timer(1.5).timeout.connect(remove_game_nodes)
 

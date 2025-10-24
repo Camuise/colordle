@@ -17,7 +17,8 @@ func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.Ga
         Globals.GameState.MARATHON: Vector2(2, 2),  # to bottom right
         Globals.GameState.RESULTS_DAILY: Vector2(2, 1),  # to top right (daily results)
         Globals.GameState.RESULTS_MARATHON: Vector2(2, 1),  # to top right (marathon results)
-        Globals.GameState.OPTIONS: Vector2(0, 2)  # directly below
+        Globals.GameState.OPTIONS: Vector2(0, 2),  # directly below
+        Globals.GameState.TUTORIAL: Vector2(0, -2)  # directly above
     }
 
     var screen_size: Vector2 = get_viewport_rect().size
