@@ -129,6 +129,11 @@ func remove_game_nodes() -> void:
         options_scene = current_options_node
         main_node.remove_child(current_options_node)
 
+    var current_tutorial_node = main_node.get_node_or_null("Tutorial")
+    if current_tutorial_node:
+        tutorial_scene = current_tutorial_node
+        main_node.remove_child(current_tutorial_node)
+
     # Backwards-compat: some older scenes may have root named "Results". Detect whether
     # it's the daily or marathon variant by checking its children, then reassign.
     var current_results_node = main_node.get_node_or_null("Results")
