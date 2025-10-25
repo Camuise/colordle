@@ -8,6 +8,9 @@ var max_width: int = 400  # maximum width of the message box
 func set_message(text: String) -> void:
     # Set the message text and adjust the size of the message box accordingly
     message_label.text = text
+    message_label.size = Vector2.ZERO
+    message_label.fit_content = true
+    message_label.finished.connect(_fit_width, CONNECT_DEFERRED)
     await _fit_width()
     size = message_label.size + Vector2(20, 20)  # add some padding
 
@@ -50,6 +53,3 @@ func _fit_width() -> void:
 func _ready() -> void:
     message_label.bbcode_enabled = true
     set_message("This is a message box.\nYou can use [b]BBCode[/b] formatting here.")
-    size = Vector2.ZERO
-    fit_content = true
-    finished.connect(_fit_width, CONNECT_DEFERRED)
