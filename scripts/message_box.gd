@@ -19,7 +19,7 @@ func set_message(text: String) -> void:
 func _fit_width() -> void:
     set_block_signals(true)
     var original_autowrap = message_label.autowrap_mode
-    var tmp = message_label.position
+    var tmp: Vector2 = message_label.position
     message_label.position.y = 100000
     message_label.autowrap_mode = TextServer.AUTOWRAP_OFF
     size = Vector2.ZERO
@@ -48,6 +48,7 @@ func _fit_width() -> void:
     await get_tree().process_frame
     message_label.size.y = h
     message_label.position = tmp
+    await get_tree().process_frame
     set_block_signals(false)
 
 func _ready() -> void:
