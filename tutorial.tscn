@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://veqn1pgbfdtq"]
+[gd_scene load_steps=5 format=3 uid="uid://veqn1pgbfdtq"]
+
+[ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_yb1ct"]
+[ext_resource type="Texture2D" uid="uid://dg1ueitccufef" path="res://assets/images/wheely.png" id="2_ehuit"]
+[ext_resource type="Theme" uid="uid://84ft41kfl5gm" path="res://assets/themes/speech.tres" id="3_ehuit"]
+[ext_resource type="Script" uid="uid://cuy7syrm2fo5e" path="res://scripts/message_box.gd" id="4_5mrt3"]
 
 [node name="Tutorial" type="Control"]
 layout_mode = 3
@@ -7,3 +12,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_yb1ct")
+
+[node name="Wheely" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 535.0
+offset_right = 189.0
+offset_bottom = 674.0
+texture = ExtResource("2_ehuit")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MessageBox" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 189.0
+offset_top = -407.0
+offset_right = 626.0
+offset_bottom = -174.0
+grow_vertical = 0
+theme = ExtResource("3_ehuit")
+script = ExtResource("4_5mrt3")
+
+[node name="Message" type="RichTextLabel" parent="MessageBox"]
+clip_contents = false
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme = ExtResource("1_yb1ct")
+bbcode_enabled = true
+text = "jijjoioioi hello and welcomet qweref"
+scroll_active = false
+vertical_alignment = 2
