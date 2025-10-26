@@ -24,6 +24,21 @@ texture = ExtResource("2_ehuit")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="SacrificialMessage" type="RichTextLabel" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 0
+offset_left = -6000.0
+offset_top = -6000.0
+offset_right = -1000.0
+offset_bottom = -1000.0
+theme = ExtResource("1_yb1ct")
+bbcode_enabled = true
+text = "jijjoioioi hello and welcomet qweref"
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 2
+
 [node name="MessageBox" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -45,4 +60,5 @@ theme = ExtResource("1_yb1ct")
 bbcode_enabled = true
 text = "jijjoioioi hello and welcomet qweref"
 scroll_active = false
+autowrap_mode = 2
 vertical_alignment = 2
