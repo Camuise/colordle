@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c4t47uj61wtu5"]
+[gd_scene load_steps=0 format=3 uid="uid://c4t47uj61wtu5"]
 
 [node name="Counter" type="Panel"]
 anchors_preset = 3
