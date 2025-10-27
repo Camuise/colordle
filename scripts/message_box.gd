@@ -11,4 +11,4 @@ func set_message(text: String) -> void:
 
 func _ready() -> void:
     message_label.bbcode_enabled = true
-    set_message("This is a message box.\nYou can use [b]BBCode[/b] formatting here. \n and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and and ")
+    set_message("[b]If you see this message, something broke.[/b]\n Please report this to @issac on Slack!")
