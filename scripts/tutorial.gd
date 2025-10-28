@@ -48,22 +48,22 @@ func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.Ga
             match line.step:
                 StepType.MESSAGE:
                     _show_message(line.text)
-                    await _wait_for_click()
+                    await _wait_to_continue()
                 StepType.RUN_FUNCTION:
                     call(line.function_name)
                 _:
                     pass
 
-func _wait_for_click() -> void:
-    _clicked = false
-    while not _clicked:
+func _wait_to_continue() -> void:
+    _continuing = false
+    while not _continuing:
         await get_tree().process_frame
 
 # process input for ui enter
-var _clicked: bool = false
+var _continuing: bool = false
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("ui_select"):
-        _clicked = true
+        _continuing = true
 
 func _show_message(text: String) -> void:
     message_label.bbcode_enabled = true
