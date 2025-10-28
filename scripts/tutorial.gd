@@ -28,7 +28,7 @@ var lines := [
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Color Meaning:\n[b]Green[/b]: Correct color in the correct position.\n[b]Yellow[/b]: Correct color but in the wrong position.\n[b]Gray[/b]: Color not in the combination.",
+        "text": "Outline Meanings:\n[b]Gray[/b]: The guess you put in for that slider is completely wrong.\n[b]Yellow[/b]: The guess you put in for that slider is far from the answer, but approaching.\n[b]Green[/b]: The guess you put in for that slider is correct within 5%.\n[b]Purple[/b]: The guess you put in for that slider is very close to the answer, within 1%.",
     },
     {
         "step": StepType.MESSAGE,
