@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://veqn1pgbfdtq"]
+[gd_scene load_steps=7 format=3 uid="uid://veqn1pgbfdtq"]
 
 [ext_resource type="Theme" uid="uid://7bdtpoekv6hy" path="res://assets/themes/default.tres" id="1_yb1ct"]
 [ext_resource type="Texture2D" uid="uid://dg1ueitccufef" path="res://assets/images/wheely.png" id="2_ehuit"]
+[ext_resource type="Script" uid="uid://dpev8ulw3h4hj" path="res://scripts/tutorial.gd" id="2_rwowx"]
 [ext_resource type="Theme" uid="uid://84ft41kfl5gm" path="res://assets/themes/speech.tres" id="3_ehuit"]
+[ext_resource type="PackedScene" uid="uid://jdbb2vhovioi" path="res://daily.tscn" id="3_hu44a"]
 [ext_resource type="Script" uid="uid://cuy7syrm2fo5e" path="res://scripts/message_box.gd" id="4_5mrt3"]
 
 [node name="Tutorial" type="Control"]
@@ -13,8 +15,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yb1ct")
+script = ExtResource("2_rwowx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="InputBlockIndicator" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +26,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.19607843)
+
+[node name="TutorialInterface" parent="." instance=ExtResource("3_hu44a")]
+visible = false
+layout_mode = 1
 
 [node name="Instruction" type="Control" parent="."]
 layout_mode = 1
@@ -87,5 +95,5 @@ offset_bottom = -6.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
-text = "click to continue"
+text = "[⏎]  continue"
 horizontal_alignment = 2
