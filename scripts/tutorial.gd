@@ -28,7 +28,7 @@ var lines := [
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Outline Meanings:\n[b]Gray[/b]: The guess you put in for that slider is completely wrong.\n[b]Yellow[/b]: The guess you put in for that slider is far from the answer, but approaching.\n[b]Green[/b]: The guess you put in for that slider is correct within 5%.\n[b]Purple[/b]: The guess you put in for that slider is very close to the answer, within 1%.",
+        "text": "Outline Meanings:\n[b]Gray[/b]: Your guess for that slider is completely wrong.\n[b]Yellow[/b]: Your guess for that slider is far off, but approaching.\n[b]Green[/b]: Your guess is correct, within 5% of the answer.\n[b]Purple[/b]: Your guess is perfect! It was within 1% of the answer.",
     },
     {
         "step": StepType.MESSAGE,
