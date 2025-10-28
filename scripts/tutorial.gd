@@ -43,16 +43,18 @@ func _ready() -> void:
     Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
 
 func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
-    if new_state == Globals.GameState.TUTORIAL:
-        for line in lines:
-            match line.step:
-                StepType.MESSAGE:
-                    _show_message(line.text)
-                    await _wait_to_continue()
-                StepType.RUN_FUNCTION:
-                    call(line.function_name)
-                _:
-                    pass
+    if new_state != Globals.GameState.TUTORIAL:
+        return
+
+    for line in lines:
+        match line.step:
+            StepType.MESSAGE:
+                _show_message(line.text)
+                await _wait_to_continue()
+            StepType.RUN_FUNCTION:
+                call(line.function_name)
+            _:
+                pass
 
 func _wait_to_continue() -> void:
     _continuing = false
