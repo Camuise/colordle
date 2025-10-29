@@ -47,20 +47,44 @@ var lines := [
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Once you've made your guess, you can submit it with the ↵ button. After submitting, you'll receive feedback on how close your guess was to the hidden color.",
+        "text": "Try guessing the color now by adjusting the sliders to your desired values! Press continue when you're ready to move on.",
     },
     {
         "step": StepType.MESSAGE,
-        "text": "You have a total of 6 attempts to guess the correct color. After each guess, the sliders will stay as they , and you can adjust them again for your next attempt.",
+        "text": "After submitting, you'll receive feedback on how close your guess was to the hidden color.",
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Outline Meanings:\n[color=gray][b]Gray[/b][/color]: Your guess for that slider is completely wrong.\n[color=Orange][b]Orange[/b][/color]: Your guess for that slider is far off, but approaching.\n[color=green][b]Green[/b][/color]: Your guess is correct, within 5% of the answer.\n[color=purple][b]Purple[/b][/color]: Your guess is perfect! It was within 1% of the answer.",
+        "text": "You have a total of 6 attempts to guess the correct color. After each guess, the sliders will stay as they are, and you can adjust them again for your next attempt.",
+    },
+    {
+        "step": StepType.RUN_FUNCTION,
+        "function_name": "_toggle_daily",
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Good Luck!\nReady to test your color skills? Click anywhere to start playing Colordle!",
+        "text": "Now, let's go over what the different outline colors mean for each slider after you make a guess. This is a lot of information, so pay close attention!",
     },
+    {
+        "step": StepType.MESSAGE,
+        "text": "The outline colors around each slider indicate how close your guess for that specific slider is to the correct value. There are four possible colors: Gray, Orange, Green, and Purple.",
+    },
+    {
+        "step": StepType.MESSAGE,
+        "text": "Here's what the colors mean:\n[color=gray][b]Gray[/b][/color]: Your guess for that slider is completely wrong.\n[color=Orange][b]Orange[/b][/color]: Your guess for that slider is far off, but approaching.\n[color=green][b]Green[/b][/color]: Your guess is correct, within 5% of the answer.\n[color=purple][b]Purple[/b][/color]: Your guess is perfect! It was within 1% of the answer.",
+    },
+    {
+        "step": StepType.MESSAGE,
+        "text": "The outline colors will update for each guess, so you can use them to gauge how close you are to the correct values.",
+    },
+    {
+        "step": StepType.MESSAGE,
+        "text": "It'll also show you how close you are to the correct color as a whole, using a percentage next to (during guessing) or on (during the results page) the preview box.",
+    },
+    {
+        "step": StepType.MESSAGE,
+        "text": "And that's it! You're now ready to play Colordle. Good luck, and have fun!",
+    }
 ]
 
 
@@ -72,7 +96,6 @@ func _ready() -> void:
     Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
     tutorial_interface.visible = false
     input_blocker.visible = true
-
 
 
 func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
