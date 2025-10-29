@@ -61,7 +61,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 165.0
-offset_top = -207.0
+offset_top = -175.0
 offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -73,6 +73,7 @@ clip_contents = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme = ExtResource("1_yb1ct")
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "jijjoioioi hello and welcomet qweref
 djoihdfslkhfsdlkfsdij second line"
