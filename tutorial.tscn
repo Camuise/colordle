@@ -21,7 +21,7 @@ script = ExtResource("2_rwowx")
 visible = false
 layout_mode = 1
 
-[node name="InputBlockIndicator" type="ColorRect" parent="."]
+[node name="InputBlocker" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

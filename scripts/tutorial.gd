@@ -70,6 +70,9 @@ var lines := [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Globals.connect("game_state_changed", Callable(self, "_on_game_state_changed"))
+    tutorial_interface.visible = false
+    input_blocker.visible = true
+
 
 
 func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.GameState) -> void:
@@ -107,4 +110,4 @@ func _show_message(text: String) -> void:
 
 func _toggle_daily() -> void:
     tutorial_interface.visible = not tutorial_interface.visible
-    input_blocker.visible = tutorial_interface.visible
+    input_blocker.visible = not tutorial_interface.visible
