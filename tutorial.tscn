@@ -17,8 +17,11 @@ grow_vertical = 2
 theme = ExtResource("1_yb1ct")
 script = ExtResource("2_rwowx")
 
-[node name="InputBlockIndicator" type="ColorRect" parent="."]
+[node name="TutorialInterface" parent="." instance=ExtResource("3_hu44a")]
 visible = false
+layout_mode = 1
+
+[node name="InputBlockIndicator" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,10 +29,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.19607843)
-
-[node name="TutorialInterface" parent="." instance=ExtResource("3_hu44a")]
-visible = false
-layout_mode = 1
 
 [node name="Instruction" type="Control" parent="."]
 layout_mode = 1

@@ -146,6 +146,7 @@ vertical_alignment = 1
 
 [node name="AnswerContainer" type="VBoxContainer" parent="Gameplay/AnswerDisplay"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
 
@@ -745,7 +746,6 @@ vertical_alignment = 1
 
 [node name="NoAnswerContainer" type="CenterContainer" parent="Gameplay/AnswerDisplay"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(672, 360)
 layout_mode = 2
 
