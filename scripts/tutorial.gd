@@ -27,7 +27,7 @@ var lines := [
     },
     {
         "step": StepType.MESSAGE,
-        "text": "In Colordle, your goal is to guess the hidden color by adjusting three sliders in whatever color space you want, which changes how the color is represented. Currently, you can choose between RGB and HSV.",
+        "text": "In Colordle, your goal is to guess the color by adjusting three sliders in whatever color space you want, which changes how the color is represented. Currently, you can choose between RGB and HSV.",
     },
     {
         "step": StepType.MESSAGE,
