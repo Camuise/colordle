@@ -1,0 +1,83 @@
+[
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182580000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182580000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '20', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182580000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182580000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182580000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182580000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761264000000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761264000000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '50', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761264000000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  },
+  {
+    "error": "API error: Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-min. ', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit': '16', 'X-RateLimit-Remaining': '0', 'X-RateLimit-Reset': '1761182640000'}, 'provider_name': None}}, 'user_id': 'user_34RfvTvI0gbR89kZayT0SrjcUst'}"
+  }
+]

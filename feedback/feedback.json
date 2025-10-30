@@ -1,0 +1,250 @@
+[
+  {
+    "Additional Feedback": "Im really excited to see where this goes!",
+    "Fun": "It looks like it would be pretty fun although the color   picker didnt appear :(",
+    "Art": "The style is pretty simplistic but I think it fits the genre   of game!",
+    "Creativity": "I like this take on wordle! It kinda reminds me of this   graphic design challenge of the same nature.",
+    "Audio": "No audio present.",
+    "Mood": "It has a good mood so far cozy"
+  },
+  {
+    "Additional Feedback": "your game still needs a ton of work and some playable and fun   ideas so the player can actually enjoy your game . if the game   idea is just to match a color by sliding a slider its pretty   bad to be honest . add something else than the slider to match   the color something fun .",
+    "Fun": "sliding a bar to match a color is pretty frustrating and   tedious task rather being a fun game to play . you should   rethink about your game idea .",
+    "Art": "i liked the logo but there isn't much art to this game as of   now just some sliders and boxes with rgb colors .",
+    "Creativity": "the idea is creative tho i haven't seen a game like this   before but again it is not fun or idk if i call it a proper   game yet ( i hope you have some more future plans to this game   because current idea is not good enough )",
+    "Audio": "no audio",
+    "Mood": "as above not fun pretty boring and the game doesn't even tell   you anything exactly what to do . so i just assumed that i   have to match that color"
+  },
+  {
+    "Additional Feedback": "I realize it's just a work-in-progress at this point but this   is definitely the kind of game I would play frequently once it   has more of the game loop implemented! I'm excited to see what   else you add and best of luck <3",
+    "Fun": "It's pretty incomplete but a lot of fun to mess around with!   You definitely need some kind of information/tutorial since it   took me a bit to figure out how the interface works. I don't   think the HSV selector works properly yet but it may just be a   work-in-progress.",
+    "Art": "There's not a whole lot of \"art\" to judge honestly. I like   the \"mascot\" character and icon though!",
+    "Creativity": "It's a Wordle clone. I like the color concept but it's been   done before. I never would have thought to make one in Godot   though which is pretty cool!",
+    "Audio": "There's no music or SFX yet from what I could tell; sounds   would definitely improve the experience.",
+    "Mood": "I'm not really sure how to judge this one? I feel like   everything fits together well and I like the color-changing   background! Maybe you could try a gradient for the background   too?"
+  },
+  {
+    "Additional Feedback": "If you see that I played your game for like 0.7 mins I would   like to let you know that I played your game for like 5 mins   but I accidentally pressed F5 while writing review.",
+    "Fun": "I didnt understand the game so i cant comment much on this.   Although you have a game desription here but you wont have it   once it's deployed on the arcade machine. so make sure to give   clear picture about the game",
+    "Art": "I think your game is about colors so i can say your ui is   neat and might need fewer improvements like more elements in   the background instead of just a plain background",
+    "Creativity": "just because i dont understand your game doesnt mean i will   give 0 it's my inability but you have to understand their will   be players who dont know mihc about games in japan so they   will struggle with your game even if it's simple. just add a   few instructions",
+    "Audio": "There was no audio but you still deserve it Also i am sure   that during playtest my computer audio was working   correctly.",
+    "Mood": "INSTRUCTIONS INSTRUCTIONS INSTRUCTION i couldnt get a clear   picture of what you are trying to do with this game. But I   believe i am dumb to understand this but i also read your   devlogs and didn't find anything that would explain me your   game."
+  },
+  {
+    "Additional Feedback": "Overall really nice game! I really enjoyed it. Good luck in   your future game developments and i look forward to seeing you   in tokyo :)",
+    "Fun": "I would love to see a endless gamemode in the future so that   you dont just play a color per day",
+    "Art": "The game focuses on art itself and its great! I am not a pro   in drawing so sorry i cant give you any useful advice :( ill   still give you a 5 tho",
+    "Creativity": "I think this is very creative! I have never seen something   similar to this [except for wordle which is different from   this]",
+    "Audio": "I couldnt hear any audio :(( im not sure if its a me problem   so ill give you a 4 hope to see some bgm kicking in :) [also   plz tell me if theres actually a bgm]",
+    "Mood": "i love how the background changes as you submit each attempt   of the color"
+  },
+  {
+    "Additional Feedback": "It needs some music cooler art sound effects and something to   let you know when you're done other than the boxes becoming   empty.",
+    "Fun": "It seems to just be dragging slider and pressing enter. Not   very fun in my opinion. There isn't even something to tell you   if you've won just percentages where it is impossible to hit   100% (because its a slider)",
+    "Art": "No art other than the light/dark mode things. Not very   impressive and needs some more custom art.",
+    "Creativity": "It is a copy of wordle (in the name) but it is about colors   which is creative so I'll give you some points. Ill just dock   a few because its a rip off wordle.",
+    "Audio": "None. Could do with a cool background music or SFX",
+    "Mood": "Not really a mood I guess? I don't quite understand this   questions but its not a very positive atmosphere as you just   drag sliders around. There isn't even a different screen when   you finish."
+  },
+  {
+    "Additional Feedback": "While there wasn't much gameplay to this game the game   concept is still pretty interesting and maybe you can revamp   the game a little to improve the experience!",
+    "Fun": "The game seems nice but doesn't have much gameplay and not   much to do after using up the guesses. I would recommend   adding new things to do so that the game can still be played   after the guesses.",
+    "Art": "Not much art but rom what there is it works. I would   recommend adding more srpites to the UI or a logo even.",
+    "Creativity": "Interesting to see a wordle inspired game except you have to   correctly guess the colors. However the game does follow a   similar format to Wordle so I would suggest revamping the game   a bit to make it simpler to understand and complete.",
+    "Audio": "There is not audio unfortunately so I would highly suggest   some sound effects or background music if you can add   them.",
+    "Mood": "There isn't much of a mood to this game as there is not much   gameplay so I would again suggest adding more things to do and   an maybe even overall theme of the game!"
+  },
+  {
+    "Additional Feedback": "I REALLY enjoyed the creative idea but was super dissapointed   by the lack of content after finishing a round. I was thinking   maybe you could add an opacity/alpha value as like a bonus to   improve scores (like extra credit on a test). Or creating a   leaderboard of players who got closest to the color. I know   the leaderboard might be hard to implement but maybe using   firebase to keep track of scores might work?",
+    "Fun": "After all my attempts there is just nothing more to do.   Initially the guessing it quite fun and makes me think a bit   more but it feels unrewarding to not be able to see the exact   values of the color.",
+    "Art": "It is simple and clear design that lets gameplay be the   center-point of the game. I personally really like   minimalistic and clean-cut designs like these.",
+    "Creativity": "Very awesome idea! I love the twist on WORDLE.",
+    "Audio": "I couldn't hear any audio. :(",
+    "Mood": "Adding some audio and sfx should make the mood solid and   simple."
+  },
+  {
+    "Additional Feedback": "Add a description or how to play page in your game so ppl   know what its about and what they can do in the game. Dont get   discouraged by this rating the game is still pretty early into   development so there wasnt really anything in it.",
+    "Fun": "There is litterly nothing in the game as of right now and I   have no clue which direction this game is going",
+    "Art": "Other than the mascot/icon there isnt any art in the game so   there isnt really anything I can give a score on",
+    "Creativity": "I have no clue what this is about/whats happening so I am   giving a score of 1 as of right now",
+    "Audio": "There was no audio at all I know you are still making the   game but as of right now I cant give you any points as there   is litterly no audio.",
+    "Mood": "There isnt any music or gameplay... so I cant give you a   score for mood. and there was also no sfx"
+  },
+  {
+    "Additional Feedback": "I really liked your game issac and I hope we could meet in   japan! ~Lopa",
+    "Fun": "Its a pretty fun!! but one thing i have to say it the game   feels impossible to win ive tried a few times (idk if thats be   being bad) but the closest was 98% maybe make it so you dont   have to land on the exact same color just close enough",
+    "Art": "I love the color changing Background! But id honestly say the   buttons do need a little reshaping but other than that its   pretty awesome! (love your game issac)",
+    "Creativity": "I mean its wordle but for colors i totally love the idea tho   its pretty creative!",
+    "Audio": "I didnt hear any audio hopefully thats not on my end but   maybe add audio when clicking buttons feedback sounds for   guesses (correct/partial/incorrect) background music",
+    "Mood": "Its pretty cool id say add small visual effects when a guess   is correct or partially correct (particles glow subtle   animations)"
+  },
+  {
+    "Additional Feedback": "good game just need some decoration new levels and more audio   ( ;",
+    "Fun": "it was a nice game but the level was every time the same you   can maybe add a endless mode with score based on your % or a   certain amount of % needed to conitinue to the next lvl ( 70%   for lvl 1 75% for lvl 2 etc. )",
+    "Art": "the art is pretty basic i like the color changing backround   maybe you can add extra decoration and animations ( :",
+    "Creativity": "thit game is very creative i never tought about this i like   the simalarity to wordle and the % i also like that you can   choose between RGB and the other one (i forgot the name ( ;   )",
+    "Audio": "the background music was decent you can also add a sound when   you change the colour and when you submit your answer",
+    "Mood": "the sliders and the menu fit good with your game just add   some decorations and music for the sliders ( :"
+  },
+  {
+    "Additional Feedback": "Heyyy!!",
+    "Fun": "to be honest i didnt really understand whta you game was bout   but i really do like the result screen lol maybe add a   tutorial also add some particle effect juice overall",
+    "Art": "i do like the art like in the loading screen and the main   menu but the wasnt much off it in game as in this version i   could only select some colors",
+    "Creativity": "i dont know what your game was about but its pretty new to me   but you might need to add more things mechanic",
+    "Audio": "the audio was really good especially the background music but   there were not any other than that but i do think the audio   could be improver overall",
+    "Mood": "the mood was neutral as not much that can better suggest a   mood here adding some particle effects player action sfx and   mechanic could improve that"
+  },
+  {
+    "Additional Feedback": "The game is interesting; I'm really looking forward to what   you're gonna do in future updates !",
+    "Fun": "The game is pretty fun but it's still a bit basic in terms of   mechanic so you get bored fast; I'm honestly not sure you can   really improve this one because its the type of game that you   play everyday when bored and i get that but its not really   fun...",
+    "Art": "The UI was nice but still a bit bland; maybe do some cool   effects in the background or something like that to make it   more enjoyable",
+    "Creativity": "Wordle but with color channels is an original concept i've   never seen before so this one is just perfect for me",
+    "Audio": "You could probably do SFX with sliders and sending the guess   to really have more feedback when you do stuff; the music is   okay though.",
+    "Mood": "The mood is mostly fine; but you probably want to fix the   above points to make it better; So adding little animations   and effects and also adding fun SFX can make this way better   :)"
+  },
+  {
+    "Additional Feedback": "i would suggest u to cgange the style of the enter btn in hte   color guesser page cuz it dosent feel like a btn until u hover   on it.",
+    "Fun": "I really like the idea of your game. It's a bit simple but   also interesting. I would suggest adding a back option from   the result screen just for a bit more convenience while   testing.",
+    "Art": "I like the art. It's a bit simple but it's meant to be that   way to give the game a nice look.",
+    "Creativity": "It's a very basic idea. The implementation is good but it's   kind of common idea vut i think ur gonna make it better seeing   ur homescreen.",
+    "Audio": "I really like the audio it fits the overall vibe of the game   very well. The sound adds to the aspect of immersiveness to ur   game.",
+    "Mood": "The mood is okay for now since it's a pretty basic game to   play. But seeing that you're adding other game modes I believe   it will become much more fun later on."
+  },
+  {
+    "Additional Feedback": "I think that with a little more time on this game and some UI   tweaks it will be great! Hope to see how it goes.",
+    "Fun": "I think that the gameplay was a little strange and i couldnt   quite figure out if orange around meant bad or good. Also   mmarathon isnt yet completed which i think will definently   improve the game.",
+    "Art": "Maybe some more round and smooth UI for the sliders would be   nice and also the end screen and options do still need to get   fixed.",
+    "Creativity": "I am yet to see a guessing game like this during this event   and with colors especially. I really like the concept and i   think with a bit of refinement this will be great!",
+    "Audio": "I really like the music and sfx. The music is very calming   which definently fits the theme i think you are going for   here.",
+    "Mood": "The sound and cover are the best ones for me. I just think   that the areas of the game that are still placeholders kinda   break the feeling but that might just be me."
+  },
+  {
+    "Fun": "i love the concept so far!!! and like u said the marathon is   being worked on so i understand that!",
+    "Art": "the home screen and end screen could be more interesting but   ik ur working on that so good job so far!",
+    "Creativity": "again the concept is pretty creative so i cant wait to see   what you come up with for the marathon!",
+    "Audio": "music fits the game pretty well but sound effects for the   buttons and sliders would enhance the experience by a   lot!",
+    "Mood": "i love the vibe so far! its just the end screens and audio   that need some tweaking n itd be perfect!"
+  },
+  {
+    "Additional Feedback": "I love the premise of the game! just try to find a way to   differentiate from other color picking games. Also i   appreciate how this is like a legitimate arcade style game   because a lot of games on here don't feel like they would be   good for arcades. OK! keep it up!! :D",
+    "Fun": "I think it's pretty fun! I'd say that my recommendation to   make it less frustrating is like outlining what each column   means (like saturation value etc) because I didn't understand   at first. And also maybe a hint system for why you're off   (like for hue maybe if its too red or if it's too blue or   something) Also it seems there is so much more to the game   that is missing like the marathon aspect. So yes although it's   pretty fun as it is there's a lot that could be added to make   it much funner.",
+    "Art": "I think the art is functional and works well. However it does   seem a bit bland honestly. Maybe reformatting the color   guessing rows and stuff would make this game much more   physically appealing! because currently the rows and columns   just look very like bland. maybe formatting them into like a   cube where the border is the color of the guessed color and   the inside of the cube holds the specific hue value saturation   accuracies and their corresponding symbols would just make   this much more cohesive! that's one idea I thought off the top   of my head but the bottom line is that there is just so much   more you can do with reorganizing so that it doesn't look   bland/weirdly organized.",
+    "Creativity": "Currently this just feels like any other color guessing game   like get the right color. I've played these games on like   YouTube games there's literally a game where you pick a color   and it gives you an accuracy and you're trying to paint an   object to look identical to its replica. the concept of this   color picking thing is not novel at all. however I'm excited   to see what you do with the marathon! that could totally   differentiate your game. I'd say that just emphasize this   marathon gameplay aspect of your game and try to use it to   create quests/objectives that differentiate this game.",
+    "Audio": "I think the audio is quite nice! From what I recall there is   nice sfx and such. The only feedback I have for this is to add   a menu where you can adjust master volume music volume and sfx   volume. it's really simple but it will just make your audio   that much better because it is customizable.",
+    "Mood": "I think the overall mood is very nice. It kind of reminds me   of being in an art room for some reason or like some art   sandbox. very nice! all I would say is that like I mentioned   in art it just feels like everything is disorganized and a bit   bland so just reorganizing things to make GUI much cleaner and   just makes it make sense would make this mood much better. it   feels too cluttered (i think that's the phrase)"
+  },
+  {
+    "Fun": "For me the game was really frustrating and a bit bland. I   know you’re not done with the options menu and the other menus   but not having a back button really pissed me off. It takes   less than five minutes to add a button that returns me to the   previous scene. At that point it’s better not to have those   two buttons on the homepage if there’s no way to go back once   I click on a scene. Also the game is basically just about   picking colors and that’s it. Maybe some people interested in   art will find it fun but for me it was really boring.",
+    "Art": "There isnt really any art in the game at the moment. Its just   all colors and basic shapes. Add some characters that give   instructions.",
+    "Creativity": "The game barely has any mechanics at all right now so Im   giving it a score of one for creativity",
+    "Audio": "The audio is pretty chill and alright but the game doesnt   have any sfx or UI sound so Im giving it a 3",
+    "Mood": "the mood is chill but the for me it got boring really fast as   there isnt much to do rn"
+  },
+  {
+    "Additional Feedback": "Please handle better the difficulty curve as I feel like   after a certain number of plays there is nothing left for me   to do to improve",
+    "Fun": "I actually played for a while was not expecting much I found   the experience to be correct in the sense of being relaxing:   Not time sensitive and really not a lot at play. Though it   becomes hard and found the grading system to be quite   confusing. If this does not interfiere with the goal you could   tell the player as to me it was quite fun trying to decipher   what it was doing in order to use my grades as clues. Also   please add the results screen so I dont have to restart the   game every time. I also would like to be able to set the   background to a color of my liking at any time to see the   color against something different as part of my strategy. All   these ideas could be slowly be presented to the player.",
+    "Art": "The peresentation could be improved by clarifying what the   dark mode button did because I was afraid of clicking it   thinking it would get back to the main menu. Text would help   or even a tooltip",
+    "Creativity": "This game is incredibly weird and really really risky. In   some sense I find weird that I played this for 10 minutes.   Really out of the box thinking.",
+    "Audio": "I mean its really on point. The music is relaxing and there   is SFX for everything I expect. So i put 5 to suggest no   improvements.",
+    "Mood": "Mood starts really well in a relaxing manner but drops off   after a few tries because it becomes frustrating. The player   should get little helps like maybe getting to change the   background maybe moving the sample slightly closer or the   color picker interface getting bigger."
+  },
+  {
+    "Additional Feedback": "When entering colors its very confusing on what you get right   or wrong with the precentages so you should make that a bit   more descriptive.",
+    "Fun": "The concept for the game is really good and honestly   something I would playw with my friends but its a bit   confusing.",
+    "Art": "Not much in terms of art lol so I can't really decide on a   rating. But currently everything works fine.",
+    "Creativity": "Creative concept! I like the idea of it. Not really much to   say other than that. The word count is unreasonably   high.",
+    "Audio": "I didn't hear any audio when playing on my end and as far as   I know everything was unmuted and working fine so i'm not sure   if thats a bug or lack of audio.",
+    "Mood": "Not much to say in terms of mood. its a wordle type game so   it doesn't really need a mood"
+  },
+  {
+    "Fun": "I dont know why i am giving this game a 3 for fun because i   didnt understand it at all.",
+    "Art": "The art was pretty goo but there is not much to comment on   art for this game . . .",
+    "Creativity": "I didnt really understand what is our objective behind this   game and still i willl give it a 2 .",
+    "Audio": "To be honest the audio was decent as it made the vide for   this game . but pz expain this game at the star.",
+    "Mood": "the mood was well set by the audio and rest i cant talk about   on it . . . ."
+  },
+  {
+    "Additional Feedback": "very good game",
+    "Fun": "this is one of the most enjoyable game i've ever played in   shiba. its very different but its refreshing and new",
+    "Art": "art is quite good as well. i like the whole theme of this   game and the ui of it. maybe just add new components or more   art if u can",
+    "Creativity": "very very creative. i know that there's wordle but i love how   smart it is to make that into an arcade game",
+    "Audio": "it has quite good audio too. i like how everything feels like   it belongs to the game and makes the gaming experience more   fun",
+    "Mood": "amazing mood too. with the great aart and audio and unique   concept. i like how this game feels and how fun it is"
+  },
+  {
+    "Additional Feedback": "I hope my playtest can help you to improve your game. Also   remember to add the options menu :)",
+    "Fun": "The game is not bad but it isn't that fun for long. I'd   recommend to add more game modes that still have to do with   guessing a color like guessing a color based on hints. Also a   difficulty setting that changes how many positions every   slider has because I often got 99% on everything but it was   just a tiny tad of so it wasn't correct. Additionally adding   titles for the different parts of the color guesses would be   nice because I wasn't really sure if it was hue saturation   value -> total or not.",
+    "Art": "I mean there is not that much art but the general overlay and   the animations when clicking on an option in the main menu are   really clean and I don't have anything to criticize.",
+    "Creativity": "It is pretty original. At least I haven't a game like this   before so good job on that and keep adding more to your   game.",
+    "Audio": "The audio is pretty fitting for your game. However you could   add a bit more variants to the wrong sound effect. Look at   RandomizerAudioStream for that (you could also add some pitch   randomization if you want)",
+    "Mood": "I think the mood also matches pretty good. It give off a   relaxing atmosphere and there is nothing for me to criticize   here."
+  },
+  {
+    "Fun": "I mean its fun i guess? but it isnt really fit for a video   game also it was kind of confusing like what do the % mean?   how close i am? how far i am?",
+    "Art": "The art was ok i liked the logo and custom loading screen   though well done on that but for example the dropdown could've   been improved",
+    "Creativity": "Well it is kind of a wordle clone but colors is it not? so as   far as creativity goes i didnt understand the marathon mode   but it counts as a creative idea so 4",
+    "Audio": "Audio fits the game pretty well in my opinion i would say   that it is there where it needs to maybe a audio when dropdown   is clicked",
+    "Mood": "The mood is pretty well set as the logo is about color i do   like the logo and the overall colors are soft"
+  },
+  {
+    "Fun": "very fun! i never thoughtu can make a game out of putting   ramdom colorsits very fun to me. u got a 5 on   creativity!",
+    "Art": "i say 3 on art is bec ur game is not as artish as others but   i works out just fine",
+    "Creativity": "just like the things i said in fun part. u did a really good   job on it i never saw games like that b4",
+    "Audio": "4 in audio is bec audio is not the best part of it but it   works just fine to me",
+    "Mood": "4 on mood is bec i cant play a long time in ur game which   doesnt make time for mood to come"
+  },
+  {
+    "Fun": "This was super fun. I love daily games and this one was a   great one. It would be great if I was able to restart the   marathon though so it is truely infinite.",
+    "Art": "Pretty simple but effective design. The ui was all great and   easy to navigate. The differences between hue saturation and   value percentages as well as the combined final outcome were a   bit unclear so some sort of label could help",
+    "Creativity": "I thought this was moderately creative as it takes the   classic daily genre and applies it to picking colours. That   said I have seen colour picker daily games before.",
+    "Audio": "The audio was a vibe. I think the one thing that could   elevate the game is satisfying clicking/interactive sounds   when you pick colours",
+    "Mood": "This isn't the most mood filled game but it still has a nice   cozy-ish feel. One thing that could be inline with the daily   game vibe is a comparison of how well you did verses other   players"
+  },
+  {
+    "Additional Feedback": "i won every time xd",
+    "Fun": "uhh what is this game even bro... like I get the idea and was   like whoo wordle but with colors this is gonna be fun and-   like what does the orange thing mean? in wordle it was that a   letter is right just in the other place so what should I do   here if every damn thing is orange and no matter what I do I   always win :skull: I never got a green answer also there is no   percent showing when you choose a colour so how do I know how   much did I chose idk this it so confusing I dont like it at   all",
+    "Art": "art is nice but it feels a bit simple-ish. the only cool   thing is the really nice dark mode (thanks bro) and rainbow bg   + I really liked the animations of the menu thing :3",
+    "Creativity": "idk if that would be fun to play on an arcade but its a nice   idea you had there! maybe its just me that doesnt see the true   vision that you had idk",
+    "Audio": "idk if there was some audio at all but if there wasnt then I   reccomend you to add some kinda chill music or sound effects   for when you click buttons swipe on the color thing etc",
+    "Mood": "I mean knowing wordle and seeing this is nice but it feels   like the whole starting screen has more mood that the actual   game :|"
+  },
+  {
+    "Fun": "I really like games that are like wordle; the infinite   gamemode is really nice. I would like a different gamemodes   though where you could do this on a given sprite and color it   that way.",
+    "Art": "the art is very simple but the game doesn't require more than   that; some particles or effects when something is incorrect or   correct would be nice.",
+    "Creativity": "as I said in fun some new gamemodes would be nice; maybe the   sprite coloring one; or something related to music perhaps   though that wouldn't really be color related; but the name of   the game can be changed",
+    "Audio": "The music is very nice; the sound effects are also really   good; don't have much else to say about it; don't think there   is a way to improve it.",
+    "Mood": "it's a nice chill game; again; don't think there is any way   to improve it. - - - - -"
+  },
+  {
+    "Additional Feedback": "Questions? -DM ME Manav",
+    "Fun": "I found it really hard maybe make it easier to be able to   tell what your doing right cus all I see is 80% pink and those   who aren't very smart(me) won't be able to figure it out",
+    "Art": "I mean wow. Cool art you can almost say there's a lot of   colour 🤣. Get it? Anyways sick art",
+    "Creativity": "I mean cmon. What is that title creativity everywhere but the   title. Wordle colordle spot the difference ahhh. Anyways in   terms of gameplay this is super creaive.",
+    "Audio": "I mean I love the ambience and the calming sounds. Really   makes you think if this game was made for 80 year olds facing   dementia(mahjong reference).",
+    "Mood": "I mean the sound the gameplay the UI all add up to the crazy   immersion of this game. Super Immersive"
+  },
+  {
+    "Additional Feedback": "Good job!",
+    "Fun": "The game was a bit confusing at first--I think a tutorial   saying \"You're trying to match",
+    "Art": "Suggestion: color the percent text so it goes from red -->   yellow --> green the closer you get to the correct   color.",
+    "Creativity": "Even though you advertise yourself as a Wordle knockoff‚ I   think it's really creative and dissimilar to the official   Wordle. I don't think it needs any improvements",
+    "Audio": "The audio is pretty good‚ maybe consider adding more sound   effects‚ though. Mayhaps a bloop for selecting a game mode‚ a   sound for sliding a color line‚ etc.",
+    "Mood": "Mood was pretty good‚ nothing special about it. It is you run   of the mill good vibe game that you'd play in the   morning."
+  },
+  {
+    "Fun": "It was kinda confusing at first but after I understood how to   play it was quite interesting. I didn't know what the colors   around the boxes meant though. My main issue is that it   doesn't seem like you're meant to get the exact color since   it's so exact but rather just to get as close as possible   which is a less definite goal then in wordle. I think having a   leaderboard would make the goal more defined.",
+    "Art": "It's not anything crazy obviously but it is doing exactly as   it is setting out to do so its good in that regard.",
+    "Creativity": "Obviously its based off Wordle but it is a very original take   on it. I would never have thought to do Wordle with   colors.",
+    "Audio": "The audio is very serene. I was pleased to see that even   things like switching from HSV to RGB had sound effects.",
+    "Mood": "Like mentioned previously the game has a very serene mood   carried by the audio but also helped by the simplistic   visuals."
+  },
+  {
+    "Additional Feedback": "Sorry if the review is short or not very helpful — I couldn’t   think of any new features or useful suggestions.",
+    "Fun": "The gameplay is simple but fun. I really like how it gives   precise feedback using percentages to guide you toward the   correct answer. No complaints here.",
+    "Art": "The art feels simple yet charming and unique. The colorful   aspect really highlights the game’s core concept around color.   It fits the vibe well.",
+    "Creativity": "It feels like a guessing game but with its own distinct art   style music and mechanics — which makes it stand out.",
+    "Audio": "The background music is relaxing and fits the game perfectly.   The sound effects match the mood well. No complaints   here.",
+    "Mood": "With all the elements combined it creates a relaxing   experience — the kind of game an artist would casually enjoy   in their free time especially with the daily mode."
+  }
+]
