@@ -99,5 +99,5 @@ offset_bottom = -6.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
-text = "[⏎]  continue"
+text = "[⇥] or right click to continue"
 horizontal_alignment = 2
