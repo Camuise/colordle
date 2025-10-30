@@ -116,7 +116,10 @@ func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.Ga
 func _wait_to_continue() -> void:
     _continuing = false
     while not _continuing:
-        await get_tree().process_frame
+        if is_inside_tree():
+            await get_tree().process_frame
+        else:
+            break
 
 
 # process input for ui enter
