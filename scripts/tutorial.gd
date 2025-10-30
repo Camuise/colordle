@@ -9,7 +9,7 @@ enum Stages {
 
 enum StepType {
     MESSAGE,
-    RUN_FUNCTION
+    FUNCTION
 }
 
 var lines := [
@@ -22,7 +22,7 @@ var lines := [
         "text": "Now let's go over how to play the daily Colordle!",
     },
     {
-        "step": StepType.RUN_FUNCTION,
+        "step": StepType.FUNCTION,
         "function_name": "_toggle_daily",
     },
     {
@@ -58,7 +58,7 @@ var lines := [
         "text": "You have a total of 6 attempts to guess the correct color. After each guess, the sliders will stay as they are, and you can adjust them again for your next attempt.",
     },
     {
-        "step": StepType.RUN_FUNCTION,
+        "step": StepType.FUNCTION,
         "function_name": "_toggle_daily",
     },
     {
@@ -83,8 +83,12 @@ var lines := [
     },
     {
         "step": StepType.MESSAGE,
-        "text": "And that's it! You're now ready to play Colordle. Good luck, and have fun!",
-    }
+        "text": "Now that you know how to play, you can turn off the tutorial button in options. Enjoy the game, and may the colors be ever in your favor!",
+    },
+    {
+        "step": StepType.FUNCTION,
+        "function_name": "_go_to_main_menu",
+    },
 ]
 
 
@@ -107,7 +111,7 @@ func _on_game_state_changed(_old_state: Globals.GameState, new_state: Globals.Ga
             StepType.MESSAGE:
                 _show_message(line.text)
                 await _wait_to_continue()
-            StepType.RUN_FUNCTION:
+            StepType.FUNCTION:
                 call(line.function_name)
             _:
                 pass
@@ -125,7 +129,7 @@ func _wait_to_continue() -> void:
 # process input for ui enter
 var _continuing: bool = false
 func _input(event: InputEvent) -> void:
-    if event.is_action_pressed("ui_select"):
+    if event.is_action_pressed("next_dialogue"):
         _continuing = true
 
 
@@ -137,3 +141,7 @@ func _show_message(text: String) -> void:
 func _toggle_daily() -> void:
     tutorial_interface.visible = not tutorial_interface.visible
     input_blocker.visible = not tutorial_interface.visible
+
+
+func _go_to_main_menu() -> void:
+    Globals.set_game_state(Globals.GameState.MAIN_MENU)
