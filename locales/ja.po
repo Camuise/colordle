@@ -51,7 +51,7 @@ msgstr ""
 
 #: scenes/daily.tscn
 msgid "Aug 24 2025"
-msgstr ""
+msgstr "2025年8月24日"
 
 #: scenes/daily.tscn scenes/marathon.tscn
 msgid "Your Answers"
@@ -111,49 +111,51 @@ msgstr "インフィニドル\t"
 
 #: scenes/marathon.tscn
 msgid "1/1"
-msgstr ""
+msgstr "1/1"
 
 #: scenes/marathon.tscn
 msgid ""
 "Enter a guess for\n"
 "this colordle!"
 msgstr ""
+"このコラードルに\n"
+"予想を入力してください！"
 
 #: scenes/options.tscn
 msgid "Back"
-msgstr ""
+msgstr "戻る"
 
 #: scenes/options.tscn scenes/title.tscn
 msgid "Options"
-msgstr ""
+msgstr "オプション"
 
 #: scenes/options.tscn
 msgid "Visual"
-msgstr ""
+msgstr "ビジュアル"
 
 #: scenes/options.tscn
 msgid "Color Theme"
-msgstr ""
+msgstr "カラーテーマ"
 
 #: scenes/options.tscn
 msgid "Rainbow Background"
-msgstr ""
+msgstr "レインボー背景"
 
 #: scenes/options.tscn
 msgid "Audio"
-msgstr ""
+msgstr "オーディオ"
 
 #: scenes/options.tscn
 msgid "Music"
-msgstr ""
+msgstr "音楽"
 
 #: scenes/options.tscn
 msgid "SFX"
-msgstr ""
+msgstr "効果音"
 
 #: scenes/options.tscn
 msgid "About"
-msgstr ""
+msgstr "について"
 
 #: scenes/options.tscn
 msgid ""
@@ -161,139 +163,147 @@ msgid ""
 "\n"
 "Credits:"
 msgstr ""
+"Colordleをプレイしていただきありがとうございます\n"
+"\n"
+"クレジット:"
 
 #: scenes/options.tscn
 msgid "Josh Wardle for creating Wordle, the inspiration for this game"
 msgstr ""
+"このゲームのインスピレーションとなったWordleの生みの親、Josh Wardle氏"
 
 #: scenes/options.tscn
 msgid "Lucide.dev for their amazing icons, which I based mines off of"
-msgstr ""
+msgstr "私がアイコンのベースにしたLucide.devの素晴らしいアイコンに感謝します"
 
 #: scenes/options.tscn
 msgid "Thomas Stubblefield for running the Hack Club Shiba event"
-msgstr ""
+msgstr "Hack Club Shibaイベントを運営したThomas Stubblefield氏"
 
 #: scenes/results_daily.tscn scenes/results_marathon.tscn
 msgid "Share"
-msgstr ""
+msgstr "シェア"
 
 #: scenes/results_daily.tscn
 msgid "Colordle 1023, 10/6"
-msgstr ""
+msgstr "コラードル 1023、10/6"
 
 #: scenes/results_daily.tscn
 msgid "10.0%"
-msgstr ""
+msgstr "10.0%"
 
 #: scenes/results_daily.tscn scenes/results_marathon.tscn
 msgid "Main Menu"
-msgstr ""
+msgstr "メインメニュー"
 
 #: scenes/results_daily.tscn scenes/results_marathon.tscn
 msgid "Good Job!"
-msgstr ""
+msgstr "よくできました！"
 
 #: scenes/results_daily.tscn scenes/results_marathon.tscn
 msgid "You just went straight for the answer, didn't ya?"
-msgstr ""
+msgstr "ストレートに正解しましたね？"
 
 #: scenes/results_marathon.tscn
 msgid "Colordle ∞, 10/6"
-msgstr ""
+msgstr "コラードル ∞、10/6"
 
 #: scenes/results_marathon.tscn
 msgid "Streak: 203"
-msgstr ""
+msgstr "連勝: 203"
 
 #: scenes/results_marathon.tscn
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: scenes/results_marathon.tscn
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: scenes/results_marathon.tscn
 msgid "3"
-msgstr ""
+msgstr "3"
 
 #: scenes/results_marathon.tscn
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: scenes/results_marathon.tscn
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: scenes/results_marathon.tscn
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: scenes/title.tscn
 msgid "Welcome to"
-msgstr ""
+msgstr "へようこそ"
 
 #: scenes/title.tscn
 msgid "Colordle"
-msgstr ""
+msgstr "コラードル"
 
 #: scenes/title.tscn
 msgid "Tutorial"
-msgstr ""
+msgstr "チュートリアル"
 
 #: scenes/title.tscn
 msgid "Daily"
-msgstr ""
+msgstr "デイリー"
 
 #: scenes/title.tscn
 msgid "Marathon"
-msgstr ""
+msgstr "マラソン"
 
 #: scenes/title.tscn
 msgid ""
 "© Matcha Software, 2025\n"
 "Made for Hack Club Shiba, with <3"
 msgstr ""
+"© Matcha Software, 2025\n"
+"Hack Club Shibaのために愛を込めて作られました <3"
 
 #: scenes/tutorial.tscn
 msgid ""
 "This is temporary text meant to be long enough that by this text is now on "
 "the second line."
 msgstr ""
+"これは一時的なテキストであり、このテキストが2行目になるくらい十分に長くなる"
+"ことを意図しています。"
 
 #: scenes/tutorial.tscn
 msgid "[⇥] or right click to continue"
-msgstr ""
+msgstr "[⇥] または右クリックで続行"
 
 #: scripts/input.gd
 msgid "Red"
-msgstr ""
+msgstr "赤"
 
 #: scripts/input.gd
 msgid "Green"
-msgstr ""
+msgstr "緑"
 
 #: scripts/input.gd
 msgid "Blue"
-msgstr ""
+msgstr "青"
 
 #: scripts/input.gd
 msgid "Hue"
-msgstr ""
+msgstr "色相"
 
 #: scripts/input.gd
 msgid "Sat."
-msgstr ""
+msgstr "彩度"
 
 #: scripts/input.gd
 msgid "Value"
-msgstr ""
+msgstr "明度"
 
 #: scripts/version_warn.gd
 msgid ""
 "You're running an unknown version of Colordle!\n"
 "Please do not report bugs with this version."
 msgstr ""
-"You're running an unknown version of Colordle!\n"
-"Please do not report bugs with this version."
+"不明なバージョンのColordleを実行中です\n"
+"このバージョンでのバグ報告はご遠慮ください。"
