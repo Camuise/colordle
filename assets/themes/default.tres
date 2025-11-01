@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=36 format=3 uid="uid://7bdtpoekv6hy"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://7bdtpoekv6hy"]
 
+[ext_resource type="FontFile" uid="uid://dwdwibfvxy8fr" path="res://assets/fonts/Lexend/Lexend-VariableFont_wght.ttf" id="1_2xv77"]
 [ext_resource type="Texture2D" uid="uid://gn1pf1go7lbt" path="res://assets/images/chevron-down.png" id="1_nr3lm"]
-[ext_resource type="FontFile" uid="uid://gkm2ebn5v6nh" path="res://assets/fonts/Lexend/static/Lexend-Regular.ttf" id="1_vwgqj"]
 [ext_resource type="Texture2D" uid="uid://cal7lrorcdrld" path="res://assets/images/checks/toggle-right.png" id="2_qf2id"]
 [ext_resource type="Texture2D" uid="uid://dfr0qyot4wfb2" path="res://assets/images/checks/toggle-right-disabled.png" id="3_4bmj0"]
 [ext_resource type="Texture2D" uid="uid://cptpohynvdkuy" path="res://assets/images/checks/toggle-left-disabled.png" id="4_exttd"]
@@ -68,6 +68,9 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 expand_margin_bottom = 18.0
+
+[sub_resource type="FontVariation" id="FontVariation_nn1i8"]
+base_font = ExtResource("1_2xv77")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr3lm"]
 content_margin_left = 16.0
@@ -194,7 +197,7 @@ Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 18
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 12
-Button/fonts/font = ExtResource("1_vwgqj")
+Button/fonts/font = ExtResource("1_2xv77")
 Button/styles/focus = SubResource("StyleBoxEmpty_nr3lm")
 Button/styles/hover = SubResource("StyleBoxFlat_w7hgt")
 Button/styles/normal = SubResource("StyleBoxEmpty_vwgqj")
@@ -220,7 +223,7 @@ Label/colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
 Label/constants/shadow_offset_x = 2
 Label/constants/shadow_offset_y = 2
 Label/constants/shadow_outline_size = 15
-Label/fonts/font = ExtResource("1_vwgqj")
+Label/fonts/font = SubResource("FontVariation_nn1i8")
 OptionButton/constants/outline_size = 15
 OptionButton/icons/arrow = ExtResource("1_nr3lm")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_nr3lm")
