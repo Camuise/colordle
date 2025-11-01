@@ -510,3 +510,23 @@ func _ready() -> void:
     _init_background_music()
     remove_game_nodes()
 # endregion
+
+
+# region Localization
+# ============================================================================
+# LOCALIZATION UTILITIES
+# ============================================================================
+var language = "auto" 
+var supported_languages = [
+    "auto",
+    "en",
+    "ja",
+]
+
+func set_language(lang_code: String) -> void:
+    language = lang_code
+    if language == "auto":
+        var preferred_language = OS.get_locale_language()
+        TranslationServer.set_locale(preferred_language)
+    else:
+        TranslationServer.set_locale(language)

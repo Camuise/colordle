@@ -15,6 +15,13 @@ Scenes with hardcoded strings needing localization:
 
 - [ ] `scenes/daily.tscn`: UI text
   - [ ] `Gameplay/AnswerDisplay/HeaderLabel` - "Your Answers"
+  - [ ] `Header/Right/Date` - "Aug 24 2025"
+  - [ ] `Gameplay/AnswerDisplay/NoAnswerContainer/EnterAGuess` - "Enter a guess for today's colordle!"
+  - [ ] `Gameplay/Input/HeaderContainer/Label` - "Input"
+  - [ ] `Gameplay/Input/HeaderContainer/FormatSelect` - Popup items: "RGB", "HSV"
+  - [ ] `Gameplay/Input/SliderContainer/Label0` - "Slider0"
+  - [ ] `Gameplay/Input/SliderContainer/Label1` - "Slider1"
+  - [ ] `Gameplay/Input/SliderContainer/Label2` - "Slider2"
 - [ ] `scenes/marathon.tscn`: UI text
   - [ ] `Header/Right/Infinidle` - "Infinidle"
   - [ ] `Header/Right/Ratio` - "1/1"
