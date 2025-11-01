@@ -59,12 +59,12 @@ func set_game_state(new_state: GameState) -> void:
 
     emit_signal("game_state_changed", old_state, game_state)
 
-var daily_scene: Node = preload("res://daily.tscn").instantiate()
-var marathon_scene: Node = preload("res://marathon.tscn").instantiate()
-var results_daily_scene: Node = preload("res://results_daily.tscn").instantiate()
-var results_marathon_scene: Node = preload("res://results_marathon.tscn").instantiate()
-var options_scene: Node = preload("res://options.tscn").instantiate()
-var tutorial_scene: Node = preload("res://tutorial.tscn").instantiate()
+var daily_scene: Node = preload("res://scenes/daily.tscn").instantiate()
+var marathon_scene: Node = preload("res://scenes/marathon.tscn").instantiate()
+var results_daily_scene: Node = preload("res://scenes/results_daily.tscn").instantiate()
+var results_marathon_scene: Node = preload("res://scenes/results_marathon.tscn").instantiate()
+var options_scene: Node = preload("res://scenes/options.tscn").instantiate()
+var tutorial_scene: Node = preload("res://scenes/tutorial.tscn").instantiate()
 
 
 

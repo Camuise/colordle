@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dg1ueitccufef" path="res://assets/images/wheely.png" id="2_ehuit"]
 [ext_resource type="Script" uid="uid://dpev8ulw3h4hj" path="res://scripts/tutorial.gd" id="2_rwowx"]
 [ext_resource type="Theme" uid="uid://84ft41kfl5gm" path="res://assets/themes/speech.tres" id="3_ehuit"]
-[ext_resource type="PackedScene" uid="uid://jdbb2vhovioi" path="res://daily.tscn" id="3_hu44a"]
+[ext_resource type="PackedScene" uid="uid://jdbb2vhovioi" path="res://scenes/daily.tscn" id="3_hu44a"]
 [ext_resource type="Script" uid="uid://cuy7syrm2fo5e" path="res://scripts/message_box.gd" id="4_5mrt3"]
 
 [node name="Tutorial" type="Control"]
