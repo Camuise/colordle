@@ -14,8 +14,7 @@ Scripts with strings needing localization:
 Scenes with hardcoded strings needing localization:
 
 - [ ] `scenes/daily.tscn`: UI text
-  - [ ] `Gameplay/AnswerDisplay/HeaderLabel` - "Your Answers"
-  - [ ] `Header/Right/Date` - "Aug 24 2025"
+  - [x] `Gameplay/AnswerDisplay/HeaderLabel` - ~~"Your Answers"~~ -> key: `header.puzzle.answers`
   - [ ] `Gameplay/AnswerDisplay/NoAnswerContainer/EnterAGuess` - "Enter a guess for today's colordle!"
   - [ ] `Gameplay/Input/HeaderContainer/Label` - "Input"
   - [ ] `Gameplay/Input/HeaderContainer/FormatSelect` - Popup items: "RGB", "HSV"

@@ -1,0 +1,308 @@
+# LANGUAGE translation for Colordle for the following files:
+# res://scenes/daily.tscn
+# res://scenes/Main.tscn
+# res://scenes/marathon.tscn
+# res://scenes/options.tscn
+# res://scenes/results_daily.tscn
+# res://scenes/results_marathon.tscn
+# res://scenes/title.tscn
+# res://scenes/tutorial.tscn
+# res://scripts/options/rainbow_bg_toggle.gd
+# res://scripts/options/sound_panel.gd
+# res://scripts/options/theme_switcher.gd
+# res://scripts/answers.gd
+# res://scripts/answers_marathon.gd
+# res://scripts/background.gd
+# res://scripts/back_button.gd
+# res://scripts/bar.gd
+# res://scripts/camera_2d.gd
+# res://scripts/ColorUtils.gd
+# res://scripts/color_marathon.gd
+# res://scripts/color_square.gd
+# res://scripts/date.gd
+# res://scripts/date_marathon.gd
+# res://scripts/format_select.gd
+# res://scripts/globals.gd
+# res://scripts/input.gd
+# res://scripts/input_result_color.gd
+# res://scripts/message_box.gd
+# res://scripts/results_daily.gd
+# res://scripts/results_marathon.gd
+# res://scripts/share_button.gd
+# res://scripts/title.gd
+# res://scripts/tutorial.gd
+# res://scripts/version_warn.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Colordle\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#: scenes/daily.tscn
+msgid "Aug 24 2025"
+msgstr "Aug 24 2025"
+
+#: scenes/daily.tscn scenes/marathon.tscn
+msgid "Your Answers"
+msgstr "Your Answers"
+
+#: scenes/daily.tscn scenes/marathon.tscn scripts/answers.gd
+msgid "    %"
+msgstr "    %"
+
+#: scenes/daily.tscn scenes/marathon.tscn
+msgid "→"
+msgstr "→"
+
+#: scenes/daily.tscn
+msgid ""
+"Enter a guess for\n"
+"today's colordle!"
+msgstr ""
+"Enter a guess for\n"
+"today's colordle!"
+
+#: scenes/daily.tscn scenes/marathon.tscn
+msgid "Input"
+msgstr "Input"
+
+#: scenes/daily.tscn scenes/marathon.tscn
+msgid "RGB"
+msgstr "RGB"
+
+#: scenes/daily.tscn scenes/marathon.tscn
+msgid "HSV"
+msgstr "HSV"
+
+#: scenes/daily.tscn scenes/marathon.tscn
+msgid "Slider0"
+msgstr "Slider0"
+
+#: scenes/daily.tscn scenes/marathon.tscn
+msgid "Slider1"
+msgstr "Slider1"
+
+#: scenes/daily.tscn scenes/marathon.tscn
+msgid "Slider2"
+msgstr "Slider2"
+
+#: scenes/Main.tscn
+msgid ""
+"You're running Colordle v0.0.8-dev, a development build!\n"
+"You may see some bugs and missing features."
+msgstr ""
+"You're running Colordle v0.0.8-dev, a development build!\n"
+"You may see some bugs and missing features."
+
+#: scenes/marathon.tscn
+msgid "Infinidle\t"
+msgstr "Infinidle\t"
+
+#: scenes/marathon.tscn
+msgid "1/1"
+msgstr "1/1"
+
+#: scenes/marathon.tscn
+msgid ""
+"Enter a guess for\n"
+"this colordle!"
+msgstr ""
+"Enter a guess for\n"
+"this colordle!"
+
+#: scenes/options.tscn
+msgid "Back"
+msgstr "Back"
+
+#: scenes/options.tscn scenes/title.tscn
+msgid "Options"
+msgstr "Options"
+
+#: scenes/options.tscn
+msgid "Visual"
+msgstr "Visual"
+
+#: scenes/options.tscn
+msgid "Color Theme"
+msgstr "Color Theme"
+
+#: scenes/options.tscn
+msgid "Rainbow Background"
+msgstr "Rainbow Background"
+
+#: scenes/options.tscn
+msgid "Audio"
+msgstr "Audio"
+
+#: scenes/options.tscn
+msgid "Music"
+msgstr "Music"
+
+#: scenes/options.tscn
+msgid "SFX"
+msgstr "SFX"
+
+#: scenes/options.tscn
+msgid "About"
+msgstr "About"
+
+#: scenes/options.tscn
+msgid ""
+"Thank you for play Colordle!\n"
+"\n"
+"Credits:"
+msgstr ""
+"Thank you for play Colordle!\n"
+"\n"
+"Credits:"
+
+#: scenes/options.tscn
+msgid "Josh Wardle for creating Wordle, the inspiration for this game"
+msgstr "Josh Wardle for creating Wordle, the inspiration for this game"
+
+#: scenes/options.tscn
+msgid "Lucide.dev for their amazing icons, which I based mines off of"
+msgstr "Lucide.dev for their amazing icons, which I based mines off of"
+
+#: scenes/options.tscn
+msgid "Thomas Stubblefield for running the Hack Club Shiba event"
+msgstr "Thomas Stubblefield for running the Hack Club Shiba event"
+
+#: scenes/results_daily.tscn scenes/results_marathon.tscn
+msgid "Share"
+msgstr "Share"
+
+#: scenes/results_daily.tscn
+msgid "Colordle 1023, 10/6"
+msgstr "Colordle 1023, 10/6"
+
+#: scenes/results_daily.tscn
+msgid "10.0%"
+msgstr "10.0%"
+
+#: scenes/results_daily.tscn scenes/results_marathon.tscn
+msgid "Main Menu"
+msgstr "Main Menu"
+
+#: scenes/results_daily.tscn scenes/results_marathon.tscn
+msgid "Good Job!"
+msgstr "Good Job!"
+
+#: scenes/results_daily.tscn scenes/results_marathon.tscn
+msgid "You just went straight for the answer, didn't ya?"
+msgstr "You just went straight for the answer, didn't ya?"
+
+#: scenes/results_marathon.tscn
+msgid "Colordle ∞, 10/6"
+msgstr "Colordle ∞, 10/6"
+
+#: scenes/results_marathon.tscn
+msgid "Streak: 203"
+msgstr "Streak: 203"
+
+#: scenes/results_marathon.tscn
+msgid "1"
+msgstr "1"
+
+#: scenes/results_marathon.tscn
+msgid "2"
+msgstr "2"
+
+#: scenes/results_marathon.tscn
+msgid "3"
+msgstr "3"
+
+#: scenes/results_marathon.tscn
+msgid "4"
+msgstr "4"
+
+#: scenes/results_marathon.tscn
+msgid "5"
+msgstr "5"
+
+#: scenes/results_marathon.tscn
+msgid "6"
+msgstr "6"
+
+#: scenes/title.tscn
+msgid "Welcome to"
+msgstr "Welcome to"
+
+#: scenes/title.tscn
+msgid "Colordle"
+msgstr "Colordle"
+
+#: scenes/title.tscn
+msgid "Tutorial"
+msgstr "Tutorial"
+
+#: scenes/title.tscn
+msgid "Daily"
+msgstr "Daily"
+
+#: scenes/title.tscn
+msgid "Marathon"
+msgstr "Marathon"
+
+#: scenes/title.tscn
+msgid ""
+"© Matcha Software, 2025\n"
+"Made for Hack Club Shiba, with <3"
+msgstr ""
+"© Matcha Software, 2025\n"
+"Made for Hack Club Shiba, with <3"
+
+#: scenes/tutorial.tscn
+msgid ""
+"This is temporary text meant to be long enough that by this text is now on "
+"the second line."
+msgstr ""
+"This is temporary text meant to be long enough that by this text is now on "
+"the second line."
+
+#: scenes/tutorial.tscn
+msgid "[⇥] or right click to continue"
+msgstr "[⇥] or right click to continue"
+
+#: scripts/input.gd
+msgid "Red"
+msgstr "Red"
+
+#: scripts/input.gd
+msgid "Green"
+msgstr "Green"
+
+#: scripts/input.gd
+msgid "Blue"
+msgstr "Blue"
+
+#: scripts/input.gd
+msgid "Hue"
+msgstr "Hue"
+
+#: scripts/input.gd
+msgid "Sat."
+msgstr "Sat."
+
+#: scripts/input.gd
+msgid "Value"
+msgstr "Value"
+
+#: scripts/version_warn.gd
+msgid ""
+"You're running an unknown version of Colordle!\n"
+"Please do not report bugs with this version."
+msgstr ""
+"You're running an unknown version of Colordle!\n"
+"Please do not report bugs with this version."

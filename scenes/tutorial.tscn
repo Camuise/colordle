@@ -79,8 +79,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 30
 theme_override_font_sizes/mono_font_size = 30
 bbcode_enabled = true
-text = "jijjoioioi hello and welcomet qweref
-djoihdfslkhfsdlkfsdij second line"
+text = "This is temporary text meant to be long enough that by this text is now on the second line."
 fit_content = true
 scroll_active = false
 vertical_alignment = 1
