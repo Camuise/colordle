@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=37 format=3 uid="uid://7bdtpoekv6hy"]
+[gd_resource type="Theme" load_steps=42 format=3 uid="uid://7bdtpoekv6hy"]
 
 [ext_resource type="FontFile" uid="uid://dwdwibfvxy8fr" path="res://assets/fonts/Lexend/Lexend-VariableFont_wght.ttf" id="1_2xv77"]
 [ext_resource type="Texture2D" uid="uid://gn1pf1go7lbt" path="res://assets/images/chevron-down.png" id="1_nr3lm"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://qdm3hyrv58i0" path="res://assets/images/pin-disabled.png" id="9_nn1i8"]
 [ext_resource type="Texture2D" uid="uid://s25vqgak5dl4" path="res://assets/images/pin-highlight.png" id="10_2xv77"]
 [ext_resource type="Texture2D" uid="uid://ddtgwak4m44a6" path="res://assets/images/tick.png" id="11_nn1i8"]
+[ext_resource type="FontFile" uid="uid://beexp6lttp3p2" path="res://assets/fonts/NotoSansJP/NotoSansJP-VariableFont_wght.ttf" id="13_2xv77"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nr3lm"]
 content_margin_left = 16.0
@@ -112,6 +113,29 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="FontVariation" id="FontVariation_3f256"]
+base_font = ExtResource("13_2xv77")
+variation_opentype = {
+2003265652: 400
+}
+
+[sub_resource type="FontVariation" id="FontVariation_ggasa"]
+fallbacks = Array[Font]([SubResource("FontVariation_3f256")])
+base_font = ExtResource("1_2xv77")
+variation_opentype = {
+2003265652: 800
+}
+
+[sub_resource type="FontVariation" id="FontVariation_2xv77"]
+base_font = ExtResource("13_2xv77")
+variation_opentype = {
+2003265652: 400
+}
+
+[sub_resource type="FontVariation" id="FontVariation_i6at2"]
+fallbacks = Array[Font]([SubResource("FontVariation_2xv77")])
+base_font = ExtResource("1_2xv77")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exttd"]
 
@@ -240,6 +264,8 @@ RichTextLabel/constants/outline_size = 3
 RichTextLabel/constants/shadow_offset_x = 2
 RichTextLabel/constants/shadow_offset_y = 2
 RichTextLabel/constants/shadow_outline_size = 15
+RichTextLabel/fonts/bold_font = SubResource("FontVariation_ggasa")
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_i6at2")
 TabBar/colors/font_unselected_color = Color(0.69803923, 0.69803923, 0.69803923, 0)
 TabBar/styles/button_highlight = SubResource("StyleBoxEmpty_exttd")
 TabBar/styles/button_pressed = SubResource("StyleBoxEmpty_n83um")
