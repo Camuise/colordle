@@ -7,9 +7,9 @@ func _ready() -> void:
     var successfulLookup = version != "unknown"
     var isDevBuild = successfulLookup and version.find("-dev") != -1
     if isDevBuild:
-        self.text = "You're running v%s, a development build!\nYou may see some bugs and missing features." % version
+        self.text = tr("You're running v%s, a development build!\nYou may see some bugs and missing features.") % version
     elif !successfulLookup:
-        self.text = "You're running an unknown version of Colordle!\nPlease do not report bugs with this version."
+        self.text = tr("You're running an unknown version of Colordle!\nPlease do not report bugs with this version.")
     else:
         self.visible = false
         self.text = ""

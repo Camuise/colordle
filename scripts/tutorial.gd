@@ -15,11 +15,11 @@ enum StepType {
 var lines := [
     {
         "step": StepType.MESSAGE,
-        "text": "Hello, and welcome to [b]Colordle[/b]! I'm Wheely, and I'll guide you through the game.",
+        "text": tr("Hello, and welcome to [b]Colordle[/b]! I'm Wheely, and I'll guide you through the game."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Now let's go over how to play the daily Colordle!",
+        "text": tr("Now let's go over how to play the daily Colordle!"),
     },
     {
         "step": StepType.FUNCTION,
@@ -27,35 +27,35 @@ var lines := [
     },
     {
         "step": StepType.MESSAGE,
-        "text": "In Colordle, your goal is to guess the color by adjusting three sliders in whatever color space you want, which changes how the color is represented. Currently, you can choose between RGB and HSV.",
+        "text": tr("In Colordle, your goal is to guess the color by adjusting three sliders in whatever color space you want, which changes how the color is represented. Currently, you can choose between RGB and HSV."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "You can switch between color spaces using the drop-down menu above the sliders. Try it out! Just press continue to proceed when you're ready.",
+        "text": tr("You can switch between color spaces using the drop-down menu above the sliders. Try it out! Just press continue to proceed when you're ready."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "After selecting your color space, adjust the sliders to make your guess for the hidden color. Each slider represents a different component of the color space you've chosen, as shown by the labels next to the sliders.",
+        "text": tr("After selecting your color space, adjust the sliders to make your guess for the hidden color. Each slider represents a different component of the color space you've chosen, as shown by the labels next to the sliders."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "The color whose values you're adjusting is shown in the preview box below the sliders, so you can see how your adjustments change the color.",
+        "text": tr("The color whose values you're adjusting is shown in the preview box below the sliders, so you can see how your adjustments change the color."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "You may also have noticed the slider colors change as you adjust them. This is to help you visualize the color you're creating based on your slider values.",
+        "text": tr("You may also have noticed the slider colors change as you adjust them. This is to help you visualize the color you're creating based on your slider values."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Try guessing the color now by adjusting the sliders to your desired values! Press continue when you're ready to move on.",
+        "text": tr("Try guessing the color now by adjusting the sliders to your desired values! Press continue when you're ready to move on."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "After submitting, you'll receive feedback on how close your guess was to the hidden color.",
+        "text": tr("After submitting, you'll receive feedback on how close your guess was to the hidden color."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "You have a total of 6 attempts to guess the correct color. After each guess, the sliders will stay as they are, and you can adjust them again for your next attempt.",
+        "text": tr("You have a total of 6 attempts to guess the correct color. After each guess, the sliders will stay as they are, and you can adjust them again for your next attempt."),
     },
     {
         "step": StepType.FUNCTION,
@@ -63,27 +63,27 @@ var lines := [
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Now, let's go over what the different outline colors mean for each slider after you make a guess. This is a lot of information, so pay close attention!",
+        "text": tr("Now, let's go over what the different outline colors mean for each slider after you make a guess. This is a lot of information, so pay close attention!"),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "The outline colors around each slider indicate how close your guess for that specific slider is to the correct value. There are four possible colors: Gray, Orange, Green, and Purple.",
+        "text": tr("The outline colors around each slider indicate how close your guess for that specific slider is to the correct value. There are four possible colors: Gray, Orange, Green, and Purple."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Here's what the colors mean:\n[color=gray][b]Gray[/b][/color]: Your guess for that slider is completely wrong.\n[color=Orange][b]Orange[/b][/color]: Your guess for that slider is far off, but approaching.\n[color=green][b]Green[/b][/color]: Your guess is correct, within 5% of the answer.\n[color=purple][b]Purple[/b][/color]: Your guess is perfect! It was within 1% of the answer.",
+        "text": tr("Here's what the colors mean:\n[color=gray][b]Gray[/b][/color]: Your guess for that slider is completely wrong.\n[color=Orange][b]Orange[/b][/color]: Your guess for that slider is far off, but approaching.\n[color=green][b]Green[/b][/color]: Your guess is correct, within 5% of the answer.\n[color=purple][b]Purple[/b][/color]: Your guess is perfect! It was within 1% of the answer."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "The outline colors will update for each guess, so you can use them to gauge how close you are to the correct values.",
+        "text": tr("The outline colors will update for each guess, so you can use them to gauge how close you are to the correct values."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "It'll also show you how close you are to the correct color as a whole, using a percentage next to (during guessing) or on (during the results page) the preview box.",
+        "text": tr("It'll also show you how close you are to the correct color as a whole, using a percentage next to (during guessing) or on (during the results page) the preview box."),
     },
     {
         "step": StepType.MESSAGE,
-        "text": "Now that you know how to play, you can turn off the tutorial button in options. Enjoy the game, and may the colors be ever in your favor!",
+        "text": tr("Now that you know how to play, you can turn off the tutorial button in options. Enjoy the game, and may the colors be ever in your favor!"),
     },
     {
         "step": StepType.FUNCTION,
