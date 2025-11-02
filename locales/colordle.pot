@@ -293,6 +293,26 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
+#: scripts/results_daily.gd
+msgid "Colordle #%s - %s"
+msgstr ""
+
+#: scripts/results_daily.gd
+msgid ""
+"Colordle #%s - %s\n"
+"\n"
+msgstr ""
+
+#: scripts/results_marathon.gd
+msgid "Colordle ∞ - %s"
+msgstr ""
+
+#: scripts/results_marathon.gd
+msgid ""
+"%s, Streak: %d\n"
+"\n"
+msgstr ""
+
 #: scripts/tutorial.gd
 msgid "Hello, and welcome to [b]Colordle[/b]! I'm Wheely, and I'll guide you through the game."
 msgstr ""
