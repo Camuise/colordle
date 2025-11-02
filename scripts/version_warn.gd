@@ -13,7 +13,8 @@ func _ready() -> void:
     else:
         self.visible = false
         self.text = ""
-    Globals.connect("language_changed", Callable(self, "_on_language_changed"))
+    if not Globals.is_connected("language_changed", Callable(self, "_on_language_changed")):
+        Globals.connect("language_changed", Callable(self, "_on_language_changed"))
 
 # update when language changes
 func _on_language_changed(_new_language: String) -> void:
