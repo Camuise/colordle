@@ -480,3 +480,15 @@ msgid ""
 msgstr ""
 "不明なバージョンのColordleを実行中です！\n"
 "このバージョンでのバグ報告はご遠慮ください。"
+
+#: scripts/options/language_select.gd
+msgid "AutoLang"
+msgstr "自動"
+
+#: scripts/options/language_select.gd
+msgid "EnglishLang"
+msgstr "英語"
+
+#: scripts/options/language_select.gd
+msgid "JapaneseLang"
+msgstr "日本語"

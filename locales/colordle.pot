@@ -32,6 +32,7 @@
 # res://scripts/title.gd
 # res://scripts/tutorial.gd
 # res://scripts/version_warn.gd
+# res://scripts/options/language_select.gd
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -396,4 +397,16 @@ msgstr ""
 
 #: scripts/version_warn.gd
 msgid ""
+msgstr ""
+
+#: scripts/options/language_select.gd
+msgid "AutoLang"
+msgstr ""
+
+#: scripts/options/language_select.gd
+msgid "EnglishLang"
+msgstr ""
+
+#: scripts/options/language_select.gd
+msgid "JapaneseLang"
 msgstr ""

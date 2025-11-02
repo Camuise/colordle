@@ -488,3 +488,15 @@ msgid ""
 msgstr ""
 "You're running an unknown version of Colordle!\n"
 "Please do not report bugs with this version."
+
+#: scripts/options/language_select.gd
+msgid "AutoLang"
+msgstr "Auto"
+
+#: scripts/options/language_select.gd
+msgid "EnglishLang"
+msgstr "English"
+
+#: scripts/options/language_select.gd
+msgid "JapaneseLang"
+msgstr "Japanese"

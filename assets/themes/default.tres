@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=42 format=3 uid="uid://7bdtpoekv6hy"]
+[gd_resource type="Theme" load_steps=53 format=3 uid="uid://7bdtpoekv6hy"]
 
 [ext_resource type="FontFile" uid="uid://dwdwibfvxy8fr" path="res://assets/fonts/Lexend/Lexend-VariableFont_wght.ttf" id="1_2xv77"]
 [ext_resource type="Texture2D" uid="uid://gn1pf1go7lbt" path="res://assets/images/chevron-down.png" id="1_nr3lm"]
@@ -74,12 +74,48 @@ variation_opentype = {
 2003265652: 400
 }
 
+[sub_resource type="FontVariation" id="FontVariation_1vg7w"]
+base_font = ExtResource("13_2xv77")
+variation_opentype = {
+2003265652: 400
+}
+
+[sub_resource type="FontVariation" id="FontVariation_clm81"]
+fallbacks = Array[Font]([SubResource("FontVariation_1vg7w")])
+base_font = ExtResource("1_2xv77")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmu6s"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmhp7"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ssu7j"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr3lm"]
 content_margin_left = 16.0
 content_margin_top = 8.0
 content_margin_right = 16.0
 content_margin_bottom = 8.0
-bg_color = Color(0.23, 0.23, 0.23, 0.431373)
+bg_color = Color(0.23, 0.23, 0.23, 0.7490196)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -101,6 +137,37 @@ content_margin_right = 16.0
 content_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4k172"]
+
+[sub_resource type="FontVariation" id="FontVariation_ug8sg"]
+fallbacks = Array[Font]([SubResource("FontVariation_1vg7w")])
+base_font = ExtResource("1_2xv77")
+
+[sub_resource type="FontVariation" id="FontVariation_vi5h5"]
+fallbacks = Array[Font]([SubResource("FontVariation_1vg7w")])
+base_font = ExtResource("1_2xv77")
+
+[sub_resource type="FontVariation" id="FontVariation_x6v55"]
+fallbacks = Array[Font]([SubResource("FontVariation_1vg7w")])
+base_font = ExtResource("1_2xv77")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_clm81"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bmhp7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi5h5"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug8sg"]
 bg_color = Color(1, 1, 1, 1)
@@ -249,11 +316,35 @@ Label/constants/shadow_offset_x = 2
 Label/constants/shadow_offset_y = 2
 Label/constants/shadow_outline_size = 15
 Label/fonts/font = SubResource("FontVariation_nn1i8")
+OptionButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+OptionButton/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+OptionButton/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+OptionButton/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+OptionButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_outline_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_pressed_color = Color(1, 1, 1, 1)
+OptionButton/constants/arrow_margin = 4
+OptionButton/constants/h_separation = 4
+OptionButton/constants/modulate_arrow = 0
 OptionButton/constants/outline_size = 15
+OptionButton/fonts/font = SubResource("FontVariation_clm81")
 OptionButton/icons/arrow = ExtResource("1_nr3lm")
+OptionButton/styles/disabled = SubResource("StyleBoxFlat_wmu6s")
+OptionButton/styles/disabled_mirrored = SubResource("StyleBoxFlat_bmhp7")
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_ssu7j")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_nr3lm")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxFlat_nr3lm")
 OptionButton/styles/normal = SubResource("StyleBoxEmpty_xfxho")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxFlat_nr3lm")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_nr3lm")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxFlat_nr3lm")
 Panel/styles/panel = SubResource("StyleBoxEmpty_4k172")
+PopupMenu/fonts/font = SubResource("FontVariation_ug8sg")
+PopupMenu/fonts/font_separator = SubResource("FontVariation_vi5h5")
+PopupMenu/fonts/title_font = SubResource("FontVariation_x6v55")
+PopupMenu/styles/embedded_border = SubResource("StyleBoxEmpty_clm81")
+PopupMenu/styles/hover = SubResource("StyleBoxEmpty_bmhp7")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_vi5h5")
 ProgressBar/colors/font_color = Color(1, 1, 1, 1)
 ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
 ProgressBar/constants/outline_size = 12
