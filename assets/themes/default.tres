@@ -14,16 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://ddtgwak4m44a6" path="res://assets/images/tick.png" id="11_nn1i8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nr3lm"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_left = 16.0
+content_margin_top = 0.0
+content_margin_right = 7.0
+content_margin_bottom = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7hgt"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_left = 16.0
+content_margin_top = 0.0
+content_margin_right = 7.0
+content_margin_bottom = 0.0
 bg_color = Color(0.23, 0.23, 0.23, 0.431373)
 border_width_left = 5
 border_width_top = 5
@@ -34,22 +34,20 @@ corner_radius_top_right = 999999
 corner_radius_bottom_right = 999999
 corner_radius_bottom_left = 999999
 corner_detail = 5
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
+expand_margin_left = 16.0
+expand_margin_right = 7.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwgqj"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_left = 16.0
+content_margin_top = 0.0
+content_margin_right = 7.0
+content_margin_bottom = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7hgt"]
-content_margin_left = 10.0
-content_margin_top = 14.0
-content_margin_right = 10.0
-content_margin_bottom = 14.0
+content_margin_left = 16.0
+content_margin_top = 0.0
+content_margin_right = 7.0
+content_margin_bottom = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3f256"]
 bg_color = Color(1, 1, 1, 1)
