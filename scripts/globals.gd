@@ -522,6 +522,7 @@ var supported_languages = [
     "en",
     "ja",
 ]
+signal language_changed(new_language: String)
 
 func set_language(lang_code: String) -> void:
     language = lang_code
@@ -530,3 +531,5 @@ func set_language(lang_code: String) -> void:
         TranslationServer.set_locale(preferred_language)
     else:
         TranslationServer.set_locale(language)
+    var new_language = TranslationServer.get_locale()
+    emit_signal("language_changed", new_language)
