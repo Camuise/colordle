@@ -299,6 +299,30 @@ msgstr "彩度"
 msgid "Value"
 msgstr "明度"
 
+#: scripts/results_daily.gd
+msgid "Colordle #%s - %s"
+msgstr "コラードル #%s - %s"
+
+#: scripts/results_daily.gd
+msgid ""
+"Colordle #%s - %s\n"
+"\n"
+msgstr ""
+"コラードル #%s - %s\n"
+"\n"
+
+#: scripts/results_marathon.gd
+msgid "Colordle ∞ - %s"
+msgstr "コラードル ∞ - %s"
+
+#: scripts/results_marathon.gd
+msgid ""
+"%s, Streak: %d\n"
+"\n"
+msgstr ""
+"%s、連勝: %d\n"
+"\n"
+
 #: scripts/tutorial.gd
 msgid ""
 "Hello, and welcome to [b]Colordle[/b]! I'm Wheely, and I'll guide you "

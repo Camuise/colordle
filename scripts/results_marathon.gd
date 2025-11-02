@@ -55,7 +55,7 @@ func _ready() -> void:
 
 
 func _on_show_results(_puzzle_info: Globals.PuzzleInfo, _game_mode: int, _time_taken: float) -> void:
-    results_data.set_title("Colordle ∞ - %s" % Globals.get_todays_date())
+    results_data.set_title(tr("Colordle ∞ - %s") % Globals.get_todays_date())
 
 
 func _on_infinidle_complete(infinidle_stats: Globals.InfinidleStats) -> void:
@@ -65,7 +65,7 @@ func _on_infinidle_complete(infinidle_stats: Globals.InfinidleStats) -> void:
 
 func _on_share_requested() -> void:
     # 1. Add title + date
-    var share_text: String = "%s, Streak: %d\n\n" % [results_data.title, results_data.get_streak()]
+    var share_text: String = tr("%s, Streak: %d\n\n") % [results_data.title, results_data.get_streak()]
 
     # 2. Generate bar graph with unicode blocks
     var max_wins = 1
