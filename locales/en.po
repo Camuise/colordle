@@ -158,14 +158,16 @@ msgid "About"
 msgstr "About"
 
 #: scenes/options.tscn
+#| msgid ""
+#| "Thank you for play Colordle!\n"
+#| "\n"
+#| "Credits:"
 msgid ""
 "Thank you for play Colordle!\n"
-"\n"
-"Credits:"
+"---- Credits ----"
 msgstr ""
 "Thank you for play Colordle!\n"
-"\n"
-"Credits:"
+"---- Credits ----"
 
 #: scenes/options.tscn
 msgid "Josh Wardle for creating Wordle, the inspiration for this game"
@@ -207,9 +209,9 @@ msgstr "You just went straight for the answer, didn't ya?"
 msgid "Colordle ∞, 10/6"
 msgstr "Colordle ∞, 10/6"
 
-#: scenes/results_marathon.tscn
-msgid "Streak: 203"
-msgstr "Streak: 203"
+#: scenes/results_marathon.tscn scripts/results_marathon.gd
+msgid "Streak: %d"
+msgstr "Streak: %d"
 
 #: scenes/results_marathon.tscn
 msgid "1"
@@ -302,10 +304,6 @@ msgstr "Value"
 #: scripts/results_daily.gd
 msgid "Colordle #%s - %s"
 msgstr "Colordle #%s - %s"
-
-#: scripts/results_marathon.gd
-msgid "Streak: %d"
-msgstr "Streak: %d"
 
 #: scripts/results_marathon.gd
 msgid "Colordle ∞ - %s"
@@ -488,6 +486,9 @@ msgstr "English"
 #: scripts/options/language_select.gd
 msgid "JapaneseLang"
 msgstr "Japanese"
+
+#~ msgid "Streak: 203"
+#~ msgstr "Streak: 203"
 
 #~ msgid ""
 #~ "Colordle #%s - %s\n"

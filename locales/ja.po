@@ -159,13 +159,11 @@ msgstr "について"
 
 #: scenes/options.tscn
 msgid ""
-"Thank you for play Colordle!\n"
-"\n"
-"Credits:"
+"Thank you for playing Colordle!\n"
+"---- Credits ----"
 msgstr ""
-"Colordleをプレイしていただきありがとうございます\n"
-"\n"
-"クレジット:"
+"Colordleをプレイしていただきありがとうございます！\n"
+"---- クレジット ----"
 
 #: scenes/options.tscn
 msgid "Josh Wardle for creating Wordle, the inspiration for this game"
@@ -207,9 +205,9 @@ msgstr "ストレートに正解しましたね？"
 msgid "Colordle ∞, 10/6"
 msgstr "コラードル ∞、10/6"
 
-#: scenes/results_marathon.tscn
-msgid "Streak: 203"
-msgstr "連勝: 203"
+#: scenes/results_marathon.tscn scripts/results_marathon.gd
+msgid "Streak: %d"
+msgstr "連勝: %d"
 
 #: scenes/results_marathon.tscn
 msgid "1"
@@ -302,10 +300,6 @@ msgstr "明度"
 #: scripts/results_daily.gd
 msgid "Colordle #%s - %s"
 msgstr "コラードル #%s - %s"
-
-#: scripts/results_marathon.gd
-msgid "Streak: %d"
-msgstr "連勝: %d"
 
 #: scripts/results_marathon.gd
 msgid "Colordle ∞ - %s"
@@ -480,6 +474,9 @@ msgstr "英語"
 #: scripts/options/language_select.gd
 msgid "JapaneseLang"
 msgstr "日本語"
+
+#~ msgid "Streak: 203"
+#~ msgstr "連勝: 203"
 
 #~ msgid ""
 #~ "Colordle #%s - %s\n"

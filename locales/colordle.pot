@@ -159,9 +159,8 @@ msgstr ""
 
 #: scenes/options.tscn
 msgid ""
-"Thank you for play Colordle!\n"
-"\n"
-"Credits:"
+"Thank you for playing Colordle!\n"
+"---- Credits ----"
 msgstr ""
 
 #: scenes/options.tscn
@@ -209,7 +208,8 @@ msgid "Colordle ∞, 10/6"
 msgstr ""
 
 #: scenes/results_marathon.tscn
-msgid "Streak: 203"
+#: scripts/results_marathon.gd
+msgid "Streak: %d"
 msgstr ""
 
 #: scenes/results_marathon.tscn
@@ -296,10 +296,6 @@ msgstr ""
 
 #: scripts/results_daily.gd
 msgid "Colordle #%s - %s"
-msgstr ""
-
-#: scripts/results_marathon.gd
-msgid "Streak: %d"
 msgstr ""
 
 #: scripts/results_marathon.gd
