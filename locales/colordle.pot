@@ -298,20 +298,12 @@ msgstr ""
 msgid "Colordle #%s - %s"
 msgstr ""
 
-#: scripts/results_daily.gd
-msgid ""
-"Colordle #%s - %s\n"
-"\n"
+#: scripts/results_marathon.gd
+msgid "Streak: %d"
 msgstr ""
 
 #: scripts/results_marathon.gd
 msgid "Colordle ∞ - %s"
-msgstr ""
-
-#: scripts/results_marathon.gd
-msgid ""
-"%s, Streak: %d\n"
-"\n"
 msgstr ""
 
 #: scripts/tutorial.gd

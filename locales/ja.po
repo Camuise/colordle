@@ -303,25 +303,13 @@ msgstr "明度"
 msgid "Colordle #%s - %s"
 msgstr "コラードル #%s - %s"
 
-#: scripts/results_daily.gd
-msgid ""
-"Colordle #%s - %s\n"
-"\n"
-msgstr ""
-"コラードル #%s - %s\n"
-"\n"
+#: scripts/results_marathon.gd
+msgid "Streak: %d"
+msgstr "連勝: %d"
 
 #: scripts/results_marathon.gd
 msgid "Colordle ∞ - %s"
 msgstr "コラードル ∞ - %s"
-
-#: scripts/results_marathon.gd
-msgid ""
-"%s, Streak: %d\n"
-"\n"
-msgstr ""
-"%s、連勝: %d\n"
-"\n"
 
 #: scripts/tutorial.gd
 msgid ""
@@ -492,3 +480,10 @@ msgstr "英語"
 #: scripts/options/language_select.gd
 msgid "JapaneseLang"
 msgstr "日本語"
+
+#~ msgid ""
+#~ "Colordle #%s - %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "コラードル #%s - %s\n"
+#~ "\n"

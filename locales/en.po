@@ -303,25 +303,13 @@ msgstr "Value"
 msgid "Colordle #%s - %s"
 msgstr "Colordle #%s - %s"
 
-#: scripts/results_daily.gd
-msgid ""
-"Colordle #%s - %s\n"
-"\n"
-msgstr ""
-"Colordle #%s - %s\n"
-"\n"
+#: scripts/results_marathon.gd
+msgid "Streak: %d"
+msgstr "Streak: %d"
 
 #: scripts/results_marathon.gd
 msgid "Colordle ∞ - %s"
 msgstr "Colordle ∞ - %s"
-
-#: scripts/results_marathon.gd
-msgid ""
-"%s, Streak: %d\n"
-"\n"
-msgstr ""
-"%s, Streak: %d\n"
-"\n"
 
 #: scripts/tutorial.gd
 msgid ""
@@ -500,3 +488,10 @@ msgstr "English"
 #: scripts/options/language_select.gd
 msgid "JapaneseLang"
 msgstr "Japanese"
+
+#~ msgid ""
+#~ "Colordle #%s - %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Colordle #%s - %s\n"
+#~ "\n"
