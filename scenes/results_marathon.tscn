@@ -206,9 +206,9 @@ step = 1.0
 [node name="ShareButton" type="Button" parent="Marathon"]
 layout_mode = 0
 offset_left = 185.0
-offset_top = 510.0
+offset_top = 508.0
 offset_right = 587.0
-offset_bottom = 606.0
+offset_bottom = 604.0
 text = "Share"
 icon = ExtResource("6_x5hu1")
 alignment = 2
