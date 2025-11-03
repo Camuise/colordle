@@ -36,7 +36,7 @@ class MarathonResultsDisplay:
 
     func set_data(infinidle_stats: Globals.InfinidleStats) -> void:
         data = infinidle_stats
-        _results_display_node.get_node("Header/StreakCount").text = "Streak: %d" % data.total_wins
+        _results_display_node.get_node("Header/StreakCount").text = tr("Streak: %d") % data.total_wins
         _update_bar_graph()
 
 
@@ -65,7 +65,7 @@ func _on_infinidle_complete(infinidle_stats: Globals.InfinidleStats) -> void:
 
 func _on_share_requested() -> void:
     # 1. Add title + date
-    var share_text: String = tr("%s, Streak: %d\n\n") % [results_data.title, results_data.get_streak()]
+    var share_text: String = ("%s, " + tr("Streak: %d") + "\n\n") % [results_data.title, results_data.get_streak()]
 
     # 2. Generate bar graph with unicode blocks
     var max_wins = 1

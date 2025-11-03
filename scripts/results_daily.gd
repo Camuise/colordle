@@ -101,7 +101,7 @@ func _on_show_results(puzzle_info: Globals.PuzzleInfo, _game_mode: int, _time_ta
 
 func _on_share_requested() -> void:
     # 1. Add title + date
-    var share_text: String = tr("Colordle #%s - %s\n\n") % [Globals.get_puzzle_number(), Globals.get_todays_date()]
+    var share_text: String = (tr("Colordle #%s - %s") + "\n\n") % [Globals.get_puzzle_number(), Globals.get_todays_date()]
 
     # 2. Add grades (emojis)
     for answer in results_display.answers:
